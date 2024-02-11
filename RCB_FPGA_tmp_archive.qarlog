@@ -1,0 +1,40 @@
+Quartus Prime Archive log --	C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA_tmp_archive.qarlog
+
+Archive:	C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA_tmp_archive.qar
+Date:		Tue Dec 20 07:25:11 2022
+Quartus Prime		21.1.1 Build 850 06/23/2022 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/TracePCB/RCB/RCB_FPGA/PLL1.ppf
+C:/TracePCB/RCB/RCB_FPGA/PLL1.qip
+C:/TracePCB/RCB/RCB_FPGA/PLL1.v
+C:/TracePCB/RCB/RCB_FPGA/PLL1_bb.v
+C:/TracePCB/RCB/RCB_FPGA/PLL1_inst.v
+C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA.bdf
+C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA.qpf
+C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA.qsf
+C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA_Eval.bdf
+C:/TracePCB/RCB/RCB_FPGA/assignment_defaults.qdf
+C:/TracePCB/RCB/RCB_FPGA/pll2.bsf
+C:/TracePCB/RCB/RCB_FPGA/pll2.ppf
+C:/TracePCB/RCB/RCB_FPGA/pll2.qip
+C:/TracePCB/RCB/RCB_FPGA/pll2.v
+C:/TracePCB/RCB/RCB_FPGA/pll2_bb.v
+C:/TracePCB/RCB/RCB_FPGA/pll2_inst.v
+C:/TracePCB/RCB/RCB_FPGA/simulation/modelsim/run_rtl.tcl
+C:/TracePCB/RCB/RCB_FPGA/source/estop.v
+C:/TracePCB/RCB/RCB_FPGA/source/rcb_parameters.v
+C:/TracePCB/RCB/RCB_FPGA/source/rcb_registers.v
+C:/TracePCB/RCB/RCB_FPGA/source/rcb_spi.v
+C:/TracePCB/RCB/RCB_FPGA/source/rcb_test_de10.v
+C:/TracePCB/RCB/RCB_FPGA/source/rcb_top.v
+	======= Total: 23 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Tue Dec 20 07:25:12 2022
+Source archive file:	C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA_tmp_archive.qar
+Archive was extracted into	C:/TracePCB/RCB/RCB_FPGA_copy/
+		 - successfully.

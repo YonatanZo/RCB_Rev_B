@@ -1,0 +1,328 @@
+ -- Copyright (C) 2022  Intel Corporation. All rights reserved.
+ -- Your use of Intel Corporation's design tools, logic functions 
+ -- and other software and tools, and any partner logic 
+ -- functions, and any output files from any of the foregoing 
+ -- (including device programming or simulation files), and any 
+ -- associated documentation or information are expressly subject 
+ -- to the terms and conditions of the Intel Program License 
+ -- Subscription Agreement, the Intel Quartus Prime License Agreement,
+ -- the Intel FPGA IP License Agreement, or other applicable license
+ -- agreement, including, without limitation, that your use is for
+ -- the sole purpose of programming logic devices manufactured by
+ -- Intel and sold by Intel or its authorized distributors.  Please
+ -- refer to the applicable agreement for further details, at
+ -- https://fpgasoftware.intel.com/eula.
+ -- 
+ -- This is a Quartus Prime output file. It is for reporting purposes only, and is
+ -- not intended for use as a Quartus Prime input file. This file cannot be used
+ -- to make Quartus Prime pin assignments - for instructions on how to make pin
+ -- assignments, please see Quartus Prime help.
+ ---------------------------------------------------------------------------------
+
+
+
+ ---------------------------------------------------------------------------------
+ -- NC            : No Connect. This pin has no internal connection to the device.
+ -- DNU           : Do Not Use. This pin MUST NOT be connected.
+ -- VCCINT        : Dedicated power pin, which MUST be connected to VCC  (1.2V).
+ -- VCCIO         : Dedicated power pin, which MUST be connected to VCC
+ --                 of its bank.
+ --                  Bank 1A:       2.5V
+ --                  Bank 1B:       3.3V
+ --                  Bank 2:       3.3V
+ --                  Bank 3:       3.3V
+ --                  Bank 4:       3.3V
+ --                  Bank 5:       3.3V
+ --                  Bank 6:       3.3V
+ --                  Bank 7:       3.3V
+ --                  Bank 8:       3.3V
+ -- GND           : Dedicated ground pin. Dedicated GND pins MUST be connected to GND.
+ --                  It can also be used to report unused dedicated pins. The connection
+ --                  on the board for unused dedicated pins depends on whether this will
+ --                  be used in a future design. One example is device migration. When
+ --                  using device migration, refer to the device pin-tables. If it is a
+ --                  GND pin in the pin table or if it will not be used in a future design
+ --                  for another purpose the it MUST be connected to GND. If it is an unused
+ --                  dedicated pin, then it can be connected to a valid signal on the board
+ --                  (low, high, or toggling) if that signal is required for a different
+ --                  revision of the design.
+ -- GND+          : Unused input pin. It can also be used to report unused dual-purpose pins.
+ --                  This pin should be connected to GND. It may also be connected  to a
+ --                  valid signal  on the board  (low, high, or toggling)  if that signal
+ --                  is required for a different revision of the design.
+ -- GND*          : Unused  I/O  pin. Connect each pin marked GND* directly to GND
+ --                  or leave it unconnected.
+ -- RESERVED      : Unused I/O pin, which MUST be left unconnected.
+ -- RESERVED_INPUT    : Pin is tri-stated and should be connected to the board.
+ -- RESERVED_INPUT_WITH_WEAK_PULLUP    : Pin is tri-stated with internal weak pull-up resistor.
+ -- RESERVED_INPUT_WITH_BUS_HOLD       : Pin is tri-stated with bus-hold circuitry.
+ -- RESERVED_OUTPUT_DRIVEN_HIGH        : Pin is output driven high.
+ ---------------------------------------------------------------------------------
+
+
+
+ ---------------------------------------------------------------------------------
+ -- Pin directions (input, output or bidir) are based on device operating in user mode.
+ ---------------------------------------------------------------------------------
+
+Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+CHIP  "RCB_FPGA"  ASSIGNED TO AN: 10M40DCF256I7G
+
+Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
+-------------------------------------------------------------------------------------------------------------
+GND                          : A1        : gnd    :                   :         :           :                
+mosi                         : A2        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+sclk                         : A3        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+cs_n                         : A4        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+right_spare_diff_2           : A5        : output : 3.3-V LVTTL       :         : 8         : Y              
+wheel_c_sens3_in2            : A6        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+wheel_c_sens3_in1            : A7        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+wheel_c_sens1_in2            : A8        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+wheel_b_sens3_in2            : A9        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+wheel_b_sens3_in1            : A10       : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+wheel_b_sens1_in1            : A11       : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+wheel_b_sens1_in2            : A12       : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+fpga_spare13                 : A13       : input  : 3.3 V Schmitt Trigger :         : 7         : Y              
+wheel_home_sw[3]             : A14       : output : 3.3-V LVTTL       :         : 7         : Y              
+wheel_reverse_sw[0]          : A15       : output : 3.3-V LVTTL       :         : 7         : Y              
+GND                          : A16       : gnd    :                   :         :           :                
+wheel_reverse_sw[1]          : B1        : output : 2.5 V             :         : 1A        : Y              
+wheel_driver_di[3]           : B2        : output : 2.5 V             :         : 1A        : Y              
+miso                         : B3        : output : 3.3-V LVTTL       :         : 8         : Y              
+right_spare_diff_1           : B4        : input  : 3.3-V LVTTL       :         : 8         : Y              
+right_plunger_led1           : B5        : output : 3.3-V LVTTL       :         : 8         : Y              
+wheel_c_sens2_in1            : B6        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+wheel_b_sens2_in1            : B7        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+wheel_b_sens2_in2            : B8        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+wheel_c_sens1_in1            : B9        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : B10       :        :                   :         : 8         :                
+wheel_a_sens3_in1            : B11       : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+wheel_a_sens2_in2            : B12       : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+fpga_spare2                  : B13       : input  : 3.3 V Schmitt Trigger :         : 7         : Y              
+GND                          : B14       : gnd    :                   :         :           :                
+left_robot_rx                : B15       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+right_robot_rx               : B16       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+wheel_forward_sw[1]          : C1        : output : 2.5 V             :         : 1A        : Y              
+wheel_driver_di[4]           : C2        : output : 2.5 V             :         : 1A        : Y              
+wheel_reverse_sw[2]          : C3        : output : 2.5 V             :         : 1A        : Y              
+wheel_home_sw[2]             : C4        : output : 2.5 V             :         : 1A        : Y              
+left_spare_diff_2            : C5        : output : 3.3-V LVTTL       :         : 8         : Y              
+wheel_c_sens2_in2            : C6        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+VCCIO8                       : C7        : power  :                   : 3.3V    : 8         :                
+GND                          : C8        : gnd    :                   :         :           :                
+wheel_a_sens1_in1            : C9        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+wheel_a_sens3_in2            : C10       : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+GND                          : C11       : gnd    :                   :         :           :                
+wheel_d_sens2_in2            : C12       : input  : 3.3 V Schmitt Trigger :         : 7         : Y              
+wheel_d_sens2_in1            : C13       : input  : 3.3 V Schmitt Trigger :         : 7         : Y              
+wheel_driver_do[1]           : C14       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+fpga_spare7                  : C15       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+right_drape_em_open          : C16       : output : 3.3-V LVTTL       :         : 6         : Y              
+wheel_forward_sw[2]          : D1        : output : 2.5 V             :         : 1A        : Y              
+GND                          : D2        : gnd    :                   :         :           :                
+GND                          : D3        : gnd    :                   :         :           :                
+VCCD_PLL3                    : D4        : power  :                   : 1.2V    :           :                
+VCCA3                        : D5        : power  :                   : 2.5V    :           :                
+GND                          : D6        : gnd    :                   :         :           :                
+VCCIO8                       : D7        : power  :                   : 3.3V    : 8         :                
+VCCIO8                       : D8        : power  :                   : 3.3V    : 8         :                
+rst_n                        : D9        : input  : 3.3-V LVTTL       :         : 8         : Y              
+VCCIO7                       : D10       : power  :                   : 3.3V    : 7         :                
+VCCIO7                       : D11       : power  :                   : 3.3V    : 7         :                
+wheel_d_sens1_in1            : D12       : input  : 3.3 V Schmitt Trigger :         : 7         : Y              
+VCCD_PLL2                    : D13       : power  :                   : 1.2V    :           :                
+wheel_driver_do[0]           : D14       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+wheel_driver_do[2]           : D15       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+fpga_spare6                  : D16       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+wheel_forward_sw[3]          : E1        : output : 2.5 V             :         : 1A        : Y              
+GND                          : E2        : gnd    :                   :         :           :                
+wheel_driver_di[0]           : E3        : output : 2.5 V             :         : 1A        : Y              
+VCCA3                        : E4        : power  :                   : 2.5V    :           :                
+VCCA3                        : E5        : power  :                   : 2.5V    :           :                
+GND                          : E6        : gnd    :                   :         :           :                
+~ALTERA_CONF_DONE~ / RESERVED_INPUT : E7        : input  : 3.3 V Schmitt Trigger :         : 8         : N              
+~ALTERA_nCONFIG~ / RESERVED_INPUT : E8        : input  : 3.3 V Schmitt Trigger :         : 8         : N              
+wheel_a_sens2_in1            : E9        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+fpga_spare3                  : E10       : input  : 3.3 V Schmitt Trigger :         : 7         : Y              
+wheel_d_sens1_in2            : E11       : input  : 3.3 V Schmitt Trigger :         : 7         : Y              
+VCCA2                        : E12       : power  :                   : 2.5V    :           :                
+GND                          : E13       : gnd    :                   :         :           :                
+fpga_spare12                 : E14       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+fan1_pwm                     : E15       : output : 3.3-V LVTTL       :         : 6         : Y              
+fan2_pwm                     : E16       : output : 3.3-V LVTTL       :         : 6         : Y              
+wheel_driver_di[2]           : F1        : output : 2.5 V             :         : 1A        : Y              
+wheel_driver_di[1]           : F2        : output : 2.5 V             :         : 1A        : Y              
+GND                          : F3        : gnd    :                   :         :           :                
+wheel_home_sw[1]             : F4        : output : 2.5 V             :         : 1A        : Y              
+wheel_home_sw[0]             : F5        : output : 2.5 V             :         : 1A        : Y              
+VCC                          : F6        : power  :                   : 1.2V    :           :                
+~ALTERA_nSTATUS~ / RESERVED_INPUT : F7        : input  : 3.3 V Schmitt Trigger :         : 8         : N              
+~ALTERA_CONFIG_SEL~ / RESERVED_INPUT : F8        : input  : 3.3-V LVTTL       :         : 8         : N              
+wheel_a_sens1_in2            : F9        : input  : 3.3 V Schmitt Trigger :         : 8         : Y              
+fpga_spare4                  : F10       : input  : 3.3 V Schmitt Trigger :         : 7         : Y              
+wheel_d_sens3_in1            : F11       : input  : 3.3 V Schmitt Trigger :         : 7         : Y              
+wheel_d_sens3_in2            : F12       : input  : 3.3 V Schmitt Trigger :         : 7         : Y              
+VCCIO6                       : F13       : power  :                   : 3.3V    : 6         :                
+right_robot_tx               : F14       : output : 3.3-V LVTTL       :         : 6         : Y              
+GND                          : F15       : gnd    :                   :         :           :                
+wheel_rod2_out1              : F16       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+~ALTERA_TDI~ / RESERVED_INPUT_WITH_WEAK_PULLUP : G1        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
+wheel_driver_di[5]           : G2        : output : 2.5 V             :         : 1A        : Y              
+GND                          : G3        : gnd    :                   :         :           :                
+VCCIO1A                      : G4        : power  :                   : 2.5V    : 1A        :                
+wheel_forward_sw[0]          : G5        : output : 2.5 V             :         : 1A        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : G6        :        :                   :         : 1B        :                
+VCC                          : G7        : power  :                   : 1.2V    :           :                
+GND                          : G8        : gnd    :                   :         :           :                
+VCC                          : G9        : power  :                   : 1.2V    :           :                
+GND                          : G10       : gnd    :                   :         :           :                
+wheel_rod2_out2              : G11       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+left_robot_tx                : G12       : output : 3.3-V LVTTL       :         : 6         : Y              
+VCCIO6                       : G13       : power  :                   : 3.3V    : 6         :                
+fan2_tacho                   : G14       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+wheel_rod1_out1              : G15       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+wheel_rod1_out2              : G16       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+~ALTERA_TDO~                 : H1        : output : 3.3-V LVTTL       :         : 1B        : N              
+~ALTERA_TMS~ / RESERVED_INPUT_WITH_WEAK_PULLUP : H2        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
+~ALTERA_TCK~ / RESERVED_INPUT : H3        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
+VCCIO1A                      : H4        : power  :                   : 2.5V    : 1A        :                
+wheel_reverse_sw[3]          : H5        : output : 2.5 V             :         : 1A        : Y              
+wheel_driver_di[7]           : H6        : output : 3.3-V LVTTL       :         : 1B        : Y              
+GND                          : H7        : gnd    :                   :         :           :                
+VCC                          : H8        : power  :                   : 1.2V    :           :                
+VCC                          : H9        : power  :                   : 1.2V    :           :                
+VCC                          : H10       : power  :                   : 1.2V    :           :                
+left_drape_em_open           : H11       : output : 3.3-V LVTTL       :         : 6         : Y              
+fan1_tacho                   : H12       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+VCCIO6                       : H13       : power  :                   : 3.3V    : 6         :                
+GND                          : H14       : gnd    :                   :         :           :                
+right_drape_em_state         : H15       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+fpga_spare5                  : H16       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+wheel_driver_rst             : J1        : output : 3.3-V LVTTL       :         : 1B        : Y              
+wheel_driver_abrt            : J2        : output : 3.3-V LVTTL       :         : 1B        : Y              
+teensy_fpga4                 : J3        : input  : 3.3-V LVTTL       :         : 1B        : Y              
+VCCIO1B                      : J4        : power  :                   : 3.3V    : 1B        :                
+wheel_driver_di[6]           : J5        : output : 3.3-V LVTTL       :         : 1B        : Y              
+right_drape_close1_nc        : J6        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+VCC                          : J7        : power  :                   : 1.2V    :           :                
+VCC                          : J8        : power  :                   : 1.2V    :           :                
+VCC                          : J9        : power  :                   : 1.2V    :           :                
+GND                          : J10       : gnd    :                   :         :           :                
+fpga_spare11                 : J11       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+MICCB_SPARE_IO3              : J12       : output : 3.3-V LVTTL       :         : 6         : Y              
+VCCIO6                       : J13       : power  :                   : 3.3V    : 6         :                
+MICCB_SPARE_IO2              : J14       : output : 3.3-V LVTTL       :         : 6         : Y              
+right_drape_sw_state         : J15       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+MICCB_SPARE_IO0              : J16       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+GND                          : K1        : gnd    :                   :         :           :                
+diag_activation              : K2        : output : 3.3-V LVTTL       :         : 2         : Y              
+GND                          : K3        : gnd    :                   :         :           :                
+VCCIO2                       : K4        : power  :                   : 3.3V    : 2         :                
+left_drape_close2_nc         : K5        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+right_drape_close1_no        : K6        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+GND                          : K7        : gnd    :                   :         :           :                
+VCC                          : K8        : power  :                   : 1.2V    :           :                
+GND                          : K9        : gnd    :                   :         :           :                
+VCC                          : K10       : power  :                   : 1.2V    :           :                
+left_tool_ex_nc              : K11       : input  : 3.3 V Schmitt Trigger :         : 5         : Y              
+right_tool_ex_led1           : K12       : output : 3.3-V LVTTL       :         : 5         : Y              
+VCCIO5                       : K13       : power  :                   : 3.3V    : 5         :                
+left_tool_ex_no              : K14       : input  : 3.3 V Schmitt Trigger :         : 5         : Y              
+MICCB_SPARE_IO1              : K15       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
+GND                          : K16       : gnd    :                   :         :           :                
+estop_open                   : L1        : output : 3.3-V LVTTL       :         : 2         : Y              
+right_drape_close2_no        : L2        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+clk_100m                     : L3        : input  : 3.3-V LVTTL       :         : 2         : Y              
+VCCIO2                       : L4        : power  :                   : 3.3V    : 2         :                
+VCCA1                        : L5        : power  :                   : 2.5V    :           :                
+left_drape_close2_no         : L6        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+sp1_diff_pair_1_0[1]         : L7        : input  : 3.3-V LVTTL       :         : 3         : Y              
+fpga_spare10                 : L8        : input  : 3.3 V Schmitt Trigger :         : 3         : Y              
+diagnostic_led[1]            : L9        : output : 3.3-V LVTTL       :         : 4         : Y              
+diagnostic_led[7]            : L10       : output : 3.3-V LVTTL       :         : 4         : Y              
+left_plunger_nc              : L11       : input  : 3.3 V Schmitt Trigger :         : 5         : Y              
+left_spare_diff_1            : L12       : input  : 3.3 V Schmitt Trigger :         : 5         : Y              
+VCCIO5                       : L13       : power  :                   : 3.3V    : 5         :                
+GND                          : L14       : gnd    :                   :         :           :                
+left_tool_ex_led3            : L15       : output : 3.3-V LVTTL       :         : 5         : Y              
+fpga_spare8                  : L16       : input  : 3.3 V Schmitt Trigger :         : 5         : Y              
+left_drape_close1_nc         : M1        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+right_drape_close2_nc        : M2        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+FPGA_WHEEL_STOP_ELO          : M3        : output : 3.3-V LVTTL       :         : 2         : Y              
+GND                          : M4        : gnd    :                   :         :           :                
+VCCD_PLL1                    : M5        : power  :                   : 1.2V    :           :                
+sp1_diff_pair_1_0[0]         : M6        : input  : 3.3-V LVTTL       :         : 3         : Y              
+fpga_spare9                  : M7        : input  : 3.3 V Schmitt Trigger :         : 3         : Y              
+estop_status                 : M8        : input  : 3.3 V Schmitt Trigger :         : 3         : Y              
+miccb_estop_open_req         : M9        : output : 3.3-V LVTTL       :         : 3         : Y              
+diagnostic_led[0]            : M10       : output : 3.3-V LVTTL       :         : 4         : Y              
+diagnostic_led[6]            : M11       : output : 3.3-V LVTTL       :         : 4         : Y              
+VCCA4                        : M12       : power  :                   : 2.5V    :           :                
+VCCIO5                       : M13       : power  :                   : 3.3V    : 5         :                
+left_plunger_led2            : M14       : output : 3.3-V LVTTL       :         : 5         : Y              
+left_plunger_led1            : M15       : output : 3.3-V LVTTL       :         : 5         : Y              
+left_tool_ex_led1            : M16       : output : 3.3-V LVTTL       :         : 5         : Y              
+left_drape_close1_no         : N1        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+right_drape_open_nc          : N2        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+left_drape_open_nc           : N3        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+left_drape_open_no           : N4        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+sp2_single_ended_1_0[0]      : N5        : input  : 3.3-V LVTTL       :         : 3         : Y              
+VCCIO3                       : N6        : power  :                   : 3.3V    : 3         :                
+VCCIO3                       : N7        : power  :                   : 3.3V    : 3         :                
+VCCIO3                       : N8        : power  :                   : 3.3V    : 3         :                
+GND                          : N9        : gnd    :                   :         :           :                
+VCCIO4                       : N10       : power  :                   : 3.3V    : 4         :                
+VCCIO4                       : N11       : power  :                   : 3.3V    : 4         :                
+GND                          : N12       : gnd    :                   :         :           :                
+VCCD_PLL4                    : N13       : power  :                   : 1.2V    :           :                
+left_plunger_led3            : N14       : output : 3.3-V LVTTL       :         : 5         : Y              
+GND                          : N15       : gnd    :                   :         :           :                
+right_tool_ex_no             : N16       : input  : 3.3 V Schmitt Trigger :         : 5         : Y              
+right_drape_open_no          : P1        : input  : 3.3 V Schmitt Trigger :         : 2         : Y              
+sp2_single_ended_2_3[1]      : P2        : output : 3.3-V LVTTL       :         : 3         : Y              
+GND                          : P3        : gnd    :                   :         :           :                
+sp2_single_ended_1_0[1]      : P4        : input  : 3.3-V LVTTL       :         : 3         : Y              
+sp2_diff_pair_1_0[0]         : P5        : input  : 3.3-V LVTTL       :         : 3         : Y              
+sp2_analog_switch[0]         : P6        : output : 3.3-V LVTTL       :         : 3         : Y              
+GND                          : P7        : gnd    :                   :         :           :                
+sp1_single_ended_1_0[0]      : P8        : input  : 3.3-V LVTTL       :         : 3         : Y              
+sp1_single_ended_1_0[1]      : P9        : input  : 3.3-V LVTTL       :         : 3         : Y              
+sync                         : P10       : input  : 3.3-V LVTTL       :         : 4         : Y              
+estop_delay                  : P11       : output : 3.3-V LVTTL       :         : 4         : Y              
+diagnostic_led[5]            : P12       : output : 3.3-V LVTTL       :         : 4         : Y              
+diagnostic_led[4]            : P13       : output : 3.3-V LVTTL       :         : 4         : Y              
+right_plunger_nc             : P14       : input  : 3.3 V Schmitt Trigger :         : 5         : Y              
+left_plunger_no              : P15       : input  : 3.3 V Schmitt Trigger :         : 5         : Y              
+right_tool_ex_nc             : P16       : input  : 3.3 V Schmitt Trigger :         : 5         : Y              
+sp2_single_ended_2_3[0]      : R1        : output : 3.3-V LVTTL       :         : 3         : Y              
+sp1_diff_pair_2_3[1]         : R2        : output : 3.3-V LVTTL       :         : 3         : Y              
+sp1_diff_pair_2_3[0]         : R3        : output : 3.3-V LVTTL       :         : 3         : Y              
+sp2_diff_pair_1_0[1]         : R4        : input  : 3.3-V LVTTL       :         : 3         : Y              
+left_drape_sw_state          : R5        : input  : 3.3 V Schmitt Trigger :         : 3         : Y              
+wheel_driver_do[3]           : R6        : input  : 3.3 V Schmitt Trigger :         : 3         : Y              
+sp1_analog_switch[2]         : R7        : output : 3.3-V LVTTL       :         : 3         : Y              
+sp2_analog_switch[2]         : R8        : output : 3.3-V LVTTL       :         : 3         : Y              
+sp1_single_ended_2_3[0]      : R9        : output : 3.3-V LVTTL       :         : 3         : Y              
+teensy_open_elo_req          : R10       : input  : 3.3-V LVTTL       :         : 3         : Y              
+pow                          : R11       : input  : 3.3 V Schmitt Trigger :         : 4         : Y              
+teensy_fpga5                 : R12       : input  : 3.3-V LVTTL       :         : 4         : Y              
+GND                          : R13       : gnd    :                   :         :           :                
+right_plunger_no             : R14       : input  : 3.3 V Schmitt Trigger :         : 5         : Y              
+right_tool_ex_led3           : R15       : output : 3.3-V LVTTL       :         : 5         : Y              
+right_tool_ex_led2           : R16       : output : 3.3-V LVTTL       :         : 5         : Y              
+GND                          : T1        : gnd    :                   :         :           :                
+sp2_diff_pair_2_3[0]         : T2        : output : 3.3-V LVTTL       :         : 3         : Y              
+sp2_diff_pair_2_3[1]         : T3        : output : 3.3-V LVTTL       :         : 3         : Y              
+left_tool_ex_led2            : T4        : output : 3.3-V LVTTL       :         : 3         : Y              
+left_drape_em_state          : T5        : input  : 3.3 V Schmitt Trigger :         : 3         : Y              
+sp1_analog_switch[1]         : T6        : output : 3.3-V LVTTL       :         : 3         : Y              
+sp1_analog_switch[0]         : T7        : output : 3.3-V LVTTL       :         : 3         : Y              
+sp2_analog_switch[1]         : T8        : output : 3.3-V LVTTL       :         : 3         : Y              
+sp1_single_ended_2_3[1]      : T9        : output : 3.3-V LVTTL       :         : 3         : Y              
+GND                          : T10       : gnd    :                   :         :           :                
+teensy_estop_open_req        : T11       : input  : 3.3-V LVTTL       :         : 3         : Y              
+diagnostic_led[3]            : T12       : output : 3.3-V LVTTL       :         : 4         : Y              
+diagnostic_led[2]            : T13       : output : 3.3-V LVTTL       :         : 4         : Y              
+right_plunger_led2           : T14       : output : 3.3-V LVTTL       :         : 5         : Y              
+right_plunger_led3           : T15       : output : 3.3-V LVTTL       :         : 5         : Y              
+GND                          : T16       : gnd    :                   :         :           :                

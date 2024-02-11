@@ -1,0 +1,38 @@
+
+State Machine - |RCB_FPGA_Eval|rcb_top:inst|rcb_registers:rcb_registers|state_b2nc
+Name state_b2nc.IDLE_B2NC state_b2nc.NOSTICKY_B2NC state_b2nc.STICKY_B2NC 
+state_b2nc.IDLE_B2NC 0 0 0 
+state_b2nc.STICKY_B2NC 1 0 1 
+state_b2nc.NOSTICKY_B2NC 1 1 0 
+
+State Machine - |RCB_FPGA_Eval|rcb_top:inst|rcb_registers:rcb_registers|state_b2no
+Name state_b2no.IDLE_B2NO state_b2no.NOSTICKY_B2NO state_b2no.STICKY_B2NO 
+state_b2no.IDLE_B2NO 0 0 0 
+state_b2no.STICKY_B2NO 1 0 1 
+state_b2no.NOSTICKY_B2NO 1 1 0 
+
+State Machine - |RCB_FPGA_Eval|rcb_top:inst|rcb_registers:rcb_registers|state_b1nc
+Name state_b1nc.IDLE_B1NC state_b1nc.NOSTICKY_B1NC state_b1nc.STICKY_B1NC 
+state_b1nc.IDLE_B1NC 0 0 0 
+state_b1nc.STICKY_B1NC 1 0 1 
+state_b1nc.NOSTICKY_B1NC 1 1 0 
+
+State Machine - |RCB_FPGA_Eval|rcb_top:inst|rcb_registers:rcb_registers|state_b1no
+Name state_b1no.IDLE_B1NO state_b1no.NOSTICKY_B1NO state_b1no.STICKY_B1NO 
+state_b1no.IDLE_B1NO 0 0 0 
+state_b1no.STICKY_B1NO 1 0 1 
+state_b1no.NOSTICKY_B1NO 1 1 0 
+
+State Machine - |RCB_FPGA_Eval|rcb_top:inst|rcb_spi:rcb_spi|spi_mode
+Name spi_mode.READ_MODE spi_mode.UNDEF_MODE spi_mode.WRITE_MODE 
+spi_mode.UNDEF_MODE 0 0 0 
+spi_mode.READ_MODE 1 1 0 
+spi_mode.WRITE_MODE 0 1 1 
+
+State Machine - |RCB_FPGA_Eval|rcb_top:inst|rcb_spi:rcb_spi|state
+Name state.MOSI_DATA state.ADDR state.CMD state.IDLE state.MISO_DATA 
+state.IDLE 0 0 0 0 0 
+state.CMD 0 0 1 1 0 
+state.ADDR 0 1 0 1 0 
+state.MOSI_DATA 1 0 0 1 0 
+state.MISO_DATA 0 0 0 1 1 

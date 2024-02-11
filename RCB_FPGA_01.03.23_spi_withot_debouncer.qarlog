@@ -1,0 +1,33 @@
+Quartus Prime Archive log --	C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA_01.03.23_spi_withot_debouncer.qarlog
+
+Archive:	C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA_01.03.23_spi_withot_debouncer.qar
+Date:		Wed Mar  1 08:03:30 2023
+Quartus Prime		21.1.1 Build 850 06/23/2022 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/TracePCB/RCB/RCB_FPGA/PLL1.ppf
+C:/TracePCB/RCB/RCB_FPGA/PLL1.qip
+C:/TracePCB/RCB/RCB_FPGA/PLL1.v
+C:/TracePCB/RCB/RCB_FPGA/PLL1_bb.v
+C:/TracePCB/RCB/RCB_FPGA/PLL1_inst.v
+C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA.bdf
+C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA.qpf
+C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA.qsf
+C:/TracePCB/RCB/RCB_FPGA/assignment_defaults.qdf
+C:/TracePCB/RCB/RCB_FPGA/pll2.bsf
+C:/TracePCB/RCB/RCB_FPGA/pll2.ppf
+C:/TracePCB/RCB/RCB_FPGA/pll2.qip
+C:/TracePCB/RCB/RCB_FPGA/pll2.v
+C:/TracePCB/RCB/RCB_FPGA/pll2_bb.v
+C:/TracePCB/RCB/RCB_FPGA/pll2_inst.v
+C:/TracePCB/RCB/RCB_FPGA/simulation/modelsim/run_gls.tcl
+C:/TracePCB/RCB/RCB_FPGA/simulation/modelsim/run_rtl.tcl
+C:/TracePCB/RCB/RCB_FPGA/source/estop.v
+C:/TracePCB/RCB/RCB_FPGA/source/rcb_parameters.v
+C:/TracePCB/RCB/RCB_FPGA/source/rcb_registers.v
+C:/TracePCB/RCB/RCB_FPGA/source/rcb_spi.v
+C:/TracePCB/RCB/RCB_FPGA/source/rcb_top.v
+	======= Total: 22 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

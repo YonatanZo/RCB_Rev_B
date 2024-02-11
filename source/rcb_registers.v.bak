@@ -1,0 +1,183 @@
+/////////////////////////////////////////////////////////
+//	File			: rcb_registers.v
+//	Author			: Igor Dorman. tracePCB.
+//	Date			: 30/08/2022
+//	Description		: RCB Registers.
+//	Revision		: 1.0
+//	Hierarchy		: rcb_top <- rcb_registers
+//////////////////////////////////////////////////////////
+
+module rcb_registers(
+	//System signals
+    clk,       		// system clock
+    rst_n,      	// low active synchronous reset
+	//Internal signls
+    data_miso,		// data for transmission to SPI master
+    data_mosi,		// received data from SPI master
+    data_mosi_rdy,	// when 1, received data is valid
+	addr,			// received data from SPI master
+	addr_rdy,		// when 1, received address is valid
+	//r_w,
+	
+	//FPGA Power Diagnostic
+	pow_wire,
+	//FPGA DRAPE Switch and Sensors state
+	switch_sensor_wire,
+	//FPGA DRAPE Electro magnet S.W approval
+	fpga_electromagnet_reg,
+	//FPGA Wheel Sensor status
+	wheel_sensor_wire,
+	//FPGA Buttons LED
+	fpga_buttons_led_reg,
+	//FPGA ESTOP Status
+	estop_status_wire,
+	//FPGA ESTOP Activation
+	fpga_estop_activation_reg,
+	//FPGA ESTOP DIAGNOSTIC
+	fpga_estop_diagnostic_reg
+);
+	
+`include  "rcb_parameters.v"	
+	
+input 			clk; 
+input 			rst_n;  
+output[31:0]	data_miso;
+input[31:0]		data_mosi;
+input			data_mosi_rdy;
+input[15:0]		addr;
+input			addr_rdy;
+//input			r_w;
+input[31:0]		pow_wire;
+input[31:0]		switch_sensor_wire;
+output[31:0]	fpga_electromagnet_reg;
+input[31:0]		wheel_sensor_wire;
+output[31:0]	fpga_buttons_led_reg;
+input[31:0]		estop_status_wire;
+output[31:0]	fpga_estop_activation_reg;		//Once set – only active for 0.1Sec.
+output[31:0]	fpga_estop_diagnostic_reg;		//Set to 0xABCD for Closing Estop in Diagnostic mode
+										//( along with bit 31 in ESTOP Activation register.
+reg[31:0] 		fpga_ver_reg;
+reg[31:0] 		fpga_rev_data_reg;
+reg[31:0] 		fpga_pow_reg;
+//reg		 		fpga_pow_reg_meta;
+reg[31:0] 		fpga_switch_sensor_reg;
+reg[31:0] 		fpga_switch_sensor_meta;
+reg[31:0] 		fpga_electromagnet_reg;
+reg[31:0] 		fpga_wheel_sensor_reg;
+reg[31:0] 		fpga_wheel_sensor_meta;
+reg[31:0] 		fpga_buttons_led_reg;
+reg[31:0]		fpga_estop_status_reg;
+reg[31:0]		fpga_estop_status_meta;
+reg[31:0]		fpga_estop_activation_reg;
+reg[31:0]		fpga_estop_diagnostic_reg;
+reg[9:0]		reg_en;
+reg[31:0]		data_miso;
+
+
+always @(negedge rst_n)
+    if(!rst_n)
+	begin
+		fpga_ver_reg <= {16'b0,FPGA_MAJOR_VER,FPGA_REV};
+		fpga_rev_data_reg <= {FPGA_REV_YEAR,FPGA_REV_MONTH,FPGA_REV_DAY,FPGA_REV_HOUR};
+		fpga_estop_activation_reg <= 32'b0;
+		fpga_estop_diagnostic_reg <= 32'b0;
+	end
+
+always @(posedge clk, negedge rst_n)
+    if(!rst_n)
+begin
+	fpga_ver_reg <= {16'b0,FPGA_MAJOR_VER,FPGA_REV};
+	fpga_rev_data_reg <= {FPGA_REV_YEAR,FPGA_REV_MONTH,FPGA_REV_DAY,FPGA_REV_HOUR};
+	fpga_estop_activation_reg <= 32'b0;
+	fpga_estop_diagnostic_reg <= 32'b0;
+end
+else
+begin
+	fpga_pow_reg <= pow_wire;//fpga_pow_reg_meta;
+	//fpga_pow_reg_meta <= pow;
+	fpga_switch_sensor_reg <= fpga_switch_sensor_meta;
+	fpga_switch_sensor_meta <= switch_sensor_wire;
+	fpga_wheel_sensor_reg <= fpga_wheel_sensor_meta;
+	fpga_wheel_sensor_meta <= wheel_sensor_wire;
+	fpga_estop_status_reg <= estop_status_wire;		//?????
+	//fpga_estop_activation_reg <= estop_activate;	//?????
+	//fpga_estop_diagnostic_reg <= estop_diagnostic;	//?????
+end
+	
+always @(posedge clk, negedge rst_n)
+    if(!rst_n)
+	begin
+		fpga_electromagnet_reg <= 32'b0;
+		fpga_buttons_led_reg <= 32'b0;
+	end
+    else if(data_mosi_rdy)
+	begin
+		case(reg_en)
+			8'h1F:
+				fpga_estop_diagnostic_reg <= data_mosi;	// ??????
+			8'hBF:
+				fpga_buttons_led_reg <= data_mosi;
+			8'hEF:
+				fpga_electromagnet_reg <= data_mosi;
+		endcase
+	end	
+
+//Read Register MUX
+always @*
+    case(addr)
+		FPGA_VER:
+			data_miso = fpga_ver_reg;
+		FPGA_REV_DATA:
+			data_miso = fpga_rev_data_reg;
+		FPGA_POW_DIAG:
+			data_miso = fpga_pow_reg;
+		FPGA_DRAPE_SWITCH_SENSOR:
+			data_miso = fpga_switch_sensor_reg;
+		FPGA_DRAPE_ELECTROMAGNET:
+			data_miso = fpga_electromagnet_reg;
+		FPGA_WHEEL_SENSOR:
+			data_miso = fpga_wheel_sensor_reg;
+		FPGA_BUTTONS_LED:
+			data_miso = fpga_buttons_led_reg;
+		FPGA_ESTOP_STATUS:
+			data_miso = fpga_estop_status_reg;
+		FPGA_ESTOP_ACTIVATION:
+			data_miso = fpga_estop_activation_reg;
+		FPGA_ESTOP_DIAGNOSTIC:
+			data_miso = fpga_estop_diagnostic_reg;
+		default:
+			data_miso = 32'hFFFFFFFF;
+	endcase
+
+//Address decoder fo Registers enable
+always @(posedge clk, negedge rst_n)
+    if(!rst_n)
+		reg_en <= 10'h3FF;
+    else if(addr_rdy)
+		case(addr)
+			FPGA_VER:
+				reg_en <= 10'hFE;
+			FPGA_REV:
+				reg_en <= 10'hFD;
+			FPGA_POW_DIAG:
+				reg_en <= 10'hFB;
+			FPGA_DRAPE_SWITCH_SENSOR:
+				reg_en <= 10'hF7;
+			FPGA_DRAPE_ELECTROMAGNET:
+				reg_en <= 10'hEF;
+			FPGA_WHEEL_SENSOR:
+				reg_en <= 10'hDF;
+			FPGA_BUTTONS_LED:
+				reg_en <= 10'hBF;
+			FPGA_ESTOP_STATUS:
+				reg_en <= 10'h7F;
+			FPGA_ESTOP_ACTIVATION:
+				reg_en <= 10'h2F;
+			FPGA_ESTOP_DIAGNOSTIC:
+				reg_en <= 10'h1F;
+			default:
+				reg_en <= 10'h3F;
+		endcase
+
+endmodule	
+			

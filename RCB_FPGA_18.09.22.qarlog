@@ -1,0 +1,30 @@
+Quartus Prime Archive log --	D:/temp/t/RCB/RCB_FPGA/RCB_FPGA_18.09.22.qarlog
+
+Archive:	D:/temp/t/RCB/RCB_FPGA/RCB_FPGA_18.09.22.qar
+Date:		Sun Sep 18 09:33:43 2022
+Quartus Prime		21.1.1 Build 850 06/23/2022 SJ Lite Edition
+
+	=========== Files Selected: ===========
+D:/temp/t/RCB/RCB_FPGA/PLL1.ppf
+D:/temp/t/RCB/RCB_FPGA/PLL1.qip
+D:/temp/t/RCB/RCB_FPGA/PLL1.v
+D:/temp/t/RCB/RCB_FPGA/PLL1_bb.v
+D:/temp/t/RCB/RCB_FPGA/PLL1_inst.v
+D:/temp/t/RCB/RCB_FPGA/RCB_FPGA.bdf
+D:/temp/t/RCB/RCB_FPGA/RCB_FPGA.qpf
+D:/temp/t/RCB/RCB_FPGA/RCB_FPGA.qsf
+D:/temp/t/RCB/RCB_FPGA/source/rcb_parameters.v
+D:/temp/t/RCB/RCB_FPGA/source/rcb_registers.v
+D:/temp/t/RCB/RCB_FPGA/source/rcb_spi.v
+D:/temp/t/RCB/RCB_FPGA/source/rcb_top.v
+c:/intelfpga_lite/21.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 13 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Sun Oct 23 07:27:32 2022
+Source archive file:	C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA_18.09.22.qar
+Archive was extracted into	C:/TracePCB/RCB/RCB_FPGA/RCB_FPGA_18.09.22_restored/
+		 - successfully.

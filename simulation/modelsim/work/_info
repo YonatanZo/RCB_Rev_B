@@ -1,0 +1,193 @@
+m255
+K4
+z2
+!s99 nomlopt
+!s11f vlog 2021.2 2021.04, Apr 14 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/TracePCB/RCB/RCB_FPGA/simulation/modelsim
+Trcb_opt
+Z1 !s110 1677652173
+V0NOjNb;Yj3``L^3^0EBM60
+04 7 4 work rcb_top fast 0
+04 6 4 work tb_rcb fast 0
+!s124 OEM10U10 
+o+acc
+Z2 tCvgOpt 0
+nrcb_opt
+OL;O;2021.2;73
+vrcb_registers
+R1
+!i10b 1
+!s100 [E8YL6:LP6Dk9CS^7Se;73
+ITj4[cZX9HS=ibn9PHWEBS0
+R0
+Z3 w1677651016
+8../../source/rcb_registers.v
+F../../source/rcb_registers.v
+Z4 F../../source//rcb_parameters.v
+!i122 0
+L0 11 788
+Z5 VDg1SIo80bB@j0V0VzS_@n1
+Z6 OL;L;2021.2;73
+r1
+!s85 0
+31
+Z7 !s108 1677652173.000000
+Z8 !s107 ../../source//rcb_parameters.v|../../source/rcb_top.v|../../source/rcb_registers.v|../../source/rcb_spi.v|
+Z9 !s90 -reportprogress|300|-timescale|1ns / 100ps|+define+RTL_SIM|+incdir+../../source/|../../source/rcb_spi.v|../../source/rcb_registers.v|../../source/rcb_top.v|
+!i113 0
+Z10 o-timescale {1ns / 100ps} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z11 !s92 -timescale {1ns / 100ps} +define+RTL_SIM +incdir+../../source/ -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vrcb_spi
+R1
+!i10b 1
+!s100 YldhF@=0GNQQ^]@4_lnQ52
+I>V0PO_S9j4Q2;X9KPB[dS3
+R0
+w1677651288
+8../../source/rcb_spi.v
+F../../source/rcb_spi.v
+R4
+!i122 0
+L0 13 438
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R11
+R2
+vrcb_tests
+R1
+!i10b 1
+!s100 7971?7NL7LHn9O]=PfEk>3
+ID]5Q`_=ifo7m7hkog?bI43
+R0
+w1677652166
+8.././testbench/rcb_tests.v
+F.././testbench/rcb_tests.v
+R4
+Z12 F.././testbench/tb_parameters.v
+F.././testbench/tests_list.v
+F.././testbench/rcb_tasks.v
+!i122 1
+L0 12 2405
+R5
+R6
+r1
+!s85 0
+31
+R7
+Z13 !s107 .././testbench/rcb_tasks.v|.././testbench/tests_list.v|.././testbench/tb_parameters.v|../../source//rcb_parameters.v|.././testbench/tb_rcb.v|.././testbench/tester_rcb.v|.././testbench/rcb_tests.v|.././testbench/spi_interface.v|
+Z14 !s90 -reportprogress|300|-timescale|1ns / 100ps|+incdir+.././testbench+../../source/|.././testbench/spi_interface.v|.././testbench/rcb_tests.v|.././testbench/tester_rcb.v|.././testbench/tb_rcb.v|
+!i113 0
+R10
+Z15 !s92 -timescale {1ns / 100ps} +incdir+.././testbench+../../source/ -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vrcb_top
+R1
+!i10b 1
+!s100 nEm_8eK]=]oKXo9^OPX^>2
+IN@DM;FWU^_O8cD:TkS;0>3
+R0
+w1672650810
+8../../source/rcb_top.v
+F../../source/rcb_top.v
+!i122 0
+L0 11 558
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R11
+R2
+vspi_interface
+R1
+!i10b 1
+!s100 f89^NTZ9A;A3j24ZB:;Ua0
+I:FHGz_Q6>;eS5OMcGoj=R3
+R0
+R3
+8.././testbench/spi_interface.v
+F.././testbench/spi_interface.v
+R4
+R12
+!i122 1
+L0 12 292
+R5
+R6
+r1
+!s85 0
+31
+R7
+R13
+R14
+!i113 0
+R10
+R15
+R2
+vtb_rcb
+R1
+!i10b 1
+!s100 ?kfA@OQmOZ9GLVhOXXICa2
+IiYd5BQG1lM=;NTCiZe]PV3
+R0
+w1672296442
+8.././testbench/tb_rcb.v
+F.././testbench/tb_rcb.v
+!i122 1
+L0 14 437
+R5
+R6
+r1
+!s85 0
+31
+R7
+R13
+R14
+!i113 0
+R10
+R15
+R2
+vtester_rcb
+R1
+!i10b 1
+!s100 O_okD>4za7@i@zN82A^]31
+IkZc:67PTA>?VIo`PkEziA1
+R0
+R3
+8.././testbench/tester_rcb.v
+F.././testbench/tester_rcb.v
+R4
+R12
+!i122 1
+L0 12 712
+R5
+R6
+r1
+!s85 0
+31
+R7
+R13
+R14
+!i113 0
+R10
+R15
+R2

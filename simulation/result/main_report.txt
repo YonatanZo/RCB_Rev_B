@@ -1,0 +1,77 @@
+
+************************************
+****** RCB TEST BEGIN AT 0 ns ******
+************************************
+
+########## Version Register Test BEGIN at 110 ns ##########
+
+ miso data = 201  
+
+ data send = 2   1
+
+ errors = 0 
+########## Version Register  Test is passed O.K. at 6014 ns 
+
+########## Revision Data Register Test BEGIN at 6014 ns ##########
+
+ miso data = 17030108  
+
+ data send = 17030108 
+
+ errors = 0 
+########## Revision Data Register  Test is passed O.K. at 12014 ns 
+
+########## Power Diagnostic Test BEGIN at 12014 ns ##########
+########## POW Register  Test is passed O.K. at 24314 ns 
+
+########## FPGA Buttons Test BEGIN at 24314 ns ##########
+########## FPGA Buttons  Test is passed O.K. at 87314 ns 
+
+########## Drape Sensor Test BEGIN at 87314 ns ##########
+########## Drape Sensor   Test is passed O.K. at 173114 ns 
+
+########## Drape Switch Indicator Test BEGIN at 173114 ns ##########
+########## Drape Switch Indicator Test is passed O.K. at 201914 ns 
+
+########## Drape Electormagnet Indicator Test BEGIN at 201914 ns ##########
+########## Drape Electormagnet Indicator  Test is passed O.K. at 230714 ns 
+
+########## Drape SW Approval Test BEGIN at 230714 ns ##########
+
+ em = 3  
+
+ drape em  = 3 
+
+ miso data = 101  
+########## Drape SW approval  Test is passed O.K. at 242414 ns 
+
+########## Buttons Leds Test BEGIN at 242414 ns ##########
+########## Buttons Leds  Test is passed O.K. at 336714 ns 
+
+########## Wheel Driver Out Test BEGIN at 336714 ns ##########
+########## Wheel Driver Out  Test is passed O.K. at 479114 ns 
+
+########## Wheel Driver ABRT/RST Test BEGIN at 479114 ns ##########
+########## Wheel Driver ABRT/RST  Test is passed O.K. at 509914 ns 
+
+########## Wheel Driver Input Test BEGIN at 509914 ns ##########
+########## Wheel Driver Input  Test is passed O.K. at 553114 ns 
+
+########## Wheel Sensor Test BEGIN at 553114 ns ##########
+########## Wheel Sensor  Test is passed O.K. at 720314 ns 
+
+########## Diagnostic Leds Test BEGIN at 720314 ns ##########
+########## Diagnostic LEDs  Test is passed O.K. at 782114 ns 
+
+########## Wheel Rod Sensor Test BEGIN at 782114 ns ##########
+########## Wheel Ror Sensor  Test is passed O.K. at 825314 ns 
+
+########## ESTOP Diagnostic Activation Test BEGIN at 825314 ns ##########
+########## ESTOP Diagnostic Activation  Test is passed O.K. at 849914 ns 
+
+########## Spare_IO Test BEGIN at 849914 ns ##########
+########## Spare IO  Test is passed O.K. at 1031414 ns 
+
+****************************************************
+****** FULL TEST WAS PASSED O.K. AT 1031414 ns ******
+****************************************************
