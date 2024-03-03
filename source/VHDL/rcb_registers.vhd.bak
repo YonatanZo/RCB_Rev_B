@@ -1,0 +1,590 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use work.rcb_parameters.all; -- Import the package
+
+entity rcb_registers is
+    Port (
+        -- System signals
+        clk_100m : in STD_LOGIC;         -- system clock
+        rst_n_syn : in STD_LOGIC;        -- low active synchronous reset
+        clk_1m : in STD_LOGIC;
+        -- Internal signals
+        data_miso : out STD_LOGIC_VECTOR(31 downto 0);  -- data for transmission to SPI master
+        data_mosi : in STD_LOGIC_VECTOR(31 downto 0);   -- received data from SPI master
+        data_mosi_rdy : in STD_LOGIC;                    -- when 1, received data is valid
+        addr : in STD_LOGIC_VECTOR(15 downto 0);         -- received data from SPI master
+        addr_rdy : in STD_LOGIC;                         -- when 1, received address is valid
+        data_miso_rdy : in STD_LOGIC;
+        -- FPGA Power Diagnostic
+        pow : in STD_LOGIC;
+        -- FPGA BUTTONS
+        fpga_buttons : in STD_LOGIC_VECTOR(7 downto 0);
+        -- FPGA DRAPE Switch and Sensors state
+        drape_sw_state : in STD_LOGIC_VECTOR(1 downto 0);
+        drape_em_state : in STD_LOGIC_VECTOR(1 downto 0);
+        drape_sensor : in STD_LOGIC_VECTOR(11 downto 0);
+        -- FPGA DRAPE Electro magnet S.W approval
+        right_drape_em_open : out STD_LOGIC;
+        left_drape_em_open : out STD_LOGIC;
+        -- FPGA Wheel Driver
+        wheel_home_sw: out STD_LOGIC_VECTOR(3 downto 0);
+        wheel_reverse_sw : out STD_LOGIC_VECTOR(3 downto 0);
+        wheel_forward_sw : out STD_LOGIC_VECTOR(3 downto 0);
+        wheel_driver_di : out STD_LOGIC_VECTOR(7 downto 0);
+        -- wheel_driver_elo : out STD_LOGIC;
+        wheel_driver_do : in STD_LOGIC_VECTOR(3 downto 0);
+        wheel_driver_rst : out STD_LOGIC;
+        wheel_driver_abrt : out STD_LOGIC;
+        -- FPGA Wheel Sensor
+        wheel_sensor : in STD_LOGIC_VECTOR(23 downto 0);
+        -- FPGA Buttons LED
+        fpga_buttons_led_reg : out STD_LOGIC_VECTOR(31 downto 0);
+        -- Activation(Close) SSR
+        -- estop_activation : out STD_LOGIC;  -- Once set – only active for 0.1Sec.
+        diag_activation : out STD_LOGIC;
+        estop_open : out STD_LOGIC;
+        estop_status : in STD_LOGIC;
+        diagnostic_led : out STD_LOGIC_VECTOR(7 downto 0);
+        -- Spare2 IO
+        sp2_single_ended_2_3 : out STD_LOGIC_VECTOR(1 downto 0);
+        sp2_single_ended_1_0 : in STD_LOGIC_VECTOR(1 downto 0);
+        sp2_analog_switch : out STD_LOGIC_VECTOR(2 downto 0);
+        sp2_diff_pair_2_3 : out STD_LOGIC_VECTOR(1 downto 0);
+        sp2_diff_pair_1_0 : in STD_LOGIC_VECTOR(1 downto 0);
+        -- Spare1 IO
+        sp1_single_ended_2_3 : out STD_LOGIC_VECTOR(1 downto 0);
+        sp1_single_ended_1_0 : in STD_LOGIC_VECTOR(1 downto 0);
+        sp1_analog_switch : out STD_LOGIC_VECTOR(2 downto 0);
+        sp1_diff_pair_2_3 : out STD_LOGIC_VECTOR(1 downto 0);
+        sp1_diff_pair_1_0 : in STD_LOGIC_VECTOR(1 downto 0);
+        -- Spare Left/Right 4.m.b.
+        right_spare_diff_2 : out STD_LOGIC;
+        right_spare_diff_1 : in STD_LOGIC;
+        left_spare_diff_2 : out STD_LOGIC;
+        left_spare_diff_1 : in STD_LOGIC;
+        wheel_rod_sensor : in STD_LOGIC_VECTOR(3 downto 0);
+        fan1_tacho : in STD_LOGIC;
+        fan1_pwm : out STD_LOGIC;
+        fan2_tacho : in STD_LOGIC;
+        fan2_pwm : out STD_LOGIC;
+        trig_in : in STD_LOGIC
+    );
+end rcb_registers;
+
+architecture Behavioral of rcb_registers is
+    signal fpga_ver_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_rev_data_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_pow_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal pow_meta : STD_LOGIC;
+    signal pow_sticky : STD_LOGIC;
+    signal fpga_buttons_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_buttons_meta : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_drape_sw_state_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_drape_sw_state_meta : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_drape_em_state_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_drape_em_state_meta : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_drape_sensor_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_drape_sensor_meta : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_electromagnet_reg : STD_LOGIC_VECTOR(31 downto 0);
+
+    signal wheel_home_sw_f : STD_LOGIC_VECTOR(3 downto 0);
+    signal wheel_reverse_sw_f : STD_LOGIC_VECTOR(3 downto 0);
+
+    signal fpga_wheel_driver_abrt_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_wheel_driver_out : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_wheel_driver_do_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_wheel_driver_do_meta : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_wheel_sensor_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_wheel_sensor_meta : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_buttons_led_reg_f : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_estop_activation_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_estop_diagnostic_reg : STD_LOGIC_VECTOR(31 downto 0); -- Set to 0xABCD for Closing Estop in Diagnostic mode (along with bit 31 in ESTOP Activation register).
+    signal fpga_estop_open_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_diagnostic_led_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_spare_4mb_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_wheel_rod_reg : STD_LOGIC_VECTOR(31 downto 0);
+
+
+
+    -- reg estop_activation;
+    signal estop_activation_cnt : STD_LOGIC_VECTOR(32 downto 0);
+    signal estop_activation_rst : STD_LOGIC;
+    signal estop_activation_rst_posedge : STD_LOGIC;
+    signal estop_activation_reg : STD_LOGIC;
+    signal start_activation : STD_LOGIC;
+    signal clk_1m_posedge : STD_LOGIC;
+    signal clk_1m_reg : STD_LOGIC;
+
+    signal fpga_spare_io_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal sp2_single_ended_2_3_f : STD_LOGIC_VECTOR(1 downto 0);
+    signal sp2_single_ended_1_0_f : STD_LOGIC_VECTOR(1 downto 0);
+    signal sp2_analog_switch_f : STD_LOGIC_VECTOR(2 downto 0);
+    signal sp2_diff_pair_2_3_f : STD_LOGIC_VECTOR(1 downto 0);
+    signal sp2_diff_pair_1_0_f : STD_LOGIC_VECTOR(1 downto 0);
+    signal sp1_single_ended_2_3_f : STD_LOGIC_VECTOR(1 downto 0);
+    signal sp1_single_ended_1_0_f : STD_LOGIC_VECTOR(1 downto 0);
+    signal sp1_analog_switch_f : STD_LOGIC_VECTOR(2 downto 0);
+    signal sp1_diff_pair_2_3_f : STD_LOGIC_VECTOR(1 downto 0);
+    signal sp1_diff_pair_1_0_f : STD_LOGIC_VECTOR(1 downto 0);
+    signal spare_in_reg : STD_LOGIC_VECTOR(7 downto 0);
+    signal spare_in_meta : STD_LOGIC_VECTOR(7 downto 0);
+    signal right_spare_diff_2_f : STD_LOGIC;
+    signal left_spare_diff_2_f : STD_LOGIC;
+    signal in_4mb_spare_reg : STD_LOGIC_VECTOR(1 downto 0);
+    signal in_4mb_spare_meta : STD_LOGIC_VECTOR(1 downto 0);
+    signal fpga_4mb_spare_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_wheel_rod_sensor_reg : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_wheel_rod_sensor_meta : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_fan1_pwm : STD_LOGIC_VECTOR(31 downto 0);
+    signal fpga_fan2_pwm : STD_LOGIC_VECTOR(31 downto 0);
+    signal fan1_pwm_f : STD_LOGIC;
+    signal fan2_pwm_f : STD_LOGIC;
+
+    signal pwm2_cnt : STD_LOGIC_VECTOR(9 downto 0);
+    signal pwm2_value : STD_LOGIC_VECTOR(9 downto 0);
+    signal fpga_fan1_tacho : STD_LOGIC_VECTOR(15 downto 0);
+    signal fpga_fan1_tacho_num : STD_LOGIC_VECTOR(7 downto 0);
+    signal fan1_tacho_meta : STD_LOGIC;
+    signal fan1_tacho_sync : STD_LOGIC;
+    signal fan1_tacho_inv : STD_LOGIC;
+    signal fan1_tacho_cnt : STD_LOGIC_VECTOR(15 downto 0);
+    signal fpga_fan2_tacho : STD_LOGIC_VECTOR(15 downto 0);
+    signal fpga_fan2_tacho_num : STD_LOGIC_VECTOR(7 downto 0);
+    signal fan2_tacho_meta : STD_LOGIC;
+    signal fan2_tacho_sync : STD_LOGIC;
+    signal fan2_tacho_inv : STD_LOGIC;
+    signal fan2_tacho_cnt : STD_LOGIC_VECTOR(15 downto 0);
+    signal fan_tacho_cnt : STD_LOGIC_VECTOR(25 downto 0);
+    signal fan_tacho_mes_pulse : STD_LOGIC;
+    signal fan1_tacho_posedge : STD_LOGIC;
+    signal fan2_tacho_posedge : STD_LOGIC;
+	type pwm_state_type is (IDLE_PWM, PWM_PULSE);
+	signal pwm2_state : pwm_state_type;
+    signal pwm1_state : pwm_state_type;
+    signal pwm1_cnt : STD_LOGIC_VECTOR(9 downto 0);
+    signal pwm1_value : STD_LOGIC_VECTOR(9 downto 0);
+	signal fpga_estop_diagnostic_reg_flag: STD_LOGIC:= '0';
+begin
+    -- Your VHDL code implementation here
+    -- You need to specify the behavior of your module based on the Verilog module's functionality
+    -- This code template only provides the entity declaration and signal declarations.
+sp2_single_ended_2_3 <= sp2_single_ended_2_3_f;
+sp2_single_ended_1_0_f <= sp2_single_ended_1_0;
+fpga_buttons_led_reg <= fpga_buttons_led_reg_f;
+sp2_analog_switch <= sp2_analog_switch_f;
+sp2_diff_pair_2_3 <= sp2_diff_pair_2_3_f;
+sp2_diff_pair_1_0_f <= sp2_diff_pair_1_0;
+sp1_single_ended_2_3 <= sp1_single_ended_2_3_f;
+sp1_single_ended_1_0_f <= sp1_single_ended_1_0;
+sp1_analog_switch <= sp1_analog_switch_f;
+sp1_diff_pair_2_3 <= sp1_diff_pair_2_3_f;
+sp1_diff_pair_1_0_f <= sp1_diff_pair_1_0;
+right_spare_diff_2 <= right_spare_diff_2_f;
+left_spare_diff_2 <= left_spare_diff_2_f;
+fan1_pwm <= fan1_pwm_f;
+fan2_pwm <= fan2_pwm_f;
+
+wheel_home_sw <= wheel_home_sw_f;
+
+wheel_reverse_sw <=wheel_reverse_sw_f;
+diag_activation <= fpga_estop_activation_reg(31) and fpga_estop_diagnostic_reg_flag;
+estop_open <= fpga_estop_open_reg(0) and trig_in;
+diagnostic_led <= fpga_diagnostic_led_reg(7 downto 0);
+
+wheel_home_sw_f <= fpga_wheel_driver_out(19 downto 16);
+wheel_reverse_sw_f <= fpga_wheel_driver_out(15 downto 12);
+wheel_forward_sw <= fpga_wheel_driver_out(11 downto 8);
+wheel_driver_di <= fpga_wheel_driver_out(7 downto 0);
+wheel_driver_rst <= fpga_wheel_driver_abrt_reg(1);
+wheel_driver_abrt <= fpga_wheel_driver_abrt_reg(0);
+
+right_drape_em_open <= fpga_electromagnet_reg(8);
+left_drape_em_open <= fpga_electromagnet_reg(0);
+
+fpga_spare_io_reg <= "00000" & sp2_single_ended_2_3_f & spare_in_reg(7 downto 6) & sp2_analog_switch_f & sp2_diff_pair_2_3_f &
+                     spare_in_reg(5 downto 4) & sp1_single_ended_2_3_f & spare_in_reg(3 downto 2) & sp1_analog_switch_f &
+                     sp1_diff_pair_2_3_f & spare_in_reg(1 downto 0);
+
+fpga_4mb_spare_reg <= "000000000000000000000000" & right_spare_diff_2_f & in_4mb_spare_reg(1) & left_spare_diff_2_f & in_4mb_spare_reg(0);
+
+process (fpga_estop_diagnostic_reg(15 downto 0))
+begin
+    if fpga_estop_diagnostic_reg(15 downto 0) = ESTOP_DIAG_ACTIV then
+		fpga_estop_diagnostic_reg_flag <= '1';
+    else
+		fpga_estop_diagnostic_reg_flag <= '0';
+    end if;
+end process;
+
+
+process (clk_100m, rst_n_syn)
+begin
+    if rst_n_syn = '0' then
+        fpga_ver_reg <= (others => '0') & FPGA_MAJOR_VER & FPGA_REV;
+        fpga_rev_data_reg <= FPGA_REV_YEAR & FPGA_REV_MONTH & FPGA_REV_DAY & FPGA_REV_HOUR;
+        fpga_pow_reg <= (others => '0');
+        fpga_buttons_reg <= (others => '0');
+        fpga_buttons_meta <= (others => '0');
+        fpga_wheel_driver_do_reg <= (others => '0');
+        fpga_wheel_driver_do_meta <= (others => '0');
+        fpga_drape_sw_state_reg <= (others => '0');
+        fpga_drape_sw_state_meta <= (others => '0');
+        fpga_drape_em_state_reg <= (others => '0');
+        fpga_drape_em_state_meta <= (others => '0');
+        fpga_drape_sensor_reg <= (others => '0');
+        fpga_drape_sensor_meta <= (others => '0');
+        fpga_wheel_sensor_reg <= (others => '0');
+        fpga_wheel_sensor_meta <= (others => '0');
+        spare_in_reg <= "0000000";
+        spare_in_meta <= "0000000";
+        in_4mb_spare_reg <= "00";
+        in_4mb_spare_meta <= "00";
+        fpga_wheel_rod_sensor_reg <= (others => '0');
+        fpga_wheel_rod_sensor_meta <= (others => '0');
+        pow_sticky <= '0';
+        pow_meta <= '0';
+    else
+        fpga_ver_reg <= (others => '0') & FPGA_MAJOR_VER & FPGA_REV;
+        fpga_rev_data_reg <= FPGA_REV_YEAR & FPGA_REV_MONTH & FPGA_REV_DAY & FPGA_REV_HOUR;
+        fpga_pow_reg <= (others => '0') & pow_sticky & pow_meta;
+        pow_meta <= pow;
+        fpga_buttons_reg <= fpga_buttons_meta;
+        fpga_buttons_meta <= (others => '0') & fpga_buttons(7 downto 0);
+        fpga_drape_sw_state_reg <= fpga_drape_sw_state_meta;
+        fpga_drape_sw_state_meta <= (others => '0') & drape_sw_state(1 downto 0);
+        fpga_drape_em_state_reg <= fpga_drape_em_state_meta;
+        fpga_drape_em_state_meta <= (others => '0') & drape_em_state(1 downto 0);
+        fpga_wheel_driver_do_reg <= fpga_wheel_driver_do_meta;
+        fpga_wheel_driver_do_meta <= (others => '0') & wheel_driver_do;
+        fpga_drape_sensor_reg <= fpga_drape_sensor_meta;
+        fpga_drape_sensor_meta <= (others => '0') & drape_sensor(11 downto 6) & "00" & drape_sensor(5 downto 0);
+        fpga_wheel_sensor_reg <= fpga_wheel_sensor_meta;
+        fpga_wheel_sensor_meta <= (others => '0') & wheel_sensor;
+
+        spare_in_reg <= spare_in_meta;
+        spare_in_meta <= sp2_single_ended_1_0_f & sp2_diff_pair_1_0_f & sp1_single_ended_1_0_f & sp1_diff_pair_1_0_f;
+        in_4mb_spare_reg <= in_4mb_spare_meta;
+        in_4mb_spare_meta <= right_spare_diff_1 & left_spare_diff_1;
+        fpga_wheel_rod_sensor_reg <= fpga_wheel_rod_sensor_meta;
+        fpga_wheel_rod_sensor_meta <= (others => '0') & wheel_rod_sensor;
+    end if;
+end process;
+
+		
+p_mux : process(addr)
+begin
+    case addr is
+		when ADDR_FPGA_VER =>
+			data_miso <= fpga_ver_reg;
+		when ADDR_FPGA_REV_DATA =>
+			data_miso <= fpga_rev_data_reg;
+		when ADDR_FPGA_POW_DIAG =>
+			data_miso <= fpga_pow_reg;
+		when ADDR_FPGA_BUTTONS =>
+			data_miso <= fpga_buttons_reg;
+		when ADDR_FPGA_DRAPE_SENSOR =>
+			data_miso <= fpga_drape_sensor_reg;
+		when ADDR_FPGA_DRAPE_SW_STATE =>
+			data_miso <= fpga_drape_sw_state_reg;
+		when ADDR_FPGA_DRAPE_EM_STATE =>
+			data_miso <= fpga_drape_em_state_reg;			
+		when ADDR_FPGA_DRAPE_SW_APPROVAL =>
+			data_miso <= fpga_electromagnet_reg;
+		when ADDR_FPGA_WHEEL_DRIVER_OUT =>
+			data_miso <= fpga_wheel_driver_out;
+		when ADDR_FPGA_WHEEL_DRIVER_IN =>
+			data_miso <= fpga_wheel_driver_do_reg;
+		when ADDR_FPGA_WHEEL_DRIVER_ABRT =>
+			data_miso <= fpga_wheel_driver_abrt_reg;	
+		when ADDR_FPGA_WHEEL_SENSOR =>
+			data_miso <= fpga_wheel_sensor_reg;
+		when ADDR_FPGA_BUTTONS_LED =>
+			data_miso <= fpga_buttons_led_reg_f;
+		when ADDR_FPGA_ESTOP_ACTIVATION =>
+			data_miso <= fpga_estop_activation_reg;
+		when ADDR_FPGA_ESTOP_DIAGNOSTIC =>
+			data_miso <= fpga_estop_diagnostic_reg;
+		when ADDR_FPGA_ESTOP_OPEN =>
+			data_miso <= fpga_estop_open_reg;
+		when ADDR_FPGA_DIAGNOSTIC_LEDS =>
+			data_miso <= fpga_diagnostic_led_reg;
+		when ADDR_FPGA_SPARE_IO =>
+			data_miso <= fpga_spare_io_reg;
+		when ADDR_FPGA_SPARE_4MB =>
+			data_miso <= fpga_4mb_spare_reg;	
+		when ADDR_FPGA_WHEEL_ROD =>
+			data_miso <= fpga_wheel_rod_sensor_reg;	
+		when ADDR_FPGA_FAN1_TACHO =>
+			data_miso <= "00000000" & fpga_fan1_tacho_num & fpga_fan1_tacho;
+		when ADDR_FPGA_FAN1_PWM =>
+			data_miso <= fpga_fan1_pwm;
+		when ADDR_FPGA_FAN2_TACHO =>
+			data_miso <= "00000000" & fpga_fan2_tacho_num & fpga_fan2_tacho;
+		when ADDR_FPGA_FAN2_PWM =>
+			data_miso <= fpga_fan2_pwm;			
+		when others =>
+			data_miso <= (others => '1');
+	end case;
+end process;
+	
+process (clk_100m, rst_n_syn, data_mosi_rdy, addr, data_mosi, estop_activation_rst_posedge)
+begin
+    if rst_n_syn = '0' then
+        fpga_electromagnet_reg <= (others => '0');
+        fpga_buttons_led_reg_f <= (others => '0');
+        fpga_diagnostic_led_reg <= x"000000FF"; -- Use hex format for 32-bit constants
+        fpga_estop_activation_reg <= (others => '0');
+        fpga_estop_diagnostic_reg <= (others => '0');
+        fpga_estop_open_reg <= (others => '0');
+        fpga_wheel_driver_out <= (others => '0');
+        fpga_wheel_driver_abrt_reg <= (others => '0');
+        sp2_single_ended_2_3_f <= "00";
+        sp2_analog_switch_f <= "000";
+        sp2_diff_pair_2_3_f <= "00";
+        sp1_single_ended_2_3_f <= "00";
+        sp1_analog_switch_f <= "000";
+        sp1_diff_pair_2_3_f <= "00";
+        right_spare_diff_2_f <= '0';
+        left_spare_diff_2_f <= '0';
+        start_activation <= '0';
+        fpga_fan1_pwm <= (others => '0');
+        fpga_fan2_pwm <= (others => '0');
+    elsif data_mosi_rdy = '1' then
+        case addr is
+            when ADDR_FPGA_BUTTONS_LED =>
+                fpga_buttons_led_reg_f <= "0000" & data_mosi(14 downto 12) & "0" & data_mosi(10 downto 8) &
+                                        "0" & data_mosi(6 downto 4) & "0" & data_mosi(2 downto 0);
+            when ADDR_FPGA_WHEEL_DRIVER_OUT =>
+                fpga_wheel_driver_out <= "000000000000" & data_mosi(19 downto 0);
+            -- Uncomment this section if FPGA_WHEEL_DRIVER_ELO is used
+            -- when ADDR_FPGA_WHEEL_DRIVER_ELO =>
+            --     fpga_wheel_driver_elo <= "0" & data_mosi(0);
+            when ADDR_FPGA_WHEEL_DRIVER_ABRT =>
+                fpga_wheel_driver_abrt_reg <= "00" & data_mosi(1 downto 0);
+            when ADDR_FPGA_DRAPE_SW_APPROVAL =>
+                fpga_electromagnet_reg <= "00000000" & data_mosi(8) & "0000000" & data_mosi(0);
+            when ADDR_FPGA_ESTOP_ACTIVATION =>
+                fpga_estop_activation_reg <= data_mosi(31) & "000000000000000000000000000000";
+                start_activation <= data_mosi(0);
+            when ADDR_FPGA_ESTOP_DIAGNOSTIC =>
+                fpga_estop_diagnostic_reg <= "0000000000000000" & data_mosi(15 downto 0);
+            when ADDR_FPGA_ESTOP_OPEN =>
+                fpga_estop_open_reg <= "000000000000000000000000000000" & data_mosi(0);
+            when ADDR_FPGA_DIAGNOSTIC_LEDS =>
+                fpga_diagnostic_led_reg <= "000000" & data_mosi(7 downto 0);
+            when ADDR_FPGA_SPARE_IO =>
+                sp2_single_ended_2_3_f <= data_mosi(21 downto 20);
+                sp2_analog_switch_f <= data_mosi(17 downto 15);
+                sp2_diff_pair_2_3_f <= data_mosi(14 downto 13);
+                sp1_single_ended_2_3_f <= data_mosi(10 downto 9);
+                sp1_analog_switch_f <= data_mosi(6 downto 4);
+                sp1_diff_pair_2_3_f <= data_mosi(3 downto 2);
+            when ADDR_FPGA_SPARE_4MB =>
+                right_spare_diff_2_f <= data_mosi(3);
+                left_spare_diff_2_f <= data_mosi(1);
+            when ADDR_FPGA_FAN1_PWM =>
+                fpga_fan1_pwm <= "00000000" & data_mosi(7 downto 0);
+            when ADDR_FPGA_FAN2_PWM =>
+                fpga_fan2_pwm <= "00000000" & data_mosi(7 downto 0);
+            when others =>
+                null; -- Do nothing for other addresses
+        end case;
+    elsif estop_activation_rst_posedge = '1' then
+        start_activation <= '0';
+    end if;
+end process;
+
+process (clk_100m, rst_n_syn)
+begin
+    if rst_n_syn = '0' then
+        estop_activation_reg <= '1';
+    else
+        estop_activation_reg <= not estop_activation_rst;
+    end if;
+end process;
+
+estop_activation_rst_posedge <= estop_activation_rst and estop_activation_reg;
+
+
+process (clk_100m, rst_n_syn)
+begin
+    if rst_n_syn = '0' then
+        clk_1m_reg <= '1';
+    else
+        clk_1m_reg <= not estop_activation_rst;
+    end if;
+end process;
+
+clk_1m_posedge <= clk_1m_reg and clk_1m;
+
+--FAN1 PWM
+
+FAN1_PWM_proc:process (clk_100m, rst_n_syn)
+begin
+	if rst_n_syn = '0' then
+		fan1_pwm_f <= '0';
+		pwm1_cnt <= (others => '0');
+		pwm1_state <= IDLE_PWM;
+		pwm1_value <= (others => '0');
+	else 
+		if rising_edge(clk_1m_posedge) then
+			if pwm1_cnt = x"400" then -- 1024 in binary
+				pwm1_cnt <= (others => '0');
+			else
+				pwm1_cnt <= std_logic_vector(unsigned(pwm1_cnt) + 1);
+			end if;
+			
+			case pwm1_state is
+				when IDLE_PWM =>
+					if (pwm1_cnt /= "0000000000" or fpga_fan1_pwm = "00000000") then
+						pwm1_state <= IDLE_PWM;
+						fan1_pwm_f <= '0';
+						pwm1_value <= fpga_fan1_pwm(7 downto 0) & "00";
+					else
+						pwm1_state <= PWM_PULSE;
+						fan1_pwm_f <= '1';
+					end if;
+					
+				when PWM_PULSE =>
+					if (unsigned(pwm1_cnt) < unsigned(pwm1_value) or fpga_fan1_pwm = "11111111") then
+						pwm1_state <= PWM_PULSE;
+						fan1_pwm_f <= '1';
+					else
+						pwm1_state <= IDLE_PWM;
+						fan1_pwm_f <= '0';
+					end if;
+			end case;
+		end if;
+	end if;
+end process;
+	
+--FAN2 PWM
+FAN2_PWM:process (clk_100m, rst_n_syn)
+begin
+	if rst_n_syn = '0' then
+		fan2_pwm_f <= '0';
+		pwm2_cnt <= (others => '0');
+		pwm2_state <= IDLE_PWM;
+		pwm2_value <= (others => '0');
+	else 
+		if rising_edge(clk_1m_posedge) then
+			if pwm2_cnt = x"400" then -- 1024 in binary
+				pwm2_cnt <= (others => '0');
+			else
+				pwm2_cnt <= std_logic_vector(unsigned(pwm2_cnt) + 1);
+			end if;
+			
+			case pwm2_state is
+				when IDLE_PWM =>
+					if (pwm2_cnt /= "0000000000" or fpga_fan2_pwm = "00000000") then
+						pwm2_state <= IDLE_pwm2;
+						fan2_pwm_f <= '0';
+						pwm2_value <= fpga_fan2_pwm(7 downto 0) & "00";
+					else
+						pwm2_state <= pwm2_PULSE;
+						fan2_pwm_f <= '1';
+					end if;
+					
+				when PWM_PULSE =>
+					if (unsigned(pwm2_cnt) < unsigned(pwm2_value) or fpga_fan2_pwm = "11111111") then
+						pwm2_state <= pwm2_PULSE;
+						fan2_pwm_f <= '1';
+					else
+						pwm2_state <= IDLE_pwm2;
+						fan2_pwm_f <= '0';
+					end if;
+			end case;
+		end if;
+	end if;
+end process;
+
+
+FAN_Tacho_Measured_pulses:process (clk_100m, rst_n_syn)
+    begin
+        if rst_n_syn = '0' then
+            fan_tacho_cnt <= (others => '0');
+            fan_tacho_mes_pulse <= '0';
+         
+			elsif rising_edge(clk_1m_posedge) then
+                fan_tacho_mes_pulse <= '0';
+                
+                if fan_tacho_cnt < FAN_TACHO_MES_PERIOD then
+                    fan_tacho_cnt <= std_logic_vector(unsigned(fan_tacho_cnt) + 1);
+                else
+                    fan_tacho_cnt <= (others => '0');
+                    fan_tacho_mes_pulse <= '1';
+                end if;
+        end if;
+    end process;
+
+			
+			
+Posedge_from_fan1_tacho:process (clk_100m, rst_n_syn, fan1_tacho)
+    begin
+        if rst_n_syn = '0' then
+            fan1_tacho_inv <= '1';
+            fan1_tacho_meta <= '0';
+            fan1_tacho_sync <= '0';
+        else
+            fan1_tacho_inv <= not fan1_tacho_sync;
+            fan1_tacho_sync <= fan1_tacho_meta;
+            
+            if rising_edge(clk_100m) then
+                fan1_tacho_meta <= fan1_tacho;
+            end if;
+        end if;
+    end process;
+
+fan1_tacho_posedge <= fan1_tacho_inv and fan1_tacho_sync;
+
+Posedge_from_fan2_tacho:process (clk_100m, rst_n_syn, fan2_tacho)
+    begin
+        if rst_n_syn = '0' then
+            fan2_tacho_inv <= '1';
+            fan2_tacho_meta <= '0';
+            fan2_tacho_sync <= '0';
+        else
+            fan2_tacho_inv <= not fan2_tacho_sync;
+            fan2_tacho_sync <= fan2_tacho_meta;
+            
+            if rising_edge(clk_100m) then
+                fan2_tacho_meta <= fan2_tacho;
+            end if;
+        end if;
+    end process;
+
+fan2_tacho_posedge <= fan2_tacho_inv and fan2_tacho_sync;
+
+process (clk_100m, rst_n_syn, clk_1m_posedge, fan_tacho_mes_pulse, fan1_tacho, fan2_tacho)
+begin
+	if rst_n_syn = '0' then
+		fpga_fan1_tacho <= (others => '0');
+		fpga_fan1_tacho_num <= (others => '0');
+		fan1_tacho_cnt <= (others => '0');
+		fpga_fan2_tacho <= (others => '0');
+		fpga_fan2_tacho_num <= (others => '0');
+		fan2_tacho_cnt <= (others => '0');
+	else
+		if fan_tacho_mes_pulse = '1' and rising_edge(clk_1m_posedge) then
+			fpga_fan1_tacho <= fan1_tacho_cnt;
+			fpga_fan1_tacho_num <= std_logic_vector(unsigned(fpga_fan1_tacho_num) + 1);
+			fan1_tacho_cnt <= (others => '0');
+			fpga_fan2_tacho <= fan2_tacho_cnt;
+			fpga_fan2_tacho_num <= std_logic_vector(unsigned(fpga_fan2_tacho_num) + 1);
+			fan2_tacho_cnt <= (others => '0');
+		else
+			if fan1_tacho_posedge = '1' then
+				fan1_tacho_cnt <= fan1_tacho_cnt + '1';
+			end if;
+			
+			if fan2_tacho_posedge = '1' then
+				fan2_tacho_cnt <= fan2_tacho_cnt + '1';
+			end if;
+		end if;
+	end if;
+end process;
+
+end Behavioral;
+

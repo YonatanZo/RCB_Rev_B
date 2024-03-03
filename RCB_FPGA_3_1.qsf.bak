@@ -1,0 +1,239 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2022  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions
+# and other software and tools, and any partner logic
+# functions, and any output files from any of the foregoing
+# (including device programming or simulation files), and any
+# associated documentation or information are expressly subject
+# to the terms and conditions of the Intel Program License
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+# Date created = 09:37:30  August 26, 2022
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		RCB_FPGA_3_1_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Intel recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M40DCF256I7G
+set_global_assignment -name TOP_LEVEL_ENTITY RCB_TOP
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 21.1.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "08:11:26  MARCH 07, 2023"
+set_global_assignment -name LAST_QUARTUS_VERSION "22.1std.2 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_BOARD_DESIGN_TIMING_TOOL "Stamp (Timing)"
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT STAMP -section_id eda_board_design_timing
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name EDA_USER_COMPILED_SIMULATION_LIBRARY_DIRECTORY "C:/tracePCB/RCB/RCB_FPGA/simulation/modelsim/MAX 10" -section_id eda_simulation
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 256
+set_location_assignment PIN_J16 -to MICCB_SPARE_IO0
+set_location_assignment PIN_K15 -to MICCB_SPARE_IO1
+set_location_assignment PIN_J14 -to MICCB_SPARE_IO2
+set_location_assignment PIN_J12 -to MICCB_SPARE_IO3
+set_location_assignment PIN_M3 -to FPGA_WHEEL_STOP_ELO
+set_global_assignment -name VHDL_FILE RCB_TOP.vhd
+set_global_assignment -name VERILOG_FILE source/estop.v
+set_global_assignment -name VERILOG_FILE source/rcb_top.v
+set_global_assignment -name VERILOG_FILE source/rcb_spi.v
+set_global_assignment -name VERILOG_FILE source/rcb_registers.v
+set_global_assignment -name BSF_FILE ../../../omri/rcb_top.bsf
+set_global_assignment -name QIP_FILE PLL1.qip
+set_global_assignment -name QIP_FILE pll2.qip
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to MICCB_SPARE_IO0
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to MICCB_SPARE_IO1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_SPARE_IO2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_SPARE_IO3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_WHEEL_STOP_ELO
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to A_24V_L_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TEENSY_LEDS_STRIP_DO
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to Teensy_FPGA_SP2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to Teensy_FPGA_SP1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to Teensy_FPGA_SP0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TEENSY_FPGA_R_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TEENSY_FPGA_R_RX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TEENSY_FPGA_L_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TEENSY_FPGA_L_RX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SSR_ON_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_IO3_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_IO2_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_IO1_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_IO0_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_DIFF3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_DIFF2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_DIFF1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_DIFF0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_ANALOG_SW_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_ANALOG_SW_1_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_ANALOG_SW_0_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_IO3_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_IO2_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_IO1_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_IO0_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_DIFF3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_DIFF2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_DIFF1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_DIFF0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_ANALOG_SW_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_ANALOG_SW_1_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_ANALOG_SW_0_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SDA_ADC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SCL_ADC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SCK0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to S_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RST_WD
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ROBOT_ESTOP_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_SPARE_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_SPARE_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_A2_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_A2_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_A1_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_A1_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_TOOL_EX_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_SER_RX_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_SCU_Invalid_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_ROBOT_DIFF_SP2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_ROBOT_DIFF_SP1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_1_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_1_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_0_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_0_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_NO_switch_TOOL_EX_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_NC_switch_TOOL_EX_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_M5B_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_M5B_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_EEF_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_EEF_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_4MB_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_4MB_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS_PG_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OPEN_ELO_REQUEST
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to nSTATUS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to nCONFIG
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MOSI0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MISO0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_SP_IN_B_F
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_SP_IN_A_F
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_GEN_SYNC_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_GEN_SYNC_FAIL
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MicCB_ESTOP_OPEN_REQUEST
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_8
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_7
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_6
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_5
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_4
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_SPARE_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_SPARE_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_A2_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_A2_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_A1_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_A1_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_TOOL_EX_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_SER_RX_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_SCU_INVALIDn
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_ROBOT_DIFF_SP2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_1_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_1_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_0_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_0_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_NO_switch_TOOL_EX_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_NC_switch_TOOL_EX_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_M5B_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_M5B_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_EEF_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_EEF_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_4MB_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_4MB_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_R_SP_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_R_ROBOT_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_R_ROBOT_RX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_L_SP_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_L_ROBOT_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_L_ROBOT_RX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_INT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_FAULT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_ESTOP_REQ
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_DIAG_ACT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA13
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA12
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA11
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA10
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA9
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA8
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA7
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA6
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA5
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA4V_DIS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA4
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FLA_PWR_DIS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FAN2_TACHO_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FAN2_PWM
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FAN1_TACHO_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FAN1_PWM
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ESTOP_STATUS_FAIL
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ESTOP_STATUS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ESTOP_OPEN_REQUEST
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ESTOP_DELAY
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CS0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CPU_RESETn
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CONFIG_SEL
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CONF_DONE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLK_100M
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BIT_SSR_SW
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to B_35V_R_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to B_35V_L_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to B_24V_R_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to B_24V_L_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to A_35V_R_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to A_35V_L_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to A_24V_R_EN

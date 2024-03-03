@@ -1,1 +1,1 @@
-Info (10281): Verilog HDL Declaration information at rcb_spi.v(40): object "addr" differs only in case from object "ADDR" in the same scope File: C:/TracePCB/RCB/RCB_FPGA/source/rcb_spi.v Line: 40
+Info (10281): Verilog HDL Declaration information at rcb_spi.v(29): object "addr" differs only in case from object "ADDR" in the same scope File: G:/My Drive/FPGA/git/RCB_Rev_B/source/rcb_spi.v Line: 29

@@ -39,10 +39,10 @@
 
 set_global_assignment -name FAMILY "MAX 10"
 set_global_assignment -name DEVICE 10M40DCF256I7G
-set_global_assignment -name TOP_LEVEL_ENTITY RCB_FPGA
+set_global_assignment -name TOP_LEVEL_ENTITY RCB_TOP
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 21.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "08:11:26  MARCH 07, 2023"
-set_global_assignment -name LAST_QUARTUS_VERSION "21.1.1 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "22.1std.2 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
@@ -59,108 +59,328 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name EDA_USER_COMPILED_SIMULATION_LIBRARY_DIRECTORY "C:/tracePCB/RCB/RCB_FPGA/simulation/modelsim/MAX 10" -section_id eda_simulation
-set_location_assignment PIN_A3 -to sclk
-set_location_assignment PIN_B3 -to miso
-set_location_assignment PIN_A2 -to mosi
-set_location_assignment PIN_A4 -to cs_n
-set_location_assignment PIN_J15 -to right_drape_sw_state
-set_location_assignment PIN_R5 -to left_drape_sw_state
-set_location_assignment PIN_T5 -to left_drape_em_state
-set_location_assignment PIN_H15 -to right_drape_em_state
-set_location_assignment PIN_M10 -to diagnostic_led[0]
-set_location_assignment PIN_L9 -to diagnostic_led[1]
-set_location_assignment PIN_T13 -to diagnostic_led[2]
-set_location_assignment PIN_T12 -to diagnostic_led[3]
-set_location_assignment PIN_P13 -to diagnostic_led[4]
-set_location_assignment PIN_P12 -to diagnostic_led[5]
-set_location_assignment PIN_M11 -to diagnostic_led[6]
-set_location_assignment PIN_L10 -to diagnostic_led[7]
-set_location_assignment PIN_K2 -to diag_activation
-set_location_assignment PIN_E15 -to fan1_pwm
-set_location_assignment PIN_M1 -to left_drape_close1_nc
-set_location_assignment PIN_N1 -to left_drape_close1_no
-set_location_assignment PIN_K5 -to left_drape_close2_nc
-set_location_assignment PIN_L6 -to left_drape_close2_no
-set_location_assignment PIN_H11 -to left_drape_em_open
-set_location_assignment PIN_N3 -to left_drape_open_nc
-set_location_assignment PIN_N4 -to left_drape_open_no
-set_location_assignment PIN_L11 -to left_plunger_nc
-set_location_assignment PIN_P15 -to left_plunger_no
-set_location_assignment PIN_K11 -to left_tool_ex_nc
-set_location_assignment PIN_K14 -to left_tool_ex_no
-set_location_assignment PIN_J6 -to right_drape_close1_nc
-set_location_assignment PIN_K6 -to right_drape_close1_no
-set_location_assignment PIN_M2 -to right_drape_close2_nc
-set_location_assignment PIN_L2 -to right_drape_close2_no
-set_location_assignment PIN_C16 -to right_drape_em_open
-set_location_assignment PIN_N2 -to right_drape_open_nc
-set_location_assignment PIN_P1 -to right_drape_open_no
-set_location_assignment PIN_P14 -to right_plunger_nc
-set_location_assignment PIN_R14 -to right_plunger_no
-set_location_assignment PIN_P16 -to right_tool_ex_nc
-set_location_assignment PIN_N16 -to right_tool_ex_no
-set_location_assignment PIN_M15 -to left_plunger_led1
-set_location_assignment PIN_M14 -to left_plunger_led2
-set_location_assignment PIN_N14 -to left_plunger_led3
-set_location_assignment PIN_M16 -to left_tool_ex_led1
-set_location_assignment PIN_T4 -to left_tool_ex_led2
-set_location_assignment PIN_L15 -to left_tool_ex_led3
-set_location_assignment PIN_B5 -to right_plunger_led1
-set_location_assignment PIN_T14 -to right_plunger_led2
-set_location_assignment PIN_T15 -to right_plunger_led3
-set_location_assignment PIN_K12 -to right_tool_ex_led1
-set_location_assignment PIN_R16 -to right_tool_ex_led2
-set_location_assignment PIN_R15 -to right_tool_ex_led3
-set_location_assignment PIN_H12 -to fan1_tacho
-set_location_assignment PIN_E16 -to fan2_pwm
-set_location_assignment PIN_G14 -to fan2_tacho
-set_location_assignment PIN_C9 -to wheel_a_sens1_in1
-set_location_assignment PIN_F9 -to wheel_a_sens1_in2
-set_location_assignment PIN_E9 -to wheel_a_sens2_in1
-set_location_assignment PIN_B12 -to wheel_a_sens2_in2
-set_location_assignment PIN_B11 -to wheel_a_sens3_in1
-set_location_assignment PIN_C10 -to wheel_a_sens3_in2
-set_location_assignment PIN_J2 -to wheel_driver_abrt
-set_location_assignment PIN_R7 -to sp1_analog_switch[2]
-set_location_assignment PIN_T6 -to sp1_analog_switch[1]
-set_location_assignment PIN_T7 -to sp1_analog_switch[0]
-set_location_assignment PIN_P9 -to sp1_single_ended_1_0[1]
-set_location_assignment PIN_P8 -to sp1_single_ended_1_0[0]
-set_location_assignment PIN_T9 -to sp1_single_ended_2_3[1]
-set_location_assignment PIN_R9 -to sp1_single_ended_2_3[0]
-set_location_assignment PIN_R8 -to sp2_analog_switch[2]
-set_location_assignment PIN_T8 -to sp2_analog_switch[1]
-set_location_assignment PIN_P6 -to sp2_analog_switch[0]
-set_location_assignment PIN_R4 -to sp2_diff_pair_1_0[1]
-set_location_assignment PIN_P5 -to sp2_diff_pair_1_0[0]
-set_location_assignment PIN_T3 -to sp2_diff_pair_2_3[1]
-set_location_assignment PIN_T2 -to sp2_diff_pair_2_3[0]
-set_location_assignment PIN_P4 -to sp2_single_ended_1_0[1]
-set_location_assignment PIN_N5 -to sp2_single_ended_1_0[0]
-set_location_assignment PIN_P2 -to sp2_single_ended_2_3[1]
-set_location_assignment PIN_R1 -to sp2_single_ended_2_3[0]
-set_location_assignment PIN_P10 -to sync
-set_location_assignment PIN_A11 -to wheel_b_sens1_in1
-set_location_assignment PIN_A12 -to wheel_b_sens1_in2
-set_location_assignment PIN_B7 -to wheel_b_sens2_in1
-set_location_assignment PIN_B8 -to wheel_b_sens2_in2
-set_location_assignment PIN_A10 -to wheel_b_sens3_in1
-set_location_assignment PIN_A9 -to wheel_b_sens3_in2
-set_location_assignment PIN_B9 -to wheel_c_sens1_in1
-set_location_assignment PIN_A8 -to wheel_c_sens1_in2
-set_location_assignment PIN_B6 -to wheel_c_sens2_in1
-set_location_assignment PIN_C6 -to wheel_c_sens2_in2
-set_location_assignment PIN_A7 -to wheel_c_sens3_in1
-set_location_assignment PIN_A6 -to wheel_c_sens3_in2
-set_location_assignment PIN_D12 -to wheel_d_sens1_in1
-set_location_assignment PIN_E11 -to wheel_d_sens1_in2
-set_location_assignment PIN_C13 -to wheel_d_sens2_in1
-set_location_assignment PIN_C12 -to wheel_d_sens2_in2
-set_location_assignment PIN_F11 -to wheel_d_sens3_in1
-set_location_assignment PIN_F12 -to wheel_d_sens3_in2
-set_location_assignment PIN_B4 -to right_spare_diff_1
-set_location_assignment PIN_L12 -to left_spare_diff_1
-set_location_assignment PIN_C5 -to left_spare_diff_2
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 256
+set_location_assignment PIN_J16 -to MICCB_SPARE_IO0
+set_location_assignment PIN_K15 -to MICCB_SPARE_IO1
+set_location_assignment PIN_M9 -to MICCB_SPARE_IO2
+set_location_assignment PIN_J12 -to MICCB_SPARE_IO3
+set_location_assignment PIN_M3 -to FPGA_WHEEL_STOP_ELO
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to MICCB_SPARE_IO0
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to MICCB_SPARE_IO1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_SPARE_IO2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_SPARE_IO3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_WHEEL_STOP_ELO
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to A_24V_L_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TEENSY_LEDS_STRIP_DO
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to Teensy_FPGA_SP2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to Teensy_FPGA_SP1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to Teensy_FPGA_SP0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TEENSY_FPGA_R_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TEENSY_FPGA_R_RX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TEENSY_FPGA_L_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to TEENSY_FPGA_L_RX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SSR_ON_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_IO3_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_IO2_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_IO1_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_IO0_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_DIFF3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_DIFF2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_DIFF1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_DIFF0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_ANALOG_SW_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_ANALOG_SW_1_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE2_ANALOG_SW_0_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_IO3_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_IO2_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_IO1_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_IO0_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_DIFF3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_DIFF2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_DIFF1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_DIFF0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_ANALOG_SW_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_ANALOG_SW_1_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE1_ANALOG_SW_0_SEL_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SDA_ADC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SCL_ADC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SCK0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to S_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RST_WD
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ROBOT_ESTOP_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_SPARE_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_SPARE_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_A2_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_A2_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_A1_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_WHEEL_SENS_A1_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_TOOL_EX_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_SER_RX_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_SCU_Invalid_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_ROBOT_DIFF_SP2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_ROBOT_DIFF_SP1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_1_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_1_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_0_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_POS_SENS_0_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_NO_switch_TOOL_EX_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_NC_switch_TOOL_EX_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_M5B_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_M5B_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_EEF_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_EEF_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_4MB_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to R_4MB_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS_PG_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OPEN_ELO_REQUEST
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MOSI0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MISO0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_SP_IN_B_F
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_SP_IN_A_F
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_GEN_SYNC_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_GEN_SYNC_FAIL
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MicCB_ESTOP_OPEN_REQUEST
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_8
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_7
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_6
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_5
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_4
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED_1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_SPARE_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_SPARE_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_A2_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_A2_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_A1_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_WHEEL_SENS_A1_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_TOOL_EX_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_SER_RX_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_SCU_INVALIDn
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_ROBOT_DIFF_SP2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_1_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_1_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_0_OUT2_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_POS_SENS_0_OUT1_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_NO_switch_TOOL_EX_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_NC_switch_TOOL_EX_FPGA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_M5B_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_M5B_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_LED_DIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_EEF_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_EEF_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_4MB_SER_IN_SE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to L_4MB_SER_IN_ER
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_R_SP_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_R_ROBOT_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_R_ROBOT_RX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_L_SP_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_L_ROBOT_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_L_ROBOT_RX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_INT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_FAULT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_ESTOP_REQ
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_DIAG_ACT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA13
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA12
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA11
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA10
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA9
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA8
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA7
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA6
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA5
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA4V_DIS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA4
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FLA_PWR_DIS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FAN2_TACHO_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FAN2_PWM
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FAN1_TACHO_BUFF
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FAN1_PWM
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ESTOP_STATUS_FAIL
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ESTOP_STATUS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ESTOP_OPEN_REQUEST
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ESTOP_DELAY
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CS0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CPU_RESETn
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CONFIG_SEL
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLK_100M
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BIT_SSR_SW
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to B_35V_R_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to B_35V_L_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to B_24V_R_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to B_24V_L_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to A_35V_R_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to A_35V_L_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to A_24V_R_EN
+set_location_assignment PIN_F5 -to A_24V_L_EN
+set_location_assignment PIN_C4 -to A_24V_R_EN
+set_location_assignment PIN_H5 -to A_35V_L_EN
+set_location_assignment PIN_E3 -to A_35V_R_EN
+set_location_assignment PIN_F4 -to B_24V_L_EN
+set_location_assignment PIN_C3 -to B_24V_R_EN
+set_location_assignment PIN_G5 -to B_35V_L_EN
+set_location_assignment PIN_F2 -to B_35V_R_EN
+set_location_assignment PIN_C2 -to BIT_SSR_SW
+set_location_assignment PIN_L3 -to CLK_100M
+set_location_assignment PIN_F8 -to CONFIG_SEL
+set_location_assignment PIN_B10 -to CPU_RESETn
+set_location_assignment PIN_A4 -to CS0
+set_location_assignment PIN_P11 -to ESTOP_DELAY
+set_location_assignment PIN_T11 -to ESTOP_OPEN_REQUEST
+set_location_assignment PIN_M8 -to ESTOP_STATUS
+set_location_assignment PIN_L11 -to ESTOP_STATUS_FAIL
+set_location_assignment PIN_E15 -to FAN1_PWM
+set_location_assignment PIN_H12 -to FAN1_TACHO_BUFF
+set_location_assignment PIN_E16 -to FAN2_PWM
+set_location_assignment PIN_G14 -to FAN2_TACHO_BUFF
+set_location_assignment PIN_A10 -to FLA_PWR_DIS
+set_location_assignment PIN_K2 -to FPGA_DIAG_ACT
+set_location_assignment PIN_L1 -to FPGA_ESTOP_REQ
+set_location_assignment PIN_A7 -to FPGA_FAULT
+set_location_assignment PIN_A6 -to FPGA_INT
+set_location_assignment PIN_B15 -to FPGA_L_ROBOT_RX
+set_location_assignment PIN_G12 -to FPGA_L_ROBOT_TX
+set_location_assignment PIN_J3 -to FPGA_L_SP_TX
+set_location_assignment PIN_B16 -to FPGA_R_ROBOT_RX
+set_location_assignment PIN_F14 -to FPGA_R_ROBOT_TX
+set_location_assignment PIN_J2 -to FPGA_R_SP_TX
+set_location_assignment PIN_D9 -to FPGA1
+set_location_assignment PIN_L8 -to FPGA10
+set_location_assignment PIN_J11 -to FPGA11
+set_location_assignment PIN_E14 -to FPGA12
+set_location_assignment PIN_A13 -to FPGA13
+set_location_assignment PIN_B13 -to FPGA2
+set_location_assignment PIN_E10 -to FPGA3
+set_location_assignment PIN_F10 -to FPGA4
+set_location_assignment PIN_B8 -to FPGA4V_DIS
+set_location_assignment PIN_H16 -to FPGA5
+set_location_assignment PIN_D16 -to FPGA6
+set_location_assignment PIN_C15 -to FPGA7
+set_location_assignment PIN_L16 -to FPGA8
+set_location_assignment PIN_M7 -to FPGA9
+set_location_assignment PIN_H6 -to L_4MB_SER_IN_ER
+set_location_assignment PIN_T15 -to L_4MB_SER_IN_SE
+set_location_assignment PIN_A14 -to L_EEF_SER_IN_ER
+set_location_assignment PIN_P15 -to L_EEF_SER_IN_SE
+set_location_assignment PIN_J15 -to L_LED_DIN
+set_location_assignment PIN_D1 -to L_M5B_SER_IN_ER
+set_location_assignment PIN_R15 -to L_M5B_SER_IN_SE
+set_location_assignment PIN_C16 -to L_NC_switch_TOOL_EX_FPGA
+set_location_assignment PIN_K11 -to L_NO_switch_TOOL_EX_FPGA
+set_location_assignment PIN_K14 -to L_POS_SENS_0_OUT1_BUFF
+set_location_assignment PIN_N2 -to L_POS_SENS_0_OUT2_BUFF
+set_location_assignment PIN_M1 -to L_POS_SENS_1_OUT1_BUFF
+set_location_assignment PIN_K5 -to L_POS_SENS_1_OUT2_BUFF
+set_location_assignment PIN_N3 -to L_POS_SENS_OUT1_BUFF
+set_location_assignment PIN_R6 -to L_POS_SENS_OUT2_BUFF
+set_location_assignment PIN_T5 -to L_ROBOT_DIFF_SP2
+set_location_assignment PIN_C5 -to L_SCU_INVALIDn
+set_location_assignment PIN_B1 -to L_SER_RX_ER
+set_location_assignment PIN_P14 -to L_TOOL_EX_LED_DIN
+set_location_assignment PIN_D12 -to L_WHEEL_SENS_A1_OUT1_BUFF
+set_location_assignment PIN_E11 -to L_WHEEL_SENS_A1_OUT2_BUFF
+set_location_assignment PIN_C13 -to L_WHEEL_SENS_A2_OUT1_BUFF
+set_location_assignment PIN_C12 -to L_WHEEL_SENS_A2_OUT2_BUFF
+set_location_assignment PIN_K6 -to L_WHEEL_SENS_SPARE_OUT1_BUFF
+set_location_assignment PIN_M2 -to L_WHEEL_SENS_SPARE_OUT2_BUFF
+set_location_assignment PIN_M10 -to LED_1
+set_location_assignment PIN_L9 -to LED_2
+set_location_assignment PIN_T13 -to LED_3
+set_location_assignment PIN_T12 -to LED_4
+set_location_assignment PIN_P13 -to LED_5
+set_location_assignment PIN_P12 -to LED_6
+set_location_assignment PIN_M11 -to LED_7
+set_location_assignment PIN_L10 -to LED_8
+set_location_assignment PIN_J14 -to MicCB_ESTOP_OPEN_REQUEST
+set_location_assignment PIN_M14 -to MICCB_GEN_SYNC_FAIL
+set_location_assignment PIN_P10 -to MICCB_GEN_SYNC_FPGA
+set_location_assignment PIN_A11 -to MICCB_SP_IN_A_F
+set_location_assignment PIN_B7 -to MICCB_SP_IN_B_F
+set_location_assignment PIN_B3 -to MISO0
+set_location_assignment PIN_A2 -to MOSI0
+set_location_assignment PIN_R10 -to OPEN_ELO_REQUEST
+set_location_assignment PIN_F12 -to PS_PG_FPGA
+set_location_assignment PIN_T14 -to R_4MB_SER_IN_ER
+set_location_assignment PIN_A15 -to R_4MB_SER_IN_SE
+set_location_assignment PIN_N14 -to R_EEF_SER_IN_ER
+set_location_assignment PIN_H15 -to R_EEF_SER_IN_SE
+set_location_assignment PIN_B2 -to R_LED_DIN
+set_location_assignment PIN_R16 -to R_M5B_SER_IN_ER
+set_location_assignment PIN_H11 -to R_M5B_SER_IN_SE
+set_location_assignment PIN_P16 -to R_NC_switch_TOOL_EX_FPGA
+set_location_assignment PIN_N16 -to R_NO_switch_TOOL_EX_FPGA
+set_location_assignment PIN_L2 -to R_POS_SENS_0_OUT1_BUFF
+set_location_assignment PIN_P1 -to R_POS_SENS_0_OUT2_BUFF
+set_location_assignment PIN_N1 -to R_POS_SENS_1_OUT1_BUFF
+set_location_assignment PIN_L6 -to R_POS_SENS_1_OUT2_BUFF
+set_location_assignment PIN_N4 -to R_POS_SENS_OUT1_BUFF
+set_location_assignment PIN_R5 -to R_POS_SENS_OUT2_BUFF
+set_location_assignment PIN_B4 -to R_ROBOT_DIFF_SP1
+set_location_assignment PIN_A5 -to R_ROBOT_DIFF_SP2
+set_location_assignment PIN_C1 -to R_SCU_Invalid_n
+set_location_assignment PIN_R14 -to R_SER_RX_ER
+set_location_assignment PIN_J5 -to R_TOOL_EX_LED_DIN
+set_location_assignment PIN_C9 -to R_WHEEL_SENS_A1_OUT1_BUFF
+set_location_assignment PIN_F9 -to R_WHEEL_SENS_A1_OUT2_BUFF
+set_location_assignment PIN_E9 -to R_WHEEL_SENS_A2_OUT1_BUFF
+set_location_assignment PIN_B12 -to R_WHEEL_SENS_A2_OUT2_BUFF
+set_location_assignment PIN_F11 -to R_WHEEL_SENS_SPARE_OUT1_BUFF
+set_location_assignment PIN_J6 -to R_WHEEL_SENS_SPARE_OUT2_BUFF
+set_location_assignment PIN_G15 -to ROBOT_ESTOP_LED_DIN
+set_location_assignment PIN_B5 -to RST_WD
+set_location_assignment PIN_E1 -to S_LED_DIN
+set_location_assignment PIN_A3 -to SCK0
+set_location_assignment PIN_F16 -to SCL_ADC
+set_location_assignment PIN_G11 -to SDA_ADC
+set_location_assignment PIN_T7 -to SPARE1_ANALOG_SW_0_SEL_FPGA
+set_location_assignment PIN_T6 -to SPARE1_ANALOG_SW_1_SEL_FPGA
+set_location_assignment PIN_R7 -to SPARE1_ANALOG_SW_SEL_FPGA
+set_location_assignment PIN_M6 -to SPARE1_DIFF0
+set_location_assignment PIN_L7 -to SPARE1_DIFF1
+set_location_assignment PIN_R3 -to SPARE1_DIFF2
+set_location_assignment PIN_R2 -to SPARE1_DIFF3
+set_location_assignment PIN_P9 -to SPARE1_IO0_FPGA
+set_location_assignment PIN_P8 -to SPARE1_IO1_FPGA
+set_location_assignment PIN_T9 -to SPARE1_IO2_FPGA
+set_location_assignment PIN_R9 -to SPARE1_IO3_FPGA
+set_location_assignment PIN_P6 -to SPARE2_ANALOG_SW_0_SEL_FPGA
+set_location_assignment PIN_T8 -to SPARE2_ANALOG_SW_1_SEL_FPGA
+set_location_assignment PIN_R8 -to SPARE2_ANALOG_SW_SEL_FPGA
+set_location_assignment PIN_R4 -to SPARE2_DIFF0
+set_location_assignment PIN_P5 -to SPARE2_DIFF1
+set_location_assignment PIN_T3 -to SPARE2_DIFF2
+set_location_assignment PIN_T2 -to SPARE2_DIFF3
+set_location_assignment PIN_P4 -to SPARE2_IO0_FPGA
+set_location_assignment PIN_N5 -to SPARE2_IO1_FPGA
+set_location_assignment PIN_P2 -to SPARE2_IO2_FPGA
+set_location_assignment PIN_R1 -to SPARE2_IO3_FPGA
+set_location_assignment PIN_T4 -to SSR_ON_FPGA
+set_location_assignment PIN_B6 -to TEENSY_FPGA_L_RX
+set_location_assignment PIN_C6 -to TEENSY_FPGA_L_TX
+set_location_assignment PIN_B9 -to TEENSY_FPGA_R_RX
+set_location_assignment PIN_A8 -to TEENSY_FPGA_R_TX
+set_location_assignment PIN_D14 -to Teensy_FPGA_SP0
+set_location_assignment PIN_C14 -to Teensy_FPGA_SP1
+set_location_assignment PIN_D15 -to Teensy_FPGA_SP2
+set_location_assignment PIN_F1 -to TEENSY_LEDS_STRIP_DO
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VHDL_FILE rcb_registers.vhd
+set_global_assignment -name VHDL_FILE Fan.vhd
+set_global_assignment -name VERILOG_FILE source/rcb_registers_new.v
+set_global_assignment -name VHDL_FILE RCB_TOP.vhd
 set_global_assignment -name VERILOG_FILE source/estop.v
 set_global_assignment -name VERILOG_FILE source/rcb_top.v
 set_global_assignment -name VERILOG_FILE source/rcb_spi.v
@@ -168,240 +388,3 @@ set_global_assignment -name VERILOG_FILE source/rcb_registers.v
 set_global_assignment -name BSF_FILE ../../../omri/rcb_top.bsf
 set_global_assignment -name QIP_FILE PLL1.qip
 set_global_assignment -name QIP_FILE pll2.qip
-set_global_assignment -name BDF_FILE RCB_FPGA.bdf
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
-set_global_assignment -name DEVICE_FILTER_PIN_COUNT 256
-set_location_assignment PIN_M8 -to estop_status
-set_location_assignment PIN_M9 -to miccb_estop_open_req
-set_location_assignment PIN_A5 -to right_spare_diff_2
-set_location_assignment PIN_T11 -to teensy_estop_open_req
-set_location_assignment PIN_R10 -to teensy_open_elo_req
-set_location_assignment PIN_H6 -to wheel_driver_di[7]
-set_location_assignment PIN_J5 -to wheel_driver_di[6]
-set_location_assignment PIN_G2 -to wheel_driver_di[5]
-set_location_assignment PIN_C2 -to wheel_driver_di[4]
-set_location_assignment PIN_B2 -to wheel_driver_di[3]
-set_location_assignment PIN_F1 -to wheel_driver_di[2]
-set_location_assignment PIN_F2 -to wheel_driver_di[1]
-set_location_assignment PIN_E3 -to wheel_driver_di[0]
-set_location_assignment PIN_D15 -to wheel_driver_do[2]
-set_location_assignment PIN_C14 -to wheel_driver_do[1]
-set_location_assignment PIN_D14 -to wheel_driver_do[0]
-set_location_assignment PIN_R6 -to wheel_driver_do[3]
-set_location_assignment PIN_J1 -to wheel_driver_rst
-set_location_assignment PIN_G5 -to wheel_forward_sw[0]
-set_location_assignment PIN_C1 -to wheel_forward_sw[1]
-set_location_assignment PIN_D1 -to wheel_forward_sw[2]
-set_location_assignment PIN_E1 -to wheel_forward_sw[3]
-set_location_assignment PIN_F5 -to wheel_home_sw[0]
-set_location_assignment PIN_F4 -to wheel_home_sw[1]
-set_location_assignment PIN_C4 -to wheel_home_sw[2]
-set_location_assignment PIN_A14 -to wheel_home_sw[3]
-set_location_assignment PIN_H5 -to wheel_reverse_sw[3]
-set_location_assignment PIN_C3 -to wheel_reverse_sw[2]
-set_location_assignment PIN_A15 -to wheel_reverse_sw[0]
-set_location_assignment PIN_B1 -to wheel_reverse_sw[1]
-set_location_assignment PIN_R11 -to pow
-set_location_assignment PIN_L1 -to estop_open
-set_location_assignment PIN_P11 -to estop_delay
-set_location_assignment PIN_B13 -to fpga_spare2
-set_location_assignment PIN_E10 -to fpga_spare3
-set_location_assignment PIN_F10 -to fpga_spare4
-set_location_assignment PIN_H16 -to fpga_spare5
-set_location_assignment PIN_D16 -to fpga_spare6
-set_location_assignment PIN_C15 -to fpga_spare7
-set_location_assignment PIN_L16 -to fpga_spare8
-set_location_assignment PIN_M7 -to fpga_spare9
-set_location_assignment PIN_L8 -to fpga_spare10
-set_location_assignment PIN_J11 -to fpga_spare11
-set_location_assignment PIN_E14 -to fpga_spare12
-set_location_assignment PIN_A13 -to fpga_spare13
-set_location_assignment PIN_J16 -to MICCB_SPARE_IO0
-set_location_assignment PIN_K15 -to MICCB_SPARE_IO1
-set_location_assignment PIN_J14 -to MICCB_SPARE_IO2
-set_location_assignment PIN_J12 -to MICCB_SPARE_IO3
-set_location_assignment PIN_J3 -to teensy_fpga4
-set_location_assignment PIN_R12 -to teensy_fpga5
-set_location_assignment PIN_B15 -to left_robot_rx
-set_location_assignment PIN_G12 -to left_robot_tx
-set_location_assignment PIN_B16 -to right_robot_rx
-set_location_assignment PIN_F14 -to right_robot_tx
-set_location_assignment PIN_G15 -to wheel_rod1_out1
-set_location_assignment PIN_G16 -to wheel_rod1_out2
-set_location_assignment PIN_F16 -to wheel_rod2_out1
-set_location_assignment PIN_G11 -to wheel_rod2_out2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_a_sens3_in2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to cs_n
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to diag_activation
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to diagnostic_led[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to diagnostic_led[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to diagnostic_led[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to diagnostic_led[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to diagnostic_led[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to diagnostic_led[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to diagnostic_led[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to diagnostic_led[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to diagnostic_led
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to estop_delay
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to estop_open
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to estop_status
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to fan1_pwm
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fan1_tacho
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to fan2_pwm
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fan2_tacho
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare3
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare4
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare5
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare6
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare7
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare8
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare9
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare10
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare11
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare12
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to fpga_spare13
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_drape_close1_nc
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_drape_close1_no
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_drape_close2_nc
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_drape_close2_no
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to left_drape_em_open
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_drape_em_state
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to MICCB_SPARE_IO0
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to MICCB_SPARE_IO1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_SPARE_IO2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MICCB_SPARE_IO3
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_drape_open_nc
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_drape_open_no
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_drape_sw_state
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to left_plunger_led1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to left_plunger_led2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to left_plunger_led3
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_plunger_nc
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_plunger_no
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_robot_rx
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to left_robot_tx
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_spare_diff_1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to left_spare_diff_2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to left_tool_ex_led1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to left_tool_ex_led2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to left_tool_ex_led3
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_tool_ex_nc
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to left_tool_ex_no
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to miccb_estop_open_req
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to miso
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to mosi
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to pow
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_drape_close1_nc
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_drape_close1_no
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_drape_close2_nc
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_drape_close2_no
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to right_drape_em_open
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_drape_em_state
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_drape_open_nc
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_drape_open_no
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_drape_sw_state
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to right_plunger_led1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to right_plunger_led2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to right_plunger_led3
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_plunger_nc
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_plunger_no
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_robot_rx
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to right_robot_tx
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to right_spare_diff_1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to right_spare_diff_2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to right_tool_ex_led1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to right_tool_ex_led2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to right_tool_ex_led3
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_tool_ex_nc
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to right_tool_ex_no
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to sclk
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_analog_switch[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_analog_switch[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_analog_switch[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_analog_switch
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_single_ended_1_0[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_single_ended_1_0[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_single_ended_1_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_single_ended_2_3[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_single_ended_2_3[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_single_ended_2_3
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_analog_switch[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_analog_switch[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_analog_switch[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_analog_switch
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_diff_pair_1_0[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_diff_pair_1_0[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_diff_pair_1_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_diff_pair_2_3[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_diff_pair_2_3[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_diff_pair_2_3
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_single_ended_1_0[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_single_ended_1_0[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_single_ended_1_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_single_ended_2_3[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_single_ended_2_3[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp2_single_ended_2_3
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sync
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to teensy_estop_open_req
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to teensy_fpga4
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to teensy_fpga5
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to teensy_open_elo_req
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_a_sens1_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_a_sens1_in2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_a_sens2_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_a_sens2_in2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_a_sens3_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_b_sens1_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_b_sens1_in2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_b_sens2_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_b_sens2_in2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_b_sens3_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_b_sens3_in2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_c_sens1_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_c_sens1_in2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_c_sens2_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_c_sens2_in2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_c_sens3_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_c_sens3_in2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_d_sens1_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_d_sens1_in2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_d_sens2_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_d_sens2_in2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_d_sens3_in1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_d_sens3_in2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to wheel_driver_abrt
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to wheel_driver_di[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to wheel_driver_di[7]
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_driver_do[0]
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_driver_do[1]
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_driver_do[2]
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_driver_do[3]
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_driver_do
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to wheel_driver_rst
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to wheel_home_sw[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to wheel_reverse_sw[0]
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_rod1_out1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_rod1_out2
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_rod2_out1
-set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to wheel_rod2_out2
-set_location_assignment PIN_L3 -to clk_100m
-set_location_assignment PIN_D9 -to rst_n
-set_location_assignment PIN_M6 -to sp1_diff_pair_1_0[0]
-set_location_assignment PIN_L7 -to sp1_diff_pair_1_0[1]
-set_location_assignment PIN_R2 -to sp1_diff_pair_2_3[1]
-set_location_assignment PIN_R3 -to sp1_diff_pair_2_3[0]
-set_location_assignment PIN_M3 -to FPGA_WHEEL_STOP_ELO
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk_100m
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_diff_pair_2_3[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_diff_pair_2_3[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_diff_pair_2_3
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_diff_pair_1_0[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_diff_pair_1_0[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sp1_diff_pair_1_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rst_n
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_WHEEL_STOP_ELO
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -1,14 +1,5 @@
-////////////////////////////////////////////////////
-//	File			: rcb_top.v
-//	Author			: Igor Dorman. tracePCB.
-//	Date			: 31/08/2022
-//	Description		: RCB Top File.
-//	Revision		: 1.0
-//	Hierarchy		: rcb_top 
-//	Last Update		: 18/10/2022 
-////////////////////////////////////////////////////
 
-module rcb_top(
+module rcb_top_old(
 	//System signals
     clk_100m,       // system clock
 	clk_1m,			//Internal FPGA from PLL
@@ -416,29 +407,6 @@ wire		teensy_spare3;
 wire		MICCB_SPARE_IO2;
 wire		MICCB_SPARE_IO3;
 
-always @(posedge clk_100m)
-begin
-	if (rst_n_meta!=8'hAD) 
-	begin
-		rst_n_meta<=rst_n_meta+ 1'b1;
-	end
-	
-	if (rst_n_meta==8'hAA) 
-	begin
-		rst_n_syn<=1'b0;
-	end 
-	else 
-	begin
-		rst_n_syn<=1'b1;
-	end
-	
-	if(!rst_n) 
-	begin
-		rst_n_meta<=8'hAA;
-	end
-end
-
-
 //ASSIGNS
 assign	fpga_buttons[7] = right_plunger_nc;
 assign	fpga_buttons[6] = right_plunger_no;
@@ -506,14 +474,26 @@ begin
 	teensy_led1 = 1'b0;
 end
 
-
-/*
 always @(posedge clk_100m)
 begin
-	rst_n_syn <= rst_n_meta;
-	rst_n_meta <= rst_n;		
+	if (rst_n_meta!=8'hAD) 
+	begin
+		rst_n_meta<=rst_n_meta+ 1'b1;
+	end
+	
+	if (rst_n_meta==8'hAA) 
+	begin
+		rst_n_syn<=1'b0;
+	end 
+	else 
+	begin
+		rst_n_syn<=1'b1;
+	end
+	if(!rst_n) 
+	begin
+		rst_n_meta<=8'hAA;
+	end
 end
-*/
 
 //RCB SPI insertion  
 rcb_spi rcb_spi(
@@ -544,13 +524,11 @@ rcb_registers rcb_registers(
 	.data_miso_rdy(data_miso_rdy),
 	.pow(pow),
 	.fpga_buttons(fpga_buttons),
-	
 	.drape_sw_state(drape_sw_state),
 	.drape_em_state(drape_em_state),
 	.right_drape_em_open(right_drape_em_open),
 	.left_drape_em_open(left_drape_em_open),
 	.drape_sensor(drape_sensor),
-
 	.wheel_home_sw(wheel_home_sw),
 	.wheel_reverse_sw(wheel_reverse_sw),
 	.wheel_forward_sw(wheel_forward_sw),
