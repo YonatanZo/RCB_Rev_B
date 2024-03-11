@@ -2,266 +2,321 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use work.rcb_parameters.all; -- Import the package
+
 
 entity rcb_registers is
-    Port (
-        -- System signals
-        clk_100m : in STD_LOGIC;         -- system clock
-        rst_n_syn : in STD_LOGIC;        -- low active synchronous reset
-        clk_1m : in STD_LOGIC;
-        -- Internal signals
-        data_miso : out STD_LOGIC_VECTOR(31 downto 0);  -- data for transmission to SPI master
-        data_mosi : in STD_LOGIC_VECTOR(31 downto 0);   -- received data from SPI master
-        data_mosi_rdy : in STD_LOGIC;                    -- when 1, received data is valid
-        addr : in STD_LOGIC_VECTOR(15 downto 0);         -- received data from SPI master
-        addr_rdy : in STD_LOGIC;                         -- when 1, received address is valid
-        data_miso_rdy : in STD_LOGIC;
-        -- FPGA Power Diagnostic
-        pow : in STD_LOGIC;
-        -- FPGA BUTTONS
-        fpga_buttons : in STD_LOGIC_VECTOR(7 downto 0);
-        -- FPGA DRAPE Switch and Sensors state
-        drape_sw_state : in STD_LOGIC_VECTOR(1 downto 0);
-        drape_em_state : in STD_LOGIC_VECTOR(1 downto 0);
-        drape_sensor : in STD_LOGIC_VECTOR(11 downto 0);
-        -- FPGA DRAPE Electro magnet S.W approval
-        right_drape_em_open : out STD_LOGIC;
-        left_drape_em_open : out STD_LOGIC;
-        -- FPGA Wheel Driver
-        wheel_home_sw: out STD_LOGIC_VECTOR(3 downto 0);
-        wheel_reverse_sw : out STD_LOGIC_VECTOR(3 downto 0);
-        wheel_forward_sw : out STD_LOGIC_VECTOR(3 downto 0);
-        wheel_driver_di : out STD_LOGIC_VECTOR(7 downto 0);
-        -- wheel_driver_elo : out STD_LOGIC;
-        wheel_driver_do : in STD_LOGIC_VECTOR(3 downto 0);
-        wheel_driver_rst : out STD_LOGIC;
-        wheel_driver_abrt : out STD_LOGIC;
-        -- FPGA Wheel Sensor
-        wheel_sensor : in STD_LOGIC_VECTOR(23 downto 0);
-        -- FPGA Buttons LED
-        fpga_buttons_led_reg : out STD_LOGIC_VECTOR(31 downto 0);
-        -- Activation(Close) SSR
-        -- estop_activation : out STD_LOGIC;  -- Once set – only active for 0.1Sec.
-        diag_activation : out STD_LOGIC;
-        estop_open : out STD_LOGIC;
-        estop_status : in STD_LOGIC;
-        diagnostic_led : out STD_LOGIC_VECTOR(7 downto 0);
-        -- Spare2 IO
-        sp2_single_ended_2_3 : out STD_LOGIC_VECTOR(1 downto 0);
-        sp2_single_ended_1_0 : in STD_LOGIC_VECTOR(1 downto 0);
-        sp2_analog_switch : out STD_LOGIC_VECTOR(2 downto 0);
-        sp2_diff_pair_2_3 : out STD_LOGIC_VECTOR(1 downto 0);
-        sp2_diff_pair_1_0 : in STD_LOGIC_VECTOR(1 downto 0);
-        -- Spare1 IO
-        sp1_single_ended_2_3 : out STD_LOGIC_VECTOR(1 downto 0);
-        sp1_single_ended_1_0 : in STD_LOGIC_VECTOR(1 downto 0);
-        sp1_analog_switch : out STD_LOGIC_VECTOR(2 downto 0);
-        sp1_diff_pair_2_3 : out STD_LOGIC_VECTOR(1 downto 0);
-        sp1_diff_pair_1_0 : in STD_LOGIC_VECTOR(1 downto 0);
-        -- Spare Left/Right 4.m.b.
-        right_spare_diff_2 : out STD_LOGIC;
-        right_spare_diff_1 : in STD_LOGIC;
-        left_spare_diff_2 : out STD_LOGIC;
-        left_spare_diff_1 : in STD_LOGIC;
-        wheel_rod_sensor : in STD_LOGIC_VECTOR(3 downto 0);
-        trig_in : in STD_LOGIC
-    );
+	port (
+		--Interfaces 
+		-- System signals
+		clk_100m                    : in  STD_LOGIC                    ; -- system clock
+		rst_n_syn                   : in  STD_LOGIC                    ; -- low active synchronous reset
+		clk_1m                      : in  STD_LOGIC                    ;
+        -- SPI I/F
+		data_miso                   : out STD_LOGIC_VECTOR(31 downto 0); -- data for transmission to SPI master
+		data_mosi                   : in  STD_LOGIC_VECTOR(31 downto 0); -- received data from SPI master
+		data_mosi_rdy               : in  STD_LOGIC                    ; -- when 1, received data is valid
+		addr                        : in  STD_LOGIC_VECTOR(15 downto 0); -- received data from SPI master
+		addr_rdy                    : in  STD_LOGIC                    ; -- when 1, received address is valid
+		data_miso_rdy               : in  STD_LOGIC                    ;
+		--Fan1 I/F
+	    FAN_TACHO_REG_OUT_1 : in STD_LOGIC_VECTOR(15 DOWNTO 0) ;
+		FAN_PWM_REG_OUT_1 : out STD_LOGIC_VECTOR(7 DOWNTO 0) ;
+		--Fan1 I/F
+	    FAN_TACHO_REG_OUT_2 : in STD_LOGIC_VECTOR(15 DOWNTO 0) ;
+		FAN_PWM_REG_OUT_2 : out STD_LOGIC_VECTOR(7 DOWNTO 0) ;
+		--ADC I/F
+		AIN0: in STD_LOGIC_VECTOR(15 downto 0);
+		AIN1: in STD_LOGIC_VECTOR(15 downto 0);
+		AIN2: in STD_LOGIC_VECTOR(15 downto 0);
+		AIN3: in STD_LOGIC_VECTOR(15 downto 0);
+		AIN4: in STD_LOGIC_VECTOR(15 downto 0);
+		AIN5: in STD_LOGIC_VECTOR(15 downto 0);
+		AIN6: in STD_LOGIC_VECTOR(15 downto 0);
+		AIN7: in STD_LOGIC_VECTOR(15 downto 0);
+		--Debug LEDs 
+		FPGA_LEDs_OUT  : out STD_LOGIC_VECTOR(7 downto 0 );
+
+		----Diagnostic R I/F
+		R_DIAG_PACK_CNT : in STD_LOGIC_VECTOR(15 downto 0); --TODO
+		R_DIAG_ERR_CNT : in STD_LOGIC_VECTOR(15 downto 0);--TODO
+		----Diagnostic L I/F     
+		L_DIAG_PACK_CNT : in STD_LOGIC_VECTOR(15 downto 0);--TODO
+		L_DIAG_ERR_CNT : in STD_LOGIC_VECTOR(15 downto 0); --TODO
+
+		--regs IN/OUTs
+		--FPGA__buttons_
+		L_NO_switch_TOOL_EX_FPGA    : in  STD_LOGIC                    ;
+		L_NC_switch_TOOL_EX_FPGA    : in  STD_LOGIC                    ;
+		R_NO_switch_TOOL_EX_FPGA    : in  STD_LOGIC                    ;
+		R_NC_switch_TOOL_EX_FPGA    : in  STD_LOGIC                    ;
+		--L_Wheels_sensors
+		L_POS_SENS_0_OUT1           : in  STD_LOGIC                    ;
+		L_POS_SENS_0_OUT2           : in  STD_LOGIC                    ;
+		L_POS_SENS_1_OUT1           : in  STD_LOGIC                    ;
+		L_POS_SENS_1_OUT2           : in  STD_LOGIC                    ;
+		L_POS_SENS_OUT1             : in  STD_LOGIC                    ;
+		L_POS_SENS_OUT2             : in  STD_LOGIC                    ;
+		L_WHEEL_SENS_A1_OUT1        : in  STD_LOGIC                    ;
+		L_WHEEL_SENS_A1_OUT2        : in  STD_LOGIC                    ;
+		L_WHEEL_SENS_A2_OUT1        : in  STD_LOGIC                    ;
+		L_WHEEL_SENS_A2_OUT2        : in  STD_LOGIC                    ;
+		L_WHEEL_SENS_SPARE_OUT1     : in  STD_LOGIC                    ;
+		L_WHEEL_SENS_SPARE_OUT2     : in  STD_LOGIC                    ;
+		--R_Wheels_sensors
+		R_POS_SENS_0_OUT1           : in  STD_LOGIC                    ;
+		R_POS_SENS_0_OUT2           : in  STD_LOGIC                    ;
+		R_POS_SENS_1_OUT1           : in  STD_LOGIC                    ;
+		R_POS_SENS_1_OUT2           : in  STD_LOGIC                    ;
+		R_POS_SENS_OUT1             : in  STD_LOGIC                    ;
+		R_POS_SENS_OUT2             : in  STD_LOGIC                    ;
+		R_WHEEL_SENS_A1_OUT1        : in  STD_LOGIC                    ;
+		R_WHEEL_SENS_A1_OUT2        : in  STD_LOGIC                    ;
+		R_WHEEL_SENS_A2_OUT1        : in  STD_LOGIC                    ;
+		R_WHEEL_SENS_A2_OUT2        : in  STD_LOGIC                    ;
+		R_WHEEL_SENS_SPARE_OUT1     : in  STD_LOGIC                    ;
+		R_WHEEL_SENS_SPARE_OUT2     : in  STD_LOGIC                    ;
+		--Right_Recivers_Error
+		R_4MB_SER_IN_ER             : in  STD_LOGIC                    ;
+		R_EEF_SER_IN_ER             : in  STD_LOGIC                    ;
+		R_M5B_SER_IN_ER             : in  STD_LOGIC                    ;
+		R_SER_RX_ER                 : in  STD_LOGIC                    ;
+		R_SCU_Invalid_n             : in  STD_LOGIC                    ;
+		--Left_Recivers_Error
+		L_4MB_SER_IN_ER             : in  STD_LOGIC                    ;
+		L_EEF_SER_IN_ER             : in  STD_LOGIC                    ;
+		L_M5B_SER_IN_ER             : in  STD_LOGIC                    ;
+		L_SER_RX_ER                 : in  STD_LOGIC                    ;
+		L_SCU_INVALIDn              : in  STD_LOGIC                    ;
+		--SSRs_Left
+		A_24V_L_EN                  : out STD_LOGIC                    ;
+		B_24V_L_EN                  : out STD_LOGIC                    ;
+		A_35V_L_EN                  : out STD_LOGIC                    ;
+		B_35V_L_EN                  : out STD_LOGIC                    ;
+		--SSRs_Right
+		A_24V_R_EN                  : out STD_LOGIC                    ;
+		B_24V_R_EN                  : out STD_LOGIC                    ;
+		A_35V_R_EN                  : out STD_LOGIC                    ;
+		B_35V_R_EN                  : out STD_LOGIC                    ;
+		BIT_SSR_SW                  : out STD_LOGIC                    ;
+		--FPGA_LEDs
+		LED_1                       : out STD_LOGIC                    ;
+		LED_2                       : out STD_LOGIC                    ;
+		LED_3                       : out STD_LOGIC                    ;
+		LED_4                       : out STD_LOGIC                    ;
+		LED_5                       : out STD_LOGIC                    ;
+		LED_6                       : out STD_LOGIC                    ;
+		LED_7                       : out STD_LOGIC                    ;
+		LED_8                       : out STD_LOGIC                    ;
+		--LEDs_strip_Mux
+		MUX_Control	 : out STD_LOGIC_VECTOR(3 downto 0);
+		--Mic.C.B
+		MICCB_GEN_SYNC_FAIL         : in  STD_LOGIC                    ;
+		MICCB_SP_IN_A_F             : in  STD_LOGIC                    ;
+		MICCB_SP_IN_B_F             : in  STD_LOGIC                    ;
+		MICCB_SPARE_IO0             : in  STD_LOGIC                    ;
+		MICCB_SPARE_IO1             : in  STD_LOGIC                    ;
+		MICCB_SPARE_IO2             : in  STD_LOGIC                    ;
+		MICCB_SPARE_IO3             : in  STD_LOGIC                    ;
+		--FPGA Spare out
+		FPGA1                       : out STD_LOGIC                    ;
+		FPGA2                       : out STD_LOGIC                    ;
+		FPGA3                       : out STD_LOGIC                    ;
+		FPGA4                       : out STD_LOGIC                    ;
+		FPGA5                       : out STD_LOGIC                    ;
+		FPGA6                       : out STD_LOGIC                    ;
+		FPGA7                       : out STD_LOGIC                    ;
+		FPGA8                       : out STD_LOGIC                    ;
+		FPGA9                       : out STD_LOGIC                    ;
+		FPGA10                      : out STD_LOGIC                    ;
+		FPGA11                      : out STD_LOGIC                    ;
+		FPGA12                      : out STD_LOGIC                    ;
+		FPGA13                      : out STD_LOGIC                    ;
+		Teensy_FPGA_SP0             : out STD_LOGIC                    ;
+		Teensy_FPGA_SP1             : out STD_LOGIC                    ;
+		Teensy_FPGA_SP2             : out STD_LOGIC                    ;
+		--ADC Voltage 0
+		P35V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		Spare                       : in  STD_LOGIC_VECTOR(15 downto 0);
+		--ADC Voltage 1
+		P12V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		P3_3V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);	
+		--ADC Voltage 2
+		P5V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		P2_5V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		--ADC Voltage 3
+		P24V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		P12V_PS_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		--FPGA Spare
+		SPARE1_DIFF0                : in  STD_LOGIC                    ;
+		SPARE1_DIFF1                : in  STD_LOGIC                    ;
+		SPARE1_DIFF2                : out STD_LOGIC                    ;
+		SPARE1_DIFF3                : out STD_LOGIC                    ;
+		SPARE1_ANALOG_SW_0_SEL_FPGA : out STD_LOGIC                    ;
+		SPARE1_ANALOG_SW_1_SEL_FPGA : out STD_LOGIC                    ;
+		SPARE1_ANALOG_SW_SEL_FPGA   : out STD_LOGIC                    ;
+		SPARE1_IO0_FPGA             : in  STD_LOGIC                    ;
+		SPARE1_IO1_FPGA             : in  STD_LOGIC                    ;
+		SPARE1_IO2_FPGA             : out STD_LOGIC                    ;
+		SPARE1_IO3_FPGA             : out STD_LOGIC                    ;
+		SPARE2_DIFF0                : in  STD_LOGIC                    ;
+		SPARE2_DIFF1                : in  STD_LOGIC                    ;
+		SPARE2_DIFF2                : out STD_LOGIC                    ;
+		SPARE2_DIFF3                : out STD_LOGIC                    ;
+		SPARE2_ANALOG_SW_0_SEL_FPGA : out STD_LOGIC                    ;
+		SPARE2_ANALOG_SW_1_SEL_FPGA : out STD_LOGIC                    ;
+		SPARE2_ANALOG_SW_SEL_FPGA   : out STD_LOGIC                    ;
+		SPARE2_IO0_FPGA             : in  STD_LOGIC                    ;
+		SPARE2_IO1_FPGA             : in  STD_LOGIC                    ;
+		SPARE2_IO2_FPGA             : out STD_LOGIC                    ;
+		SPARE2_IO3_FPGA             : out STD_LOGIC                    ;
+		--FLA PS
+		FPGA_WHEEL_STOP_ELO         : out STD_LOGIC                    ;
+		FPGA24V_DIS                 : out STD_LOGIC                    ;
+		FLA_PWR_DIS                 : out STD_LOGIC                    ;
+		OPEN_ELO_REQUEST            : in  STD_LOGIC                    ;
+		PS_PG_FPGA                  : in  STD_LOGIC                    ;
+		--FPGA FAN 1 Tacho
+		FAN1_TACHO                  : out STD_LOGIC_VECTOR(15 downto 0);
+		FAN_1_READ_NUMBER           : out STD_LOGIC_VECTOR(15 downto 0);
+		--FPGA FAN 1 PWM
+		FAN_1_PWM                   : in  STD_LOGIC_VECTOR(7 downto 0) ;
+		--FPGA FAN 2 Tacho
+		FAN_2_TACHO                 : out STD_LOGIC_VECTOR(15 downto 0);
+		FAN_2_READ_NUMBER           : out STD_LOGIC_VECTOR(15 downto 0);
+		--FPGA FAN 2 PWM  
+		FAN_2_PWM                   : in  STD_LOGIC_VECTOR(7 downto 0) ;
+		--FPGA SYNC DELAY TIME
+		FPGA_SYNC_DELAY_TIME        : out STD_LOGIC_VECTOR(31 downto 0);
+		--FPGA SYNC TIME
+		FPGA_SYNC_TIME              : out STD_LOGIC_VECTOR(31 downto 0);
+		--Fault Registers
+		CS_ERROR                    : out STD_LOGIC                    ;
+		MicCB_ESTOP_OPEN_REQUEST    : in  STD_LOGIC                    ;
+		ESTOP_STATUS_FAIL           : in  STD_LOGIC                    ;
+		SSR_ON_FPGA                 : in  STD_LOGIC                    ;
+		FPGA_DIAG_ACT               : out STD_LOGIC                    ;
+		FPGA_FAULT                  : out STD_LOGIC                    ;
+		RST_WD                      : in  STD_LOGIC                    ;
+		--Sync Timer
+		MicCB_SYNC_CNT              : out STD_LOGIC_VECTOR(31 downto 0)
+	);
 end rcb_registers;
-
 architecture Behavioral of rcb_registers is
-    signal fpga_ver_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_rev_data_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_pow_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal pow_meta : STD_LOGIC;
-    signal pow_sticky : STD_LOGIC;
-    signal fpga_buttons_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_buttons_meta : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_drape_sw_state_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_drape_sw_state_meta : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_drape_em_state_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_drape_em_state_meta : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_drape_sensor_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_drape_sensor_meta : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_electromagnet_reg : STD_LOGIC_VECTOR(31 downto 0);
+--FPGA Version/date
+constant FPGA_MAJOR_VER : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
+constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"01";
+constant FPGA_REV_YEAR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"18";
+constant FPGA_REV_MONTH : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
+constant FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"07";
+constant FPGA_REV_HOUR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"08";
+--Regiasters address declaretion 
+constant ADDR_FPGA_Version: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0000";
+constant ADDR_FPGA_Date: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0001";
+constant ADDR_Power_Diagnostic: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0002";
+constant ADDR_FPGA_buttons: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0003";
+constant ADDR_L_Wheels_sensors: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0004";
+constant ADDR_R_Wheels_sensors: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0005";
+constant ADDR_Diagnostic_packed_counter: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0006";
+constant ADDR_Diagnostic_error_counter: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0007";
+constant ADDR_Right_Recivers_Error: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0008";
+constant ADDR_Left_Recivers_Error: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0009";
+constant ADDR_SSRs_Left: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000A";
+constant ADDR_SSRs_Right: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000B";
+constant ADDR_FPGA_LEDs: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000C";
+constant ADDR_LEDs_strip_Mux: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000D";
+constant ADDR_Mic_C_B: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000E";
+constant ADDR_FPGA_Spare_out: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000F";
+constant ADDR_ADC_Voltage_0: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0010";
+constant ADDR_ADC_Voltage_1: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0011";
+constant ADDR_ADC_Voltage_2: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0012";
+constant ADDR_ADC_Voltage_3: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0013";
+constant ADDR_FPGA_Spare: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0014";
+constant ADDR_FLA_PS: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0015";
+constant ADDR_FPGA_FAN_1_Tacho: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0016";
+constant ADDR_FPGA_FAN_1_PWM: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0017";
+constant ADDR_FPGA_FAN_2_Tacho: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0018";
+constant ADDR_FPGA_FAN_2_PWM: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0019";
+constant ADDR_FPGA_SYNC_DELAY_TIME: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001A";
+constant ADDR_FPGA_SYNC_TIME: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001B";
+constant ADDR_Fault_Registers: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001C";
+constant ADDR_Sync_Timer: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001D";
 
-    signal wheel_home_sw_f : STD_LOGIC_VECTOR(3 downto 0);
-    signal wheel_reverse_sw_f : STD_LOGIC_VECTOR(3 downto 0);
-
-    signal fpga_wheel_driver_abrt_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_wheel_driver_out : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_wheel_driver_do_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_wheel_driver_do_meta : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_wheel_sensor_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_wheel_sensor_meta : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_buttons_led_reg_f : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_estop_activation_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_estop_diagnostic_reg : STD_LOGIC_VECTOR(31 downto 0); -- Set to 0xABCD for Closing Estop in Diagnostic mode (along with bit 31 in ESTOP Activation register).
-    signal fpga_estop_open_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_diagnostic_led_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_spare_4mb_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_wheel_rod_reg : STD_LOGIC_VECTOR(31 downto 0);
-
-
-
-    -- reg estop_activation;
-    signal estop_activation_cnt : STD_LOGIC_VECTOR(32 downto 0);
-    signal estop_activation_rst : STD_LOGIC;
-    signal estop_activation_rst_posedge : STD_LOGIC;
-    signal estop_activation_reg : STD_LOGIC;
-    signal start_activation : STD_LOGIC;
-    signal clk_1m_posedge : STD_LOGIC;
-    signal clk_1m_reg : STD_LOGIC;
-
-    signal fpga_spare_io_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal sp2_single_ended_2_3_f : STD_LOGIC_VECTOR(1 downto 0);
-    signal sp2_single_ended_1_0_f : STD_LOGIC_VECTOR(1 downto 0);
-    signal sp2_analog_switch_f : STD_LOGIC_VECTOR(2 downto 0);
-    signal sp2_diff_pair_2_3_f : STD_LOGIC_VECTOR(1 downto 0);
-    signal sp2_diff_pair_1_0_f : STD_LOGIC_VECTOR(1 downto 0);
-    signal sp1_single_ended_2_3_f : STD_LOGIC_VECTOR(1 downto 0);
-    signal sp1_single_ended_1_0_f : STD_LOGIC_VECTOR(1 downto 0);
-    signal sp1_analog_switch_f : STD_LOGIC_VECTOR(2 downto 0);
-    signal sp1_diff_pair_2_3_f : STD_LOGIC_VECTOR(1 downto 0);
-    signal sp1_diff_pair_1_0_f : STD_LOGIC_VECTOR(1 downto 0);
-    signal spare_in_reg : STD_LOGIC_VECTOR(7 downto 0);
-    signal spare_in_meta : STD_LOGIC_VECTOR(7 downto 0);
-    signal right_spare_diff_2_f : STD_LOGIC;
-    signal left_spare_diff_2_f : STD_LOGIC;
-    signal in_4mb_spare_reg : STD_LOGIC_VECTOR(1 downto 0);
-    signal in_4mb_spare_meta : STD_LOGIC_VECTOR(1 downto 0);
-    signal fpga_4mb_spare_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_wheel_rod_sensor_reg : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_wheel_rod_sensor_meta : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_fan1_pwm : STD_LOGIC_VECTOR(31 downto 0);
-    signal fpga_fan2_pwm : STD_LOGIC_VECTOR(31 downto 0);
-    signal fan1_pwm_f : STD_LOGIC;
-    signal fan2_pwm_f : STD_LOGIC;
-
-    signal pwm2_cnt : STD_LOGIC_VECTOR(9 downto 0);
-    signal pwm2_value : STD_LOGIC_VECTOR(9 downto 0);
-    signal fpga_fan1_tacho : STD_LOGIC_VECTOR(15 downto 0);
-    signal fpga_fan1_tacho_num : STD_LOGIC_VECTOR(7 downto 0);
-    signal fan1_tacho_meta : STD_LOGIC;
-    signal fan1_tacho_sync : STD_LOGIC;
-    signal fan1_tacho_inv : STD_LOGIC;
-    signal fan1_tacho_cnt : STD_LOGIC_VECTOR(15 downto 0);
-    signal fpga_fan2_tacho : STD_LOGIC_VECTOR(15 downto 0);
-    signal fpga_fan2_tacho_num : STD_LOGIC_VECTOR(7 downto 0);
-    signal fan2_tacho_meta : STD_LOGIC;
-    signal fan2_tacho_sync : STD_LOGIC;
-    signal fan2_tacho_inv : STD_LOGIC;
-    signal fan2_tacho_cnt : STD_LOGIC_VECTOR(15 downto 0);
-    signal fan_tacho_cnt : STD_LOGIC_VECTOR(25 downto 0);
-    signal fan_tacho_mes_pulse : STD_LOGIC;
-    signal fan1_tacho_posedge : STD_LOGIC;
-    signal fan2_tacho_posedge : STD_LOGIC;
-	type pwm_state_type is (IDLE_PWM, PWM_PULSE);
-	signal pwm2_state : pwm_state_type;
-    signal pwm1_state : pwm_state_type;
-    signal pwm1_cnt : STD_LOGIC_VECTOR(9 downto 0);
-    signal pwm1_value : STD_LOGIC_VECTOR(9 downto 0);
-	signal fpga_estop_diagnostic_reg_flag: STD_LOGIC:= '0';
+-- new registers declaretion 
+signal FPGA_Version_reg : STD_LOGIC_VECTOR(31 downto 0) := FPGA_REV & FPGA_MAJOR_VER & x"0000";--x"0000"
+signal FPGA_Date_reg : STD_LOGIC_VECTOR(31 downto 0) := FPGA_REV_HOUR & FPGA_REV_DAY & FPGA_REV_MONTH & FPGA_REV_YEAR;--x"0001"
+signal Power_Diagnostic_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0002"
+signal FPGA_buttons_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0003"
+signal L_Wheels_sensors_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0004"
+signal R_Wheels_sensors_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0005"
+signal Diagnostic_packed_counter_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0006"
+signal Diagnostic_error_counter_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0007"
+signal Right_Recivers_Error_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0008"
+signal Left_Recivers_Error_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0009"
+signal SSRs_Left_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"000A"
+signal SSRs_Right_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"000B"
+signal FPGA_LEDs_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"000C"
+signal LEDs_strip_Mux_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"000D"
+signal Mic_C_B_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"000E"
+signal FPGA_Spare_out_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x"000F"
+signal ADC_Voltage_0_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0010"
+signal ADC_Voltage_1_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0011"
+signal ADC_Voltage_2_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x"0012"
+signal ADC_Voltage_3_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x"0013"
+signal FPGA_Spare_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0014"
+signal FLA_PS_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0015"
+signal FPGA_FAN_1_Tacho_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"0016"
+signal FPGA_FAN_1_PWM_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x"0017"
+signal FPGA_FAN_2_Tacho_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x"0018"
+signal FPGA_FAN_2_PWM_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x"0019"
+signal FPGA_SYNC_DELAY_TIME_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"001A"
+signal FPGA_SYNC_TIME_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x"001B"
+signal Fault_Registers_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x"001C"
+signal Sync_Timer_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"001D"
+	
 begin
-    -- Your VHDL code implementation here
-    -- You need to specify the behavior of your module based on the Verilog module's functionality
-    -- This code template only provides the entity declaration and signal declarations.
-sp2_single_ended_2_3 <= sp2_single_ended_2_3_f;
-sp2_single_ended_1_0_f <= sp2_single_ended_1_0;
-fpga_buttons_led_reg <= fpga_buttons_led_reg_f;
-sp2_analog_switch <= sp2_analog_switch_f;
-sp2_diff_pair_2_3 <= sp2_diff_pair_2_3_f;
-sp2_diff_pair_1_0_f <= sp2_diff_pair_1_0;
-sp1_single_ended_2_3 <= sp1_single_ended_2_3_f;
-sp1_single_ended_1_0_f <= sp1_single_ended_1_0;
-sp1_analog_switch <= sp1_analog_switch_f;
-sp1_diff_pair_2_3 <= sp1_diff_pair_2_3_f;
-sp1_diff_pair_1_0_f <= sp1_diff_pair_1_0;
-right_spare_diff_2 <= right_spare_diff_2_f;
-left_spare_diff_2 <= left_spare_diff_2_f;
-
-wheel_home_sw <= wheel_home_sw_f;
-
-wheel_reverse_sw <=wheel_reverse_sw_f;
-diag_activation <= fpga_estop_activation_reg(31) and fpga_estop_diagnostic_reg_flag;
-estop_open <= fpga_estop_open_reg(0) and trig_in;
-diagnostic_led <= fpga_diagnostic_led_reg(7 downto 0);
-
-wheel_home_sw_f <= fpga_wheel_driver_out(19 downto 16);
-wheel_reverse_sw_f <= fpga_wheel_driver_out(15 downto 12);
-wheel_forward_sw <= fpga_wheel_driver_out(11 downto 8);
-wheel_driver_di <= fpga_wheel_driver_out(7 downto 0);
-wheel_driver_rst <= fpga_wheel_driver_abrt_reg(1);
-wheel_driver_abrt <= fpga_wheel_driver_abrt_reg(0);
-
-right_drape_em_open <= fpga_electromagnet_reg(8);
-left_drape_em_open <= fpga_electromagnet_reg(0);
-
-fpga_spare_io_reg <= "00000" & sp2_single_ended_2_3_f & spare_in_reg(7 downto 6) & sp2_analog_switch_f & sp2_diff_pair_2_3_f &
-                     spare_in_reg(5 downto 4) & sp1_single_ended_2_3_f & spare_in_reg(3 downto 2) & sp1_analog_switch_f &
-                     sp1_diff_pair_2_3_f & spare_in_reg(1 downto 0);
-
-fpga_4mb_spare_reg <= "000000000000000000000000" & right_spare_diff_2_f & in_4mb_spare_reg(1) & left_spare_diff_2_f & in_4mb_spare_reg(0);
-
-process (fpga_estop_diagnostic_reg(15 downto 0))
-begin
-    if fpga_estop_diagnostic_reg(15 downto 0) = ESTOP_DIAG_ACTIV then
-		fpga_estop_diagnostic_reg_flag <= '1';
-    else
-		fpga_estop_diagnostic_reg_flag <= '0';
-    end if;
-end process;
 
 
-process (clk_100m, rst_n_syn)
+bnnb: process (clk_100m, rst_n_syn)
 begin
     if rst_n_syn = '0' then
-        fpga_ver_reg <= (others => '0') & FPGA_MAJOR_VER & FPGA_REV;
-        fpga_rev_data_reg <= FPGA_REV_YEAR & FPGA_REV_MONTH & FPGA_REV_DAY & FPGA_REV_HOUR;
-        fpga_pow_reg <= (others => '0');
-        fpga_buttons_reg <= (others => '0');
-        fpga_buttons_meta <= (others => '0');
-        fpga_wheel_driver_do_reg <= (others => '0');
-        fpga_wheel_driver_do_meta <= (others => '0');
-        fpga_drape_sw_state_reg <= (others => '0');
-        fpga_drape_sw_state_meta <= (others => '0');
-        fpga_drape_em_state_reg <= (others => '0');
-        fpga_drape_em_state_meta <= (others => '0');
-        fpga_drape_sensor_reg <= (others => '0');
-        fpga_drape_sensor_meta <= (others => '0');
-        fpga_wheel_sensor_reg <= (others => '0');
-        fpga_wheel_sensor_meta <= (others => '0');
-        spare_in_reg <= "0000000";
-        spare_in_meta <= "0000000";
-        in_4mb_spare_reg <= "00";
-        in_4mb_spare_meta <= "00";
-        fpga_wheel_rod_sensor_reg <= (others => '0');
-        fpga_wheel_rod_sensor_meta <= (others => '0');
-        pow_sticky <= '0';
-        pow_meta <= '0';
-    else
-        fpga_ver_reg <= (others => '0') & FPGA_MAJOR_VER & FPGA_REV;
-        fpga_rev_data_reg <= FPGA_REV_YEAR & FPGA_REV_MONTH & FPGA_REV_DAY & FPGA_REV_HOUR;
-        fpga_pow_reg <= (others => '0') & pow_sticky & pow_meta;
-        pow_meta <= pow;
-        fpga_buttons_reg <= fpga_buttons_meta;
-        fpga_buttons_meta <= (others => '0') & fpga_buttons(7 downto 0);
-        fpga_drape_sw_state_reg <= fpga_drape_sw_state_meta;
-        fpga_drape_sw_state_meta <= (others => '0') & drape_sw_state(1 downto 0);
-        fpga_drape_em_state_reg <= fpga_drape_em_state_meta;
-        fpga_drape_em_state_meta <= (others => '0') & drape_em_state(1 downto 0);
-        fpga_wheel_driver_do_reg <= fpga_wheel_driver_do_meta;
-        fpga_wheel_driver_do_meta <= (others => '0') & wheel_driver_do;
-        fpga_drape_sensor_reg <= fpga_drape_sensor_meta;
-        fpga_drape_sensor_meta <= (others => '0') & drape_sensor(11 downto 6) & "00" & drape_sensor(5 downto 0);
-        fpga_wheel_sensor_reg <= fpga_wheel_sensor_meta;
-        fpga_wheel_sensor_meta <= (others => '0') & wheel_sensor;
-        spare_in_reg <= spare_in_meta;
-        spare_in_meta <= sp2_single_ended_1_0_f & sp2_diff_pair_1_0_f & sp1_single_ended_1_0_f & sp1_diff_pair_1_0_f;
-        in_4mb_spare_reg <= in_4mb_spare_meta;
-        in_4mb_spare_meta <= right_spare_diff_1 & left_spare_diff_1;
-        fpga_wheel_rod_sensor_reg <= fpga_wheel_rod_sensor_meta;
-        fpga_wheel_rod_sensor_meta <= (others => '0') & wheel_rod_sensor;
+        FPGA_LEDs_reg(7 downto 0)  <= (others => '0');
+        FPGA_Version_reg  <= FPGA_REV & FPGA_MAJOR_VER & x"0000";
+        FPGA_Date_reg  <= FPGA_REV_HOUR & FPGA_REV_DAY & FPGA_REV_MONTH & FPGA_REV_YEAR;
+    elsif rising_edge(clk_100m) then
+        FPGA_Version_reg  <= FPGA_REV & FPGA_MAJOR_VER & x"0000";
+        FPGA_Date_reg  <= FPGA_REV_HOUR & FPGA_REV_DAY & FPGA_REV_MONTH & FPGA_REV_YEAR;
+    	--BOARD LED 
+		FPGA_LEDs_OUT <= FPGA_LEDs_reg(7 downto 0);
+	    --Data to fan 1 moudle 
+	    --FAN_TACHO_REG_OUT_1  <= FPGA_FAN_1_Tacho_reg(15 DOWNTO 0) ;TODO:fix this other deriction 
+		FAN_PWM_REG_OUT_1  <= FPGA_FAN_1_PWM_reg(7 DOWNTO 0) ;
+		--Data to fan 2 moudle 
+	    --FAN_TACHO_REG_OUT_2 <= FPGA_FAN_2_Tacho_reg(15 DOWNTO 0) ;TODO:fix this other deriction 
+		FAN_PWM_REG_OUT_2 <= FPGA_FAN_2_PWM_reg(7 DOWNTO 0) ;
+		--SSRs_Left
+		A_24V_L_EN <= SSRs_Left_reg(0);
+		B_24V_L_EN <= SSRs_Left_reg(1);
+		A_35V_L_EN <= SSRs_Left_reg(2);
+		B_35V_L_EN <= SSRs_Left_reg(3);
+		--SSRs_Right
+		A_24V_R_EN <= SSRs_Right_reg(0);
+		B_24V_R_EN <= SSRs_Right_reg(1);
+		A_35V_R_EN <= SSRs_Right_reg(2);
+		B_35V_R_EN <= SSRs_Right_reg(3);
+		BIT_SSR_SW <= SSRs_Right_reg(4);
+		--FPGA Buttons
+		FPGA_buttons_reg(0)  <= L_NO_switch_TOOL_EX_FPGA;
+		FPGA_buttons_reg(1)  <= L_NC_switch_TOOL_EX_FPGA;
+		FPGA_buttons_reg(2)  <= R_NO_switch_TOOL_EX_FPGA;
+		FPGA_buttons_reg(3)  <= R_NC_switch_TOOL_EX_FPGA;
+		--L Wheels sensors
+		L_Wheels_sensors_reg(11 downto 0)  <=L_POS_SENS_0_OUT1 & L_POS_SENS_0_OUT2 & L_POS_SENS_1_OUT1 & L_POS_SENS_1_OUT2 & 
+		L_POS_SENS_OUT1 & L_POS_SENS_OUT2 & L_WHEEL_SENS_A1_OUT1 & L_WHEEL_SENS_A1_OUT2 & L_WHEEL_SENS_A2_OUT1 & 
+		L_WHEEL_SENS_A2_OUT2 & L_WHEEL_SENS_SPARE_OUT1 & L_WHEEL_SENS_SPARE_OUT2;
+		--R Wheels sensors
+		R_Wheels_sensors_reg(11 downto 0)  <= R_POS_SENS_0_OUT1 & R_POS_SENS_0_OUT2 & R_POS_SENS_1_OUT1 & R_POS_SENS_1_OUT2 & 
+		R_POS_SENS_OUT1 & R_POS_SENS_OUT2 & R_WHEEL_SENS_A1_OUT1 & R_WHEEL_SENS_A1_OUT2 & R_WHEEL_SENS_A2_OUT1 & 
+		R_WHEEL_SENS_A2_OUT2 & R_WHEEL_SENS_SPARE_OUT1 & R_WHEEL_SENS_SPARE_OUT2;
     end if;
 end process;
 
@@ -269,149 +324,156 @@ end process;
 p_mux : process(addr)
 begin
     case addr is
-		when ADDR_FPGA_VER =>
-			data_miso <= fpga_ver_reg;
-		when ADDR_FPGA_REV_DATA =>
-			data_miso <= fpga_rev_data_reg;
-		when ADDR_FPGA_POW_DIAG =>
-			data_miso <= fpga_pow_reg;
-		when ADDR_FPGA_BUTTONS =>
-			data_miso <= fpga_buttons_reg;
-		when ADDR_FPGA_DRAPE_SENSOR =>
-			data_miso <= fpga_drape_sensor_reg;
-		when ADDR_FPGA_DRAPE_SW_STATE =>
-			data_miso <= fpga_drape_sw_state_reg;
-		when ADDR_FPGA_DRAPE_EM_STATE =>
-			data_miso <= fpga_drape_em_state_reg;			
-		when ADDR_FPGA_DRAPE_SW_APPROVAL =>
-			data_miso <= fpga_electromagnet_reg;
-		when ADDR_FPGA_WHEEL_DRIVER_OUT =>
-			data_miso <= fpga_wheel_driver_out;
-		when ADDR_FPGA_WHEEL_DRIVER_IN =>
-			data_miso <= fpga_wheel_driver_do_reg;
-		when ADDR_FPGA_WHEEL_DRIVER_ABRT =>
-			data_miso <= fpga_wheel_driver_abrt_reg;	
-		when ADDR_FPGA_WHEEL_SENSOR =>
-			data_miso <= fpga_wheel_sensor_reg;
-		when ADDR_FPGA_BUTTONS_LED =>
-			data_miso <= fpga_buttons_led_reg_f;
-		when ADDR_FPGA_ESTOP_ACTIVATION =>
-			data_miso <= fpga_estop_activation_reg;
-		when ADDR_FPGA_ESTOP_DIAGNOSTIC =>
-			data_miso <= fpga_estop_diagnostic_reg;
-		when ADDR_FPGA_ESTOP_OPEN =>
-			data_miso <= fpga_estop_open_reg;
-		when ADDR_FPGA_DIAGNOSTIC_LEDS =>
-			data_miso <= fpga_diagnostic_led_reg;
-		when ADDR_FPGA_SPARE_IO =>
-			data_miso <= fpga_spare_io_reg;
-		when ADDR_FPGA_SPARE_4MB =>
-			data_miso <= fpga_4mb_spare_reg;	
-		when ADDR_FPGA_WHEEL_ROD =>
-			data_miso <= fpga_wheel_rod_sensor_reg;	
-		when ADDR_FPGA_FAN1_TACHO =>
-			data_miso <= "00000000" & fpga_fan1_tacho_num & fpga_fan1_tacho;
-		when ADDR_FPGA_FAN1_PWM =>
-			data_miso <= fpga_fan1_pwm;
-		when ADDR_FPGA_FAN2_TACHO =>
-			data_miso <= "00000000" & fpga_fan2_tacho_num & fpga_fan2_tacho;
-		when ADDR_FPGA_FAN2_PWM =>
-			data_miso <= fpga_fan2_pwm;			
-		when others =>
-			data_miso <= (others => '1');
+        when ADDR_FPGA_Version =>
+            data_miso <= FPGA_Version_reg;
+        when ADDR_FPGA_Date =>
+            data_miso <= FPGA_Date_reg;
+        when ADDR_Power_Diagnostic =>
+            data_miso <= Power_Diagnostic_reg;
+        when ADDR_FPGA_buttons =>
+            data_miso <= FPGA_buttons_reg;
+        when ADDR_L_Wheels_sensors =>
+            data_miso <= L_Wheels_sensors_reg;
+        when ADDR_R_Wheels_sensors =>
+            data_miso <= R_Wheels_sensors_reg;
+        when ADDR_Diagnostic_packed_counter =>
+            data_miso <= Diagnostic_packed_counter_reg;
+        when ADDR_Diagnostic_error_counter =>
+            data_miso <= Diagnostic_error_counter_reg;
+        when ADDR_Right_Recivers_Error =>
+            data_miso <= Right_Recivers_Error_reg;
+        when ADDR_Left_Recivers_Error =>
+            data_miso <= Left_Recivers_Error_reg;
+        when ADDR_SSRs_Left =>
+            data_miso <= SSRs_Left_reg;
+        when ADDR_SSRs_Right =>
+            data_miso <= SSRs_Right_reg;
+        when ADDR_FPGA_LEDs =>
+            data_miso <= FPGA_LEDs_reg;
+        when ADDR_LEDs_strip_Mux =>
+            data_miso <= LEDs_strip_Mux_reg;
+        when ADDR_Mic_C_B =>
+            data_miso <= Mic_C_B_reg;
+        when ADDR_FPGA_Spare_out =>
+            data_miso <= FPGA_Spare_out_reg;
+        when ADDR_ADC_Voltage_0 =>
+            data_miso <= ADC_Voltage_0_reg;
+        when ADDR_ADC_Voltage_1 =>
+            data_miso <= ADC_Voltage_1_reg;
+        when ADDR_ADC_Voltage_2 =>
+            data_miso <= ADC_Voltage_2_reg;
+        when ADDR_ADC_Voltage_3 =>
+            data_miso <= ADC_Voltage_3_reg;
+        when ADDR_FPGA_Spare =>
+            data_miso <= FPGA_Spare_reg;
+        when ADDR_FLA_PS =>
+            data_miso <= FLA_PS_reg;
+        when ADDR_FPGA_FAN_1_Tacho =>
+            data_miso <= FPGA_FAN_1_Tacho_reg;
+        when ADDR_FPGA_FAN_1_PWM =>
+            data_miso <= FPGA_FAN_1_PWM_reg;
+        when ADDR_FPGA_FAN_2_Tacho =>
+            data_miso <= FPGA_FAN_2_Tacho_reg;
+        when ADDR_FPGA_FAN_2_PWM =>
+            data_miso <= FPGA_FAN_2_PWM_reg;
+        when ADDR_FPGA_SYNC_DELAY_TIME =>
+            data_miso <= FPGA_SYNC_DELAY_TIME_reg;
+        when ADDR_FPGA_SYNC_TIME =>
+            data_miso <= FPGA_SYNC_TIME_reg;
+        when ADDR_Fault_Registers =>
+            data_miso <= Fault_Registers_reg;
+        when ADDR_Sync_Timer =>
+            data_miso <= Sync_Timer_reg;
+        when others =>
+            data_miso <= (others => '1');
 	end case;
+	
 end process;
 	
-process (clk_100m, rst_n_syn, data_mosi_rdy, addr, data_mosi, estop_activation_rst_posedge)
+process (clk_100m, rst_n_syn, data_mosi_rdy, addr, data_mosi)
 begin
     if rst_n_syn = '0' then
-        fpga_electromagnet_reg <= (others => '0');
-        fpga_buttons_led_reg_f <= (others => '0');
-        fpga_diagnostic_led_reg <= x"000000FF"; -- Use hex format for 32-bit constants
-        fpga_estop_activation_reg <= (others => '0');
-        fpga_estop_diagnostic_reg <= (others => '0');
-        fpga_estop_open_reg <= (others => '0');
-        fpga_wheel_driver_out <= (others => '0');
-        fpga_wheel_driver_abrt_reg <= (others => '0');
-        sp2_single_ended_2_3_f <= "00";
-        sp2_analog_switch_f <= "000";
-        sp2_diff_pair_2_3_f <= "00";
-        sp1_single_ended_2_3_f <= "00";
-        sp1_analog_switch_f <= "000";
-        sp1_diff_pair_2_3_f <= "00";
-        right_spare_diff_2_f <= '0';
-        left_spare_diff_2_f <= '0';
-        start_activation <= '0';
-        fpga_fan1_pwm <= (others => '0');
-        fpga_fan2_pwm <= (others => '0');
-    elsif data_mosi_rdy = '1' then
-        case addr is
-            when ADDR_FPGA_BUTTONS_LED =>
-                fpga_buttons_led_reg_f <= "0000" & data_mosi(14 downto 12) & "0" & data_mosi(10 downto 8) &
-                                        "0" & data_mosi(6 downto 4) & "0" & data_mosi(2 downto 0);
-            when ADDR_FPGA_WHEEL_DRIVER_OUT =>
-                fpga_wheel_driver_out <= "000000000000" & data_mosi(19 downto 0);
-            -- Uncomment this section if FPGA_WHEEL_DRIVER_ELO is used
-            -- when ADDR_FPGA_WHEEL_DRIVER_ELO =>
-            --     fpga_wheel_driver_elo <= "0" & data_mosi(0);
-            when ADDR_FPGA_WHEEL_DRIVER_ABRT =>
-                fpga_wheel_driver_abrt_reg <= "00" & data_mosi(1 downto 0);
-            when ADDR_FPGA_DRAPE_SW_APPROVAL =>
-                fpga_electromagnet_reg <= "00000000" & data_mosi(8) & "0000000" & data_mosi(0);
-            when ADDR_FPGA_ESTOP_ACTIVATION =>
-                fpga_estop_activation_reg <= data_mosi(31) & "000000000000000000000000000000";
-                start_activation <= data_mosi(0);
-            when ADDR_FPGA_ESTOP_DIAGNOSTIC =>
-                fpga_estop_diagnostic_reg <= "0000000000000000" & data_mosi(15 downto 0);
-            when ADDR_FPGA_ESTOP_OPEN =>
-                fpga_estop_open_reg <= "000000000000000000000000000000" & data_mosi(0);
-            when ADDR_FPGA_DIAGNOSTIC_LEDS =>
-                fpga_diagnostic_led_reg <= "000000" & data_mosi(7 downto 0);
-            when ADDR_FPGA_SPARE_IO =>
-                sp2_single_ended_2_3_f <= data_mosi(21 downto 20);
-                sp2_analog_switch_f <= data_mosi(17 downto 15);
-                sp2_diff_pair_2_3_f <= data_mosi(14 downto 13);
-                sp1_single_ended_2_3_f <= data_mosi(10 downto 9);
-                sp1_analog_switch_f <= data_mosi(6 downto 4);
-                sp1_diff_pair_2_3_f <= data_mosi(3 downto 2);
-            when ADDR_FPGA_SPARE_4MB =>
-                right_spare_diff_2_f <= data_mosi(3);
-                left_spare_diff_2_f <= data_mosi(1);
-            when ADDR_FPGA_FAN1_PWM =>
-                fpga_fan1_pwm <= "00000000" & data_mosi(7 downto 0);
-            when ADDR_FPGA_FAN2_PWM =>
-                fpga_fan2_pwm <= "00000000" & data_mosi(7 downto 0);
-            when others =>
-                null; -- Do nothing for other addresses
-        end case;
-    elsif estop_activation_rst_posedge = '1' then
-        start_activation <= '0';
+    	SSRs_Left_reg   <= (others => '0');
+    	SSRs_Right_reg  <= (others => '0');
+    elsif rising_edge(clk_100m) then 
+		if data_mosi_rdy = '1' then
+			case addr is
+				when ADDR_FPGA_Version =>
+					null;
+				when ADDR_FPGA_Date =>
+					null;
+				when ADDR_Power_Diagnostic =>
+					--???<= data_mosi;
+					null;
+				when ADDR_FPGA_buttons =>
+					--???<= data_mosi;
+					null;
+				when ADDR_L_Wheels_sensors =>
+					null;
+				when ADDR_R_Wheels_sensors =>
+					null;
+				when ADDR_Diagnostic_packed_counter =>
+					null;
+				when ADDR_Diagnostic_error_counter =>
+					null;
+				when ADDR_Right_Recivers_Error =>
+					null;
+				when ADDR_Left_Recivers_Error =>
+					null;
+				when ADDR_SSRs_Left =>
+					SSRs_Left_reg  <= data_mosi;
+				when ADDR_SSRs_Right =>
+					SSRs_Right_reg <= data_mosi;
+				when ADDR_FPGA_LEDs =>
+					FPGA_LEDs_reg(7 downto 0)<= data_mosi(7 downto 0);
+				when ADDR_LEDs_strip_Mux =>
+					--???<= data_mosi;
+					null;
+				when ADDR_Mic_C_B =>
+					null;
+				when ADDR_FPGA_Spare_out =>
+					--???<= data_mosi;
+					null;
+				when ADDR_ADC_Voltage_0 =>
+					null;
+				when ADDR_ADC_Voltage_1 =>
+					null;
+				when ADDR_ADC_Voltage_2 =>
+					null;
+				when ADDR_ADC_Voltage_3 =>
+					null;
+				when ADDR_FPGA_Spare =>
+					null;
+				when ADDR_FLA_PS =>
+					--???<= data_mosi;
+					null;
+				when ADDR_FPGA_FAN_1_Tacho =>
+					null;
+				when ADDR_FPGA_FAN_1_PWM =>
+					--???<= data_mosi;
+					null;
+				when ADDR_FPGA_FAN_2_Tacho =>
+					null;
+				when ADDR_FPGA_FAN_2_PWM =>
+					--???<= data_mosi;
+					null;
+				when ADDR_FPGA_SYNC_DELAY_TIME =>
+					--???<= data_mosi;
+					null;
+				when ADDR_FPGA_SYNC_TIME =>
+					--???<= data_mosi;
+					null;
+				when ADDR_Fault_Registers =>
+					null;
+				when ADDR_Sync_Timer =>
+					--???<= data_mosi;
+					null;
+				when others =>
+					null;
+			end case;
+		end if;
     end if;
 end process;
-
-process (clk_100m, rst_n_syn)
-begin
-    if rst_n_syn = '0' then
-        estop_activation_reg <= '1';
-    else
-        estop_activation_reg <= not estop_activation_rst;
-    end if;
-end process;
-
-estop_activation_rst_posedge <= estop_activation_rst and estop_activation_reg;
-
-
-process (clk_100m, rst_n_syn)
-begin
-    if rst_n_syn = '0' then
-        clk_1m_reg <= '1';
-    else
-        clk_1m_reg <= not estop_activation_rst;
-    end if;
-end process;
-
-clk_1m_posedge <= clk_1m_reg and clk_1m;
-
 
 
 end Behavioral;

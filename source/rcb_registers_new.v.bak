@@ -431,8 +431,208 @@ always @(posedge clk_100m, negedge rst_n_syn)
 
 assign clk_1m_posedge = clk_1m_reg & clk_1m;
 
+//FAN1 PWM
+reg pwm1_state;
+parameter
+	IDLE_PWM1	= 1'b0,
+    PWM1_PULSE	= 1'b1;
+	
+always @(posedge clk_100m, negedge rst_n_syn)
+    if(!rst_n_syn)
+	begin
+		fan1_pwm <= 1'b0;
+		pwm1_cnt <= 10'b0;
+		pwm1_state <= IDLE_PWM1;
+		pwm1_value <= 10'b0;
+	end
+	else 
+	begin
+		if(clk_1m_posedge)
+		begin
+			if(pwm1_cnt == 1024)
+				pwm1_cnt <= 10'b0;
+			else
+				pwm1_cnt <= pwm1_cnt + 1'b1;
+				
+			case(pwm1_state)
+				IDLE_PWM1:
+				begin
+					if((pwm1_cnt != 0) || (fpga_fan1_pwm[7:0] == 8'h00))
+					begin
+						pwm1_state <= IDLE_PWM1;
+						fan1_pwm <= 1'b0;
+						pwm1_value <= fpga_fan1_pwm[7:0] << 2;
+					end
+					else
+					begin
+						pwm1_state <= PWM1_PULSE;
+						fan1_pwm <= 1'b1;
+					end
+				end
+				
+				PWM1_PULSE:
+				begin
+					if((pwm1_cnt < pwm1_value) || (fpga_fan1_pwm[7:0] == 8'hFF))
+					begin
+						pwm1_state <= PWM1_PULSE;
+						fan1_pwm <= 1'b1;
+					end
+					else
+					begin
+						pwm1_state <= IDLE_PWM1;
+						fan1_pwm <= 1'b0;
+					end
+				
+				end
+			endcase
+		end
+	end	
+	
+//FAN2 PWM
+reg pwm2_state;
+parameter
+	IDLE_PWM2	= 1'b0,
+    PWM2_PULSE	= 1'b1;
+	
+always @(posedge clk_100m, negedge rst_n_syn)
+    if(!rst_n_syn)
+	begin
+		fan2_pwm <= 1'b0;
+		pwm2_cnt <= 10'b0;
+		pwm2_state <= IDLE_PWM2;
+		pwm2_value <= 10'b0;
+	end
+	else 
+	begin
+		if(clk_1m_posedge)
+		begin
+			if(pwm2_cnt == 1024)
+				pwm2_cnt <= 10'b0;
+			else
+				pwm2_cnt <= pwm2_cnt + 1'b1;
+				
+			case(pwm2_state)
+				IDLE_PWM2:
+				begin
+					if((pwm2_cnt != 0) || (fpga_fan2_pwm[7:0] == 8'h00))
+					begin
+						pwm2_state <= IDLE_PWM2;
+						fan2_pwm <= 1'b0;
+						pwm2_value <= fpga_fan2_pwm[7:0] << 2;
+					end
+					else
+					begin
+						pwm2_state <= PWM2_PULSE;
+						fan2_pwm <= 1'b1;
+					end
+				end
+				
+				PWM2_PULSE:
+				begin
+					if((pwm2_cnt < pwm2_value) || (fpga_fan2_pwm[7:0] == 8'hFF))
+					begin
+						pwm2_state <= PWM2_PULSE;
+						fan2_pwm <= 1'b1;
+					end
+					else
+					begin
+						pwm2_state <= IDLE_PWM2;
+						fan2_pwm <= 1'b0;
+					end
+				
+				end
+			endcase
+		end
+	end
 
+//FAN Tacho Measured pulses 
+always @(posedge clk_100m, negedge rst_n_syn)
+    if(!rst_n_syn)
+	begin
+		fan_tacho_cnt <= 26'b0;
+		fan_tacho_mes_pulse <= 1'b0;
+	end
+	else 
+	begin
+		if(clk_1m_posedge)
+		begin
+			fan_tacho_mes_pulse <= 1'b0;
+			
+			if(fan_tacho_cnt < FAN_TACHO_MES_PERIOD)
+				fan_tacho_cnt <= fan_tacho_cnt + 1'b1;
+			else
+			begin
+				fan_tacho_cnt <= 26'b0;
+				fan_tacho_mes_pulse <= 1'b1;
+			end
+		end
+	end
+			
+			
+// Posedge from fan1_tacho.
+always @(posedge clk_100m, negedge rst_n_syn)
+    if(!rst_n_syn)
+	begin
+		fan1_tacho_inv <= 1'b1;
+		fan1_tacho_meta <= 1'b0;
+		fan1_tacho_sync <= 1'b0;
+	end
+    else
+	begin
+        fan1_tacho_inv <= ~fan1_tacho_sync;
+		fan1_tacho_sync <= fan1_tacho_meta;
+		fan1_tacho_meta <= fan1_tacho;
+	end
 
+assign fan1_tacho_posedge = fan1_tacho_inv & fan1_tacho_sync;
+
+// Posedge from fan2_tacho.
+always @(posedge clk_100m, negedge rst_n_syn)
+    if(!rst_n_syn)
+	begin
+		fan2_tacho_inv <= 1'b1;
+		fan2_tacho_meta <= 1'b0;
+		fan2_tacho_sync <= 1'b0;
+	end	
+    else
+	begin
+        fan2_tacho_inv <= ~fan2_tacho_sync;
+		fan2_tacho_sync <= fan2_tacho_meta;
+		fan2_tacho_meta <= fan2_tacho;
+	end
+
+assign fan2_tacho_posedge = fan2_tacho_inv & fan2_tacho_sync;
+
+always @(posedge clk_100m, negedge rst_n_syn)
+    if(!rst_n_syn)
+	begin
+		fpga_fan1_tacho <= 16'h0000;
+		fpga_fan1_tacho_num <= 8'h00;
+		fan1_tacho_cnt <= 16'h0000;
+		fpga_fan2_tacho <= 16'h0000;
+		fpga_fan2_tacho_num <= 8'h00;
+		fan2_tacho_cnt <= 16'h0000;
+	end
+	else 
+	begin
+		if(fan_tacho_mes_pulse && clk_1m_posedge)
+		begin
+			fpga_fan1_tacho <= fan1_tacho_cnt;
+			fpga_fan1_tacho_num <= fpga_fan1_tacho_num + 1'b1;
+			fan1_tacho_cnt <= 16'h0000;
+			fpga_fan2_tacho <= fan2_tacho_cnt;
+			fpga_fan2_tacho_num <= fpga_fan2_tacho_num + 1'b1;
+			fan2_tacho_cnt <= 16'h0000;
+		end
+		else
+		begin
+			if(fan1_tacho_posedge)
+				fan1_tacho_cnt <= fan1_tacho_cnt + 1'b1;
+				
+			if(fan2_tacho_posedge)
+				fan2_tacho_cnt <= fan2_tacho_cnt + 1'b1;
+		end
+	end
 
 endmodule	
 

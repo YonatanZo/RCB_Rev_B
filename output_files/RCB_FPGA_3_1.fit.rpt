@@ -1,5 +1,5 @@
 Fitter report for RCB_FPGA_3_1
-Wed Feb 28 14:37:39 2024
+Mon Mar 11 11:21:07 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                      ;
 +------------------------------------+------------------------------------------------+
-; Fitter Status                      ; Successful - Wed Feb 28 14:37:39 2024          ;
+; Fitter Status                      ; Successful - Mon Mar 11 11:21:07 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; RCB_FPGA_3_1                                   ;
 ; Top-level Entity Name              ; RCB_TOP                                        ;
@@ -159,7 +159,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-10        ;   0.3%      ;
+;     Processors 2-10        ;   0.4%      ;
 +----------------------------+-------------+
 
 
@@ -1757,8 +1757,8 @@ Warning (169177): 102 pins must meet Intel FPGA requirements for 3.3-, 3.0-, and
     Info (169178): Pin MOSI0 uses I/O standard 3.3-V LVTTL at A2 File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 98
 Info (144001): Generated suppressed messages file G:/My Drive/FPGA/git/RCB_Rev_B/output_files/RCB_FPGA_3_1.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 6072 megabytes
-    Info: Processing ended: Wed Feb 28 14:37:40 2024
+    Info: Peak virtual memory: 6059 megabytes
+    Info: Processing ended: Mon Mar 11 11:21:08 2024
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:12
 

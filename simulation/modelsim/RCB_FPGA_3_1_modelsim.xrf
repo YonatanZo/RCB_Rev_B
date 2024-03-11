@@ -1,9 +1,12 @@
 vendor_name = ModelSim
+source_file = 1, G:/My Drive/FPGA/git/RCB_Rev_B/i2c_master.vhd
+source_file = 1, G:/My Drive/FPGA/git/RCB_Rev_B/ADC_Master.vhd
+source_file = 1, G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd
+source_file = 1, G:/My Drive/FPGA/git/RCB_Rev_B/Fan.vhd
 source_file = 1, G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd
 source_file = 1, G:/My Drive/FPGA/git/RCB_Rev_B/source/estop.v
 source_file = 1, G:/My Drive/FPGA/git/RCB_Rev_B/source/rcb_top.v
 source_file = 1, G:/My Drive/FPGA/git/RCB_Rev_B/source/rcb_spi.v
-source_file = 1, G:/My Drive/FPGA/git/RCB_Rev_B/source/rcb_registers.v
 source_file = 1, ../../../omri/rcb_top.bsf
 source_file = 1, G:/My Drive/FPGA/git/RCB_Rev_B/PLL1.qip
 source_file = 1, G:/My Drive/FPGA/git/RCB_Rev_B/PLL1.v

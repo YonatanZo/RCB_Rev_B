@@ -100,7 +100,7 @@ entity RCB_TOP is
         SDA_ADC: Out STD_LOGIC;
         TEENSY_FPGA_R_RX: Out STD_LOGIC;
         TEENSY_FPGA_R_TX: In STD_LOGIC;
-		  TEENSY_FPGA_L_RX: Out STD_LOGIC;
+		TEENSY_FPGA_L_RX: Out STD_LOGIC;
         TEENSY_FPGA_L_TX: In STD_LOGIC;
         OPEN_ELO_REQUEST: Out STD_LOGIC;
         PS_PG_FPGA: In STD_LOGIC;
@@ -164,109 +164,214 @@ entity RCB_TOP is
 end entity RCB_TOP;
 
 architecture Behavioral of RCB_TOP is
+component FAN
+port (
+    RST_N : in STD_LOGIC;
+    CLK : in STD_LOGIC;
+    TACHO_IN : in STD_LOGIC;
+    PWM_OUT : out STD_LOGIC;
+    FAN_TACHO_REG : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    FAN_PWM_REG : in STD_LOGIC_VECTOR(7 DOWNTO 0)
+);
+end component;
 
+COMPONENT rcb_registers is
+    port (
+        --Interfaces 
+        -- System signals
+        clk_100m                    : in  STD_LOGIC                    ; -- system clock
+        rst_n_syn                   : in  STD_LOGIC                    ; -- low active synchronous reset
+        clk_1m                      : in  STD_LOGIC                    ;
+        -- SPI I/F
+        data_miso                   : out STD_LOGIC_VECTOR(31 downto 0); -- data for transmission to SPI master
+        data_mosi                   : in  STD_LOGIC_VECTOR(31 downto 0); -- received data from SPI master
+        data_mosi_rdy               : in  STD_LOGIC                    ; -- when 1, received data is valid
+        addr                        : in  STD_LOGIC_VECTOR(15 downto 0); -- received data from SPI master
+        addr_rdy                    : in  STD_LOGIC                    ; -- when 1, received address is valid
+        data_miso_rdy               : in  STD_LOGIC                    ;
+        --Fan1 I/F
+        FAN_TACHO_REG_OUT_1 : in STD_LOGIC_VECTOR(15 DOWNTO 0) ;
+        FAN_PWM_REG_OUT_1 : out STD_LOGIC_VECTOR(7 DOWNTO 0) ;
+        --Fan1 I/F
+        FAN_TACHO_REG_OUT_2 : in STD_LOGIC_VECTOR(15 DOWNTO 0) ;
+        FAN_PWM_REG_OUT_2 : out STD_LOGIC_VECTOR(7 DOWNTO 0) ;
+        --ADC I/F
+        AIN0: in STD_LOGIC_VECTOR(15 downto 0);
+        AIN1: in STD_LOGIC_VECTOR(15 downto 0);
+        AIN2: in STD_LOGIC_VECTOR(15 downto 0);
+        AIN3: in STD_LOGIC_VECTOR(15 downto 0);
+        AIN4: in STD_LOGIC_VECTOR(15 downto 0);
+        AIN5: in STD_LOGIC_VECTOR(15 downto 0);
+        AIN6: in STD_LOGIC_VECTOR(15 downto 0);
+        AIN7: in STD_LOGIC_VECTOR(15 downto 0);
+        --Debug LEDs 
+        FPGA_LEDs_OUT  : out STD_LOGIC_VECTOR(7 downto 0 );
 
-COMPONENT rcb_registers
-	GENERIC ( FPGA_MAJOR_VER : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
-FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"01";
-FPGA_REV_YEAR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"17";
-FPGA_REV_MONTH : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
-FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"07";
-FPGA_REV_HOUR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"08";
-SPI_COM_LEN : INTEGER := 8;
-SPI_ADDR_LEN : INTEGER;
-SPI_DATA_LEN : INTEGER;
-WRITE_COM : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"0A";
-READ_COM : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"0F";
-WRITE_MODE : STD_LOGIC_VECTOR(1 DOWNTO 0) := "00";
-READ_MODE : STD_LOGIC_VECTOR(1 DOWNTO 0) := "01";
-UNDEF_MODE : STD_LOGIC_VECTOR(1 DOWNTO 0) := "11";
-ADDR_FPGA_VER : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0000";
-ADDR_FPGA_REV_DATA : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0001";
-ADDR_FPGA_POW_DIAG : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0002";
-ADDR_FPGA_BUTTONS : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0003";
-ADDR_FPGA_DRAPE_SW_STATE : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0004";
-ADDR_FPGA_DRAPE_EM_STATE : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0005";
-ADDR_FPGA_DRAPE_SW_APPROVAL : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0006";
-ADDR_FPGA_DRAPE_SENSOR : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0007";
-ADDR_FPGA_WHEEL_DRIVER_OUT : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0008";
-ADDR_FPGA_WHEEL_DRIVER_ELO : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0009";
-ADDR_FPGA_WHEEL_DRIVER_IN : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000A";
-ADDR_FPGA_WHEEL_DRIVER_ABRT : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000B";
-ADDR_FPGA_WHEEL_SENSOR : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000C";
-ADDR_FPGA_BUTTONS_LED : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000D";
-ADDR_FPGA_ESTOP_STATUS : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000E";
-ADDR_FPGA_ESTOP_ACTIVATION : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"000F";
-ADDR_FPGA_ESTOP_DIAGNOSTIC : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0010";
-ADDR_FPGA_ESTOP_OPEN : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0011";
-ADDR_FPGA_DIAGNOSTIC_LEDS : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0012";
-ADDR_FPGA_SPARE_IO : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0013";
-ADDR_FPGA_SPARE_4MB : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0014";
-ADDR_FPGA_WHEEL_ROD : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0015";
-ADDR_FPGA_FAN1_TACHO : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0016";
-ADDR_FPGA_FAN1_PWM : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0017";
-ADDR_FPGA_FAN2_TACHO : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0018";
-ADDR_FPGA_FAN2_PWM : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0019";
-NUM_REG : INTEGER := 26;
-ESTOP_DIAG_ACTIV : STD_LOGIC_VECTOR(31 DOWNTO 0) := x"00002AFD";
-ESTOP_ACTIVATION_PULSE : INTEGER := 100000;
-FAN_TACHO_MES_PERIOD : STD_LOGIC_VECTOR(25 DOWNTO 0) := x"0019A850";
-DEB_DEEP : INTEGER := 3;
-MOSI_DATA : INTEGER := 3;
-MISO_DATA : INTEGER := 4);
-	PORT
-	(
-		clk_100m		:	 IN STD_LOGIC;
-		rst_n_syn		:	 IN STD_LOGIC;
-		clk_1m		:	 IN STD_LOGIC;
-		data_miso		:	 OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-		data_mosi		:	 IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-		data_mosi_rdy		:	 IN STD_LOGIC;
-		addr		:	 IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-		addr_rdy		:	 IN STD_LOGIC;
-		data_miso_rdy		:	 IN STD_LOGIC;
-		pow		:	 IN STD_LOGIC;
-		fpga_buttons		:	 IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-		drape_sw_state		:	 IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-		drape_em_state		:	 IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-		drape_sensor		:	 IN STD_LOGIC_VECTOR(11 DOWNTO 0);
-		right_drape_em_open		:	 OUT STD_LOGIC;
-		left_drape_em_open		:	 OUT STD_LOGIC;
-		wheel_home_sw		:	 OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-		wheel_reverse_sw		:	 OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-		wheel_forward_sw		:	 OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-		wheel_driver_di		:	 OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-		wheel_driver_do		:	 IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-		wheel_driver_rst		:	 OUT STD_LOGIC;
-		wheel_driver_abrt		:	 OUT STD_LOGIC;
-		wheel_sensor		:	 IN STD_LOGIC_VECTOR(23 DOWNTO 0);
-		fpga_buttons_led_reg		:	 OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-		diag_activation		:	 OUT STD_LOGIC;
-		estop_open		:	 OUT STD_LOGIC;
-		estop_status		:	 IN STD_LOGIC;
-		diagnostic_led		:	 OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-		sp2_single_ended_2_3		:	 OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-		sp2_single_ended_1_0		:	 IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-		sp2_analog_switch		:	 OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-		sp2_diff_pair_2_3		:	 OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-		sp2_diff_pair_1_0		:	 IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-		sp1_single_ended_2_3		:	 OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-		sp1_single_ended_1_0		:	 IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-		sp1_analog_switch		:	 OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-		sp1_diff_pair_2_3		:	 OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-		sp1_diff_pair_1_0		:	 IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-		right_spare_diff_2		:	 OUT STD_LOGIC;
-		right_spare_diff_1		:	 IN STD_LOGIC;
-		left_spare_diff_2		:	 OUT STD_LOGIC;
-		left_spare_diff_1		:	 IN STD_LOGIC;
-		wheel_rod_sensor		:	 IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-		fan1_tacho		:	 IN STD_LOGIC;
-		fan1_pwm		:	 OUT STD_LOGIC;
-		fan2_tacho		:	 IN STD_LOGIC;
-		fan2_pwm		:	 OUT STD_LOGIC
-	);
-END COMPONENT;
+        ----Diagnostic R I/F
+        R_DIAG_PACK_CNT : in STD_LOGIC_VECTOR(15 downto 0); --TODO
+        R_DIAG_ERR_CNT : in STD_LOGIC_VECTOR(15 downto 0);--TODO
+        ----Diagnostic L I/F     
+        L_DIAG_PACK_CNT : in STD_LOGIC_VECTOR(15 downto 0);--TODO
+        L_DIAG_ERR_CNT : in STD_LOGIC_VECTOR(15 downto 0); --TODO
 
+        --regs IN/OUTs
+        --FPGA__buttons_
+        L_NO_switch_TOOL_EX_FPGA    : in  STD_LOGIC                    ;
+        L_NC_switch_TOOL_EX_FPGA    : in  STD_LOGIC                    ;
+        R_NO_switch_TOOL_EX_FPGA    : in  STD_LOGIC                    ;
+        R_NC_switch_TOOL_EX_FPGA    : in  STD_LOGIC                    ;
+        --L_Wheels_sensors
+        L_POS_SENS_0_OUT1           : in  STD_LOGIC                    ;
+        L_POS_SENS_0_OUT2           : in  STD_LOGIC                    ;
+        L_POS_SENS_1_OUT1           : in  STD_LOGIC                    ;
+        L_POS_SENS_1_OUT2           : in  STD_LOGIC                    ;
+        L_POS_SENS_OUT1             : in  STD_LOGIC                    ;
+        L_POS_SENS_OUT2             : in  STD_LOGIC                    ;
+        L_WHEEL_SENS_A1_OUT1        : in  STD_LOGIC                    ;
+        L_WHEEL_SENS_A1_OUT2        : in  STD_LOGIC                    ;
+        L_WHEEL_SENS_A2_OUT1        : in  STD_LOGIC                    ;
+        L_WHEEL_SENS_A2_OUT2        : in  STD_LOGIC                    ;
+        L_WHEEL_SENS_SPARE_OUT1     : in  STD_LOGIC                    ;
+        L_WHEEL_SENS_SPARE_OUT2     : in  STD_LOGIC                    ;
+        --R_Wheels_sensors
+        R_POS_SENS_0_OUT1           : in  STD_LOGIC                    ;
+        R_POS_SENS_0_OUT2           : in  STD_LOGIC                    ;
+        R_POS_SENS_1_OUT1           : in  STD_LOGIC                    ;
+        R_POS_SENS_1_OUT2           : in  STD_LOGIC                    ;
+        R_POS_SENS_OUT1             : in  STD_LOGIC                    ;
+        R_POS_SENS_OUT2             : in  STD_LOGIC                    ;
+        R_WHEEL_SENS_A1_OUT1        : in  STD_LOGIC                    ;
+        R_WHEEL_SENS_A1_OUT2        : in  STD_LOGIC                    ;
+        R_WHEEL_SENS_A2_OUT1        : in  STD_LOGIC                    ;
+        R_WHEEL_SENS_A2_OUT2        : in  STD_LOGIC                    ;
+        R_WHEEL_SENS_SPARE_OUT1     : in  STD_LOGIC                    ;
+        R_WHEEL_SENS_SPARE_OUT2     : in  STD_LOGIC                    ;
+        --Right_Recivers_Error
+        R_4MB_SER_IN_ER             : in  STD_LOGIC                    ;
+        R_EEF_SER_IN_ER             : in  STD_LOGIC                    ;
+        R_M5B_SER_IN_ER             : in  STD_LOGIC                    ;
+        R_SER_RX_ER                 : in  STD_LOGIC                    ;
+        R_SCU_Invalid_n             : in  STD_LOGIC                    ;
+        --Left_Recivers_Error
+        L_4MB_SER_IN_ER             : in  STD_LOGIC                    ;
+        L_EEF_SER_IN_ER             : in  STD_LOGIC                    ;
+        L_M5B_SER_IN_ER             : in  STD_LOGIC                    ;
+        L_SER_RX_ER                 : in  STD_LOGIC                    ;
+        L_SCU_INVALIDn              : in  STD_LOGIC                    ;
+        --SSRs_Left
+        A_24V_L_EN                  : out STD_LOGIC                    ;
+        B_24V_L_EN                  : out STD_LOGIC                    ;
+        A_35V_L_EN                  : out STD_LOGIC                    ;
+        B_35V_L_EN                  : out STD_LOGIC                    ;
+        --SSRs_Right
+        A_24V_R_EN                  : out STD_LOGIC                    ;
+        B_24V_R_EN                  : out STD_LOGIC                    ;
+        A_35V_R_EN                  : out STD_LOGIC                    ;
+        B_35V_R_EN                  : out STD_LOGIC                    ;
+        BIT_SSR_SW                  : out STD_LOGIC                    ;
+        --FPGA_LEDs
+        LED_1                       : out STD_LOGIC                    ;
+        LED_2                       : out STD_LOGIC                    ;
+        LED_3                       : out STD_LOGIC                    ;
+        LED_4                       : out STD_LOGIC                    ;
+        LED_5                       : out STD_LOGIC                    ;
+        LED_6                       : out STD_LOGIC                    ;
+        LED_7                       : out STD_LOGIC                    ;
+        LED_8                       : out STD_LOGIC                    ;
+        --LEDs_strip_Mux
+        MUX_Control  : out STD_LOGIC_VECTOR(3 downto 0);
+        --Mic.C.B
+        MICCB_GEN_SYNC_FAIL         : in  STD_LOGIC                    ;
+        MICCB_SP_IN_A_F             : in  STD_LOGIC                    ;
+        MICCB_SP_IN_B_F             : in  STD_LOGIC                    ;
+        MICCB_SPARE_IO0             : in  STD_LOGIC                    ;
+        MICCB_SPARE_IO1             : in  STD_LOGIC                    ;
+        MICCB_SPARE_IO2             : in  STD_LOGIC                    ;
+        MICCB_SPARE_IO3             : in  STD_LOGIC                    ;
+        --FPGA Spare out
+        FPGA1                       : out STD_LOGIC                    ;
+        FPGA2                       : out STD_LOGIC                    ;
+        FPGA3                       : out STD_LOGIC                    ;
+        FPGA4                       : out STD_LOGIC                    ;
+        FPGA5                       : out STD_LOGIC                    ;
+        FPGA6                       : out STD_LOGIC                    ;
+        FPGA7                       : out STD_LOGIC                    ;
+        FPGA8                       : out STD_LOGIC                    ;
+        FPGA9                       : out STD_LOGIC                    ;
+        FPGA10                      : out STD_LOGIC                    ;
+        FPGA11                      : out STD_LOGIC                    ;
+        FPGA12                      : out STD_LOGIC                    ;
+        FPGA13                      : out STD_LOGIC                    ;
+        Teensy_FPGA_SP0             : out STD_LOGIC                    ;
+        Teensy_FPGA_SP1             : out STD_LOGIC                    ;
+        Teensy_FPGA_SP2             : out STD_LOGIC                    ;
+        --ADC Voltage 0
+        P35V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+        Spare                       : in  STD_LOGIC_VECTOR(15 downto 0);
+        --ADC Voltage 1
+        P12V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+        P3_3V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);   
+        --ADC Voltage 2
+        P5V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+        P2_5V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+        --ADC Voltage 3
+        P24V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+        P12V_PS_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+        --FPGA Spare
+        SPARE1_DIFF0                : in  STD_LOGIC                    ;
+        SPARE1_DIFF1                : in  STD_LOGIC                    ;
+        SPARE1_DIFF2                : out STD_LOGIC                    ;
+        SPARE1_DIFF3                : out STD_LOGIC                    ;
+        SPARE1_ANALOG_SW_0_SEL_FPGA : out STD_LOGIC                    ;
+        SPARE1_ANALOG_SW_1_SEL_FPGA : out STD_LOGIC                    ;
+        SPARE1_ANALOG_SW_SEL_FPGA   : out STD_LOGIC                    ;
+        SPARE1_IO0_FPGA             : in  STD_LOGIC                    ;
+        SPARE1_IO1_FPGA             : in  STD_LOGIC                    ;
+        SPARE1_IO2_FPGA             : out STD_LOGIC                    ;
+        SPARE1_IO3_FPGA             : out STD_LOGIC                    ;
+        SPARE2_DIFF0                : in  STD_LOGIC                    ;
+        SPARE2_DIFF1                : in  STD_LOGIC                    ;
+        SPARE2_DIFF2                : out STD_LOGIC                    ;
+        SPARE2_DIFF3                : out STD_LOGIC                    ;
+        SPARE2_ANALOG_SW_0_SEL_FPGA : out STD_LOGIC                    ;
+        SPARE2_ANALOG_SW_1_SEL_FPGA : out STD_LOGIC                    ;
+        SPARE2_ANALOG_SW_SEL_FPGA   : out STD_LOGIC                    ;
+        SPARE2_IO0_FPGA             : in  STD_LOGIC                    ;
+        SPARE2_IO1_FPGA             : in  STD_LOGIC                    ;
+        SPARE2_IO2_FPGA             : out STD_LOGIC                    ;
+        SPARE2_IO3_FPGA             : out STD_LOGIC                    ;
+        --FLA PS
+        FPGA_WHEEL_STOP_ELO         : out STD_LOGIC                    ;
+        FPGA24V_DIS                 : out STD_LOGIC                    ;
+        FLA_PWR_DIS                 : out STD_LOGIC                    ;
+        OPEN_ELO_REQUEST            : in  STD_LOGIC                    ;
+        PS_PG_FPGA                  : in  STD_LOGIC                    ;
+        --FPGA FAN 1 Tacho
+        FAN1_TACHO                  : out STD_LOGIC_VECTOR(15 downto 0);
+        FAN_1_READ_NUMBER           : out STD_LOGIC_VECTOR(15 downto 0);
+        --FPGA FAN 1 PWM
+        FAN_1_PWM                   : in  STD_LOGIC_VECTOR(7 downto 0) ;
+        --FPGA FAN 2 Tacho
+        FAN_2_TACHO                 : out STD_LOGIC_VECTOR(15 downto 0);
+        FAN_2_READ_NUMBER           : out STD_LOGIC_VECTOR(15 downto 0);
+        --FPGA FAN 2 PWM  
+        FAN_2_PWM                   : in  STD_LOGIC_VECTOR(7 downto 0) ;
+        --FPGA SYNC DELAY TIME
+        FPGA_SYNC_DELAY_TIME        : out STD_LOGIC_VECTOR(31 downto 0);
+        --FPGA SYNC TIME
+        FPGA_SYNC_TIME              : out STD_LOGIC_VECTOR(31 downto 0);
+        --Fault Registers
+        CS_ERROR                    : out STD_LOGIC                    ;
+        MicCB_ESTOP_OPEN_REQUEST    : in  STD_LOGIC                    ;
+        ESTOP_STATUS_FAIL           : in  STD_LOGIC                    ;
+        SSR_ON_FPGA                 : in  STD_LOGIC                    ;
+        FPGA_DIAG_ACT               : out STD_LOGIC                    ;
+        FPGA_FAULT                  : out STD_LOGIC                    ;
+        RST_WD                      : in  STD_LOGIC                    ;
+        --Sync Timer
+        MicCB_SYNC_CNT              : out STD_LOGIC_VECTOR(31 downto 0)
+    );
+end COMPONENT;
 
 COMPONENT rcb_spi
 	GENERIC (SPI_COM_LEN : INTEGER := 8;
@@ -296,6 +401,28 @@ COMPONENT rcb_spi
 	);
 END COMPONENT;
 
+component ADC_Master
+  generic (
+    input_clk : INTEGER;
+    bus_clk : INTEGER
+  );
+  port (
+    clk : in STD_LOGIC;
+    reset_n : in STD_LOGIC;
+    AIN0 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN1 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN2 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN3 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN4 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN5 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN6 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN7 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    clk_1MHz : out STD_LOGIC;
+    sda : inout STD_LOGIC;
+    scl : inout STD_LOGIC
+  );
+end component;
+
 signal rst_n_syn            :   STD_LOGIC := '1';
 signal counter : integer range 0 to 99 := 0;
 signal clk_1m_internal : STD_LOGIC := '0';
@@ -305,8 +432,265 @@ signal data_mosi_rdy   :   STD_LOGIC;
 signal addr            :   STD_LOGIC_VECTOR(15 DOWNTO 0);
 signal addr_rdy        :   STD_LOGIC;
 signal data_miso_rdy   :   STD_LOGIC;
+signal FAN_TACHO_REG_OUT_1 :   STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal FAN_PWM_REG_OUT_1 :   STD_LOGIC_VECTOR(7 DOWNTO 0);
+signal FAN_TACHO_REG_OUT_2 :   STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal FAN_PWM_REG_OUT_2 :   STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+  signal AIN0     : STD_LOGIC_VECTOR(15 DOWNTO 0);
+  signal AIN1     : STD_LOGIC_VECTOR(15 DOWNTO 0);
+  signal AIN2     : STD_LOGIC_VECTOR(15 DOWNTO 0);
+  signal AIN3     : STD_LOGIC_VECTOR(15 DOWNTO 0);
+  signal AIN4     : STD_LOGIC_VECTOR(15 DOWNTO 0);
+  signal AIN5     : STD_LOGIC_VECTOR(15 DOWNTO 0);
+  signal AIN6     : STD_LOGIC_VECTOR(15 DOWNTO 0);
+  signal AIN7     : STD_LOGIC_VECTOR(15 DOWNTO 0);
+
+
+  signal FPGA_LEDs_OUT        : STD_LOGIC_VECTOR(7 downto 0 );
+  signal R_DIAG_PACK_CNT      : STD_LOGIC_VECTOR(15 downto 0);
+  signal R_DIAG_ERR_CNT       : STD_LOGIC_VECTOR(15 downto 0);
+  signal L_DIAG_PACK_CNT      : STD_LOGIC_VECTOR(15 downto 0);
+  signal L_DIAG_ERR_CNT       : STD_LOGIC_VECTOR(15 downto 0);
+  signal MUX_Control          : STD_LOGIC_VECTOR(3 downto 0);
+  signal P35V_Monitor         : STD_LOGIC_VECTOR(15 downto 0);
+  signal Spare                : STD_LOGIC_VECTOR(15 downto 0);
+  signal P12V_Monitor         : STD_LOGIC_VECTOR(15 downto 0);
+  signal P3_3V_Monitor        : STD_LOGIC_VECTOR(15 downto 0);
+  signal P5V_Monitor          : STD_LOGIC_VECTOR(15 downto 0);
+  signal P2_5V_Monitor        : STD_LOGIC_VECTOR(15 downto 0);
+  signal P24V_Monitor         : STD_LOGIC_VECTOR(15 downto 0);
+  signal P12V_PS_Monitor      : STD_LOGIC_VECTOR(15 downto 0);
+  signal FPGA24V_DIS          : STD_LOGIC;
+  signal FAN_1_READ_NUMBER    : STD_LOGIC_VECTOR(15 downto 0);
+  signal FAN_1_PWM            : STD_LOGIC_VECTOR(7 downto 0);
+  signal FAN_2_TACHO          : STD_LOGIC_VECTOR(15 downto 0);
+  signal FAN_2_READ_NUMBER    : STD_LOGIC_VECTOR(15 downto 0);
+  signal FAN_2_PWM            : STD_LOGIC_VECTOR(7 downto 0);
+  signal FPGA_SYNC_DELAY_TIME : STD_LOGIC_VECTOR(31 downto 0);
+  signal FPGA_SYNC_TIME       : STD_LOGIC_VECTOR(31 downto 0);
+  signal CS_ERROR             : STD_LOGIC;
+  signal MicCB_SYNC_CNT       : STD_LOGIC_VECTOR(31 downto 0);
 
 begin
+
+
+
+
+  ADC_Master_inst : entity ADC_master
+  generic map (
+    input_clk => 100000000,
+    bus_clk => 400000
+  )
+  port map (
+    clk => CLK_100M,
+    reset_n => rst_n_syn,
+    AIN0 => AIN0,
+    AIN1 => AIN1,
+    AIN2 => AIN2,
+    AIN3 => AIN3,
+    AIN4 => AIN4,
+    AIN5 => AIN5,
+    AIN6 => AIN6,
+    AIN7 => AIN7,
+    clk_1MHz => open,
+    sda => SDA_ADC,
+    scl => SCL_ADC
+  );
+
+LED_1 <= FPGA_LEDs_OUT(0);
+LED_2 <= FPGA_LEDs_OUT(1);
+LED_3 <= FPGA_LEDs_OUT(2);
+LED_4 <= FPGA_LEDs_OUT(3);
+LED_5  <= FPGA_LEDs_OUT(4);
+LED_6 <= FPGA_LEDs_OUT(5);
+LED_7 <= FPGA_LEDs_OUT(6);
+LED_8 <= FPGA_LEDs_OUT(7);
+
+    i_rcb_registers : entity rcb_registers
+        port map (
+            clk_100m                    => clk_100m                   ,
+            rst_n_syn                   => rst_n_syn                  ,
+            clk_1m                      => clk_1m_internal            ,
+            data_miso                   => data_miso                  ,
+            data_mosi                   => data_mosi                  ,
+            data_mosi_rdy               => data_mosi_rdy              ,
+            addr                        => addr                       ,
+            addr_rdy                    => addr_rdy                   ,
+            data_miso_rdy               => data_miso_rdy              ,
+            FAN_TACHO_REG_OUT_1         => FAN_TACHO_REG_OUT_1        ,
+            FAN_PWM_REG_OUT_1           => FAN_PWM_REG_OUT_1          ,
+            FAN_TACHO_REG_OUT_2         => FAN_TACHO_REG_OUT_2        ,
+            FAN_PWM_REG_OUT_2           => FAN_PWM_REG_OUT_2          ,
+            AIN0                        => AIN0                       ,
+            AIN1                        => AIN1                       ,
+            AIN2                        => AIN2                       ,
+            AIN3                        => AIN3                       ,
+            AIN4                        => AIN4                       ,
+            AIN5                        => AIN5                       ,
+            AIN6                        => AIN6                       ,
+            AIN7                        => AIN7                       ,
+            FPGA_LEDs_OUT               => FPGA_LEDs_OUT              ,
+            R_DIAG_PACK_CNT             => R_DIAG_PACK_CNT            ,
+            R_DIAG_ERR_CNT              => R_DIAG_ERR_CNT             ,
+            L_DIAG_PACK_CNT             => L_DIAG_PACK_CNT            ,
+            L_DIAG_ERR_CNT              => L_DIAG_ERR_CNT             ,
+            L_NO_switch_TOOL_EX_FPGA    => L_NO_switch_TOOL_EX_FPGA   ,
+            L_NC_switch_TOOL_EX_FPGA    => L_NC_switch_TOOL_EX_FPGA   ,
+            R_NO_switch_TOOL_EX_FPGA    => R_NO_switch_TOOL_EX_FPGA   ,
+            R_NC_switch_TOOL_EX_FPGA    => R_NC_switch_TOOL_EX_FPGA   ,
+            L_POS_SENS_0_OUT1           => L_POS_SENS_0_OUT1_BUFF     ,
+            L_POS_SENS_0_OUT2           => L_POS_SENS_0_OUT2_BUFF     ,
+            L_POS_SENS_1_OUT1           => L_POS_SENS_1_OUT1_BUFF     ,
+            L_POS_SENS_1_OUT2           => L_POS_SENS_1_OUT2_BUFF     ,
+            L_POS_SENS_OUT1             => L_POS_SENS_OUT1_BUFF       ,
+            L_POS_SENS_OUT2             => L_POS_SENS_OUT2_BUFF       ,
+            L_WHEEL_SENS_A1_OUT1        => L_WHEEL_SENS_A1_OUT1_BUFF  ,
+            L_WHEEL_SENS_A1_OUT2        => L_WHEEL_SENS_A1_OUT2_BUFF  ,
+            L_WHEEL_SENS_A2_OUT1        => L_WHEEL_SENS_A2_OUT1_BUFF  ,
+            L_WHEEL_SENS_A2_OUT2        => L_WHEEL_SENS_A2_OUT2_BUFF  ,
+            L_WHEEL_SENS_SPARE_OUT1     => L_WHEEL_SENS_SPARE_OUT1_BUFF,
+            L_WHEEL_SENS_SPARE_OUT2     => L_WHEEL_SENS_SPARE_OUT2_BUFF,
+            R_POS_SENS_0_OUT1           => R_POS_SENS_0_OUT1_BUFF     ,
+            R_POS_SENS_0_OUT2           => R_POS_SENS_0_OUT2_BUFF     ,
+            R_POS_SENS_1_OUT1           => R_POS_SENS_1_OUT1_BUFF     ,
+            R_POS_SENS_1_OUT2           => R_POS_SENS_1_OUT2_BUFF     ,
+            R_POS_SENS_OUT1             => R_POS_SENS_OUT1_BUFF       ,
+            R_POS_SENS_OUT2             => R_POS_SENS_OUT2_BUFF       ,
+            R_WHEEL_SENS_A1_OUT1        => R_WHEEL_SENS_A1_OUT1_BUFF  ,
+            R_WHEEL_SENS_A1_OUT2        => R_WHEEL_SENS_A1_OUT2_BUFF  ,
+            R_WHEEL_SENS_A2_OUT1        => R_WHEEL_SENS_A2_OUT1_BUFF  ,
+            R_WHEEL_SENS_A2_OUT2        => R_WHEEL_SENS_A2_OUT2_BUFF  ,
+            R_WHEEL_SENS_SPARE_OUT1     => R_WHEEL_SENS_SPARE_OUT1_BUFF,
+            R_WHEEL_SENS_SPARE_OUT2     => R_WHEEL_SENS_SPARE_OUT2_BUFF,
+            R_4MB_SER_IN_ER             => R_4MB_SER_IN_ER            ,
+            R_EEF_SER_IN_ER             => R_EEF_SER_IN_ER            ,
+            R_M5B_SER_IN_ER             => R_M5B_SER_IN_ER            ,
+            R_SER_RX_ER                 => R_SER_RX_ER                ,
+            R_SCU_Invalid_n             => R_SCU_Invalid_n            ,
+            L_4MB_SER_IN_ER             => L_4MB_SER_IN_ER            ,
+            L_EEF_SER_IN_ER             => L_EEF_SER_IN_ER            ,
+            L_M5B_SER_IN_ER             => L_M5B_SER_IN_ER            ,
+            L_SER_RX_ER                 => L_SER_RX_ER                ,
+            L_SCU_INVALIDn              => L_SCU_INVALIDn             ,
+            A_24V_L_EN                  => A_24V_L_EN                 ,
+            B_24V_L_EN                  => B_24V_L_EN                 ,
+            A_35V_L_EN                  => A_35V_L_EN                 ,
+            B_35V_L_EN                  => B_35V_L_EN                 ,
+            A_24V_R_EN                  => A_24V_R_EN                 ,
+            B_24V_R_EN                  => B_24V_R_EN                 ,
+            A_35V_R_EN                  => A_35V_R_EN                 ,
+            B_35V_R_EN                  => B_35V_R_EN                 ,
+            BIT_SSR_SW                  => BIT_SSR_SW                 ,
+            LED_1                       => LED_1                      ,
+            LED_2                       => LED_2                      ,
+            LED_3                       => LED_3                      ,
+            LED_4                       => LED_4                      ,
+            LED_5                       => LED_5                      ,
+            LED_6                       => LED_6                      ,
+            LED_7                       => LED_7                      ,
+            LED_8                       => LED_8                      ,
+            MUX_Control                 => MUX_Control                ,
+            MICCB_GEN_SYNC_FAIL         => MICCB_GEN_SYNC_FAIL        ,
+            MICCB_SP_IN_A_F             => MICCB_SP_IN_A_F            ,
+            MICCB_SP_IN_B_F             => MICCB_SP_IN_B_F            ,
+            MICCB_SPARE_IO0             => MICCB_SPARE_IO0            ,
+            MICCB_SPARE_IO1             => MICCB_SPARE_IO1            ,
+            MICCB_SPARE_IO2             => MICCB_SPARE_IO2            ,
+            MICCB_SPARE_IO3             => MICCB_SPARE_IO3            ,
+            FPGA1                       => FPGA1                      ,
+            FPGA2                       => FPGA2                      ,
+            FPGA3                       => FPGA3                      ,
+            FPGA4                       => FPGA4                      ,
+            FPGA5                       => FPGA5                      ,
+            FPGA6                       => FPGA6                      ,
+            FPGA7                       => FPGA7                      ,
+            FPGA8                       => FPGA8                      ,
+            FPGA9                       => FPGA9                      ,
+            FPGA10                      => FPGA10                     ,
+            FPGA11                      => FPGA11                     ,
+            FPGA12                      => FPGA12                     ,
+            FPGA13                      => FPGA13                     ,
+            Teensy_FPGA_SP0             => Teensy_FPGA_SP0            ,
+            Teensy_FPGA_SP1             => Teensy_FPGA_SP1            ,
+            Teensy_FPGA_SP2             => Teensy_FPGA_SP2            ,
+            P35V_Monitor                => P35V_Monitor               ,
+            Spare                       => Spare                      ,
+            P12V_Monitor                => P12V_Monitor               ,
+            P3_3V_Monitor               => P3_3V_Monitor              ,
+            P5V_Monitor                 => P5V_Monitor                ,
+            P2_5V_Monitor               => P2_5V_Monitor              ,
+            P24V_Monitor                => P24V_Monitor               ,
+            P12V_PS_Monitor             => P12V_PS_Monitor            ,
+            SPARE1_DIFF0                => SPARE1_DIFF0               ,
+            SPARE1_DIFF1                => SPARE1_DIFF1               ,
+            SPARE1_DIFF2                => SPARE1_DIFF2               ,
+            SPARE1_DIFF3                => SPARE1_DIFF3               ,
+            SPARE1_ANALOG_SW_0_SEL_FPGA => SPARE1_ANALOG_SW_0_SEL_FPGA,
+            SPARE1_ANALOG_SW_1_SEL_FPGA => SPARE1_ANALOG_SW_1_SEL_FPGA,
+            SPARE1_ANALOG_SW_SEL_FPGA   => SPARE1_ANALOG_SW_SEL_FPGA  ,
+            SPARE1_IO0_FPGA             => SPARE1_IO0_FPGA            ,
+            SPARE1_IO1_FPGA             => SPARE1_IO1_FPGA            ,
+            SPARE1_IO2_FPGA             => SPARE1_IO2_FPGA            ,
+            SPARE1_IO3_FPGA             => SPARE1_IO3_FPGA            ,
+            SPARE2_DIFF0                => SPARE2_DIFF0               ,
+            SPARE2_DIFF1                => SPARE2_DIFF1               ,
+            SPARE2_DIFF2                => SPARE2_DIFF2               ,
+            SPARE2_DIFF3                => SPARE2_DIFF3               ,
+            SPARE2_ANALOG_SW_0_SEL_FPGA => SPARE2_ANALOG_SW_0_SEL_FPGA,
+            SPARE2_ANALOG_SW_1_SEL_FPGA => SPARE2_ANALOG_SW_1_SEL_FPGA,
+            SPARE2_ANALOG_SW_SEL_FPGA   => SPARE2_ANALOG_SW_SEL_FPGA  ,
+            SPARE2_IO0_FPGA             => SPARE2_IO0_FPGA            ,
+            SPARE2_IO1_FPGA             => SPARE2_IO1_FPGA            ,
+            SPARE2_IO2_FPGA             => SPARE2_IO2_FPGA            ,
+            SPARE2_IO3_FPGA             => SPARE2_IO3_FPGA            ,
+            FPGA_WHEEL_STOP_ELO         => FPGA_WHEEL_STOP_ELO        ,
+            FPGA24V_DIS                 => FPGA24V_DIS                ,
+            FLA_PWR_DIS                 => FLA_PWR_DIS                ,
+            OPEN_ELO_REQUEST            => OPEN_ELO_REQUEST           ,
+            PS_PG_FPGA                  => PS_PG_FPGA                 ,
+            FAN1_TACHO                  => FAN1_TACHO_BUFF            ,
+            FAN_1_READ_NUMBER           => FAN_1_READ_NUMBER          ,
+            FAN_1_PWM                   => FAN_1_PWM                  ,
+            FAN_2_TACHO                 => FAN_2_TACHO                ,
+            FAN_2_READ_NUMBER           => FAN_2_READ_NUMBER          ,
+            FAN_2_PWM                   => FAN_2_PWM                  ,
+            FPGA_SYNC_DELAY_TIME        => FPGA_SYNC_DELAY_TIME       ,
+            FPGA_SYNC_TIME              => FPGA_SYNC_TIME             ,
+            CS_ERROR                    => CS_ERROR                   ,
+            MicCB_ESTOP_OPEN_REQUEST    => MicCB_ESTOP_OPEN_REQUEST   ,
+            ESTOP_STATUS_FAIL           => ESTOP_STATUS_FAIL          ,
+            SSR_ON_FPGA                 => SSR_ON_FPGA                ,
+            FPGA_DIAG_ACT               => FPGA_DIAG_ACT              ,
+            FPGA_FAULT                  => FPGA_FAULT                 ,
+            RST_WD                      => RST_WD                     ,
+            MicCB_SYNC_CNT              => MicCB_SYNC_CNT             
+        );
+
+
+
+
+        
+    FAN1_inst : entity FAN
+    port map (
+      RST_N => rst_n_syn,
+      CLK => CLK_100M,
+      TACHO_IN => FAN1_TACHO_BUFF,
+      PWM_OUT => FAN2_PWM,
+      FAN_TACHO_REG => FAN_TACHO_REG_OUT_1,
+      FAN_PWM_REG => FAN_PWM_REG_OUT_1
+    );
+  
+    FAN2_inst : entity FAN
+  port map (
+    RST_N => rst_n_syn,
+    CLK => CLK_100M,
+    TACHO_IN => FAN2_TACHO_BUFF,
+    PWM_OUT => FAN2_PWM,
+    FAN_TACHO_REG => FAN_TACHO_REG_OUT_2,
+    FAN_PWM_REG => FAN_PWM_REG_OUT_2
+  );
+
 
 	rcb_spi_inst : rcb_spi
     PORT MAP (
@@ -326,86 +710,8 @@ begin
         data_miso_rdy => data_miso_rdy
     );
 	 
-	rcb_registers_inst : rcb_registers
-    PORT MAP (
-	 
-		clk_100m		  => CLK_100M,
-		rst_n_syn	  => rst_n_syn,
-		clk_1m		  => clk_1m_internal,
-		data_miso	  => data_miso,
-		data_mosi	  => data_mosi,
-		data_mosi_rdy => data_mosi_rdy,
-		addr		     => addr,
-		addr_rdy		  => addr_rdy,
-		data_miso_rdy => data_miso_rdy,
-		
-		pow		:	 IN STD_LOGIC;
-		
-		fpga_buttons		:	 IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-		
-		drape_sw_state		:	 IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-		
-		drape_em_state		:	 IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-		
-		drape_sensor		:	 IN STD_LOGIC_VECTOR(11 DOWNTO 0);
-		
-		right_drape_em_open		:	 OUT STD_LOGIC;
-		
-		left_drape_em_open		:	 OUT STD_LOGIC;
-		
-		wheel_home_sw		:	 OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-		wheel_reverse_sw		:	 OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-		wheel_forward_sw		:	 OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-		wheel_driver_di		:	 OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-		wheel_driver_do		:	 IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-		wheel_driver_rst		:	 OUT STD_LOGIC;
-		wheel_driver_abrt		:	 OUT STD_LOGIC;
-		wheel_sensor		:	 IN STD_LOGIC_VECTOR(23 DOWNTO 0);
-		
-		fpga_buttons_led_reg		:	 OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-		diag_activation		:	 OUT STD_LOGIC;
-		estop_open		:	 OUT STD_LOGIC;
-		estop_status		:	 IN STD_LOGIC;
-		diagnostic_led		=> LED_8 & LED_7 & LED_6 & LED_5 & LED_4 & LED_3 &	LED_2 & LED_1,
-		sp2_single_ended_2_3		=> open,
-		sp2_single_ended_1_0	=> "00",
-		sp2_analog_switch		=> open,
-		sp2_diff_pair_2_3		=> open,
-		sp2_diff_pair_1_0		=> "00",
-		sp1_single_ended_2_3		=> open,
-		sp1_single_ended_1_0	=> "00",
-		sp1_analog_switch		=> open,
-		sp1_diff_pair_2_3		=> open,
-		sp1_diff_pair_1_0		=> "00",
-		right_spare_diff_2	=> open,
-		right_spare_diff_1	=> '0',	
-		left_spare_diff_2		=> open,
-		left_spare_diff_1		=> '0',
-		
-		wheel_rod_sensor		:	 IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-		
-		fan1_tacho		=> FAN1_TACHO_BUFF,
-		fan1_pwm		=> FAN1_PWM,
-		fan2_tacho	=> FAN2_TACHO_BUFF,
-		fan2_pwm		=> FAN2_PWM
-    );
 
-    -- Clock division process
-    process(CLK_100M, rst_n_syn)
-    begin
-        if rst_n_syn = '0' then
-            counter <= 0;
-            clk_1m_internal <= '0';
-        elsif rising_edge(CLK_100M) then
-            if counter = 99 then
-                counter <= 0;
-                clk_1m_internal <= not clk_1m_internal;
-            else
-                counter <= counter + 1;
-            end if;
-        end if;
-    end process;
-	 
+
 	 
 	ESTOP_DELAY <= 'Z';
 	LED_1 <= '1';

@@ -376,15 +376,15 @@ set_location_assignment PIN_D14 -to Teensy_FPGA_SP0
 set_location_assignment PIN_C14 -to Teensy_FPGA_SP1
 set_location_assignment PIN_D15 -to Teensy_FPGA_SP2
 set_location_assignment PIN_F1 -to TEENSY_LEDS_STRIP_DO
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VHDL_FILE i2c_master.vhd
+set_global_assignment -name VHDL_FILE ADC_Master.vhd
 set_global_assignment -name VHDL_FILE rcb_registers.vhd
 set_global_assignment -name VHDL_FILE Fan.vhd
-set_global_assignment -name VERILOG_FILE source/rcb_registers_new.v
 set_global_assignment -name VHDL_FILE RCB_TOP.vhd
 set_global_assignment -name VERILOG_FILE source/estop.v
 set_global_assignment -name VERILOG_FILE source/rcb_top.v
 set_global_assignment -name VERILOG_FILE source/rcb_spi.v
-set_global_assignment -name VERILOG_FILE source/rcb_registers.v
 set_global_assignment -name BSF_FILE ../../../omri/rcb_top.bsf
 set_global_assignment -name QIP_FILE PLL1.qip
 set_global_assignment -name QIP_FILE pll2.qip
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

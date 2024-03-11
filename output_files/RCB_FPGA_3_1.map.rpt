@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RCB_FPGA_3_1
-Wed Feb 28 14:37:31 2024
+Mon Mar 11 11:40:04 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -10,21 +10,8 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |RCB_TOP|rcb_spi:rcb_spi_inst|spi_mode
-  9. State Machine - |RCB_TOP|rcb_spi:rcb_spi_inst|state
- 10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: rcb_spi:rcb_spi_inst
- 15. Port Connectivity Checks: "rcb_spi:rcb_spi_inst"
- 16. Post-Synthesis Netlist Statistics for Top Partition
- 17. Elapsed Time Per Partition
- 18. Analysis & Synthesis Messages
- 19. Analysis & Synthesis Suppressed Messages
+  5. Analysis & Synthesis Messages
+  6. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -51,22 +38,22 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Feb 28 14:37:31 2024          ;
+; Analysis & Synthesis Status        ; Failed - Mon Mar 11 11:40:04 2024              ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; RCB_FPGA_3_1                                   ;
 ; Top-level Entity Name              ; RCB_TOP                                        ;
 ; Family                             ; MAX 10                                         ;
-; Total logic elements               ; 50                                             ;
-;     Total combinational functions  ; 39                                             ;
-;     Dedicated logic registers      ; 34                                             ;
-; Total registers                    ; 34                                             ;
-; Total pins                         ; 156                                            ;
-; Total virtual pins                 ; 0                                              ;
-; Total memory bits                  ; 0                                              ;
-; Embedded Multiplier 9-bit elements ; 0                                              ;
-; Total PLLs                         ; 0                                              ;
-; UFM blocks                         ; 0                                              ;
-; ADC blocks                         ; 0                                              ;
+; Total logic elements               ; N/A until Partition Merge                      ;
+;     Total combinational functions  ; N/A until Partition Merge                      ;
+;     Dedicated logic registers      ; N/A until Partition Merge                      ;
+; Total registers                    ; N/A until Partition Merge                      ;
+; Total pins                         ; N/A until Partition Merge                      ;
+; Total virtual pins                 ; N/A until Partition Merge                      ;
+; Total memory bits                  ; N/A until Partition Merge                      ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                      ;
+; Total PLLs                         ; N/A until Partition Merge                      ;
+; UFM blocks                         ; N/A until Partition Merge                      ;
+; ADC blocks                         ; N/A until Partition Merge                      ;
 +------------------------------------+------------------------------------------------+
 
 
@@ -165,261 +152,11 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 10          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 10          ;
+; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-10        ;   0.0%      ;
 +----------------------------+-------------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                               ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                           ; Library ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------+---------+
-; RCB_TOP.vhd                      ; yes             ; User VHDL File               ; G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd             ;         ;
-; source/rcb_spi.v                 ; yes             ; User Verilog HDL File        ; G:/My Drive/FPGA/git/RCB_Rev_B/source/rcb_spi.v        ;         ;
-; source/rcb_parameters.v          ; yes             ; Auto-Found Verilog HDL File  ; G:/My Drive/FPGA/git/RCB_Rev_B/source/rcb_parameters.v ;         ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------+---------+
-
-
-+--------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                  ;
-+---------------------------------------------+----------------+
-; Resource                                    ; Usage          ;
-+---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 50             ;
-;                                             ;                ;
-; Total combinational functions               ; 39             ;
-; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 19             ;
-;     -- 3 input functions                    ; 7              ;
-;     -- <=2 input functions                  ; 13             ;
-;                                             ;                ;
-; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 34             ;
-;     -- arithmetic mode                      ; 5              ;
-;                                             ;                ;
-; Total registers                             ; 34             ;
-;     -- Dedicated logic registers            ; 34             ;
-;     -- I/O registers                        ; 0              ;
-;                                             ;                ;
-; I/O pins                                    ; 156            ;
-;                                             ;                ;
-; Embedded Multiplier 9-bit elements          ; 0              ;
-;                                             ;                ;
-; Maximum fan-out node                        ; CLK_100M~input ;
-; Maximum fan-out                             ; 34             ;
-; Total fan-out                               ; 379            ;
-; Average fan-out                             ; 0.98           ;
-+---------------------------------------------+----------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                          ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name           ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------+-------------+--------------+
-; |RCB_TOP                   ; 39 (0)              ; 34 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 156  ; 0            ; 0          ; |RCB_TOP                      ; RCB_TOP     ; work         ;
-;    |rcb_spi:rcb_spi_inst|  ; 39 (39)             ; 34 (34)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_spi:rcb_spi_inst ; rcb_spi     ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------+-------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-Encoding Type:  One-Hot
-+--------------------------------------------------------------------------------------+
-; State Machine - |RCB_TOP|rcb_spi:rcb_spi_inst|spi_mode                               ;
-+---------------------+--------------------+---------------------+---------------------+
-; Name                ; spi_mode.READ_MODE ; spi_mode.UNDEF_MODE ; spi_mode.WRITE_MODE ;
-+---------------------+--------------------+---------------------+---------------------+
-; spi_mode.UNDEF_MODE ; 0                  ; 0                   ; 0                   ;
-; spi_mode.READ_MODE  ; 1                  ; 1                   ; 0                   ;
-; spi_mode.WRITE_MODE ; 0                  ; 1                   ; 1                   ;
-+---------------------+--------------------+---------------------+---------------------+
-
-
-Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------------------+
-; State Machine - |RCB_TOP|rcb_spi:rcb_spi_inst|state                                       ;
-+-----------------+-----------------+------------+-----------+------------+-----------------+
-; Name            ; state.MOSI_DATA ; state.ADDR ; state.CMD ; state.IDLE ; state.MISO_DATA ;
-+-----------------+-----------------+------------+-----------+------------+-----------------+
-; state.IDLE      ; 0               ; 0          ; 0         ; 0          ; 0               ;
-; state.CMD       ; 0               ; 0          ; 1         ; 1          ; 0               ;
-; state.ADDR      ; 0               ; 1          ; 0         ; 1          ; 0               ;
-; state.MOSI_DATA ; 1               ; 0          ; 0         ; 1          ; 0               ;
-; state.MISO_DATA ; 0               ; 0          ; 0         ; 1          ; 1               ;
-+-----------------+-----------------+------------+-----------+------------+-----------------+
-
-
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; rcb_spi:rcb_spi_inst|miso_shift[0..31] ; Stuck at GND due to stuck port data_in ;
-; rcb_spi:rcb_spi_inst|state~9           ; Lost fanout                            ;
-; rcb_spi:rcb_spi_inst|state~10          ; Lost fanout                            ;
-; Total Number of Removed Registers = 34 ;                                        ;
-+----------------------------------------+----------------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                ;
-+------------------------------------+---------------------------+---------------------------------------------------------------------------+
-; Register name                      ; Reason for Removal        ; Registers Removed due to This Register                                    ;
-+------------------------------------+---------------------------+---------------------------------------------------------------------------+
-; rcb_spi:rcb_spi_inst|miso_shift[0] ; Stuck at GND              ; rcb_spi:rcb_spi_inst|miso_shift[1], rcb_spi:rcb_spi_inst|miso_shift[2],   ;
-;                                    ; due to stuck port data_in ; rcb_spi:rcb_spi_inst|miso_shift[3], rcb_spi:rcb_spi_inst|miso_shift[4],   ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[5], rcb_spi:rcb_spi_inst|miso_shift[6],   ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[7], rcb_spi:rcb_spi_inst|miso_shift[8],   ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[9], rcb_spi:rcb_spi_inst|miso_shift[10],  ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[11], rcb_spi:rcb_spi_inst|miso_shift[12], ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[13], rcb_spi:rcb_spi_inst|miso_shift[14], ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[15], rcb_spi:rcb_spi_inst|miso_shift[16], ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[17], rcb_spi:rcb_spi_inst|miso_shift[18], ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[19], rcb_spi:rcb_spi_inst|miso_shift[20], ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[21], rcb_spi:rcb_spi_inst|miso_shift[22], ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[23], rcb_spi:rcb_spi_inst|miso_shift[24], ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[25], rcb_spi:rcb_spi_inst|miso_shift[26], ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[27], rcb_spi:rcb_spi_inst|miso_shift[28], ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[29], rcb_spi:rcb_spi_inst|miso_shift[30], ;
-;                                    ;                           ; rcb_spi:rcb_spi_inst|miso_shift[31]                                       ;
-+------------------------------------+---------------------------+---------------------------------------------------------------------------+
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 34    ;
-; Number of registers using Synchronous Clear  ; 6     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 26    ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
-; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|data_cnt[5] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |RCB_TOP|rcb_spi:rcb_spi_inst|next_state  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
-
-
-+----------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: rcb_spi:rcb_spi_inst                ;
-+-----------------------------+----------------------------------+-----------------+
-; Parameter Name              ; Value                            ; Type            ;
-+-----------------------------+----------------------------------+-----------------+
-; FPGA_MAJOR_VER              ; 00000011                         ; Unsigned Binary ;
-; FPGA_REV                    ; 00000001                         ; Unsigned Binary ;
-; FPGA_REV_YEAR               ; 00010111                         ; Unsigned Binary ;
-; FPGA_REV_MONTH              ; 00000011                         ; Unsigned Binary ;
-; FPGA_REV_DAY                ; 00000111                         ; Unsigned Binary ;
-; FPGA_REV_HOUR               ; 00001000                         ; Unsigned Binary ;
-; SPI_COM_LEN                 ; 8                                ; Signed Integer  ;
-; SPI_ADDR_LEN                ; 24                               ; Signed Integer  ;
-; SPI_DATA_LEN                ; 56                               ; Signed Integer  ;
-; WRITE_COM                   ; 00001010                         ; Unsigned Binary ;
-; READ_COM                    ; 00001111                         ; Unsigned Binary ;
-; WRITE_MODE                  ; 00                               ; Unsigned Binary ;
-; READ_MODE                   ; 01                               ; Unsigned Binary ;
-; UNDEF_MODE                  ; 11                               ; Unsigned Binary ;
-; ADDR_FPGA_VER               ; 0000000000000000                 ; Unsigned Binary ;
-; ADDR_FPGA_REV_DATA          ; 0000000000000001                 ; Unsigned Binary ;
-; ADDR_FPGA_POW_DIAG          ; 0000000000000010                 ; Unsigned Binary ;
-; ADDR_FPGA_BUTTONS           ; 0000000000000011                 ; Unsigned Binary ;
-; ADDR_FPGA_DRAPE_SW_STATE    ; 0000000000000100                 ; Unsigned Binary ;
-; ADDR_FPGA_DRAPE_EM_STATE    ; 0000000000000101                 ; Unsigned Binary ;
-; ADDR_FPGA_DRAPE_SW_APPROVAL ; 0000000000000110                 ; Unsigned Binary ;
-; ADDR_FPGA_DRAPE_SENSOR      ; 0000000000000111                 ; Unsigned Binary ;
-; ADDR_FPGA_WHEEL_DRIVER_OUT  ; 0000000000001000                 ; Unsigned Binary ;
-; ADDR_FPGA_WHEEL_DRIVER_ELO  ; 0000000000001001                 ; Unsigned Binary ;
-; ADDR_FPGA_WHEEL_DRIVER_IN   ; 0000000000001010                 ; Unsigned Binary ;
-; ADDR_FPGA_WHEEL_DRIVER_ABRT ; 0000000000001011                 ; Unsigned Binary ;
-; ADDR_FPGA_WHEEL_SENSOR      ; 0000000000001100                 ; Unsigned Binary ;
-; ADDR_FPGA_BUTTONS_LED       ; 0000000000001101                 ; Unsigned Binary ;
-; ADDR_FPGA_ESTOP_STATUS      ; 0000000000001110                 ; Unsigned Binary ;
-; ADDR_FPGA_ESTOP_ACTIVATION  ; 0000000000001111                 ; Unsigned Binary ;
-; ADDR_FPGA_ESTOP_DIAGNOSTIC  ; 0000000000010000                 ; Unsigned Binary ;
-; ADDR_FPGA_ESTOP_OPEN        ; 0000000000010001                 ; Unsigned Binary ;
-; ADDR_FPGA_DIAGNOSTIC_LEDS   ; 0000000000010010                 ; Unsigned Binary ;
-; ADDR_FPGA_SPARE_IO          ; 0000000000010011                 ; Unsigned Binary ;
-; ADDR_FPGA_SPARE_4MB         ; 0000000000010100                 ; Unsigned Binary ;
-; ADDR_FPGA_WHEEL_ROD         ; 0000000000010101                 ; Unsigned Binary ;
-; ADDR_FPGA_FAN1_TACHO        ; 0000000000010110                 ; Unsigned Binary ;
-; ADDR_FPGA_FAN1_PWM          ; 0000000000010111                 ; Unsigned Binary ;
-; ADDR_FPGA_FAN2_TACHO        ; 0000000000011000                 ; Unsigned Binary ;
-; ADDR_FPGA_FAN2_PWM          ; 0000000000011001                 ; Unsigned Binary ;
-; NUM_REG                     ; 26                               ; Signed Integer  ;
-; ESTOP_DIAG_ACTIV            ; 00000000000000001010101111001101 ; Unsigned Binary ;
-; ESTOP_ACTIVATION_PULSE      ; 100000                           ; Signed Integer  ;
-; FAN_TACHO_MES_PERIOD        ; 00000000110000110101000000       ; Unsigned Binary ;
-; DEB_DEEP                    ; 3                                ; Signed Integer  ;
-; IDLE                        ; 0                                ; Signed Integer  ;
-; CMD                         ; 1                                ; Signed Integer  ;
-; ADDR                        ; 2                                ; Signed Integer  ;
-; MOSI_DATA                   ; 3                                ; Signed Integer  ;
-; MISO_DATA                   ; 4                                ; Signed Integer  ;
-+-----------------------------+----------------------------------+-----------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "rcb_spi:rcb_spi_inst"                                                                        ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port          ; Type   ; Severity ; Details                                                                             ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
-; rst_n_syn     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; data_mosi     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; data_mosi_rdy ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; addr          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; addr_rdy      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; data_miso_rdy ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Top Partition ;
-+-----------------------+-----------------------------+
-; Type                  ; Count                       ;
-+-----------------------+-----------------------------+
-; boundary_port         ; 156                         ;
-; cycloneiii_ff         ; 34                          ;
-;     ENA               ; 20                          ;
-;     ENA SCLR          ; 6                           ;
-;     plain             ; 8                           ;
-; cycloneiii_io_obuf    ; 2                           ;
-; cycloneiii_lcell_comb ; 41                          ;
-;     arith             ; 5                           ;
-;         2 data inputs ; 5                           ;
-;     normal            ; 36                          ;
-;         0 data inputs ; 2                           ;
-;         1 data inputs ; 2                           ;
-;         2 data inputs ; 6                           ;
-;         3 data inputs ; 7                           ;
-;         4 data inputs ; 19                          ;
-;                       ;                             ;
-; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 2.41                        ;
-+-----------------------+-----------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
 
 
 +-------------------------------+
@@ -428,10 +165,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Wed Feb 28 14:37:22 2024
+    Info: Processing started: Mon Mar 11 11:39:55 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RCB_FPGA -c RCB_FPGA_3_1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file i2c_master.vhd
+    Info (12022): Found design unit 1: i2c_master-logic File: G:/My Drive/FPGA/git/RCB_Rev_B/i2c_master.vhd Line: 54
+    Info (12023): Found entity 1: i2c_master File: G:/My Drive/FPGA/git/RCB_Rev_B/i2c_master.vhd Line: 36
+Info (12021): Found 2 design units, including 1 entities, in source file adc_master.vhd
+    Info (12022): Found design unit 1: ADC_Master-logic File: G:/My Drive/FPGA/git/RCB_Rev_B/ADC_Master.vhd Line: 25
+    Info (12023): Found entity 1: ADC_Master File: G:/My Drive/FPGA/git/RCB_Rev_B/ADC_Master.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file rcb_registers.vhd
+    Info (12022): Found design unit 1: rcb_registers-Behavioral File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 204
+    Info (12023): Found entity 1: rcb_registers File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file fan.vhd
+    Info (12022): Found design unit 1: FAN-Behavioral File: G:/My Drive/FPGA/git/RCB_Rev_B/Fan.vhd Line: 16
+    Info (12023): Found entity 1: FAN File: G:/My Drive/FPGA/git/RCB_Rev_B/Fan.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file rcb_top.vhd
     Info (12022): Found design unit 1: RCB_TOP-Behavioral File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 166
     Info (12023): Found entity 1: RCB_TOP File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 5
@@ -442,238 +191,35 @@ Info (12021): Found 1 design units, including 1 entities, in source file source/
     Info (12023): Found entity 1: rcb_top_old File: G:/My Drive/FPGA/git/RCB_Rev_B/source/rcb_top.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file source/rcb_spi.v
     Info (12023): Found entity 1: rcb_spi File: G:/My Drive/FPGA/git/RCB_Rev_B/source/rcb_spi.v Line: 2
-Info (12021): Found 1 design units, including 1 entities, in source file source/rcb_registers.v
-    Info (12023): Found entity 1: rcb_registers File: G:/My Drive/FPGA/git/RCB_Rev_B/source/rcb_registers.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file pll1.v
     Info (12023): Found entity 1: PLL1 File: G:/My Drive/FPGA/git/RCB_Rev_B/PLL1.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file pll2.v
     Info (12023): Found entity 1: pll2 File: G:/My Drive/FPGA/git/RCB_Rev_B/pll2.v Line: 40
-Info (12127): Elaborating entity "RCB_TOP" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(8): used implicit default value for signal "A_24V_L_EN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 8
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(9): used implicit default value for signal "B_24V_L_EN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 9
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(10): used implicit default value for signal "A_24V_R_EN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 10
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(11): used implicit default value for signal "B_24V_R_EN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 11
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(12): used implicit default value for signal "A_35V_L_EN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 12
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(13): used implicit default value for signal "B_35V_L_EN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 13
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(14): used implicit default value for signal "A_35V_R_EN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 14
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(15): used implicit default value for signal "B_35V_R_EN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 15
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(16): used implicit default value for signal "BIT_SSR_SW" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 16
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(25): used implicit default value for signal "FAN1_PWM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 25
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(27): used implicit default value for signal "FAN2_PWM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 27
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(30): used implicit default value for signal "FPGA4V_DIS" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 30
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(31): used implicit default value for signal "FPGA_DIAG_ACT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 31
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(32): used implicit default value for signal "FPGA_ESTOP_REQ" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 32
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(33): used implicit default value for signal "FPGA_FAULT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 33
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(34): used implicit default value for signal "FPGA_INT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 34
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(36): used implicit default value for signal "FPGA_L_ROBOT_TX" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 36
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(37): used implicit default value for signal "FPGA_L_SP_TX" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 37
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(39): used implicit default value for signal "FPGA_R_ROBOT_TX" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 39
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(40): used implicit default value for signal "FPGA_R_SP_TX" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 40
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(41): used implicit default value for signal "FPGA_WHEEL_STOP_ELO" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 41
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(42): used implicit default value for signal "FPGA1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 42
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(43): used implicit default value for signal "FPGA10" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 43
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(44): used implicit default value for signal "FPGA11" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 44
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(45): used implicit default value for signal "FPGA12" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 45
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(46): used implicit default value for signal "FPGA13" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 46
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(47): used implicit default value for signal "FPGA2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 47
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(48): used implicit default value for signal "FPGA3" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 48
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(49): used implicit default value for signal "FPGA4" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 49
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(50): used implicit default value for signal "FPGA5" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 50
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(51): used implicit default value for signal "FPGA6" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 51
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(52): used implicit default value for signal "FPGA7" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 52
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(53): used implicit default value for signal "FPGA8" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 53
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(54): used implicit default value for signal "FPGA9" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 54
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(55): used implicit default value for signal "L_TOOL_EX_LED_DIN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 55
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(60): used implicit default value for signal "L_LED_DIN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 60
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(83): used implicit default value for signal "LED_4" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 83
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(84): used implicit default value for signal "LED_5" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 84
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(85): used implicit default value for signal "LED_6" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 85
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(86): used implicit default value for signal "LED_7" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 86
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(87): used implicit default value for signal "LED_8" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 87
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(99): used implicit default value for signal "SCL_ADC" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 99
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(100): used implicit default value for signal "SDA_ADC" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 100
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(101): used implicit default value for signal "TEENSY_FPGA_R_RX" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 101
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(103): used implicit default value for signal "TEENSY_FPGA_L_RX" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 103
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(105): used implicit default value for signal "OPEN_ELO_REQUEST" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 105
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(107): used implicit default value for signal "R_TOOL_EX_LED_DIN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 107
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(112): used implicit default value for signal "R_LED_DIN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 112
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(133): used implicit default value for signal "ROBOT_ESTOP_LED_DIN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 133
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(134): used implicit default value for signal "S_LED_DIN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 134
-Warning (10540): VHDL Signal Declaration warning at RCB_TOP.vhd(299): used explicit default value for signal "rst_n_syn" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 299
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(301): used implicit default value for signal "data_miso" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 301
-Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(302): object "data_mosi" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 302
-Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(303): object "data_mosi_rdy" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 303
-Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(304): object "addr" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 304
-Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(305): object "addr_rdy" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 305
-Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(306): object "data_miso_rdy" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 306
-Info (12128): Elaborating entity "rcb_spi" for hierarchy "rcb_spi:rcb_spi_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 310
-Info (10264): Verilog HDL Case Statement information at rcb_spi.v(145): all case item expressions in this case statement are onehot File: G:/My Drive/FPGA/git/RCB_Rev_B/source/rcb_spi.v Line: 145
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "A_24V_L_EN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 8
-    Warning (13410): Pin "B_24V_L_EN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 9
-    Warning (13410): Pin "A_24V_R_EN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 10
-    Warning (13410): Pin "B_24V_R_EN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 11
-    Warning (13410): Pin "A_35V_L_EN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 12
-    Warning (13410): Pin "B_35V_L_EN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 13
-    Warning (13410): Pin "A_35V_R_EN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 14
-    Warning (13410): Pin "B_35V_R_EN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 15
-    Warning (13410): Pin "BIT_SSR_SW" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 16
-    Warning (13410): Pin "FAN1_PWM" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 25
-    Warning (13410): Pin "FAN2_PWM" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 27
-    Warning (13410): Pin "FPGA4V_DIS" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 30
-    Warning (13410): Pin "FPGA_DIAG_ACT" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 31
-    Warning (13410): Pin "FPGA_ESTOP_REQ" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 32
-    Warning (13410): Pin "FPGA_FAULT" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 33
-    Warning (13410): Pin "FPGA_INT" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 34
-    Warning (13410): Pin "FPGA_L_ROBOT_TX" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 36
-    Warning (13410): Pin "FPGA_L_SP_TX" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 37
-    Warning (13410): Pin "FPGA_R_ROBOT_TX" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 39
-    Warning (13410): Pin "FPGA_R_SP_TX" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 40
-    Warning (13410): Pin "FPGA_WHEEL_STOP_ELO" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 41
-    Warning (13410): Pin "FPGA1" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 42
-    Warning (13410): Pin "FPGA10" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 43
-    Warning (13410): Pin "FPGA11" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 44
-    Warning (13410): Pin "FPGA12" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 45
-    Warning (13410): Pin "FPGA13" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 46
-    Warning (13410): Pin "FPGA2" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 47
-    Warning (13410): Pin "FPGA3" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 48
-    Warning (13410): Pin "FPGA4" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 49
-    Warning (13410): Pin "FPGA5" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 50
-    Warning (13410): Pin "FPGA6" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 51
-    Warning (13410): Pin "FPGA7" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 52
-    Warning (13410): Pin "FPGA8" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 53
-    Warning (13410): Pin "FPGA9" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 54
-    Warning (13410): Pin "L_TOOL_EX_LED_DIN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 55
-    Warning (13410): Pin "L_LED_DIN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 60
-    Warning (13410): Pin "LED_1" is stuck at VCC File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 80
-    Warning (13410): Pin "LED_2" is stuck at VCC File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 81
-    Warning (13410): Pin "LED_3" is stuck at VCC File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 82
-    Warning (13410): Pin "LED_4" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 83
-    Warning (13410): Pin "LED_5" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 84
-    Warning (13410): Pin "LED_6" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 85
-    Warning (13410): Pin "LED_7" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 86
-    Warning (13410): Pin "LED_8" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 87
-    Warning (13410): Pin "SCL_ADC" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 99
-    Warning (13410): Pin "SDA_ADC" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 100
-    Warning (13410): Pin "TEENSY_FPGA_R_RX" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 101
-    Warning (13410): Pin "TEENSY_FPGA_L_RX" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 103
-    Warning (13410): Pin "OPEN_ELO_REQUEST" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 105
-    Warning (13410): Pin "R_TOOL_EX_LED_DIN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 107
-    Warning (13410): Pin "R_LED_DIN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 112
-    Warning (13410): Pin "ROBOT_ESTOP_LED_DIN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 133
-    Warning (13410): Pin "S_LED_DIN" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 134
-Info (286030): Timing-Driven Synthesis is running
-Info (17049): 2 registers lost all their fanouts during netlist optimizations.
+Error (10482): VHDL error at RCB_TOP.vhd(420): object "FAN_TACHO_REG_OUT_1" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 420
+Error (10482): VHDL error at RCB_TOP.vhd(421): object "FAN_PWM_REG_OUT_1" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 421
+Error (10558): VHDL error at RCB_TOP.vhd(421): cannot associate formal port "FAN_PWM_REG_OUT_1" of mode "out" with an expression File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 421
+Error (10482): VHDL error at RCB_TOP.vhd(422): object "FAN_TACHO_REG_OUT_2" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 422
+Error (10482): VHDL error at RCB_TOP.vhd(423): object "FAN_PWM_REG_OUT_2" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 423
+Error (10558): VHDL error at RCB_TOP.vhd(423): cannot associate formal port "FAN_PWM_REG_OUT_2" of mode "out" with an expression File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 423
+Error (10482): VHDL error at RCB_TOP.vhd(424): object "AIN0" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 424
+Error (10482): VHDL error at RCB_TOP.vhd(425): object "AIN1" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 425
+Error (10482): VHDL error at RCB_TOP.vhd(426): object "AIN2" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 426
+Error (10482): VHDL error at RCB_TOP.vhd(427): object "AIN3" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 427
+Error (10482): VHDL error at RCB_TOP.vhd(428): object "AIN4" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 428
+Error (10482): VHDL error at RCB_TOP.vhd(429): object "AIN5" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 429
+Error (10482): VHDL error at RCB_TOP.vhd(430): object "AIN6" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 430
+Error (10482): VHDL error at RCB_TOP.vhd(431): object "AIN7" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 431
+Error (10482): VHDL error at RCB_TOP.vhd(432): object "FPGA_LEDs_OUT" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 432
+Error (10558): VHDL error at RCB_TOP.vhd(432): cannot associate formal port "FPGA_LEDs_OUT" of mode "out" with an expression File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 432
+Error (10482): VHDL error at RCB_TOP.vhd(433): object "R_DIAG_PACK_CNT" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 433
+Error (10482): VHDL error at RCB_TOP.vhd(434): object "R_DIAG_ERR_CNT" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 434
+Error (10482): VHDL error at RCB_TOP.vhd(435): object "L_DIAG_PACK_CNT" is used but not declared File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 435
 Info (144001): Generated suppressed messages file G:/My Drive/FPGA/git/RCB_Rev_B/output_files/RCB_FPGA_3_1.map.smsg
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 97 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "RST_WD" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 7
-    Warning (15610): No output dependent on input pin "CONFIG_SEL" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 18
-    Warning (15610): No output dependent on input pin "CPU_RESETn" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 19
-    Warning (15610): No output dependent on input pin "ESTOP_OPEN_REQUEST" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 22
-    Warning (15610): No output dependent on input pin "ESTOP_STATUS" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 23
-    Warning (15610): No output dependent on input pin "ESTOP_STATUS_FAIL" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 24
-    Warning (15610): No output dependent on input pin "FAN1_TACHO_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 26
-    Warning (15610): No output dependent on input pin "FAN2_TACHO_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 28
-    Warning (15610): No output dependent on input pin "FLA_PWR_DIS" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 29
-    Warning (15610): No output dependent on input pin "FPGA_L_ROBOT_RX" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 35
-    Warning (15610): No output dependent on input pin "FPGA_R_ROBOT_RX" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 38
-    Warning (15610): No output dependent on input pin "L_4MB_SER_IN_ER" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 56
-    Warning (15610): No output dependent on input pin "L_4MB_SER_IN_SE" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 57
-    Warning (15610): No output dependent on input pin "L_EEF_SER_IN_ER" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 58
-    Warning (15610): No output dependent on input pin "L_EEF_SER_IN_SE" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 59
-    Warning (15610): No output dependent on input pin "L_M5B_SER_IN_ER" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 61
-    Warning (15610): No output dependent on input pin "L_M5B_SER_IN_SE" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 62
-    Warning (15610): No output dependent on input pin "L_NC_switch_TOOL_EX_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 63
-    Warning (15610): No output dependent on input pin "L_NO_switch_TOOL_EX_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 64
-    Warning (15610): No output dependent on input pin "L_POS_SENS_0_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 65
-    Warning (15610): No output dependent on input pin "L_POS_SENS_0_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 66
-    Warning (15610): No output dependent on input pin "L_POS_SENS_1_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 67
-    Warning (15610): No output dependent on input pin "L_POS_SENS_1_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 68
-    Warning (15610): No output dependent on input pin "L_POS_SENS_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 69
-    Warning (15610): No output dependent on input pin "L_POS_SENS_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 70
-    Warning (15610): No output dependent on input pin "L_ROBOT_DIFF_SP2" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 71
-    Warning (15610): No output dependent on input pin "L_SCU_INVALIDn" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 72
-    Warning (15610): No output dependent on input pin "L_SER_RX_ER" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 73
-    Warning (15610): No output dependent on input pin "L_WHEEL_SENS_A1_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 74
-    Warning (15610): No output dependent on input pin "L_WHEEL_SENS_A1_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 75
-    Warning (15610): No output dependent on input pin "L_WHEEL_SENS_A2_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 76
-    Warning (15610): No output dependent on input pin "L_WHEEL_SENS_A2_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 77
-    Warning (15610): No output dependent on input pin "L_WHEEL_SENS_SPARE_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 78
-    Warning (15610): No output dependent on input pin "L_WHEEL_SENS_SPARE_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 79
-    Warning (15610): No output dependent on input pin "MICCB_SP_IN_A_F" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 88
-    Warning (15610): No output dependent on input pin "MICCB_SP_IN_B_F" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 89
-    Warning (15610): No output dependent on input pin "MicCB_ESTOP_OPEN_REQUEST" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 90
-    Warning (15610): No output dependent on input pin "MICCB_GEN_SYNC_FAIL" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 91
-    Warning (15610): No output dependent on input pin "MICCB_GEN_SYNC_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 92
-    Warning (15610): No output dependent on input pin "MICCB_SPARE_IO0" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 93
-    Warning (15610): No output dependent on input pin "MICCB_SPARE_IO1" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 94
-    Warning (15610): No output dependent on input pin "MICCB_SPARE_IO2" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 95
-    Warning (15610): No output dependent on input pin "MICCB_SPARE_IO3" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 96
-    Warning (15610): No output dependent on input pin "TEENSY_FPGA_R_TX" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 102
-    Warning (15610): No output dependent on input pin "TEENSY_FPGA_L_TX" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 104
-    Warning (15610): No output dependent on input pin "PS_PG_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 106
-    Warning (15610): No output dependent on input pin "R_4MB_SER_IN_ER" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 108
-    Warning (15610): No output dependent on input pin "R_4MB_SER_IN_SE" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 109
-    Warning (15610): No output dependent on input pin "R_EEF_SER_IN_ER" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 110
-    Warning (15610): No output dependent on input pin "R_EEF_SER_IN_SE" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 111
-    Warning (15610): No output dependent on input pin "R_M5B_SER_IN_ER" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 113
-    Warning (15610): No output dependent on input pin "R_M5B_SER_IN_SE" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 114
-    Warning (15610): No output dependent on input pin "R_NC_switch_TOOL_EX_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 115
-    Warning (15610): No output dependent on input pin "R_NO_switch_TOOL_EX_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 116
-    Warning (15610): No output dependent on input pin "R_POS_SENS_0_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 117
-    Warning (15610): No output dependent on input pin "R_POS_SENS_0_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 118
-    Warning (15610): No output dependent on input pin "R_POS_SENS_1_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 119
-    Warning (15610): No output dependent on input pin "R_POS_SENS_1_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 120
-    Warning (15610): No output dependent on input pin "R_POS_SENS_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 121
-    Warning (15610): No output dependent on input pin "R_POS_SENS_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 122
-    Warning (15610): No output dependent on input pin "R_ROBOT_DIFF_SP1" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 123
-    Warning (15610): No output dependent on input pin "R_ROBOT_DIFF_SP2" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 124
-    Warning (15610): No output dependent on input pin "R_SCU_Invalid_n" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 125
-    Warning (15610): No output dependent on input pin "R_SER_RX_ER" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 126
-    Warning (15610): No output dependent on input pin "R_WHEEL_SENS_A1_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 127
-    Warning (15610): No output dependent on input pin "R_WHEEL_SENS_A1_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 128
-    Warning (15610): No output dependent on input pin "R_WHEEL_SENS_A2_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 129
-    Warning (15610): No output dependent on input pin "R_WHEEL_SENS_A2_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 130
-    Warning (15610): No output dependent on input pin "R_WHEEL_SENS_SPARE_OUT1_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 131
-    Warning (15610): No output dependent on input pin "R_WHEEL_SENS_SPARE_OUT2_BUFF" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 132
-    Warning (15610): No output dependent on input pin "SPARE1_ANALOG_SW_0_SEL_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 136
-    Warning (15610): No output dependent on input pin "SPARE1_ANALOG_SW_1_SEL_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 137
-    Warning (15610): No output dependent on input pin "SPARE1_ANALOG_SW_SEL_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 138
-    Warning (15610): No output dependent on input pin "SPARE1_DIFF0" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 139
-    Warning (15610): No output dependent on input pin "SPARE1_DIFF1" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 140
-    Warning (15610): No output dependent on input pin "SPARE1_DIFF2" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 141
-    Warning (15610): No output dependent on input pin "SPARE1_DIFF3" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 142
-    Warning (15610): No output dependent on input pin "SPARE1_IO0_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 143
-    Warning (15610): No output dependent on input pin "SPARE1_IO1_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 144
-    Warning (15610): No output dependent on input pin "SPARE1_IO2_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 145
-    Warning (15610): No output dependent on input pin "SPARE1_IO3_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 146
-    Warning (15610): No output dependent on input pin "SPARE2_ANALOG_SW_0_SEL_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 147
-    Warning (15610): No output dependent on input pin "SPARE2_ANALOG_SW_1_SEL_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 148
-    Warning (15610): No output dependent on input pin "SPARE2_ANALOG_SW_SEL_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 149
-    Warning (15610): No output dependent on input pin "SPARE2_DIFF0" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 150
-    Warning (15610): No output dependent on input pin "SPARE2_DIFF1" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 151
-    Warning (15610): No output dependent on input pin "SPARE2_DIFF2" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 152
-    Warning (15610): No output dependent on input pin "SPARE2_DIFF3" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 153
-    Warning (15610): No output dependent on input pin "SPARE2_IO0_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 154
-    Warning (15610): No output dependent on input pin "SPARE2_IO1_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 155
-    Warning (15610): No output dependent on input pin "SPARE2_IO2_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 156
-    Warning (15610): No output dependent on input pin "SPARE2_IO3_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 157
-    Warning (15610): No output dependent on input pin "SSR_ON_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 158
-    Warning (15610): No output dependent on input pin "Teensy_FPGA_SP0" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 159
-    Warning (15610): No output dependent on input pin "Teensy_FPGA_SP1" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 160
-    Warning (15610): No output dependent on input pin "Teensy_FPGA_SP2" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 161
-    Warning (15610): No output dependent on input pin "TEENSY_LEDS_STRIP_DO" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 162
-Info (21057): Implemented 212 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 101 input pins
-    Info (21059): Implemented 55 output pins
-    Info (21061): Implemented 56 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 211 warnings
-    Info: Peak virtual memory: 4867 megabytes
-    Info: Processing ended: Wed Feb 28 14:37:31 2024
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:16
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 19 errors, 2 warnings
+    Error: Peak virtual memory: 4790 megabytes
+    Error: Processing ended: Mon Mar 11 11:40:04 2024
+    Error: Elapsed time: 00:00:09
+    Error: Total CPU time (on all processors): 00:00:16
 
 
 +------------------------------------------+
