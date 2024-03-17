@@ -4,11 +4,127 @@
 			"name" : "Top",
 			"pins" : [
 				{
+					"name" : "A_24V_L_EN",
+					"strict" : false
+				},
+				{
+					"name" : "B_24V_L_EN",
+					"strict" : false
+				},
+				{
+					"name" : "A_24V_R_EN",
+					"strict" : false
+				},
+				{
+					"name" : "B_24V_R_EN",
+					"strict" : false
+				},
+				{
+					"name" : "A_35V_L_EN",
+					"strict" : false
+				},
+				{
+					"name" : "B_35V_L_EN",
+					"strict" : false
+				},
+				{
+					"name" : "A_35V_R_EN",
+					"strict" : false
+				},
+				{
+					"name" : "B_35V_R_EN",
+					"strict" : false
+				},
+				{
+					"name" : "BIT_SSR_SW",
+					"strict" : false
+				},
+				{
+					"name" : "L_TOOL_EX_LED_DIN",
+					"strict" : false
+				},
+				{
+					"name" : "L_LED_DIN",
+					"strict" : false
+				},
+				{
+					"name" : "LED_1",
+					"strict" : false
+				},
+				{
+					"name" : "LED_2",
+					"strict" : false
+				},
+				{
+					"name" : "LED_3",
+					"strict" : false
+				},
+				{
+					"name" : "LED_4",
+					"strict" : false
+				},
+				{
+					"name" : "LED_5",
+					"strict" : false
+				},
+				{
+					"name" : "LED_6",
+					"strict" : false
+				},
+				{
+					"name" : "LED_7",
+					"strict" : false
+				},
+				{
+					"name" : "LED_8",
+					"strict" : false
+				},
+				{
 					"name" : "MISO0",
 					"strict" : false
 				},
 				{
+					"name" : "TEENSY_FPGA_R_RX",
+					"strict" : false
+				},
+				{
+					"name" : "TEENSY_FPGA_L_RX",
+					"strict" : false
+				},
+				{
+					"name" : "R_TOOL_EX_LED_DIN",
+					"strict" : false
+				},
+				{
+					"name" : "R_LED_DIN",
+					"strict" : false
+				},
+				{
+					"name" : "ROBOT_ESTOP_LED_DIN",
+					"strict" : false
+				},
+				{
+					"name" : "S_LED_DIN",
+					"strict" : false
+				},
+				{
+					"name" : "SCL_ADC",
+					"strict" : false
+				},
+				{
+					"name" : "SDA_ADC",
+					"strict" : false
+				},
+				{
 					"name" : "CLK_100M",
+					"strict" : false
+				},
+				{
+					"name" : "TEENSY_LEDS_STRIP_DO",
+					"strict" : false
+				},
+				{
+					"name" : "MOSI0",
 					"strict" : false
 				},
 				{
@@ -20,7 +136,139 @@
 					"strict" : false
 				},
 				{
-					"name" : "MOSI0",
+					"name" : "R_M5B_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "R_4MB_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "R_EEF_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_M5B_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_4MB_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_EEF_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_POS_SENS_0_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_POS_SENS_0_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "L_POS_SENS_0_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_POS_SENS_0_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "L_POS_SENS_1_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_POS_SENS_1_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "L_POS_SENS_1_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_POS_SENS_1_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "L_POS_SENS_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_POS_SENS_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "L_POS_SENS_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_POS_SENS_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "L_WHEEL_SENS_A1_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_WHEEL_SENS_A1_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "L_WHEEL_SENS_A1_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_WHEEL_SENS_A1_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "L_WHEEL_SENS_A2_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_WHEEL_SENS_A2_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_NC_switch_TOOL_EX_FPGA",
+					"strict" : false
+				},
+				{
+					"name" : "L_WHEEL_SENS_A2_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_WHEEL_SENS_A2_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_NO_switch_TOOL_EX_FPGA",
+					"strict" : false
+				},
+				{
+					"name" : "L_WHEEL_SENS_SPARE_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_WHEEL_SENS_SPARE_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "L_NC_switch_TOOL_EX_FPGA",
+					"strict" : false
+				},
+				{
+					"name" : "L_WHEEL_SENS_SPARE_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "R_WHEEL_SENS_SPARE_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "L_NO_switch_TOOL_EX_FPGA",
 					"strict" : false
 				}
 			]

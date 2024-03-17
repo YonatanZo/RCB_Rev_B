@@ -20,7 +20,8 @@ architecture Behavioral of FAN is
 type state_type is (IDLE_PWM, PWM_PULSE);
 signal pwm_state : state_type := IDLE_PWM;
 
-signal counter : unsigned(15 downto 0) := (others => '0');
+signal counter : integer range 0 to 5001;
+signal counter_1k : integer range 0 to 51;
 signal clk_1khz : std_logic := '0';
 
 
@@ -42,7 +43,8 @@ signal fan_tacho_sync : std_logic;               -- Add appropriate type
 signal fan_tacho_posedge : std_logic;            -- Add appropriate type
 signal fan_tacho : std_logic;            -- Add appropriate type
 signal fan_tacho_mes_pulse : std_logic;
-signal fan_tacho_cnt : std_logic_vector(7 downto 0);
+signal fan_tacho_cnt  : natural range 0 to 2048;
+signal fan_tacho_cnt_1  : natural range 0 to 2048;
 signal fan_pwm_f : std_logic;
 begin
 
@@ -55,14 +57,14 @@ fan_tacho <= TACHO_IN;
     process(CLK, RST_N)
     begin
         if RST_N = '0' then
-            counter <= (others => '0');
+            counter_1k <= 0;
             clk_1khz <= '0';
         elsif rising_edge(CLK) then
-            if counter = 5000 then -- Counter value for 1 kHz at 100 MHz clock (maybe 5000??)
-                counter <= (others => '0');
+            if counter_1k = 5000 then -- Counter value for 1 kHz at 100 MHz clock (maybe 5000??)
+                counter_1k <= 0;
                 clk_1khz <= not clk_1khz;
             else
-                counter <= counter + 1;
+                counter_1k <= counter_1k + 1;
             end if;
         end if;
     end process;
@@ -70,11 +72,11 @@ fan_tacho <= TACHO_IN;
 	process(CLK, RST_N)
     begin
         if RST_N = '0' then
-            counter <= (others => '0');
+            counter <= 0;
             clk_1khz <= '0';
         elsif rising_edge(CLK) then
             if counter = 50 then -- Counter value for 1 kHz at 100 MHz clock (maybe 50??)
-                counter <= (others => '0');
+                counter <= 0;
                 clk_1m_posedge <= not clk_1m_posedge;
             else
                 counter <= counter + 1;
@@ -104,7 +106,7 @@ begin
 					if ((pwm_cnt /= 0) or (fpga_fan_pwm(7 downto 0)= "00000000")) then
 						pwm_state <= IDLE_PWM;
 						fan_pwm_f <= '0';
-						pwm_value <= fpga_fan_pwm(7 downto 0) & "00";
+						pwm_value <= fpga_fan_pwm(7 downto 0) & "00000000";
 					else
 						pwm_state <= PWM_PULSE;
 						fan_pwm_f <= '1';
@@ -142,7 +144,7 @@ begin
     -- Reset condition: when reset is active low
     if RST_N = '0' then
         -- Reset fan tachometer counter and measurement pulse
-        fan_tacho_cnt <= (others =>'0');   -- Reset fan tachometer counter
+        fan_tacho_cnt <= 0;   -- Reset fan tachometer counter
         fan_tacho_mes_pulse <= '0';        -- Reset fan tachometer measurement pulse
     -- Clock edge condition: on rising edge of the 100 MHz clock
     elsif rising_edge(CLK) then
@@ -150,12 +152,12 @@ begin
         fan_tacho_mes_pulse <= '0';
         
         -- Check if the fan tachometer counter has reached the measurement period
-        if(unsigned(fan_tacho_cnt) < FAN_TACHO_MES_PERIOD) then
+        if(fan_tacho_cnt < FAN_TACHO_MES_PERIOD) then
             -- Increment fan tachometer counter
-            fan_tacho_cnt <= std_logic_vector(unsigned(fan_tacho_cnt) + 1); -- Increment fan tachometer counter by 1
+            fan_tacho_cnt <= fan_tacho_cnt + 1; -- Increment fan tachometer counter by 1
         else
             -- Reset fan tachometer counter and set measurement pulse
-            fan_tacho_cnt <= (others =>'0');   -- Reset fan tachometer counter
+            fan_tacho_cnt <= 0;   -- Reset fan tachometer counter
             fan_tacho_mes_pulse <= '1';         -- Set measurement pulse to indicate a new measurement period
         end if;
     end if;
@@ -168,18 +170,18 @@ begin
         -- Reset FPGA fan 1 tachometer registers and counters
         fpga_fan_tacho <= (others =>'0');    -- Reset FPGA fan 1 tachometer register
         fpga_fan_tacho_num <=  (others =>'0'); -- Reset FPGA fan 1 tachometer number register
-        fan_tacho_cnt <=  (others =>'0');     -- Reset fan 1 tachometer counter
+        fan_tacho_cnt_1 <=  0;     -- Reset fan 1 tachometer counter
     -- Clock and pulse condition: when fan tachometer measurement pulse is high and there is a positive edge on the 1 MHz clock
     elsif((fan_tacho_mes_pulse and clk_1m_posedge) = '1') then
         -- Transfer fan 1 tachometer count to FPGA register and increment tachometer number
-        fpga_fan_tacho <= fan_tacho_cnt;          -- Transfer fan 1 tachometer count to FPGA register
+        fan_tacho_cnt_1 <= fan_tacho_cnt_1;          -- Transfer fan 1 tachometer count to FPGA register
         (fpga_fan_tacho_num) <= std_logic_vector(unsigned(fpga_fan_tacho_num )+ 1); -- Increment FPGA fan 1 tachometer number
-        fan_tacho_cnt <= (others =>'0');           -- Reset fan 1 tachometer counter for the next measurement
+        fan_tacho_cnt_1 <= 0;           -- Reset fan 1 tachometer counter for the next measurement
     else
         -- If there's no measurement pulse and it's not a clock edge, check for positive edge on fan 1 tachometer
         if(fan_tacho_posedge = '1') then
             -- Increment fan 1 tachometer counter
-            fan_tacho_cnt <= std_logic_vector(unsigned(fan_tacho_cnt) +1);  -- Increment fan 1 tachometer counter by 1
+            fan_tacho_cnt_1 <= fan_tacho_cnt_1 +1;  -- Increment fan 1 tachometer counter by 1
         end if;
     end if;
 end process;

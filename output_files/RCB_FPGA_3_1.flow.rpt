@@ -1,5 +1,5 @@
 Flow report for RCB_FPGA_3_1
-Mon Mar 11 11:40:04 2024
+Mon Mar 11 17:26:52 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -41,24 +41,24 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Flow Summary                                                                        ;
 +------------------------------------+------------------------------------------------+
-; Flow Status                        ; Flow Failed - Mon Mar 11 11:40:04 2024         ;
+; Flow Status                        ; Successful - Mon Mar 11 17:26:52 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; RCB_FPGA_3_1                                   ;
 ; Top-level Entity Name              ; RCB_TOP                                        ;
 ; Family                             ; MAX 10                                         ;
 ; Device                             ; 10M40DCF256I7G                                 ;
 ; Timing Models                      ; Final                                          ;
-; Total logic elements               ; N/A until Partition Merge                      ;
-;     Total combinational functions  ; N/A until Partition Merge                      ;
-;     Dedicated logic registers      ; N/A until Partition Merge                      ;
-; Total registers                    ; N/A until Partition Merge                      ;
-; Total pins                         ; N/A until Partition Merge                      ;
-; Total virtual pins                 ; N/A until Partition Merge                      ;
-; Total memory bits                  ; N/A until Partition Merge                      ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                      ;
-; Total PLLs                         ; N/A until Partition Merge                      ;
-; UFM blocks                         ; N/A until Partition Merge                      ;
-; ADC blocks                         ; N/A until Partition Merge                      ;
+; Total logic elements               ; 1,654 / 40,368 ( 4 % )                         ;
+;     Total combinational functions  ; 1,469 / 40,368 ( 4 % )                         ;
+;     Dedicated logic registers      ; 985 / 40,368 ( 2 % )                           ;
+; Total registers                    ; 985                                            ;
+; Total pins                         ; 156 / 178 ( 88 % )                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 24,576 / 1,290,240 ( 2 % )                     ;
+; Embedded Multiplier 9-bit elements ; 0 / 250 ( 0 % )                                ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                                  ;
+; UFM blocks                         ; 0 / 1 ( 0 % )                                  ;
+; ADC blocks                         ; 0                                              ;
 +------------------------------------+------------------------------------------------+
 
 
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/11/2024 11:39:56 ;
+; Start date & time ; 03/11/2024 17:26:15 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RCB_FPGA_3_1        ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------+-----------------------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                                ; Value                                               ; Default Value ; Entity Name ; Section Id                        ;
 +------------------------------------------------+-----------------------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID                          ; 189741479133756.171014999644904                     ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID                          ; 189741479133756.171017077509208                     ; --            ; --          ; --                                ;
 ; EDA_BOARD_DESIGN_TIMING_TOOL                   ; Stamp (Timing)                                      ; <None>        ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST                ; Off                                                 ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST                ; Off                                                 ; --            ; --          ; eda_board_design_boundary_scan    ;
@@ -98,6 +98,7 @@ https://fpgasoftware.intel.com/eula.
 ; MISC_FILE                                      ; pll2_inst.v                                         ; --            ; --          ; --                                ;
 ; MISC_FILE                                      ; pll2_bb.v                                           ; --            ; --          ; --                                ;
 ; MISC_FILE                                      ; pll2.ppf                                            ; --            ; --          ; --                                ;
+; MISC_FILE                                      ; RX_FIFO.cmp                                         ; --            ; --          ; --                                ;
 ; PARTITION_COLOR                                ; -- (Not supported for targeted family)              ; --            ; RCB_TOP     ; Top                               ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL            ; -- (Not supported for targeted family)              ; --            ; RCB_TOP     ; Top                               ;
 ; PARTITION_NETLIST_TYPE                         ; -- (Not supported for targeted family)              ; --            ; RCB_TOP     ; Top                               ;
@@ -113,8 +114,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4790 MB             ; 00:00:16                           ;
-; Total                ; 00:00:09     ; --                      ; --                  ; 00:00:16                           ;
+; Analysis & Synthesis ; 00:00:13     ; 1.0                     ; 4900 MB             ; 00:00:17                           ;
+; Fitter               ; 00:00:12     ; 1.3                     ; 6091 MB             ; 00:00:26                           ;
+; Assembler            ; 00:00:02     ; 1.0                     ; 4734 MB             ; 00:00:02                           ;
+; Timing Analyzer      ; 00:00:04     ; 1.5                     ; 4935 MB             ; 00:00:03                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4690 MB             ; 00:00:01                           ;
+; Total                ; 00:00:32     ; --                      ; --                  ; 00:00:49                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -124,6 +129,10 @@ https://fpgasoftware.intel.com/eula.
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
 ; Analysis & Synthesis ; Fs-YonatanZ-7430 ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; Fs-YonatanZ-7430 ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; Fs-YonatanZ-7430 ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; Fs-YonatanZ-7430 ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; Fs-YonatanZ-7430 ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -131,6 +140,10 @@ https://fpgasoftware.intel.com/eula.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off RCB_FPGA -c RCB_FPGA_3_1
+quartus_fit --read_settings_files=off --write_settings_files=off RCB_FPGA -c RCB_FPGA_3_1
+quartus_asm --read_settings_files=off --write_settings_files=off RCB_FPGA -c RCB_FPGA_3_1
+quartus_sta RCB_FPGA -c RCB_FPGA_3_1
+quartus_eda --read_settings_files=off --write_settings_files=off RCB_FPGA -c RCB_FPGA_3_1
 
 
 

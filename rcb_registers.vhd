@@ -98,17 +98,8 @@ entity rcb_registers is
 		A_35V_R_EN                  : out STD_LOGIC                    ;
 		B_35V_R_EN                  : out STD_LOGIC                    ;
 		BIT_SSR_SW                  : out STD_LOGIC                    ;
-		--FPGA_LEDs
-		LED_1                       : out STD_LOGIC                    ;
-		LED_2                       : out STD_LOGIC                    ;
-		LED_3                       : out STD_LOGIC                    ;
-		LED_4                       : out STD_LOGIC                    ;
-		LED_5                       : out STD_LOGIC                    ;
-		LED_6                       : out STD_LOGIC                    ;
-		LED_7                       : out STD_LOGIC                    ;
-		LED_8                       : out STD_LOGIC                    ;
 		--LEDs_strip_Mux
-		MUX_Control	 : out STD_LOGIC_VECTOR(3 downto 0);
+		MUX_Control	 : out STD_LOGIC_VECTOR(2 downto 0);
 		--Mic.C.B
 		MICCB_GEN_SYNC_FAIL         : in  STD_LOGIC                    ;
 		MICCB_SP_IN_A_F             : in  STD_LOGIC                    ;
@@ -172,8 +163,8 @@ entity rcb_registers is
 		--FLA PS
 		FPGA_WHEEL_STOP_ELO         : out STD_LOGIC                    ;
 		FPGA24V_DIS                 : out STD_LOGIC                    ;
-		FLA_PWR_DIS                 : out STD_LOGIC                    ;
-		OPEN_ELO_REQUEST            : in  STD_LOGIC                    ;
+		FLA_PWR_DIS                 : in STD_LOGIC                    ;
+		OPEN_ELO_REQUEST            : out  STD_LOGIC                    ;
 		PS_PG_FPGA                  : in  STD_LOGIC                    ;
 		--FPGA FAN 1 Tacho
 		FAN1_TACHO                  : out STD_LOGIC_VECTOR(15 downto 0);
@@ -274,19 +265,19 @@ signal Fault_Registers_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --
 signal Sync_Timer_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"001D"
 	
 begin
-
+FPGA_LEDs_OUT <= FPGA_LEDs_reg(7 downto 0);
 
 bnnb: process (clk_100m, rst_n_syn)
 begin
     if rst_n_syn = '0' then
-        FPGA_LEDs_reg(7 downto 0)  <= (others => '0');
+        
         FPGA_Version_reg  <= FPGA_REV & FPGA_MAJOR_VER & x"0000";
         FPGA_Date_reg  <= FPGA_REV_HOUR & FPGA_REV_DAY & FPGA_REV_MONTH & FPGA_REV_YEAR;
     elsif rising_edge(clk_100m) then
         FPGA_Version_reg  <= FPGA_REV & FPGA_MAJOR_VER & x"0000";
         FPGA_Date_reg  <= FPGA_REV_HOUR & FPGA_REV_DAY & FPGA_REV_MONTH & FPGA_REV_YEAR;
     	--BOARD LED 
-		FPGA_LEDs_OUT <= FPGA_LEDs_reg(7 downto 0);
+		
 	    --Data to fan 1 moudle 
 	    --FAN_TACHO_REG_OUT_1  <= FPGA_FAN_1_Tacho_reg(15 DOWNTO 0) ;TODO:fix this other deriction 
 		FAN_PWM_REG_OUT_1  <= FPGA_FAN_1_PWM_reg(7 DOWNTO 0) ;
@@ -317,7 +308,9 @@ begin
 		R_Wheels_sensors_reg(11 downto 0)  <= R_POS_SENS_0_OUT1 & R_POS_SENS_0_OUT2 & R_POS_SENS_1_OUT1 & R_POS_SENS_1_OUT2 & 
 		R_POS_SENS_OUT1 & R_POS_SENS_OUT2 & R_WHEEL_SENS_A1_OUT1 & R_WHEEL_SENS_A1_OUT2 & R_WHEEL_SENS_A2_OUT1 & 
 		R_WHEEL_SENS_A2_OUT2 & R_WHEEL_SENS_SPARE_OUT1 & R_WHEEL_SENS_SPARE_OUT2;
-    end if;
+		--LED MUX CONTROL 
+		MUX_Control <= LEDs_strip_Mux_reg(2 downto 0);
+		end if;
 end process;
 
 		
@@ -395,6 +388,7 @@ begin
     if rst_n_syn = '0' then
     	SSRs_Left_reg   <= (others => '0');
     	SSRs_Right_reg  <= (others => '0');
+		FPGA_LEDs_reg <= (others => '0');
     elsif rising_edge(clk_100m) then 
 		if data_mosi_rdy = '1' then
 			case addr is
@@ -427,7 +421,7 @@ begin
 				when ADDR_FPGA_LEDs =>
 					FPGA_LEDs_reg(7 downto 0)<= data_mosi(7 downto 0);
 				when ADDR_LEDs_strip_Mux =>
-					--???<= data_mosi;
+					LEDs_strip_Mux_reg <=data_mosi;
 					null;
 				when ADDR_Mic_C_B =>
 					null;

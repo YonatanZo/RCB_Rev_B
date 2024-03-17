@@ -96,11 +96,11 @@ entity RCB_TOP is
         MICCB_SPARE_IO3: In STD_LOGIC;
         MISO0: Out STD_LOGIC;
         MOSI0: In STD_LOGIC;
-        SCL_ADC: Out STD_LOGIC;
-        SDA_ADC: Out STD_LOGIC;
+        SCL_ADC: InOut STD_LOGIC;
+        SDA_ADC: InOut STD_LOGIC;
         TEENSY_FPGA_R_RX: Out STD_LOGIC;
         TEENSY_FPGA_R_TX: In STD_LOGIC;
-		TEENSY_FPGA_L_RX: Out STD_LOGIC;
+		    TEENSY_FPGA_L_RX: Out STD_LOGIC;
         TEENSY_FPGA_L_TX: In STD_LOGIC;
         OPEN_ELO_REQUEST: Out STD_LOGIC;
         PS_PG_FPGA: In STD_LOGIC;
@@ -133,32 +133,32 @@ entity RCB_TOP is
         ROBOT_ESTOP_LED_DIN: Out STD_LOGIC;
         S_LED_DIN: Out STD_LOGIC;
         SCK0: In STD_LOGIC;
-        SPARE1_ANALOG_SW_0_SEL_FPGA: In STD_LOGIC;
-        SPARE1_ANALOG_SW_1_SEL_FPGA: In STD_LOGIC;
-        SPARE1_ANALOG_SW_SEL_FPGA: In STD_LOGIC;
+        SPARE1_ANALOG_SW_0_SEL_FPGA: out STD_LOGIC;
+        SPARE1_ANALOG_SW_1_SEL_FPGA: out STD_LOGIC;
+        SPARE1_ANALOG_SW_SEL_FPGA: out STD_LOGIC;
         SPARE1_DIFF0: In STD_LOGIC;
         SPARE1_DIFF1: In STD_LOGIC;
-        SPARE1_DIFF2: In STD_LOGIC;
-        SPARE1_DIFF3: In STD_LOGIC;
+        SPARE1_DIFF2: out STD_LOGIC;
+        SPARE1_DIFF3: out STD_LOGIC;
         SPARE1_IO0_FPGA: In STD_LOGIC;
         SPARE1_IO1_FPGA: In STD_LOGIC;
-        SPARE1_IO2_FPGA: In STD_LOGIC;
-        SPARE1_IO3_FPGA: In STD_LOGIC;
-        SPARE2_ANALOG_SW_0_SEL_FPGA: In STD_LOGIC;
-        SPARE2_ANALOG_SW_1_SEL_FPGA: In STD_LOGIC;
-        SPARE2_ANALOG_SW_SEL_FPGA: In STD_LOGIC;
+        SPARE1_IO2_FPGA: out STD_LOGIC;
+        SPARE1_IO3_FPGA: out STD_LOGIC;
+        SPARE2_ANALOG_SW_0_SEL_FPGA: out STD_LOGIC;
+        SPARE2_ANALOG_SW_1_SEL_FPGA: out STD_LOGIC;
+        SPARE2_ANALOG_SW_SEL_FPGA: out STD_LOGIC;
         SPARE2_DIFF0: In STD_LOGIC;
         SPARE2_DIFF1: In STD_LOGIC;
-        SPARE2_DIFF2: In STD_LOGIC;
-        SPARE2_DIFF3: In STD_LOGIC;
+        SPARE2_DIFF2: out STD_LOGIC;
+        SPARE2_DIFF3: out STD_LOGIC;
         SPARE2_IO0_FPGA: In STD_LOGIC;
         SPARE2_IO1_FPGA: In STD_LOGIC;
-        SPARE2_IO2_FPGA: In STD_LOGIC;
-        SPARE2_IO3_FPGA: In STD_LOGIC;
+        SPARE2_IO2_FPGA: out STD_LOGIC;
+        SPARE2_IO3_FPGA: out STD_LOGIC;
         SSR_ON_FPGA: In STD_LOGIC;
-        Teensy_FPGA_SP0: In STD_LOGIC;
-        Teensy_FPGA_SP1: In STD_LOGIC;
-        Teensy_FPGA_SP2: In STD_LOGIC;
+        Teensy_FPGA_SP0: out STD_LOGIC;
+        Teensy_FPGA_SP1: out STD_LOGIC;
+        Teensy_FPGA_SP2: out STD_LOGIC;
         TEENSY_LEDS_STRIP_DO: In STD_LOGIC
     );
 end entity RCB_TOP;
@@ -174,7 +174,16 @@ port (
     FAN_PWM_REG : in STD_LOGIC_VECTOR(7 DOWNTO 0)
 );
 end component;
-
+component UART_TOP
+  port (
+    CLK : in std_logic;
+    RST_N : in std_logic;
+    RXD_4MB : in std_logic;
+    RXD_M5B : in std_logic;
+    RXD_EFF : in std_logic;
+    TXD_TEENSY : out std_logic
+  );
+end component;
 COMPONENT rcb_registers is
     port (
         --Interfaces 
@@ -206,14 +215,12 @@ COMPONENT rcb_registers is
         AIN7: in STD_LOGIC_VECTOR(15 downto 0);
         --Debug LEDs 
         FPGA_LEDs_OUT  : out STD_LOGIC_VECTOR(7 downto 0 );
-
         ----Diagnostic R I/F
         R_DIAG_PACK_CNT : in STD_LOGIC_VECTOR(15 downto 0); --TODO
         R_DIAG_ERR_CNT : in STD_LOGIC_VECTOR(15 downto 0);--TODO
         ----Diagnostic L I/F     
         L_DIAG_PACK_CNT : in STD_LOGIC_VECTOR(15 downto 0);--TODO
         L_DIAG_ERR_CNT : in STD_LOGIC_VECTOR(15 downto 0); --TODO
-
         --regs IN/OUTs
         --FPGA__buttons_
         L_NO_switch_TOOL_EX_FPGA    : in  STD_LOGIC                    ;
@@ -269,17 +276,8 @@ COMPONENT rcb_registers is
         A_35V_R_EN                  : out STD_LOGIC                    ;
         B_35V_R_EN                  : out STD_LOGIC                    ;
         BIT_SSR_SW                  : out STD_LOGIC                    ;
-        --FPGA_LEDs
-        LED_1                       : out STD_LOGIC                    ;
-        LED_2                       : out STD_LOGIC                    ;
-        LED_3                       : out STD_LOGIC                    ;
-        LED_4                       : out STD_LOGIC                    ;
-        LED_5                       : out STD_LOGIC                    ;
-        LED_6                       : out STD_LOGIC                    ;
-        LED_7                       : out STD_LOGIC                    ;
-        LED_8                       : out STD_LOGIC                    ;
         --LEDs_strip_Mux
-        MUX_Control  : out STD_LOGIC_VECTOR(3 downto 0);
+        MUX_Control  : out STD_LOGIC_VECTOR(2 downto 0);
         --Mic.C.B
         MICCB_GEN_SYNC_FAIL         : in  STD_LOGIC                    ;
         MICCB_SP_IN_A_F             : in  STD_LOGIC                    ;
@@ -343,8 +341,8 @@ COMPONENT rcb_registers is
         --FLA PS
         FPGA_WHEEL_STOP_ELO         : out STD_LOGIC                    ;
         FPGA24V_DIS                 : out STD_LOGIC                    ;
-        FLA_PWR_DIS                 : out STD_LOGIC                    ;
-        OPEN_ELO_REQUEST            : in  STD_LOGIC                    ;
+        FLA_PWR_DIS                 : in STD_LOGIC                    ;
+        OPEN_ELO_REQUEST            : out  STD_LOGIC                    ;
         PS_PG_FPGA                  : in  STD_LOGIC                    ;
         --FPGA FAN 1 Tacho
         FAN1_TACHO                  : out STD_LOGIC_VECTOR(15 downto 0);
@@ -423,6 +421,14 @@ component ADC_Master
   );
 end component;
 
+constant L_TOOL_EX :std_logic_vector(2 downto 0) := "000";
+constant L_LED_Strip :std_logic_vector(2 downto 0) := "001"; 
+constant R_Tool_Ex :std_logic_vector(2 downto 0) := "010";
+constant R_LED_Stirp :std_logic_vector(2 downto 0) := "011";
+constant WS_LED_Strip :std_logic_vector(2 downto 0) := "100";
+constant Robot_ESTOP_LED :std_logic_vector(2 downto 0) := "101";
+
+
 signal rst_n_syn            :   STD_LOGIC := '1';
 signal counter : integer range 0 to 99 := 0;
 signal clk_1m_internal : STD_LOGIC := '0';
@@ -452,7 +458,7 @@ signal FAN_PWM_REG_OUT_2 :   STD_LOGIC_VECTOR(7 DOWNTO 0);
   signal R_DIAG_ERR_CNT       : STD_LOGIC_VECTOR(15 downto 0);
   signal L_DIAG_PACK_CNT      : STD_LOGIC_VECTOR(15 downto 0);
   signal L_DIAG_ERR_CNT       : STD_LOGIC_VECTOR(15 downto 0);
-  signal MUX_Control          : STD_LOGIC_VECTOR(3 downto 0);
+  signal MUX_Control          : STD_LOGIC_VECTOR(2 downto 0);
   signal P35V_Monitor         : STD_LOGIC_VECTOR(15 downto 0);
   signal Spare                : STD_LOGIC_VECTOR(15 downto 0);
   signal P12V_Monitor         : STD_LOGIC_VECTOR(15 downto 0);
@@ -477,7 +483,7 @@ begin
 
 
 
-  ADC_Master_inst : entity ADC_master
+  ADC_Master_inst :  ADC_master
   generic map (
     input_clk => 100000000,
     bus_clk => 400000
@@ -507,7 +513,7 @@ LED_6 <= FPGA_LEDs_OUT(5);
 LED_7 <= FPGA_LEDs_OUT(6);
 LED_8 <= FPGA_LEDs_OUT(7);
 
-    i_rcb_registers : entity rcb_registers
+    i_rcb_registers :  rcb_registers
         port map (
             clk_100m                    => clk_100m                   ,
             rst_n_syn                   => rst_n_syn                  ,
@@ -582,14 +588,6 @@ LED_8 <= FPGA_LEDs_OUT(7);
             A_35V_R_EN                  => A_35V_R_EN                 ,
             B_35V_R_EN                  => B_35V_R_EN                 ,
             BIT_SSR_SW                  => BIT_SSR_SW                 ,
-            LED_1                       => LED_1                      ,
-            LED_2                       => LED_2                      ,
-            LED_3                       => LED_3                      ,
-            LED_4                       => LED_4                      ,
-            LED_5                       => LED_5                      ,
-            LED_6                       => LED_6                      ,
-            LED_7                       => LED_7                      ,
-            LED_8                       => LED_8                      ,
             MUX_Control                 => MUX_Control                ,
             MICCB_GEN_SYNC_FAIL         => MICCB_GEN_SYNC_FAIL        ,
             MICCB_SP_IN_A_F             => MICCB_SP_IN_A_F            ,
@@ -649,10 +647,10 @@ LED_8 <= FPGA_LEDs_OUT(7);
             FLA_PWR_DIS                 => FLA_PWR_DIS                ,
             OPEN_ELO_REQUEST            => OPEN_ELO_REQUEST           ,
             PS_PG_FPGA                  => PS_PG_FPGA                 ,
-            FAN1_TACHO                  => FAN1_TACHO_BUFF            ,
+            FAN1_TACHO                  => open            ,
             FAN_1_READ_NUMBER           => FAN_1_READ_NUMBER          ,
             FAN_1_PWM                   => FAN_1_PWM                  ,
-            FAN_2_TACHO                 => FAN_2_TACHO                ,
+            FAN_2_TACHO                 => open                ,
             FAN_2_READ_NUMBER           => FAN_2_READ_NUMBER          ,
             FAN_2_PWM                   => FAN_2_PWM                  ,
             FPGA_SYNC_DELAY_TIME        => FPGA_SYNC_DELAY_TIME       ,
@@ -670,18 +668,38 @@ LED_8 <= FPGA_LEDs_OUT(7);
 
 
 
+        L_UART_TOP_inst :  UART_TOP
+        port map (
+          CLK => CLK_100M,
+          RST_N => rst_n_syn,
+          RXD_4MB => L_4MB_SER_IN_SE,
+          RXD_M5B => L_M5B_SER_IN_SE,
+          RXD_EFF => L_EEF_SER_IN_SE,
+          TXD_TEENSY => TEENSY_FPGA_L_RX
+        );
+      
+        R_UART_TOP_inst :  UART_TOP
+        port map (
+          CLK => CLK_100M,
+          RST_N => rst_n_syn,
+          RXD_4MB => R_4MB_SER_IN_SE,
+          RXD_M5B => R_M5B_SER_IN_SE,
+          RXD_EFF => R_EEF_SER_IN_SE,
+          TXD_TEENSY => TEENSY_FPGA_R_RX
+        );
+
         
-    FAN1_inst : entity FAN
+    FAN1_inst :  FAN
     port map (
       RST_N => rst_n_syn,
       CLK => CLK_100M,
       TACHO_IN => FAN1_TACHO_BUFF,
-      PWM_OUT => FAN2_PWM,
+      PWM_OUT => FAN1_PWM,
       FAN_TACHO_REG => FAN_TACHO_REG_OUT_1,
       FAN_PWM_REG => FAN_PWM_REG_OUT_1
     );
   
-    FAN2_inst : entity FAN
+    FAN2_inst :  FAN
   port map (
     RST_N => rst_n_syn,
     CLK => CLK_100M,
@@ -691,6 +709,26 @@ LED_8 <= FPGA_LEDs_OUT(7);
     FAN_PWM_REG => FAN_PWM_REG_OUT_2
   );
 
+
+  process (MUX_Control)
+  begin
+    case MUX_Control is
+      when L_TOOL_EX =>
+        L_TOOL_EX_LED_DIN<= TEENSY_LEDS_STRIP_DO;
+      when L_LED_Strip =>
+        L_LED_DIN <= TEENSY_LEDS_STRIP_DO;
+      when R_Tool_Ex =>
+        R_TOOL_EX_LED_DIN<= TEENSY_LEDS_STRIP_DO;
+      when R_LED_Stirp =>
+        R_LED_DIN <= TEENSY_LEDS_STRIP_DO;
+      when WS_LED_Strip =>
+        S_LED_DIN <= TEENSY_LEDS_STRIP_DO;
+      when Robot_ESTOP_LED =>   
+        ROBOT_ESTOP_LED_DIN <= TEENSY_LEDS_STRIP_DO; 
+      when others =>
+        null;
+    end case;
+  end process;
 
 	rcb_spi_inst : rcb_spi
     PORT MAP (
@@ -714,7 +752,7 @@ LED_8 <= FPGA_LEDs_OUT(7);
 
 	 
 	ESTOP_DELAY <= 'Z';
-	LED_1 <= '1';
-	LED_2 <= '1';
-	LED_3 <= '1';
+	-- LED_1 <= '1';
+	-- LED_2 <= '1';
+	-- LED_3 <= '1';
 end Behavioral;
