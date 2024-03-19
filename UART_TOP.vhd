@@ -67,8 +67,9 @@ END COMPONENT;
     component RX_Slave is
         Port (
             clk           : in std_logic;
-            resetn         : in std_logic;
+            resetn        : in std_logic;
             clr_rdy       : in std_logic; -- TX_Master I/F
+		    clr_err		  : in std_logic;
             avalon_data   : in std_logic_vector(7 downto 0); -- Avalon UART receiver I/F
             avalon_valid  : in std_logic;
             avalon_ready  : out std_logic;
@@ -91,16 +92,19 @@ component TX_Master is
 		  tx_err0 : in std_logic;
 		  data_0 : in std_logic_vector(7 downto 0);
 		  clr_rdy_0 : out std_logic;
+		  clr_err0  : out std_logic;
 		  --RX_SLAVE1_I/F 
 		  tx_rdy1 : in std_logic;
 		  tx_err1 : in std_logic;
 		  data_1 : in std_logic_vector(7 downto 0);
 		  clr_rdy_1 : out std_logic;
+		  clr_err1  : out std_logic;
 		  --RX_SLAVE2_I/F 
 		  tx_rdy2 : in std_logic;
 		  tx_err2 : in std_logic;
 		  data_2 : in std_logic_vector(7 downto 0);
 		  clr_rdy_2 : out std_logic;
+		  clr_err2  : out std_logic;
 		  --RX_FIFO0_I/F 
 		  clr_FIFO_0 : out std_logic;
 		  rd_FIFO_0 : out std_logic;
@@ -162,7 +166,7 @@ end component TX_Master;
     signal fifo_full0, fifo_full1, fifo_full2 : std_logic;
     signal tx_err0, tx_err1, tx_err2 : std_logic;
     signal tx_rdy0, tx_rdy1, tx_rdy2 : std_logic;
-    
+    signal clr_err0,clr_err1,clr_err2 : std_logic;
     -- Declare signals for RX_FIFO components
     signal clr_FIFO_0, clr_FIFO_1, clr_FIFO_2 : std_logic;
     signal rd_FIFO_0, rd_FIFO_1, rd_FIFO_2 : std_logic;
@@ -175,6 +179,8 @@ end component TX_Master;
     signal TEENSY_UART_VALID : std_logic;
     signal TEENSY_UART_RDY : std_logic;
     signal RST : std_logic;
+
+
 begin
 
 --	RX_UARTS : component RX_UART
@@ -272,6 +278,7 @@ begin
             clk           => CLK, 				-->EVM 50MHz
             resetn         => RST_N, 			-->SW[0]
             clr_rdy       => clr_rdy_0, 		-->TX_Master
+			clr_err		  => clr_err0,
             --avalon_data   => avalon_data0, 	-->RX_UARTS
             avalon_data   => "00000000", 	-->
 				avalon_valid  => avalon_valid0, 	-->RX_UARTS
@@ -290,6 +297,7 @@ begin
             clk           => CLK, -->EVM 50MHz
             resetn         => RST_N, -->SW[0]
             clr_rdy       => clr_rdy_1,-->TX_Master
+			clr_err		  => clr_err1,
             --avalon_data   => avalon_data1,-->RX_UARTS
 				avalon_data   => "00000000",-->
             avalon_valid  => avalon_valid1,-->RX_UARTS
@@ -308,6 +316,7 @@ begin
 				clk           => CLK, 		-->EVM 50MHz
 				resetn         => RST_N, 	-->SW[0]
 				clr_rdy       => clr_rdy_2,-->TX_Master
+				clr_err		  => clr_err2,
 				--avalon_data   => avalon_data2,-->RX_UARTS
 				avalon_data   => "00000000",-->
 				avalon_valid  => avalon_valid2,-->RX_UARTS
@@ -331,16 +340,19 @@ begin
 				tx_err0                 => tx_err0,
 				data_0                  => FIFO_q0,
 				clr_rdy_0               => clr_rdy_0,
+				clr_err0  				=> clr_err0,
 				--RX_Slave1
 				tx_rdy1                 => tx_rdy1,
 				tx_err1                 => tx_err1,
 				data_1                  => FIFO_q1,
 				clr_rdy_1               => clr_rdy_1,
+				clr_err1  				=> clr_err1,
 				--RX_Slave2
 				tx_rdy2                 => tx_rdy2,
 				tx_err2                 => tx_err2,
 				data_2                  => FIFO_q2,
 				clr_rdy_2               => clr_rdy_2,
+				clr_err2  				=> clr_err2,
 				--RX_FIFO_inst0
 				clr_FIFO_0              => clr_FIFO_0,
 				rd_FIFO_0               => rd_FIFO_0,

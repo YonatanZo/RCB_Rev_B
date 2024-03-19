@@ -1,5 +1,5 @@
 Flow report for RCB_FPGA_3_1
-Mon Mar 11 17:26:52 2024
+Tue Mar 19 13:54:13 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Flow Summary                                                                        ;
 +------------------------------------+------------------------------------------------+
-; Flow Status                        ; Successful - Mon Mar 11 17:26:52 2024          ;
+; Flow Status                        ; Successful - Tue Mar 19 13:54:13 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; RCB_FPGA_3_1                                   ;
 ; Top-level Entity Name              ; RCB_TOP                                        ;
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/11/2024 17:26:15 ;
+; Start date & time ; 03/19/2024 13:53:24 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RCB_FPGA_3_1        ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------+-----------------------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                                ; Value                                               ; Default Value ; Entity Name ; Section Id                        ;
 +------------------------------------------------+-----------------------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID                          ; 189741479133756.171017077509208                     ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID                          ; 189741479133756.171084920327612                     ; --            ; --          ; --                                ;
 ; EDA_BOARD_DESIGN_TIMING_TOOL                   ; Stamp (Timing)                                      ; <None>        ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST                ; Off                                                 ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST                ; Off                                                 ; --            ; --          ; eda_board_design_boundary_scan    ;
@@ -114,12 +114,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:13     ; 1.0                     ; 4900 MB             ; 00:00:17                           ;
-; Fitter               ; 00:00:12     ; 1.3                     ; 6091 MB             ; 00:00:26                           ;
-; Assembler            ; 00:00:02     ; 1.0                     ; 4734 MB             ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:04     ; 1.5                     ; 4935 MB             ; 00:00:03                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4690 MB             ; 00:00:01                           ;
-; Total                ; 00:00:32     ; --                      ; --                  ; 00:00:49                           ;
+; Analysis & Synthesis ; 00:00:17     ; 1.0                     ; 4899 MB             ; 00:00:23                           ;
+; Fitter               ; 00:00:16     ; 1.4                     ; 6094 MB             ; 00:00:34                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 4731 MB             ; 00:00:02                           ;
+; Timing Analyzer      ; 00:00:05     ; 1.5                     ; 4935 MB             ; 00:00:05                           ;
+; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4693 MB             ; 00:00:01                           ;
+; Total                ; 00:00:43     ; --                      ; --                  ; 00:01:05                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

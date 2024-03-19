@@ -8,16 +8,17 @@ entity RX_Slave is
         resetn : in std_logic;
 		  --TX_Master I/F
         clr_rdy : in std_logic;
+        clr_err : in std_logic;
 		  --Avalon UART reciver I/F
         avalon_data : in std_logic_vector(7 downto 0);
         avalon_valid : in std_logic;
-		  avalon_ready    : out  std_logic;
-		  avalon_error    : in std_logic;
+		avalon_ready    : out  std_logic;
+		avalon_error    : in std_logic;
 		  -- FIFO I/F
         fifo_write : out std_logic;
         data_in : out std_logic_vector(7 downto 0);
         fifo_full : in std_logic;
-		  err : out std_logic;
+		err : out std_logic;
         rdy : out std_logic
     );
 end entity RX_Slave;
@@ -29,8 +30,9 @@ architecture Behavioral of RX_Slave is
 		signal counter : integer range 0 to 12501 := 0;
 		signal rx_data : std_logic_vector(7 downto 0);
 		signal error_flg : std_logic;
+        signal err_reg : std_logic;
 begin
-
+    err <= err_reg;
     process(clk, resetn, clr_rdy)
     begin
         if resetn = '0' then
@@ -38,14 +40,16 @@ begin
             counter <= 0;
             rx_data <= (others => '0');
             fifo_write <= '0';
+            error_flg <= '0';
             rdy <= '0';
+            err_reg <= '0';
         elsif rising_edge(clk) then
             case state is
                 when S_IDLE =>
-						  fifo_write <= '0';
-						  avalon_ready <= '0';
-						  counter <= 0;
-						  
+                if (err_reg = '0') then
+                    fifo_write <= '0';
+                    avalon_ready <= '0';
+                    counter <= 0;
                     if avalon_valid = '1' then
 								avalon_ready <= '1';
                         counter <= 0;
@@ -53,6 +57,7 @@ begin
 								data_in <= avalon_data;
 								state <= S_FIFO_WRITE;
                     end if;
+                end if;
                 when S_DATA_WAIT =>
 							
 							fifo_write <= '0';
@@ -72,9 +77,9 @@ begin
                     elsif counter = 8000 then
 								
 								if error_flg = '1' then 
-									
-									err <= '1';
+									err_reg <= '1';
 									error_flg <= '0';
+                                    state <= S_IDLE;
 								else
 									avalon_ready <= '0';
 									state <= S_IDLE; -- Transition back to IDLE if no new data received after 50 cycles
@@ -95,8 +100,11 @@ begin
         
         if clr_rdy = '1' then
             rdy <= '0'; -- Clear rdy when clr_rdy is activated
-				err <= '0';
+
         end if;
+        if clr_err = '1' then
+			err_reg <= '0';
+        end if;        
     end process;
 
 end architecture Behavioral;

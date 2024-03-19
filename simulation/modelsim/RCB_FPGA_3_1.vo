@@ -17,7 +17,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition"
 
-// DATE "03/11/2024 17:26:52"
+// DATE "03/19/2024 13:54:12"
 
 // 
 // Device: Altera 10M40DCF256I7G Package FBGA256
@@ -278,8 +278,8 @@ input 	MICCB_SPARE_IO2;
 input 	MICCB_SPARE_IO3;
 output 	MISO0;
 input 	MOSI0;
-inout 	SCL_ADC;
-inout 	SDA_ADC;
+output 	SCL_ADC;
+output 	SDA_ADC;
 output 	TEENSY_FPGA_R_RX;
 input 	TEENSY_FPGA_R_TX;
 output 	TEENSY_FPGA_L_RX;

@@ -36,7 +36,9 @@ entity TX_Master is
 		  clr_FIFO_2 : out std_logic;
 		  rd_FIFO_2 : out std_logic;
 		  FIFO_usedw2 : in std_logic_vector(8 downto 0);
-		  --TX_UART_I/F                       
+		  --TX_UART_I/F
+		  TX_COUNTER_OUT    : out  std_logic_vector(15 downto 0); 
+		  ERR_COUNTER_OUT    : out  std_logic_vector(15 downto 0);                     
 		  rs232_0_to_uart_data    : out  std_logic_vector(7 downto 0); 
 		  rs232_0_to_uart_error   : out  std_logic;
 		  rs232_0_to_uart_valid   : out  std_logic;
@@ -64,17 +66,18 @@ architecture Behavioral of TX_Master is
 	 signal clr_err_reg : std_logic_vector(2 downto 0):= "000";
 	 signal tx_rdy_reg  : std_logic_vector(2 downto 0):= "000";
 begin
-
+TX_COUNTER_OUT <= std_logic_vector(to_unsigned(pack_cnt, TX_COUNTER_OUT'length));
+ERR_COUNTER_OUT <= std_logic_vector(to_unsigned(err_cnt, TX_COUNTER_OUT'length));
 data_out <= data_2 & data_1 & data_0;
 tx_err_reg <= tx_err2 & tx_err1 & tx_err0;
 
-clr_err0 <= clr_FIFO_reg(0);
-clr_err1 <= clr_FIFO_reg(1);
-clr_err2 <= clr_FIFO_reg(2);
+clr_err0 <= clr_err_reg(0);
+clr_err1 <= clr_err_reg(1);
+clr_err2 <= clr_err_reg(2);
 
-clr_FIFO_0 <= clr_err_reg(0);
-clr_FIFO_1 <= clr_err_reg(1);
-clr_FIFO_2 <= clr_err_reg(2);
+clr_FIFO_0 <= clr_FIFO_reg(0);
+clr_FIFO_1 <= clr_FIFO_reg(1);
+clr_FIFO_2 <= clr_FIFO_reg(2);
 
 clr_rdy_0 <= clr_rdy_reg(0);
 clr_rdy_1 <= clr_rdy_reg(1);
@@ -95,12 +98,15 @@ tx_rdy_reg <= tx_rdy2 & tx_rdy1 & tx_rdy0;
             state <= S_IDLE;
             tx_data <= (others => '0');
             current_fifo <= (others => '0');
-
-			   clr_rdy_reg <= (others => '0');
-			   rd_FIFO_reg <= (others => '0');
-			   clr_FIFO_reg  <= (others => '0');
-			   clr_err_reg  <= (others => '0');
-				tx_cnt <= 0;
+			clr_rdy_reg <= (others => '0');
+			rd_FIFO_reg <= (others => '0');
+			clr_FIFO_reg  <= (others => '0');
+			clr_err_reg  <= (others => '0');
+			tx_cnt <= 0;
+			pack_cnt <= 0;
+			data_pointer <= 0;
+			err_cnt <= 0;
+			
         elsif rising_edge(clk) then
             case state is
                 when S_IDLE =>
@@ -110,9 +116,9 @@ tx_rdy_reg <= tx_rdy2 & tx_rdy1 & tx_rdy0;
 						  clr_FIFO_reg  <= (others => '0');
 						  clr_err_reg  <= (others => '0');
 						  if tx_err_reg /= "000" then
-						     clr_FIFO_reg <= tx_err_reg;
-							  clr_err_reg <= tx_err_reg;
-							  state <= S_ERROR_STATE;
+						    clr_FIFO_reg <= tx_err_reg;
+							clr_err_reg <= tx_err_reg;
+							state <= S_ERROR_STATE;
 						  else
 							  for i in 0 to 2 loop
 								  if tx_rdy_reg(i) = '1' then
@@ -153,7 +159,7 @@ tx_rdy_reg <= tx_rdy2 & tx_rdy1 & tx_rdy0;
                     end if;
                 when S_ERROR_STATE =>
 						clr_FIFO_reg <= "000";
-					   clr_err_reg <= "000";
+					    clr_err_reg <= "000";
 						err_cnt <= err_cnt+1;
 						state <= S_IDLE;
 					when S_WRITE_UART =>
