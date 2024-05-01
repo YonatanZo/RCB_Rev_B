@@ -81,7 +81,7 @@ TEENSY_FPGA_R_TX             : A8        : input  : 3.3-V LVTTL       :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : A9        :        :                   :         : 8         :                
 FLA_PWR_DIS                  : A10       : input  : 3.3-V LVTTL       :         : 8         : Y              
 MICCB_SP_IN_A_F              : A11       : input  : 3.3-V LVTTL       :         : 8         : Y              
-RESERVED_INPUT_WITH_WEAK_PULLUP : A12       :        :                   :         : 8         :                
+L_POS_SENS_OUT2_BUFF         : A12       : input  : 3.3-V LVTTL       :         : 8         : N              
 FPGA13                       : A13       : output : 3.3-V LVTTL       :         : 7         : Y              
 L_EEF_SER_IN_ER              : A14       : input  : 3.3-V LVTTL       :         : 7         : Y              
 R_4MB_SER_IN_SE              : A15       : input  : 3.3-V LVTTL       :         : 7         : Y              
@@ -117,8 +117,8 @@ L_WHEEL_SENS_A2_OUT2_BUFF    : C12       : input  : 3.3-V LVTTL       :         
 L_WHEEL_SENS_A2_OUT1_BUFF    : C13       : input  : 3.3-V LVTTL       :         : 7         : Y              
 Teensy_FPGA_SP1              : C14       : output : 3.3-V LVTTL       :         : 6         : Y              
 FPGA7                        : C15       : output : 3.3-V LVTTL       :         : 6         : Y              
-L_NC_switch_TOOL_EX_FPGA     : C16       : input  : 3.3-V LVTTL       :         : 6         : Y              
-L_M5B_SER_IN_ER              : D1        : input  : 3.3-V LVTTL       :         : 1A        : Y              
+L_M5B_SER_IN_SE              : C16       : input  : 3.3-V LVTTL       :         : 6         : Y              
+L_LED_DIN                    : D1        : output : 3.3-V LVTTL       :         : 1A        : Y              
 GND                          : D2        : gnd    :                   :         :           :                
 GND                          : D3        : gnd    :                   :         :           :                
 VCCD_PLL3                    : D4        : power  :                   : 1.2V    :           :                
@@ -166,8 +166,8 @@ VCCIO6                       : F13       : power  :                   : 3.3V    
 FPGA_R_ROBOT_TX              : F14       : output : 3.3-V LVTTL       :         : 6         : Y              
 GND                          : F15       : gnd    :                   :         :           :                
 SCL_ADC                      : F16       : bidir  : 3.3-V LVTTL       :         : 6         : Y              
-~ALTERA_TDI~ / RESERVED_INPUT_WITH_WEAK_PULLUP : G1        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : G2        :        :                   :         : 1A        :                
+altera_reserved_tdi          : G1        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
+L_ROBOT_DIFF_SP2             : G2        : input  : 3.3-V LVTTL       :         : 1A        : N              
 GND                          : G3        : gnd    :                   :         :           :                
 VCCIO1A                      : G4        : power  :                   : 3.3V    : 1A        :                
 B_35V_L_EN                   : G5        : output : 3.3-V LVTTL       :         : 1A        : Y              
@@ -182,9 +182,9 @@ VCCIO6                       : G13       : power  :                   : 3.3V    
 FAN2_TACHO_BUFF              : G14       : input  : 3.3-V LVTTL       :         : 6         : Y              
 ROBOT_ESTOP_LED_DIN          : G15       : output : 3.3-V LVTTL       :         : 6         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : G16       :        :                   :         : 6         :                
-~ALTERA_TDO~                 : H1        : output : 3.3-V LVTTL       :         : 1B        : N              
-~ALTERA_TMS~ / RESERVED_INPUT_WITH_WEAK_PULLUP : H2        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
-~ALTERA_TCK~ / RESERVED_INPUT : H3        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
+altera_reserved_tdo          : H1        : output : 3.3-V LVTTL       :         : 1B        : N              
+altera_reserved_tms          : H2        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
+altera_reserved_tck          : H3        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
 VCCIO1A                      : H4        : power  :                   : 3.3V    : 1A        :                
 A_35V_L_EN                   : H5        : output : 3.3-V LVTTL       :         : 1A        : Y              
 L_4MB_SER_IN_ER              : H6        : input  : 3.3-V LVTTL       :         : 1B        : Y              
@@ -212,22 +212,22 @@ FPGA11                       : J11       : output : 3.3-V LVTTL       :         
 MICCB_SPARE_IO3              : J12       : input  : 3.3-V LVTTL       :         : 6         : Y              
 VCCIO6                       : J13       : power  :                   : 3.3V    : 6         :                
 MicCB_ESTOP_OPEN_REQUEST     : J14       : input  : 3.3-V LVTTL       :         : 6         : Y              
-L_LED_DIN                    : J15       : output : 3.3-V LVTTL       :         : 6         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : J15       :        :                   :         : 6         :                
 MICCB_SPARE_IO0              : J16       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
 GND                          : K1        : gnd    :                   :         :           :                
 FPGA_DIAG_ACT                : K2        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND                          : K3        : gnd    :                   :         :           :                
 VCCIO2                       : K4        : power  :                   : 3.3V    : 2         :                
-L_POS_SENS_1_OUT2_BUFF       : K5        : input  : 3.3-V LVTTL       :         : 2         : Y              
+L_POS_SENS_1_OUT1_BUFF       : K5        : input  : 3.3-V LVTTL       :         : 2         : Y              
 L_WHEEL_SENS_SPARE_OUT1_BUFF : K6        : input  : 3.3-V LVTTL       :         : 2         : Y              
 GND                          : K7        : gnd    :                   :         :           :                
 VCC                          : K8        : power  :                   : 1.2V    :           :                
 GND                          : K9        : gnd    :                   :         :           :                
 VCC                          : K10       : power  :                   : 1.2V    :           :                
-L_NO_switch_TOOL_EX_FPGA     : K11       : input  : 3.3-V LVTTL       :         : 5         : Y              
+L_NC_switch_TOOL_EX_FPGA     : K11       : input  : 3.3-V LVTTL       :         : 5         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : K12       :        :                   :         : 5         :                
 VCCIO5                       : K13       : power  :                   : 3.3V    : 5         :                
-L_POS_SENS_0_OUT1_BUFF       : K14       : input  : 3.3-V LVTTL       :         : 5         : Y              
+L_NO_switch_TOOL_EX_FPGA     : K14       : input  : 3.3-V LVTTL       :         : 5         : Y              
 MICCB_SPARE_IO1              : K15       : input  : 3.3 V Schmitt Trigger :         : 6         : Y              
 GND                          : K16       : gnd    :                   :         :           :                
 FPGA_ESTOP_REQ               : L1        : output : 3.3-V LVTTL       :         : 2         : Y              
@@ -246,7 +246,7 @@ VCCIO5                       : L13       : power  :                   : 3.3V    
 GND                          : L14       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : L15       :        :                   :         : 5         :                
 FPGA8                        : L16       : output : 3.3-V LVTTL       :         : 5         : Y              
-L_POS_SENS_1_OUT1_BUFF       : M1        : input  : 3.3-V LVTTL       :         : 2         : Y              
+L_POS_SENS_0_OUT2_BUFF       : M1        : input  : 3.3-V LVTTL       :         : 2         : Y              
 L_WHEEL_SENS_SPARE_OUT2_BUFF : M2        : input  : 3.3-V LVTTL       :         : 2         : Y              
 FPGA_WHEEL_STOP_ELO          : M3        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND                          : M4        : gnd    :                   :         :           :                
@@ -263,8 +263,8 @@ MICCB_GEN_SYNC_FAIL          : M14       : input  : 3.3-V LVTTL       :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : M15       :        :                   :         : 5         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : M16       :        :                   :         : 5         :                
 R_POS_SENS_1_OUT1_BUFF       : N1        : input  : 3.3-V LVTTL       :         : 2         : Y              
-L_POS_SENS_0_OUT2_BUFF       : N2        : input  : 3.3-V LVTTL       :         : 2         : Y              
-L_POS_SENS_OUT1_BUFF         : N3        : input  : 3.3-V LVTTL       :         : 2         : Y              
+L_POS_SENS_0_OUT1_BUFF       : N2        : input  : 3.3-V LVTTL       :         : 2         : Y              
+L_POS_SENS_1_OUT2_BUFF       : N3        : input  : 3.3-V LVTTL       :         : 2         : Y              
 R_POS_SENS_OUT1_BUFF         : N4        : input  : 3.3-V LVTTL       :         : 2         : Y              
 SPARE2_IO1_FPGA              : N5        : input  : 3.3-V LVTTL       :         : 3         : Y              
 VCCIO3                       : N6        : power  :                   : 3.3V    : 3         :                
@@ -299,7 +299,7 @@ SPARE1_DIFF3                 : R2        : output : 3.3-V LVTTL       :         
 SPARE1_DIFF2                 : R3        : output : 3.3-V LVTTL       :         : 3         : Y              
 SPARE2_DIFF0                 : R4        : input  : 3.3-V LVTTL       :         : 3         : Y              
 R_POS_SENS_OUT2_BUFF         : R5        : input  : 3.3-V LVTTL       :         : 3         : Y              
-L_POS_SENS_OUT2_BUFF         : R6        : input  : 3.3-V LVTTL       :         : 3         : Y              
+L_POS_SENS_OUT1_BUFF         : R6        : input  : 3.3-V LVTTL       :         : 3         : Y              
 SPARE1_ANALOG_SW_SEL_FPGA    : R7        : output : 3.3-V LVTTL       :         : 3         : Y              
 SPARE2_ANALOG_SW_SEL_FPGA    : R8        : output : 3.3-V LVTTL       :         : 3         : Y              
 SPARE1_IO3_FPGA              : R9        : output : 3.3-V LVTTL       :         : 3         : Y              
@@ -308,13 +308,13 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : R11       :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : R12       :        :                   :         : 4         :                
 GND                          : R13       : gnd    :                   :         :           :                
 R_SER_RX_ER                  : R14       : input  : 3.3-V LVTTL       :         : 5         : Y              
-L_M5B_SER_IN_SE              : R15       : input  : 3.3-V LVTTL       :         : 5         : Y              
+L_M5B_SER_IN_ER              : R15       : input  : 3.3-V LVTTL       :         : 5         : Y              
 R_M5B_SER_IN_ER              : R16       : input  : 3.3-V LVTTL       :         : 5         : Y              
 GND                          : T1        : gnd    :                   :         :           :                
 SPARE2_DIFF3                 : T2        : output : 3.3-V LVTTL       :         : 3         : Y              
 SPARE2_DIFF2                 : T3        : output : 3.3-V LVTTL       :         : 3         : Y              
 SSR_ON_FPGA                  : T4        : input  : 3.3-V LVTTL       :         : 3         : Y              
-L_ROBOT_DIFF_SP2             : T5        : input  : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : T5        :        :                   :         : 3         :                
 SPARE1_ANALOG_SW_1_SEL_FPGA  : T6        : output : 3.3-V LVTTL       :         : 3         : Y              
 SPARE1_ANALOG_SW_0_SEL_FPGA  : T7        : output : 3.3-V LVTTL       :         : 3         : Y              
 SPARE2_ANALOG_SW_1_SEL_FPGA  : T8        : output : 3.3-V LVTTL       :         : 3         : Y              

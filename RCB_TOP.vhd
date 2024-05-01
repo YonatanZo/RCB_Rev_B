@@ -402,7 +402,8 @@ END COMPONENT;
 component ADC_Master
   generic (
     input_clk : INTEGER;
-    bus_clk : INTEGER
+    bus_clk : INTEGER;
+    dev_id    : STD_LOGIC_VECTOR(6 DOWNTO 0)
   );
   port (
     clk : in STD_LOGIC;
@@ -420,6 +421,17 @@ component ADC_Master
     scl : inout STD_LOGIC
   );
 end component;
+
+component UART_PLL
+	PORT
+	(
+		areset		: IN STD_LOGIC  := '0';
+		inclk0		: IN STD_LOGIC  := '0';
+		c0		: OUT STD_LOGIC ;
+		locked		: OUT STD_LOGIC 
+	);
+end component;
+
 
 constant L_TOOL_EX :std_logic_vector(2 downto 0) := "000";
 constant L_LED_Strip :std_logic_vector(2 downto 0) := "001"; 
@@ -477,16 +489,27 @@ signal FAN_PWM_REG_OUT_2 :   STD_LOGIC_VECTOR(7 DOWNTO 0);
   signal FPGA_SYNC_TIME       : STD_LOGIC_VECTOR(31 downto 0);
   signal CS_ERROR             : STD_LOGIC;
   signal MicCB_SYNC_CNT       : STD_LOGIC_VECTOR(31 downto 0);
-
+  signal rst_syn             : STD_LOGIC;
+  signal UART_CLK             : STD_LOGIC; --200MHz
+  signal UART_rstn             : STD_LOGIC;
 begin
 
+  rst_syn <= not rst_n_syn;
 
+  UART_PLL_inst : UART_PLL
+  port map (
+    areset	=> rst_syn,
+		inclk0	=> CLK_100M,
+		c0		=> UART_CLK,
+		locked	=> UART_rstn
+  );
 
 
   ADC_Master_inst :  ADC_master
   generic map (
     input_clk => 100000000,
-    bus_clk => 400000
+    bus_clk => 400000,
+    dev_id => "0010000"
   )
   port map (
     clk => CLK_100M,
@@ -503,7 +526,6 @@ begin
     sda => SDA_ADC,
     scl => SCL_ADC
   );
-
 LED_1 <= FPGA_LEDs_OUT(0);
 LED_2 <= FPGA_LEDs_OUT(1);
 LED_3 <= FPGA_LEDs_OUT(2);
@@ -670,8 +692,8 @@ LED_8 <= FPGA_LEDs_OUT(7);
 
         L_UART_TOP_inst :  UART_TOP
         port map (
-          CLK => CLK_100M,
-          RST_N => rst_n_syn,
+          CLK => UART_CLK,
+          RST_N => UART_rstn,
           RXD_4MB => L_4MB_SER_IN_SE,
           RXD_M5B => L_M5B_SER_IN_SE,
           RXD_EFF => L_EEF_SER_IN_SE,
@@ -680,8 +702,8 @@ LED_8 <= FPGA_LEDs_OUT(7);
       
         R_UART_TOP_inst :  UART_TOP
         port map (
-          CLK => CLK_100M,
-          RST_N => rst_n_syn,
+          CLK => UART_CLK,
+          RST_N => UART_rstn,
           RXD_4MB => R_4MB_SER_IN_SE,
           RXD_M5B => R_M5B_SER_IN_SE,
           RXD_EFF => R_EEF_SER_IN_SE,

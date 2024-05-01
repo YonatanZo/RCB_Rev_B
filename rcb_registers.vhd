@@ -195,11 +195,11 @@ end rcb_registers;
 architecture Behavioral of rcb_registers is
 --FPGA Version/date
 constant FPGA_MAJOR_VER : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
-constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"01";
+constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"02";
 constant FPGA_REV_YEAR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"18";
-constant FPGA_REV_MONTH : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
-constant FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"07";
-constant FPGA_REV_HOUR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"08";
+constant FPGA_REV_MONTH : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"05";
+constant FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"01";
+constant FPGA_REV_HOUR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"0a";
 --Regiasters address declaretion 
 constant ADDR_FPGA_Version: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0000";
 constant ADDR_FPGA_Date: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0001";
@@ -276,8 +276,6 @@ begin
     elsif rising_edge(clk_100m) then
         FPGA_Version_reg  <= FPGA_REV & FPGA_MAJOR_VER & x"0000";
         FPGA_Date_reg  <= FPGA_REV_HOUR & FPGA_REV_DAY & FPGA_REV_MONTH & FPGA_REV_YEAR;
-    	--BOARD LED 
-		
 	    --Data to fan 1 moudle 
 	    --FAN_TACHO_REG_OUT_1  <= FPGA_FAN_1_Tacho_reg(15 DOWNTO 0) ;TODO:fix this other deriction 
 		FAN_PWM_REG_OUT_1  <= FPGA_FAN_1_PWM_reg(7 DOWNTO 0) ;
@@ -310,6 +308,7 @@ begin
 		R_WHEEL_SENS_A2_OUT2 & R_WHEEL_SENS_SPARE_OUT1 & R_WHEEL_SENS_SPARE_OUT2;
 		--LED MUX CONTROL 
 		MUX_Control <= LEDs_strip_Mux_reg(2 downto 0);
+
 		end if;
 end process;
 
@@ -468,7 +467,6 @@ begin
 		end if;
     end if;
 end process;
-
 
 end Behavioral;
 

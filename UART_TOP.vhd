@@ -15,40 +15,11 @@ entity UART_TOP is
 end entity UART_TOP;
 
 architecture rtl of UART_TOP is
---	component RX_UART is
---		port (
---			clk_clk                                  : in  std_logic                    := 'X';             -- clk
---			reset_reset_n                            : in  std_logic                    := 'X';             -- reset_n
---			rs232_0_from_uart_ready                  : in  std_logic                    := 'X';             -- ready
---			rs232_0_from_uart_data                   : out std_logic_vector(7 downto 0);                    -- data
---			rs232_0_from_uart_error                  : out std_logic;                                       -- error
---			rs232_0_from_uart_valid                  : out std_logic;                                       -- valid
---			rs232_0_to_uart_data                     : in  std_logic_vector(7 downto 0) := (others => 'X'); -- data
---			rs232_0_to_uart_error                    : in  std_logic                    := 'X';             -- error
---			rs232_0_to_uart_valid                    : in  std_logic                    := 'X';             -- valid
---			rs232_0_to_uart_ready                    : out std_logic;                                       -- ready
---			rs232_0_UART_RXD                         : in  std_logic                    := 'X';             -- RXD
---			rs232_0_UART_TXD                         : out std_logic;                                       -- TXD
---			rs232_1_external_interface_RXD           : in  std_logic                    := 'X';             -- RXD
---			rs232_1_external_interface_TXD           : out std_logic;                                       -- TXD
---			rs_0_external_interface_RXD              : in  std_logic                    := 'X';             -- RXD
---			rs_0_external_interface_TXD              : out std_logic;                                       -- TXD
---			rs_0_avalon_data_receive_source_ready    : in  std_logic                    := 'X';             -- ready
---			rs_0_avalon_data_receive_source_data     : out std_logic_vector(7 downto 0);                    -- data
---			rs_0_avalon_data_receive_source_error    : out std_logic;                                       -- error
---			rs_0_avalon_data_receive_source_valid    : out std_logic;                                       -- valid
---			rs232_1_avalon_data_receive_source_ready : in  std_logic                    := 'X';             -- ready
---			rs232_1_avalon_data_receive_source_data  : out std_logic_vector(7 downto 0);                    -- data
---			rs232_1_avalon_data_receive_source_error : out std_logic;                                       -- error
---			rs232_1_avalon_data_receive_source_valid : out std_logic                                        -- valid
---		);
---	end component RX_UART;
 constant RX_RATE : Integer:= 12000000 ;	
 constant UART_CLK : Integer:= 200000000 ;
 constant TX_RATE : Integer:= 20000000 ;		
 	COMPONENT UART
 	GENERIC ( CLK_FREQ : INTEGER := 100000000; BAUD_RATE : INTEGER := 10000000; PARITY_BIT : STRING := "none"; USE_DEBOUNCER : boolean := true );
-		
 	PORT
 	(
 		CLK		:	 IN STD_LOGIC;
@@ -139,19 +110,7 @@ end component TX_Master;
 		usedw		: OUT STD_LOGIC_VECTOR (8 DOWNTO 0)
 	);
 	end component;
-	
-	component TX_UART is
-		port (
-			clk_clk               : in  std_logic                    := 'X';             -- clk
-			reset_reset_n         : in  std_logic                    := 'X';             -- reset_n
-			rs232_0_UART_RXD      : in  std_logic                    := 'X';             -- RXD
-			rs232_0_UART_TXD      : out std_logic;                                       -- TXD
-			rs232_0_to_uart_data  : in  std_logic_vector(7 downto 0) := (others => 'X'); -- data
-			rs232_0_to_uart_error : in  std_logic                    := 'X';             -- error
-			rs232_0_to_uart_valid : in  std_logic                    := 'X';             -- valid
-			rs232_0_to_uart_ready : out std_logic                                        -- ready
-		);
-	end component TX_UART;
+
 
     -- Declare signals for RX_UART component
     signal avalon_ready0, avalon_ready1, avalon_ready2 : std_logic;
@@ -183,29 +142,6 @@ end component TX_Master;
 
 begin
 
---	RX_UARTS : component RX_UART
---		port map (
---				clk_clk                                  => CLK,      -->EVM 50MHz                    
---				reset_reset_n                            => RST_N,    -->SW[0]                     
---				
---				rs232_0_UART_RXD                         => RXD_4MB,  -->GPIO[0]                       
---				rs232_0_from_uart_ready                  => avalon_ready0,  -->RX_Slave0                 
---				rs232_0_from_uart_data                   => avalon_data0,   -->RX_Slave0                
---				rs232_0_from_uart_error                  => avalon_error0,  -->RX_Slave0               
---				rs232_0_from_uart_valid                  => avalon_valid0,  -->RX_Slave0
---							
---				rs_0_external_interface_RXD              => RXD_M5B,  -->GPIO[1]     
---				rs_0_avalon_data_receive_source_ready    => avalon_ready1,  -->RX_Slave1
---				rs_0_avalon_data_receive_source_data     => avalon_data1,   -->RX_Slave1
---				rs_0_avalon_data_receive_source_error    => avalon_error1,  -->RX_Slave1
---				rs_0_avalon_data_receive_source_valid    => avalon_valid1,  -->RX_Slave1
---				
---				rs232_1_external_interface_RXD           => RXD_EFF, -->GPIO[2] 
---				rs232_1_avalon_data_receive_source_ready => avalon_ready2,  -->RX_Slave2
---				rs232_1_avalon_data_receive_source_data  => avalon_data2,   -->RX_Slave1
---				rs232_1_avalon_data_receive_source_error => avalon_error2,  -->RX_Slave1
---				rs232_1_avalon_data_receive_source_valid => avalon_valid2   -->RX_Slave1
---		);
 		RST <= not RST_N;
 
       RX_UART0 : component UART
@@ -275,7 +211,7 @@ begin
 		
 	 RX_Slave0: RX_Slave
         port map (
-            clk           => CLK, 				-->EVM 50MHz
+            clk           => CLK, 				-->200MHz
             resetn         => RST_N, 			-->SW[0]
             clr_rdy       => clr_rdy_0, 		-->TX_Master
 			clr_err		  => clr_err0,
@@ -294,7 +230,7 @@ begin
   	 
 	 RX_Slave1: RX_Slave
         port map (
-            clk           => CLK, -->EVM 50MHz
+            clk           => CLK, -->200MHz
             resetn         => RST_N, -->SW[0]
             clr_rdy       => clr_rdy_1,-->TX_Master
 			clr_err		  => clr_err1,
@@ -313,7 +249,7 @@ begin
 
   	 RX_Slave2: RX_Slave
         port map (
-				clk           => CLK, 		-->EVM 50MHz
+				clk           => CLK, 		-->200MHz
 				resetn         => RST_N, 	-->SW[0]
 				clr_rdy       => clr_rdy_2,-->TX_Master
 				clr_err		  => clr_err2,
@@ -333,7 +269,7 @@ begin
 		TX_Master_inst : TX_Master
         port map (
 				--EVM
-				clk                     => CLK,-->EVM 50MHz
+				clk                     => CLK,-->200MHz
 				resetn                   => RST_N,-->SW[0]
 				--RX_Slave0
 				tx_rdy0                 => tx_rdy0,
@@ -440,19 +376,5 @@ begin
 				PARITY_ERROR    => open
 		);	
 		
-		
-		
---		TEENSY_UART : TX_UART
---			port map (
---				clk_clk               => CLK,               -->EVM 50MHz
---				reset_reset_n         => RST_N,         -->SW[0]
---				rs232_0_UART_RXD      => open,      
---				rs232_0_UART_TXD      => TXD_TEENSY,      -->GPIO
---				rs232_0_to_uart_data  => TEENSY_UART_DATA,  -->TX_Master
---				rs232_0_to_uart_error => TEENSY_UART_ERROR, -->TX_Master
---				rs232_0_to_uart_valid => TEENSY_UART_VALID, -->TX_Master
---				rs232_0_to_uart_ready => TEENSY_UART_RDY  -->TX_Master
---			);
-
 
 end architecture rtl; -- of UART_TOP
