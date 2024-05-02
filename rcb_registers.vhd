@@ -189,17 +189,17 @@ entity rcb_registers is
 		FPGA_FAULT                  : out STD_LOGIC                    ;
 		RST_WD                      : in  STD_LOGIC                    ;
 		--Sync Timer
-		MicCB_SYNC_CNT              : out STD_LOGIC_VECTOR(31 downto 0)
+		MicCB_SYNC_CNT              : in STD_LOGIC_VECTOR(31 downto 0)
 	);
 end rcb_registers;
 architecture Behavioral of rcb_registers is
 --FPGA Version/date
 constant FPGA_MAJOR_VER : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
-constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"02";
+constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
 constant FPGA_REV_YEAR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"18";
 constant FPGA_REV_MONTH : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"05";
-constant FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"01";
-constant FPGA_REV_HOUR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"0a";
+constant FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"02";
+constant FPGA_REV_HOUR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"10";
 --Regiasters address declaretion 
 constant ADDR_FPGA_Version: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0000";
 constant ADDR_FPGA_Date: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0001";
@@ -381,7 +381,7 @@ begin
 	end case;
 	
 end process;
-	
+Sync_Timer_reg <= MicCB_SYNC_CNT;
 process (clk_100m, rst_n_syn, data_mosi_rdy, addr, data_mosi)
 begin
     if rst_n_syn = '0' then

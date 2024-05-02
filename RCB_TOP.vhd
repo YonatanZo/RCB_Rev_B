@@ -367,7 +367,7 @@ COMPONENT rcb_registers is
         FPGA_FAULT                  : out STD_LOGIC                    ;
         RST_WD                      : in  STD_LOGIC                    ;
         --Sync Timer
-        MicCB_SYNC_CNT              : out STD_LOGIC_VECTOR(31 downto 0)
+        MicCB_SYNC_CNT              : in STD_LOGIC_VECTOR(31 downto 0)
     );
 end COMPONENT;
 
@@ -492,7 +492,37 @@ signal FAN_PWM_REG_OUT_2 :   STD_LOGIC_VECTOR(7 DOWNTO 0);
   signal rst_syn             : STD_LOGIC;
   signal UART_CLK             : STD_LOGIC; --200MHz
   signal UART_rstn             : STD_LOGIC;
+  signal MICCB_GEN_SYNC_FPGA_F  : STD_LOGIC;
+  signal MICCB_GEN_SYNC_FPGA_FF  : STD_LOGIC;
+  signal MICCB_GEN_SYNC_FPGA_SYN  : STD_LOGIC;
 begin
+
+  MicCB_SYNC_Counter:process (rst_n_syn,CLK_100M,MICCB_GEN_SYNC_FPGA_SYN)
+  begin
+    if rst_n_syn = '0' then
+      MicCB_SYNC_CNT<= (others => '0');
+    elsif rising_edge(CLK_100M) then
+      if MICCB_GEN_SYNC_FPGA_SYN = '1' then
+        MicCB_SYNC_CNT <= (others => '0');
+      elsif MicCB_SYNC_CNT /= x"ffffffff" then
+        MicCB_SYNC_CNT <= std_logic_vector( unsigned(MicCB_SYNC_CNT) + 1 );
+      else 
+        null;
+      end if;
+    end if;
+  end process;
+
+  MICCB_GEN_SYNC_FPGA_SYN <= (MICCB_GEN_SYNC_FPGA_F and (not MICCB_GEN_SYNC_FPGA_FF));
+  MICCB_GEN_SYNC_FPGA_SYNC:process (CLK_100M)
+  begin
+    if rst_n_syn = '0' then
+      MICCB_GEN_SYNC_FPGA_F <= '0';
+      MICCB_GEN_SYNC_FPGA_FF <= '0';
+    elsif rising_edge(CLK_100M) then
+      MICCB_GEN_SYNC_FPGA_F <= MICCB_GEN_SYNC_FPGA ;
+      MICCB_GEN_SYNC_FPGA_FF <= MICCB_GEN_SYNC_FPGA_F;
+    end if;
+  end process;
 
   rst_syn <= not rst_n_syn;
 
