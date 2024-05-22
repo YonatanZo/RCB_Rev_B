@@ -164,7 +164,20 @@ entity RCB_TOP is
 end entity RCB_TOP;
 
 architecture Behavioral of RCB_TOP is
-component FAN
+
+  COMPONENT i2c_top
+    PORT (
+      clk      : IN  STD_LOGIC;
+      reset_n  : IN  STD_LOGIC;
+      start    : IN  STD_LOGIC;
+      scl      : INOUT  STD_LOGIC;
+      sda      : INOUT  STD_LOGIC;
+      data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      done     : OUT STD_LOGIC
+    );
+  END COMPONENT;
+
+  component FAN
 port (
     RST_N : in STD_LOGIC;
     CLK : in STD_LOGIC;
@@ -416,11 +429,13 @@ component ADC_Master
     AIN5 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
     AIN6 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
     AIN7 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-    clk_1MHz : out STD_LOGIC;
+    debug : OUT     STD_LOGIC_VECTOR(7 DOWNTO 0);
     sda : inout STD_LOGIC;
     scl : inout STD_LOGIC
   );
 end component;
+
+
 
 component UART_PLL
 	PORT
@@ -432,6 +447,11 @@ component UART_PLL
 	);
 end component;
 
+component reset is
+  port (
+    source : out std_logic_vector(0 downto 0)   -- source
+  );
+end component reset;
 
 constant L_TOOL_EX :std_logic_vector(2 downto 0) := "000";
 constant L_LED_Strip :std_logic_vector(2 downto 0) := "001"; 
@@ -442,7 +462,7 @@ constant Robot_ESTOP_LED :std_logic_vector(2 downto 0) := "101";
 
 
 signal rst_n_syn            :   STD_LOGIC := '1';
-signal counter : integer range 0 to 99 := 0;
+
 signal clk_1m_internal : STD_LOGIC := '0';
 signal data_miso       :   STD_LOGIC_VECTOR(31 DOWNTO 0);
 signal data_mosi       :   STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -495,8 +515,83 @@ signal FAN_PWM_REG_OUT_2 :   STD_LOGIC_VECTOR(7 DOWNTO 0);
   signal MICCB_GEN_SYNC_FPGA_F  : STD_LOGIC;
   signal MICCB_GEN_SYNC_FPGA_FF  : STD_LOGIC;
   signal MICCB_GEN_SYNC_FPGA_SYN  : STD_LOGIC;
+  ---------------debug only-------------------
+  signal pc_rst       : STD_LOGIC_VECTOR(0 downto 0);
+  signal debug_rstn       : STD_LOGIC;
+  signal counter : integer range 0 to 99_999_999 := 0;
+  signal SDA_ADC_sig  : STD_LOGIC := '1';
+  signal SCL_ADC_sig  : STD_LOGIC;
+  SIGNAL internal_start : STD_LOGIC;
+  ---------------debug end--------------------
 begin
 
+---------------debug only-------------------
+-- reset_u : component reset
+-- port map (
+--   source => pc_rst  -- sources.source
+-- );
+
+debug_reset_Counter:process (rst_n_syn,CLK_100M)
+begin
+  if rst_n_syn = '0' then
+    counter<= 0;
+    debug_rstn <= '0';
+  elsif rising_edge(CLK_100M) then
+    if counter /= 99_999_999 then
+      counter <= counter + 1 ;
+    else 
+      counter <= 0;
+    end if;
+    case counter is
+      when 0 to  99_998_999 =>
+        debug_rstn <= '1';
+        internal_start <= '1';
+      when others =>
+        debug_rstn <= '0';
+        internal_start <= '0';
+    end case;
+  end if;
+end process;
+
+
+i2c_top_inst : i2c_top
+PORT MAP (
+  clk      => CLK_100M,
+  reset_n  => debug_rstn,
+  start    => internal_start,
+  scl      => SCL_ADC,
+  sda      => SDA_ADC,
+  data_out => open,
+  done     => open
+);
+
+
+-- ADC_Master_inst :  ADC_master
+-- generic map (
+--   input_clk => 100_000_000,
+--   bus_clk => 100_000,
+--   dev_id => "0010000"
+-- )
+-- port map (
+--   clk => CLK_100M,
+--   reset_n => debug_rstn,
+--   AIN0 => AIN0,
+--   AIN1 => AIN1,
+--   AIN2 => AIN2,
+--   AIN3 => AIN3,
+--   AIN4 => AIN4,
+--   AIN5 => AIN5,
+--   AIN6 => AIN6,
+--   AIN7 => AIN7,
+--   debug => open,
+--   sda => SDA_ADC,
+--   scl => SCL_ADC
+-- );
+--SDA_ADC <= debug_rstn;
+--SCL_ADC <= debug_rstn;
+--SDA_ADC <= SDA_ADC_sig;
+--SCL_ADC <= SCL_ADC_sig;
+---------------debug end--------------------
   MicCB_SYNC_Counter:process (rst_n_syn,CLK_100M,MICCB_GEN_SYNC_FPGA_SYN)
   begin
     if rst_n_syn = '0' then
@@ -523,7 +618,7 @@ begin
       MICCB_GEN_SYNC_FPGA_FF <= MICCB_GEN_SYNC_FPGA_F;
     end if;
   end process;
-
+  rst_n_syn <= '1';
   rst_syn <= not rst_n_syn;
 
   UART_PLL_inst : UART_PLL
@@ -535,27 +630,6 @@ begin
   );
 
 
-  ADC_Master_inst :  ADC_master
-  generic map (
-    input_clk => 100000000,
-    bus_clk => 400000,
-    dev_id => "0010000"
-  )
-  port map (
-    clk => CLK_100M,
-    reset_n => rst_n_syn,
-    AIN0 => AIN0,
-    AIN1 => AIN1,
-    AIN2 => AIN2,
-    AIN3 => AIN3,
-    AIN4 => AIN4,
-    AIN5 => AIN5,
-    AIN6 => AIN6,
-    AIN7 => AIN7,
-    clk_1MHz => open,
-    sda => SDA_ADC,
-    scl => SCL_ADC
-  );
 LED_1 <= FPGA_LEDs_OUT(0);
 LED_2 <= FPGA_LEDs_OUT(1);
 LED_3 <= FPGA_LEDs_OUT(2);
@@ -762,7 +836,7 @@ LED_8 <= FPGA_LEDs_OUT(7);
   );
 
 
-  process (MUX_Control)
+  process (MUX_Control,TEENSY_LEDS_STRIP_DO)
   begin
     case MUX_Control is
       when L_TOOL_EX =>

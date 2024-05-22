@@ -6,7 +6,7 @@ use ieee.numeric_std.all;
 entity ads_master is
   generic
   (
-    input_clk : integer                      := 50_000_000; --input clock speed from user logic in Hz
+    input_clk : integer                      := 100_000_000; --input clock speed from user logic in Hz
     addr      : std_logic_vector(6 downto 0) := "0010000";
     bus_clk   : integer                      := 400_000); --speed the i2c bus (scl) will run at in Hz
   port
@@ -15,12 +15,11 @@ entity ads_master is
     reset_n   : in std_logic; --active low reset
     ena       : in std_logic; --latch in command
     rw        : in std_logic; --'0' is write, '1' is read
-    burst     : in std_logic; --'1' burst mode enable
-    burst_len : in std_logic_vector(7 downto 0);
+    no_op     : in std_logic; --'1'  mode enable
     data_wr   : in std_logic_vector(7 downto 0);  --data to write to slave
     reg_adrr  : in std_logic_vector(7 downto 0);  --address to write/read from/to slave
     busy      : out std_logic;                    --indicates transaction in progress
-    rd_rdy    : out std_logic;                    --indicates burst read date is ready
+    rd_rdy    : out std_logic;                    --indicates read date is ready
     data_rd   : out std_logic_vector(7 downto 0); --data read from slave
     debug     : out std_logic_vector(7 downto 0);
     ack_error : buffer std_logic; --flag if improper acknowledge from slave
@@ -48,7 +47,7 @@ architecture logic of ads_master is
   signal op_tx         : std_logic_vector(7 downto 0); --latched in data to write to slave
   signal data_rx       : std_logic_vector(7 downto 0); --data received from slave
   signal bit_cnt       : integer range 0 to 7   := 7;  --tracks bit number in transaction
-  signal regs_cnt      : integer range 0 to 255 := 0;
+
   signal stretch       : std_logic              := '0'; --identifies if slave is stretching scl
   signal debug_SR      : std_logic_vector(7 downto 0);
 begin
@@ -89,6 +88,7 @@ begin
     end if;
   end process;
   --busy moore
+
   process (clk, reset_n)
   begin
     if (reset_n = '0') then --reset asserted
@@ -129,7 +129,7 @@ begin
     end if;
   end process;
   --state machine and writing to sda during scl low (data_clk rising edge)
-  process (clk, reset_n)
+  process (clk, reset_n,rd_op)
   begin
     if (reset_n = '0') then --reset asserted
       state <= s_ready;       --return to initial state
@@ -140,7 +140,6 @@ begin
       bit_cnt   <= 7;          --restarts data bit counter
       data_rd   <= "00000000"; --clear data read port
       op_tx     <= (others => '0');
-      regs_cnt  <= 0;
     elsif (rising_edge(clk)) then
       if (data_clk = '1' and data_clk_prev = '0') then --data clock rising edge
         case state is
@@ -148,16 +147,12 @@ begin
             --idle state
           when s_ready =>
             if (ena = '1') then    --transaction requested
-              addr_rw <= addr & '0'; --collect requested slave address and command,in this device alwayes staert with write(low)
+              addr_rw <= addr & rw; --collect requested slave address and command,in this device alwayes staert with write(low)
               data_tx <= data_wr;    --collect requested data to write
-              if (rw = '0' and burst = '0') then
+              if (rw = '0') then
                 op_tx <= OP_SIN_REG_WR;
-              elsif (rw = '0' and burst = '1') then
-                op_tx <= OP_CON_REG_WR;
-              elsif (rw = '1' and burst = '0') then
+              elsif (rw = '1' ) then
                 op_tx <= OP_SIN_REG_RD;
-              elsif (rw = '1' and burst = '1') then
-                op_tx <= OP_CON_REG_RD;
               end if;
               state <= s_start; --go to start bit
 
@@ -169,14 +164,14 @@ begin
             --start condition 
           when s_start =>
 
-            if rd_op = '1' then
-              rd_op   <= '0';
-              addr_rw <= addr & '1';
-              state   <= s_rd_command; --go to command
-            else
+            -- if rd_op = '1' then
+            --   rd_op   <= '0';
+            --   addr_rw <= addr & '1';
+            --   state   <= s_rd_command; --go to command
+            -- else
               sda_int <= addr_rw(bit_cnt); --set first address bit to bus
               state   <= s_command;        --go to command
-            end if;
+            -- end if;
 
             --address and command byte of transaction
             --writing device ID and write bit
@@ -202,18 +197,16 @@ begin
               state   <= s_rd_command;         --continue with command
             end if;
           when s_slv_ack_rd =>
-
             sda_int <= '1'; --release sda from incoming data
-            if burst = '1' then
-              regs_cnt <= to_integer(unsigned(burst_len));
-            else
-              regs_cnt <= 0;
-            end if;
             state <= s_rd; --go to read byte
             --get slave ACK after writing device ID     
           when s_slv_ack1 => --slave acknowledge bit (command) 
-            sda_int <= op_tx(bit_cnt);
-            state   <= s_op;
+            if no_op = '0' then
+              sda_int <= op_tx(bit_cnt);
+              state   <= s_op;
+            else
+              state <= s_rd;
+            end if;
             --writing OP code                 
           when s_op =>
 
@@ -249,10 +242,10 @@ begin
             if (rw = '0') then --start writing oparation 
               data_tx <= data_wr;
               sda_int <= data_wr(bit_cnt); --write first bit of data
-              rd_op   <= '0';
+              -- rd_op   <= '0';
               state   <= s_wr; --go to write byte 
             else
-              rd_op <= '1';
+              -- rd_op <= '1';
               state <= s_stop;
               --add P/Sr state -->Start state --> read /reas seq 
             end if;
@@ -262,16 +255,10 @@ begin
             if (bit_cnt = 0) then --write byte transmit finished
               sda_int <= '1';       --release sda for slave acknowledge
               bit_cnt <= 7;         --reset bit counter for "byte" states
-              if burst = '1' then
-                regs_cnt <= regs_cnt - 1;
-              end if;
               state <= s_slv_ack2;             --go to slave acknowledge (write)
             else                             --next clock cycle of write state
               bit_cnt <= bit_cnt - 1;          --keep track of transaction bits
               sda_int <= data_tx(bit_cnt - 1); --write next bit to bus
-              if (burst = '1') then
-                regs_cnt <= to_integer(unsigned(burst_len));
-              end if;
               state <= s_wr; --continue writing
             end if;
 
@@ -280,7 +267,7 @@ begin
             if (bit_cnt = 0) then --read byte receive finished
               bit_cnt  <= 7;        --reset bit counter for "byte" states
               data_rd  <= data_rx;  --output received data
-              regs_cnt <= regs_cnt - 1;
+
               state    <= s_mstr_ack; --go to master acknowledge
               rd_rdy   <= '1';
             else                    --next clock cycle of read state
@@ -289,32 +276,21 @@ begin
             end if;
 
           when s_slv_ack2 => --slave acknowledge bit (write)
-            if (burst = '1' and regs_cnt /= 0 and rw = '0') then
-              data_tx <= data_wr;
-              sda_int <= data_wr(bit_cnt); --write first bit of data
-              state   <= s_wr;
-            elsif (rw = '0') then
               state <= s_stop;
-            end if;
-
           when s_mstr_ack => --master acknowledge bit after a read
             rd_rdy <= '0';
-            if (regs_cnt /= 0) then --continue transaction
-              sda_int <= '1';         --release sda from incoming data
-              state   <= s_rd;        --go to read byte
-
-            else             --complete transaction
-              state <= s_stop; --go to stop bit
-            end if;
+            state <= s_stop; --go to stop bit
 
           when s_stop => --stop bit of transaction
-            if rd_op = '1' then
-              state <= s_start;
-            else
+            -- if rd_op = '1' then
+            --   state <= s_start;
+            -- else
               state <= s_ready; --go to idle state
-            end if;
+            -- end if;
         end case;
 
+
+        
       elsif (data_clk = '0' and data_clk_prev = '1') then --data clock falling edge
         case state is
             --starting new transaction
@@ -366,9 +342,9 @@ begin
 
   --set scl and sda outputs
   scl <= '0' when (scl_ena = '1' and scl_clk = '0') else
-    'Z';
+    'H';
   sda <= '0' when sda_ena_n = '0' else
-    'Z';
+    'H';
   process (clk)
   begin
     if rising_edge(scl) then

@@ -1,17 +1,17 @@
-Fitter Status : Successful - Thu May  2 17:44:06 2024
+Fitter Status : Successful - Wed May 22 13:57:41 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : RCB_FPGA_3_1
 Top-level Entity Name : RCB_TOP
 Family : MAX 10
 Device : 10M40DCF256I7G
 Timing Models : Final
-Total logic elements : 2,724 / 40,368 ( 7 % )
-    Total combinational functions : 2,093 / 40,368 ( 5 % )
-    Dedicated logic registers : 1,936 / 40,368 ( 5 % )
-Total registers : 1936
+Total logic elements : 2,503 / 40,368 ( 6 % )
+    Total combinational functions : 2,087 / 40,368 ( 5 % )
+    Dedicated logic registers : 1,677 / 40,368 ( 4 % )
+Total registers : 1677
 Total pins : 156 / 178 ( 88 % )
 Total virtual pins : 0
-Total memory bits : 319,488 / 1,290,240 ( 25 % )
+Total memory bits : 286,720 / 1,290,240 ( 22 % )
 Embedded Multiplier 9-bit elements : 0 / 250 ( 0 % )
 Total PLLs : 1 / 4 ( 25 % )
 UFM blocks : 0 / 1 ( 0 % )

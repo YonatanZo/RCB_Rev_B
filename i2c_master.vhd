@@ -84,7 +84,7 @@ BEGIN
       END IF;
       CASE count IS
         WHEN 0 TO divider-1 =>            --first 1/4 cycle of clocking
-          scl_clk <= '0'; 
+          scl_clk <= '0';
           data_clk <= '0';
         WHEN divider TO divider*2-1 =>    --second 1/4 cycle of clocking
           scl_clk <= '0';
@@ -118,9 +118,7 @@ BEGIN
     ELSIF(clk'EVENT AND clk = '1') THEN
       IF(data_clk = '1' AND data_clk_prev = '0') THEN  --data clock rising edge
         CASE state IS
-         
-		 --idle state
-		 WHEN ready =>                      
+          WHEN ready =>                      --idle state
             IF(ena = '1') THEN               --transaction requested
               busy <= '1';                   --flag busy
               addr_rw <= addr & rw;          --collect requested slave address and command
@@ -130,14 +128,11 @@ BEGIN
               busy <= '0';                   --unflag busy
               state <= ready;                --remain idle
             END IF;
-          
-		  --start bit of transaction
-		  WHEN start =>                      
+          WHEN start =>                      --start bit of transaction
             busy <= '1';                     --resume busy if continuous mode
             sda_int <= addr_rw(bit_cnt);     --set first address bit to bus
             state <= command;                --go to command
-          --address and command byte of transaction
-		  WHEN command =>                    
+          WHEN command =>                    --address and command byte of transaction
             IF(bit_cnt = 0) THEN             --command transmit finished
               sda_int <= '1';                --release sda for slave acknowledge
               bit_cnt <= 7;                  --reset bit counter for "byte" states
@@ -147,8 +142,7 @@ BEGIN
               sda_int <= addr_rw(bit_cnt-1); --write address/command bit to bus
               state <= command;              --continue with command
             END IF;
-          
-		  WHEN slv_ack1 =>                   --slave acknowledge bit (command)
+          WHEN slv_ack1 =>                   --slave acknowledge bit (command)
             IF(addr_rw(0) = '0') THEN        --write command
               sda_int <= data_tx(bit_cnt);   --write first bit of data
               state <= wr;                   --go to write byte
@@ -156,8 +150,7 @@ BEGIN
               sda_int <= '1';                --release sda from incoming data
               state <= rd;                   --go to read byte
             END IF;
-          
-		  WHEN wr =>                         --write byte of transaction
+          WHEN wr =>                         --write byte of transaction
             busy <= '1';                     --resume busy if continuous mode
             IF(bit_cnt = 0) THEN             --write byte transmit finished
               sda_int <= '1';                --release sda for slave acknowledge
@@ -168,8 +161,7 @@ BEGIN
               sda_int <= data_tx(bit_cnt-1); --write next bit to bus
               state <= wr;                   --continue writing
             END IF;
-          
-		  WHEN rd =>                         --read byte of transaction
+          WHEN rd =>                         --read byte of transaction
             busy <= '1';                     --resume busy if continuous mode
             IF(bit_cnt = 0) THEN             --read byte receive finished
               IF(ena = '1' AND addr_rw = addr & rw) THEN  --continuing with another read at same address
@@ -184,8 +176,7 @@ BEGIN
               bit_cnt <= bit_cnt - 1;        --keep track of transaction bits
               state <= rd;                   --continue reading
             END IF;
-          
-		  WHEN slv_ack2 =>                   --slave acknowledge bit (write)
+          WHEN slv_ack2 =>                   --slave acknowledge bit (write)
             IF(ena = '1') THEN               --continue transaction
               busy <= '0';                   --continue is accepted
               addr_rw <= addr & rw;          --collect requested slave address and command
@@ -199,8 +190,7 @@ BEGIN
             ELSE                             --complete transaction
               state <= stop;                 --go to stop bit
             END IF;
-          
-		  WHEN mstr_ack =>                   --master acknowledge bit after a read
+          WHEN mstr_ack =>                   --master acknowledge bit after a read
             IF(ena = '1') THEN               --continue transaction
               busy <= '0';                   --continue is accepted and data received is available on bus
               addr_rw <= addr & rw;          --collect requested slave address and command
@@ -214,38 +204,30 @@ BEGIN
             ELSE                             --complete transaction
               state <= stop;                 --go to stop bit
             END IF;
-          
-		  WHEN stop =>                       --stop bit of transaction
+          WHEN stop =>                       --stop bit of transaction
             busy <= '0';                     --unflag busy
             state <= ready;                  --go to idle state
         END CASE;    
-      
-	  
-	  
-	  ELSIF(data_clk = '0' AND data_clk_prev = '1') THEN  --data clock falling edge
+      ELSIF(data_clk = '0' AND data_clk_prev = '1') THEN  --data clock falling edge
         CASE state IS
-          --starting new transaction
-		  WHEN start =>                  
-            IF(scl_ena = '0') THEN                 
+          WHEN start =>                  
+            IF(scl_ena = '0') THEN                  --starting new transaction
               scl_ena <= '1';                       --enable scl output
               ack_error <= '0';                     --reset acknowledge error output
             END IF;
-          --receiving slave acknowledge (command)
-		  WHEN slv_ack1 =>                          
+          WHEN slv_ack1 =>                          --receiving slave acknowledge (command)
             IF(sda /= '0' OR ack_error = '1') THEN  --no-acknowledge or previous no-acknowledge
               ack_error <= '1';                     --set error output if no-acknowledge
             END IF;
-          --receiving slave data
-		  WHEN rd =>                                
+          WHEN rd =>                                --receiving slave data
+            scl_ena <= '1';  
             data_rx(bit_cnt) <= sda;                --receive current slave data bit
-          --receiving slave acknowledge (write)
-		  WHEN slv_ack2 =>                          
+          WHEN slv_ack2 =>                          --receiving slave acknowledge (write)
             IF(sda /= '0' OR ack_error = '1') THEN  --no-acknowledge or previous no-acknowledge
               ack_error <= '1';                     --set error output if no-acknowledge
             END IF;
-          --disable scl
-		  WHEN stop =>
-            scl_ena <= '0';                         
+          WHEN stop =>
+            scl_ena <= '0';                         --disable scl
           WHEN OTHERS =>
             NULL;
         END CASE;
@@ -259,8 +241,17 @@ BEGIN
                  NOT data_clk_prev WHEN stop,  --generate stop condition
                  sda_int WHEN OTHERS;          --set to internal sda signal    
       
-  --set scl and sda outputs
-  scl <= '0' WHEN (scl_ena = '1' AND scl_clk = '0') ELSE 'Z';
-  sda <= '0' WHEN sda_ena_n = '0' ELSE 'Z';
+  -- --set scl and sda outputs
+  -- PROCESS(scl_ena, scl_clk)
+  -- BEGIN
+  --   if scl_ena = '1' then
+  --     scl <= scl_clk;
+  --   ELSE 
+  --     scl <= 'H';
+  --   END IF;
+  -- END PROCESS;
+  scl <= '0' WHEN (scl_ena = '1' AND scl_clk = '0') ELSE 'H';
+
+  sda <= '0' WHEN sda_ena_n = '0' ELSE 'H';
   
 END logic;

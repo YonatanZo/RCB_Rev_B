@@ -19,7 +19,6 @@ ENTITY ADC_Master IS
 	AIN6   : OUT     STD_LOGIC_VECTOR(15 DOWNTO 0);
 	AIN7   : OUT     STD_LOGIC_VECTOR(15 DOWNTO 0);	
 	debug : OUT     STD_LOGIC_VECTOR(7 DOWNTO 0);	
-	clk_1MHz : OUT     STD_LOGIC;	
     sda       : INOUT  STD_LOGIC;                    --serial data output of i2c bus
     scl       : INOUT  STD_LOGIC);                   --serial clock output of i2c bus
 END ADC_Master;
@@ -29,15 +28,14 @@ ARCHITECTURE logic OF ADC_Master IS
 
 
   COMPONENT ads_master
-	GENERIC ( input_clk : INTEGER := 50000000; addr : STD_LOGIC_VECTOR(6 DOWNTO 0) := "1100101"; bus_clk : INTEGER := 400000 );
+	GENERIC ( input_clk : INTEGER := 100_000_000; addr : STD_LOGIC_VECTOR(6 DOWNTO 0) := "0010000"; bus_clk : INTEGER := 400_000 );
 	PORT
 	(
 		clk		:	 IN STD_LOGIC;
 		reset_n		:	 IN STD_LOGIC;
 		ena		:	 IN STD_LOGIC;
 		rw		:	 IN STD_LOGIC;
-		burst		:	 IN STD_LOGIC;
-		burst_len		:	 IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		no_op :	 IN STD_LOGIC;
 		data_wr		:	 IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 		reg_adrr		:	 IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 		busy		:	 OUT STD_LOGIC;
@@ -50,22 +48,22 @@ ARCHITECTURE logic OF ADC_Master IS
 	);
 END COMPONENT;
   CONSTANT SEQUENCE_CFG_ADDR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"10";
+  CONSTANT OSR_CFG : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";  
+  CONSTANT CHANNEL_SEL : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"11";
   CONSTANT OPMODE_CFG_ADDR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"04";
   CONSTANT PIN_CFG_ADDR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"05";
   CONSTANT AUTO_SEQ_CH_SEL_ADDR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"12";
-  CONSTANT OP_SIN_REG_RD : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"10";  --Single register read
-  CONSTANT OP_SIN_REG_WR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"08"; --Single register write
-  CONSTANT OP_CON_REG_RD : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"30";  --Reading a continuous block of registers
-  CONSTANT OP_CON_REG_WR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"28";  --Writing a continuous block of registers
+  CONSTANT I2C_CLK :  INTEGER := input_clk;
+  CONSTANT I2C_DEV_ID :  STD_LOGIC_VECTOR(6 DOWNTO 0) := dev_id;
+  CONSTANT I2C_BUS_CLK :  INTEGER := bus_clk;
+
   TYPE machine IS (
   S_IDLE,
   S_CONFIG_ADC,
   S_WAIT_BUSY,
   S_DATA_REQ,
-  S_WAIT_WR_DONE,
-  S_GET_DATA,
-  S_RESTART_RD,
-  S_WAIT_RD_RDY
+  S_REQ_BUSY,
+  S_READ_CH
 	);
   SIGNAL state         : machine;                        --state machine
   SIGNAL data_clk      : STD_LOGIC;                      --data clock for sda
@@ -95,32 +93,33 @@ END COMPONENT;
   SIGNAL data_rd_signal    : STD_LOGIC_VECTOR(7 DOWNTO 0);
   SIGNAL reg_adrr	: STD_LOGIC_VECTOR(7 DOWNTO 0);
   SIGNAL ack_error_signal  : STD_LOGIC;
-  SIGNAL burst  : STD_LOGIC;
-  SIGNAL burst_len     : STD_LOGIC_VECTOR(7 DOWNTO 0);
   SIGNAL reg_addr          : STD_LOGIC_VECTOR(7 DOWNTO 0);
   signal rd_rdy : STD_LOGIC;
   signal busy_cnt :INTEGER RANGE 0 TO 127:= 0; 
+  signal sleep_cnt :INTEGER RANGE 0 TO 1000:= 0; 
+
   signal busy_fall : STD_LOGIC:= '0';
   signal i2c_busy_f :STD_LOGIC;
+  signal no_op :STD_LOGIC;
+  SIGNAL read_ch    : STD_LOGIC_VECTOR(7 DOWNTO 0):= "00000010";
 BEGIN
 
 ads_master_inst: ads_master
 generic map (
-  input_clk => input_clk,
-  addr      => dev_id,
-  bus_clk   => bus_clk
+  input_clk => I2C_CLK,
+  addr      => I2C_DEV_ID,
+  bus_clk   => I2C_BUS_CLK
 )
 port map (
   clk       => clk,                 -- system clock
   reset_n   => reset_n,             -- active low reset
   ena       => i2c_ena,             -- latch in command
   rw        => i2c_rw,              -- '0' is write, '1' is read
-  burst     => burst,               -- '1' burst mode enable
-  burst_len => burst_len,           -- Burst length
+  no_op => no_op,
   data_wr   => i2c_data_wr,         -- data to write to slave
   reg_adrr  => reg_adrr,            -- address to write/read from/to slave
   busy      => i2c_busy,            -- indicates transaction in progress
-  rd_rdy    => rd_rdy,              -- indicates burst read data is ready
+  rd_rdy    => rd_rdy,              -- indicates read data is ready
   data_rd   => data_rd_signal,      -- data read from slave
   debug =>debug,
   ack_error => ack_error_signal,    -- flag if improper acknowledge from slave
@@ -142,8 +141,6 @@ AIN7 <= DATA_BUFFER(127 downto 112);
 	IF(reset_n = '0') THEN                 --reset asserted
 	state <= S_IDLE;                      --return to initial state
 	reg_cnt <= 0;
-	burst_len <= "00000000";
-	burst <= '0';
 	reg_cnt <= 0;
 	i2c_rw <= '0';
 	i2c_ena  <= '0';
@@ -157,9 +154,7 @@ AIN7 <= DATA_BUFFER(127 downto 112);
 			WHEN S_IDLE =>
 				busy_cnt <= 0;
 				reg_cnt <= 0;
-				burst_len <= "00000000";
 				state <= S_CONFIG_ADC;
-				burst <= '0';
 				reg_cnt <= 0;
 				i2c_rw <= '0';
 				i2c_ena  <= '0';
@@ -167,41 +162,22 @@ AIN7 <= DATA_BUFFER(127 downto 112);
 				i2c_data_wr <= (others => '0');
 				data_pointer <= 0;
 				busy_fall <= '0';
+				no_op <= '0';
 			WHEN S_CONFIG_ADC => 
-				burst <= '0';
 				i2c_rw <= '0';
+				no_op <= '0';
 				CASE reg_cnt IS                            
 				WHEN 0 =>  
 					i2c_ena  <= '1';
-					reg_adrr <= SEQUENCE_CFG_ADDR;
-					i2c_data_wr <= (others => '0');
+					reg_adrr <= CHANNEL_SEL; 
+					i2c_data_wr <="00000010";
 					state <= S_WAIT_BUSY;
 				WHEN 1 =>  
 					i2c_ena  <= '1';                                
-					reg_adrr <= OPMODE_CFG_ADDR;
-					i2c_data_wr <= (others => '0');
+					reg_adrr <= OSR_CFG;
+					i2c_data_wr <= "00000111";
 					state <= S_WAIT_BUSY;
-				WHEN 2 =>                                
-					i2c_ena  <= '1';
-					reg_adrr <=PIN_CFG_ADDR;
-					i2c_data_wr <= (others => '0');
-					state <= S_WAIT_BUSY;
-				WHEN 3 =>
-					i2c_ena  <= '1' ;                               
-					reg_adrr <=AUTO_SEQ_CH_SEL_ADDR;
-					i2c_data_wr <= x"ff";
-					state <= S_WAIT_BUSY;
-				WHEN 4 => 
-					i2c_ena  <= '1';                               
-					reg_adrr <=SEQUENCE_CFG_ADDR;
-					i2c_data_wr <= x"01";
-					state <= S_WAIT_BUSY;
-				WHEN 5 =>                                
-					i2c_ena  <= '1';
-					reg_adrr <=SEQUENCE_CFG_ADDR;
-					i2c_data_wr <= x"11";
-					state <= S_WAIT_BUSY;
-				WHEN 6 =>     
+				WHEN 2 =>     
 					i2c_ena <= '0';
 					state <= S_DATA_REQ;
 				WHEN others =>
@@ -209,7 +185,7 @@ AIN7 <= DATA_BUFFER(127 downto 112);
 				END CASE;
 
 			WHEN S_WAIT_BUSY =>
-				
+				no_op <= '0';
 				if (i2c_busy = '0' and i2c_busy_f = '1') then
 					busy_fall <= '1';
 					i2c_ena <= '0';
@@ -229,29 +205,59 @@ AIN7 <= DATA_BUFFER(127 downto 112);
 					state <= S_WAIT_BUSY;
 				end if;
 			WHEN S_DATA_REQ => 
-				data_pointer <= 0;
-				i2c_ena <= '1';
-				burst <= '1';
-				i2c_rw <= '1';  
-				burst_len <= "00001000"; -- 8 registers
-				if data_pointer = 8 then 
-					data_pointer <= 0;
-					reg_adrr <= x"A0";
-					state <= S_RESTART_RD;
+				no_op <= '0';
+				i2c_rw <= '0';
+				i2c_ena  <= '1';                                
+				reg_adrr <= CHANNEL_SEL;
+				i2c_data_wr <= read_ch; --set chanel number
+				state <= S_REQ_BUSY;
+			WHEN S_REQ_BUSY => 
+				if (i2c_busy = '0' and i2c_busy_f = '1') then
+					busy_fall <= '1';
+					i2c_ena <= '0';
 				end if;
-				state <= S_WAIT_RD_RDY;
-				
-			WHEN S_WAIT_RD_RDY => 
-				IF rd_rdy = '1' THEN
-					state <= S_DATA_REQ ;   
-					data_pointer <= data_pointer +1;
-					DATA_BUFFER(8*data_pointer+7 downto data_pointer*8) <= data_rd_signal;
-				ELSE 
-					state <= S_WAIT_RD_RDY ;   
-				END IF;
-			WHEN S_RESTART_RD =>  
-				  i2c_ena <= '0';                                                    
-				  state <= S_DATA_REQ; 
+				if (busy_fall = '1') then
+					if (busy_cnt = 127) then
+						busy_fall <= '0';
+						busy_cnt <= 0;
+						if read_ch /= "00000111" then
+							read_ch <= std_logic_vector( unsigned(read_ch) + 1 );
+						else
+							
+							read_ch <= (others => '0');
+						end if;
+						i2c_rw <= '1';
+						state <= S_READ_CH;
+					else 
+						busy_cnt <= busy_cnt +1;
+						state <= S_REQ_BUSY;
+					end if;
+				else
+					state <= S_REQ_BUSY;
+				end if;
+				no_op <= '0';
+			WHEN S_READ_CH => 
+				i2c_rw <= '1';
+				i2c_ena  <= '1';
+				no_op <= '1';  
+				if (i2c_busy = '0' and i2c_busy_f = '1') then
+					busy_fall <= '1';
+					i2c_ena <= '0';
+				end if;
+				if (busy_fall = '1') then
+					if (busy_cnt = 127) then
+						busy_fall <= '0';
+						busy_cnt <= 0;
+						state <= S_DATA_REQ;
+						i2c_rw <= '0';
+						no_op <= '0';
+					else 
+						busy_cnt <= busy_cnt +1;
+						state <= S_READ_CH;
+					end if;
+				else
+					state <= S_READ_CH;
+				end if;
 			WHEN others =>
 						null;	
 			END CASE;

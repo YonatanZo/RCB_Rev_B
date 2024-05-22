@@ -116,6 +116,30 @@
 					"strict" : false
 				},
 				{
+					"name" : "L_4MB_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_EEF_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_M5B_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "R_4MB_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "R_EEF_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "R_M5B_SER_IN_SE",
+					"strict" : false
+				},
+				{
 					"name" : "CLK_100M",
 					"strict" : false
 				},
@@ -136,27 +160,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "R_M5B_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "R_4MB_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "R_EEF_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "L_M5B_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "L_4MB_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "L_EEF_SER_IN_SE",
+					"name" : "MICCB_GEN_SYNC_FPGA",
 					"strict" : false
 				},
 				{
@@ -224,11 +228,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "L_WHEEL_SENS_A2_OUT1_BUFF",
+					"name" : "R_WHEEL_SENS_A2_OUT1_BUFF",
 					"strict" : false
 				},
 				{
-					"name" : "R_WHEEL_SENS_A2_OUT1_BUFF",
+					"name" : "L_WHEEL_SENS_A2_OUT1_BUFF",
 					"strict" : false
 				},
 				{
@@ -236,11 +240,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "L_WHEEL_SENS_A2_OUT2_BUFF",
+					"name" : "R_WHEEL_SENS_A2_OUT2_BUFF",
 					"strict" : false
 				},
 				{
-					"name" : "R_WHEEL_SENS_A2_OUT2_BUFF",
+					"name" : "L_WHEEL_SENS_A2_OUT2_BUFF",
 					"strict" : false
 				},
 				{
@@ -248,11 +252,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "L_WHEEL_SENS_SPARE_OUT1_BUFF",
+					"name" : "R_WHEEL_SENS_SPARE_OUT1_BUFF",
 					"strict" : false
 				},
 				{
-					"name" : "R_WHEEL_SENS_SPARE_OUT1_BUFF",
+					"name" : "L_WHEEL_SENS_SPARE_OUT1_BUFF",
 					"strict" : false
 				},
 				{
@@ -260,15 +264,31 @@
 					"strict" : false
 				},
 				{
-					"name" : "L_WHEEL_SENS_SPARE_OUT2_BUFF",
-					"strict" : false
-				},
-				{
 					"name" : "R_WHEEL_SENS_SPARE_OUT2_BUFF",
 					"strict" : false
 				},
 				{
+					"name" : "L_WHEEL_SENS_SPARE_OUT2_BUFF",
+					"strict" : false
+				},
+				{
 					"name" : "L_NO_switch_TOOL_EX_FPGA",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tms",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tck",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdi",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdo",
 					"strict" : false
 				}
 			]
