@@ -195,10 +195,10 @@ end rcb_registers;
 architecture Behavioral of rcb_registers is
 --FPGA Version/date
 constant FPGA_MAJOR_VER : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
-constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
+constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"04";
 constant FPGA_REV_YEAR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"18";
 constant FPGA_REV_MONTH : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"05";
-constant FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"02";
+constant FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"16";
 constant FPGA_REV_HOUR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"10";
 --Regiasters address declaretion 
 constant ADDR_FPGA_Version: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0000";

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RCB_FPGA_3_1
-Wed May 22 13:57:25 2024
+Wed May 22 14:24:20 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -178,13 +178,13 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 22 13:57:25 2024          ;
+; Analysis & Synthesis Status        ; Successful - Wed May 22 14:24:20 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; RCB_FPGA_3_1                                   ;
 ; Top-level Entity Name              ; RCB_TOP                                        ;
 ; Family                             ; MAX 10                                         ;
-; Total logic elements               ; 2,647                                          ;
-;     Total combinational functions  ; 2,085                                          ;
+; Total logic elements               ; 2,650                                          ;
+;     Total combinational functions  ; 2,088                                          ;
 ;     Dedicated logic registers      ; 1,677                                          ;
 ; Total registers                    ; 1677                                           ;
 ; Total pins                         ; 156                                            ;
@@ -413,16 +413,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                          ;
 +---------------------------------------------+------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 2,647                                                                                          ;
+; Estimated Total logic elements              ; 2,650                                                                                          ;
 ;                                             ;                                                                                                ;
-; Total combinational functions               ; 2085                                                                                           ;
+; Total combinational functions               ; 2088                                                                                           ;
 ; Logic element usage by number of LUT inputs ;                                                                                                ;
-;     -- 4 input functions                    ; 922                                                                                            ;
-;     -- 3 input functions                    ; 440                                                                                            ;
-;     -- <=2 input functions                  ; 723                                                                                            ;
+;     -- 4 input functions                    ; 923                                                                                            ;
+;     -- 3 input functions                    ; 445                                                                                            ;
+;     -- <=2 input functions                  ; 720                                                                                            ;
 ;                                             ;                                                                                                ;
 ; Logic elements by mode                      ;                                                                                                ;
-;     -- normal mode                          ; 1623                                                                                           ;
+;     -- normal mode                          ; 1626                                                                                           ;
 ;     -- arithmetic mode                      ; 462                                                                                            ;
 ;                                             ;                                                                                                ;
 ; Total registers                             ; 1677                                                                                           ;
@@ -439,7 +439,7 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                                                                                                ;
 ; Maximum fan-out node                        ; UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0] ;
 ; Maximum fan-out                             ; 757                                                                                            ;
-; Total fan-out                               ; 14122                                                                                          ;
+; Total fan-out                               ; 14135                                                                                          ;
 ; Average fan-out                             ; 3.39                                                                                           ;
 +---------------------------------------------+------------------------------------------------------------------------------------------------+
 
@@ -449,7 +449,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                 ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |RCB_TOP                                                                                                                                ; 2085 (112)          ; 1677 (62)                 ; 286720      ; 0          ; 0            ; 0       ; 0         ; 156  ; 0            ; 0          ; |RCB_TOP                                                                                                                                                                                                                                                                                                                                            ; RCB_TOP                           ; work         ;
+; |RCB_TOP                                                                                                                                ; 2088 (112)          ; 1677 (62)                 ; 286720      ; 0          ; 0            ; 0       ; 0         ; 156  ; 0            ; 0          ; |RCB_TOP                                                                                                                                                                                                                                                                                                                                            ; RCB_TOP                           ; work         ;
 ;    |UART_PLL:UART_PLL_inst|                                                                                                             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_PLL:UART_PLL_inst                                                                                                                                                                                                                                                                                                                     ; UART_PLL                          ; work         ;
 ;       |altpll:altpll_component|                                                                                                         ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_PLL:UART_PLL_inst|altpll:altpll_component                                                                                                                                                                                                                                                                                             ; altpll                            ; work         ;
 ;          |UART_PLL_altpll:auto_generated|                                                                                               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated                                                                                                                                                                                                                                                              ; UART_PLL_altpll                   ; work         ;
@@ -541,10 +541,10 @@ https://fpgasoftware.intel.com/eula.
 ;       |UART:TEENSY_TX_UART|                                                                                                             ; 28 (0)              ; 22 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART                                                                                                                                                                                                                                                                                               ; UART                              ; work         ;
 ;          |UART_TX:uart_tx_i|                                                                                                            ; 28 (20)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i                                                                                                                                                                                                                                                                             ; UART_TX                           ; work         ;
 ;             |UART_CLK_DIV:tx_clk_divider_i|                                                                                             ; 8 (8)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i                                                                                                                                                                                                                                               ; UART_CLK_DIV                      ; work         ;
-;    |i2c_top:i2c_top_inst|                                                                                                               ; 195 (102)           ; 94 (59)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|i2c_top:i2c_top_inst                                                                                                                                                                                                                                                                                                                       ; i2c_top                           ; work         ;
-;       |i2c_master:i2c_inst|                                                                                                             ; 93 (93)             ; 35 (35)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|i2c_top:i2c_top_inst|i2c_master:i2c_inst                                                                                                                                                                                                                                                                                                   ; i2c_master                        ; work         ;
-;    |rcb_registers:i_rcb_registers|                                                                                                      ; 41 (41)             ; 144 (144)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_registers:i_rcb_registers                                                                                                                                                                                                                                                                                                              ; rcb_registers                     ; work         ;
-;    |rcb_spi:rcb_spi_inst|                                                                                                               ; 189 (189)           ; 106 (106)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_spi:rcb_spi_inst                                                                                                                                                                                                                                                                                                                       ; rcb_spi                           ; work         ;
+;    |i2c_top:i2c_top_inst|                                                                                                               ; 193 (102)           ; 94 (59)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|i2c_top:i2c_top_inst                                                                                                                                                                                                                                                                                                                       ; i2c_top                           ; work         ;
+;       |i2c_master:i2c_inst|                                                                                                             ; 91 (91)             ; 35 (35)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|i2c_top:i2c_top_inst|i2c_master:i2c_inst                                                                                                                                                                                                                                                                                                   ; i2c_master                        ; work         ;
+;    |rcb_registers:i_rcb_registers|                                                                                                      ; 42 (42)             ; 144 (144)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_registers:i_rcb_registers                                                                                                                                                                                                                                                                                                              ; rcb_registers                     ; work         ;
+;    |rcb_spi:rcb_spi_inst|                                                                                                               ; 193 (193)           ; 106 (106)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_spi:rcb_spi_inst                                                                                                                                                                                                                                                                                                                       ; rcb_spi                           ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 125 (1)             ; 90 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
 ;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 124 (0)             ; 90 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input       ; altera_sld   ;
 ;          |alt_sld_fab:instrumentation_fabric|                                                                                           ; 124 (0)             ; 90 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric                                                                                                                                                        ; alt_sld_fab                       ; alt_sld_fab  ;
@@ -1081,15 +1081,17 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_CLK_DIV:os_clk_divider_i|DIV_MARK                                  ; Stuck at VCC due to stuck port data_in                                        ;
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_CLK_DIV:os_clk_divider_i|DIV_MARK                                  ; Stuck at VCC due to stuck port data_in                                        ;
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_CLK_DIV:os_clk_divider_i|DIV_MARK                                  ; Stuck at VCC due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Version_reg[26..31]                                                         ; Stuck at GND due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Version_reg[24,25]                                                          ; Stuck at VCC due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Version_reg[18..23]                                                         ; Stuck at GND due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Version_reg[27..31]                                                         ; Stuck at GND due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Version_reg[26]                                                             ; Stuck at VCC due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Version_reg[18..25]                                                         ; Stuck at GND due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Version_reg[16,17]                                                          ; Stuck at VCC due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Version_reg[0..15]                                                          ; Stuck at GND due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Date_reg[29..31]                                                            ; Stuck at GND due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Date_reg[28]                                                                ; Stuck at VCC due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Date_reg[18..27]                                                            ; Stuck at GND due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Date_reg[17]                                                                ; Stuck at VCC due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Date_reg[21..27]                                                            ; Stuck at GND due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Date_reg[20]                                                                ; Stuck at VCC due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Date_reg[19]                                                                ; Stuck at GND due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Date_reg[17,18]                                                             ; Stuck at VCC due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Date_reg[11..16]                                                            ; Stuck at GND due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Date_reg[10]                                                                ; Stuck at VCC due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Date_reg[9]                                                                 ; Stuck at GND due to stuck port data_in                                        ;
@@ -3116,21 +3118,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     SLD               ; 2                           ;
 ;     plain             ; 213                         ;
 ; cycloneiii_io_obuf    ; 4                           ;
-; cycloneiii_lcell_comb ; 1519                        ;
+; cycloneiii_lcell_comb ; 1522                        ;
 ;     arith             ; 358                         ;
 ;         2 data inputs ; 307                         ;
 ;         3 data inputs ; 51                          ;
-;     normal            ; 1161                        ;
+;     normal            ; 1164                        ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 57                          ;
-;         2 data inputs ; 194                         ;
-;         3 data inputs ; 213                         ;
-;         4 data inputs ; 696                         ;
+;         2 data inputs ; 191                         ;
+;         3 data inputs ; 218                         ;
+;         4 data inputs ; 697                         ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 48                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 11.00                       ;
-; Average LUT depth     ; 2.75                        ;
+; Average LUT depth     ; 2.80                        ;
 +-----------------------+-----------------------------+
 
 
@@ -3206,19 +3208,19 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Wed May 22 13:56:05 2024
+    Info: Processing started: Wed May 22 14:22:53 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RCB_FPGA -c RCB_FPGA_3_1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
 Info (12248): Elaborating Platform Designer system entity "reset.qsys"
-Info (12250): 2024.05.22.13:56:19 Progress: Loading RCB_Rev_B/reset.qsys
-Info (12250): 2024.05.22.13:56:20 Progress: Reading input file
-Info (12250): 2024.05.22.13:56:20 Progress: Adding in_system_sources_probes_0 [altera_in_system_sources_probes 22.1]
-Info (12250): 2024.05.22.13:56:20 Progress: Parameterizing module in_system_sources_probes_0
-Info (12250): 2024.05.22.13:56:20 Progress: Building connections
-Info (12250): 2024.05.22.13:56:20 Progress: Parameterizing connections
-Info (12250): 2024.05.22.13:56:20 Progress: Validating
-Info (12250): 2024.05.22.13:56:22 Progress: Done reading input file
+Info (12250): 2024.05.22.14:23:11 Progress: Loading RCB_Rev_B/reset.qsys
+Info (12250): 2024.05.22.14:23:11 Progress: Reading input file
+Info (12250): 2024.05.22.14:23:12 Progress: Adding in_system_sources_probes_0 [altera_in_system_sources_probes 22.1]
+Info (12250): 2024.05.22.14:23:12 Progress: Parameterizing module in_system_sources_probes_0
+Info (12250): 2024.05.22.14:23:12 Progress: Building connections
+Info (12250): 2024.05.22.14:23:12 Progress: Parameterizing connections
+Info (12250): 2024.05.22.14:23:12 Progress: Validating
+Info (12250): 2024.05.22.14:23:13 Progress: Done reading input file
 Info (12250): Reset: Generating reset "reset" for QUARTUS_SYNTH
 Info (12250): In_system_sources_probes_0: "reset" instantiated altera_in_system_sources_probes "in_system_sources_probes_0"
 Info (12250): Reset: Done "reset" with 2 modules, 2 files
@@ -3643,7 +3645,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr
     Info (12023): Found entity 1: cmpr_drb File: G:/My Drive/FPGA/git/RCB_Rev_B/db/cmpr_drb.tdf Line: 23
 Info (12033): Analysis and Synthesis generated Signal Tap or debug node instance "auto_signaltap_0"
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2024.05.22.13:57:04 Progress: Loading sld09ff0ca0/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2024.05.22.14:23:58 Progress: Loading sld09ff0ca0/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -3774,18 +3776,18 @@ Warning (21074): Design contains 44 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SPARE2_IO0_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 154
     Warning (15610): No output dependent on input pin "SPARE2_IO1_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 155
     Warning (15610): No output dependent on input pin "SSR_ON_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 158
-Info (21057): Implemented 2931 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2934 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 87 input pins
     Info (21059): Implemented 71 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 2689 logic cells
+    Info (21061): Implemented 2692 logic cells
     Info (21064): Implemented 80 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 265 warnings
-    Info: Peak virtual memory: 4940 megabytes
-    Info: Processing ended: Wed May 22 13:57:26 2024
-    Info: Elapsed time: 00:01:21
-    Info: Total CPU time (on all processors): 00:00:52
+    Info: Peak virtual memory: 4937 megabytes
+    Info: Processing ended: Wed May 22 14:24:21 2024
+    Info: Elapsed time: 00:01:28
+    Info: Total CPU time (on all processors): 00:00:58
 
 
 +------------------------------------------+
