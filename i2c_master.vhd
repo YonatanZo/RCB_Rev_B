@@ -148,7 +148,9 @@ BEGIN
               state <= wr;                   --go to write byte
             ELSE                             --read command
               sda_int <= '1';                --release sda from incoming data
-              state <= rd;                   --go to read byte
+              if scl = '1' then
+                state <= rd;                   --go to read byte
+              END IF;
             END IF;
           WHEN wr =>                         --write byte of transaction
             busy <= '1';                     --resume busy if continuous mode
@@ -250,7 +252,7 @@ BEGIN
   --     scl <= 'H';
   --   END IF;
   -- END PROCESS;
-  scl <= '0' WHEN (scl_ena = '1' AND scl_clk = '0') ELSE 'H';
+  scl <= '0' WHEN (scl_ena = '1' AND scl_clk = '0') ELSE 'Z';
 
   sda <= '0' WHEN sda_ena_n = '0' ELSE 'H';
   
