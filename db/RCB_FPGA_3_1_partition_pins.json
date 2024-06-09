@@ -108,38 +108,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "SCL_ADC",
-					"strict" : false
-				},
-				{
-					"name" : "SDA_ADC",
-					"strict" : false
-				},
-				{
-					"name" : "L_4MB_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "L_EEF_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "L_M5B_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "R_4MB_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "R_EEF_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "R_M5B_SER_IN_SE",
-					"strict" : false
-				},
-				{
 					"name" : "CLK_100M",
 					"strict" : false
 				},
@@ -161,6 +129,30 @@
 				},
 				{
 					"name" : "MICCB_GEN_SYNC_FPGA",
+					"strict" : false
+				},
+				{
+					"name" : "R_M5B_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "R_4MB_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "R_EEF_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_M5B_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_4MB_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_EEF_SER_IN_SE",
 					"strict" : false
 				},
 				{

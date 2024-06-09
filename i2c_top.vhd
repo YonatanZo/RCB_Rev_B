@@ -1,7 +1,7 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.std_logic_unsigned.all;
-
+USE ieee.Numeric_Std.all;
 ENTITY i2c_top IS
   generic (
     DEV_ID : STD_LOGIC_VECTOR(6 DOWNTO 0) := "0010000"
@@ -9,11 +9,16 @@ ENTITY i2c_top IS
   PORT (
     clk      : IN  STD_LOGIC;
     reset_n  : IN  STD_LOGIC;
-    start    : IN  STD_LOGIC;
     scl      : INOUT  STD_LOGIC;
     sda      : INOUT  STD_LOGIC;
-    data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0); -- Data read from device
-    done     : OUT STD_LOGIC                     -- Indicate completion
+    AIN0 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN1 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN2 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN3 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN4 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN5 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN6 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+    AIN7 : out STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END i2c_top;
 
@@ -31,26 +36,29 @@ ARCHITECTURE behavior OF i2c_top IS
   SIGNAL data_wr     : STD_LOGIC_VECTOR(7 DOWNTO 0);
   SIGNAL data_rd     : STD_LOGIC_VECTOR(7 DOWNTO 0);
   SIGNAL busy        : STD_LOGIC;
+  type t_data is array (0 to 7) of std_logic_vector(15 downto 0);
+  signal ADC_data  : t_data;
   TYPE machine IS (
   S_IDLE,
   S_SET_REQ,
   S_CONFIG_ADC,
   S_DATA_REQ,
-  S_DATA_READ_DLY,
+  S_DLY,
   S_DATA_READ,
-  S_BUSY,
-  S_STOP
+  S_SET_RD
 	);
-  SIGNAL read_delay_cnt : INTEGER range 0 to 10000 := 0 ;
+  SIGNAL delay_cnt : INTEGER range 0 to 100000 := 0 ;
   SIGNAL state         : machine;                        --state machine
-  SIGNAL next_state         : machine;
+  SIGNAL next_state         : machine;         
   SIGNAL read_buffer : STD_LOGIC_VECTOR(15 DOWNTO 0) := (OTHERS => '0');
   SIGNAL byte_cnt : INTEGER range 0 to 15 := 0 ;
   SIGNAL reg_cnt : INTEGER range 0 to 9 := 0 ;
-  SIGNAL sleep_cnt : INTEGER range 0 to 400 := 0 ;
+  SIGNAL rd_cnt : INTEGER range 0 to 9 := 0 ;
+  SIGNAL rd_ch : INTEGER range 0 to 7 := 0 ;
   SIGNAL busy_f : std_LOGIC := '0';
-  SIGNAL cnt_busy_flg : std_LOGIC := '0';
+
   SIGNAL data_wr_dly : STD_LOGIC_VECTOR(7 DOWNTO 0) :=x"08"; 
+  SIGNAL wr_cnt : INTEGER range 0 to 9 := 0 ;
   COMPONENT i2c_master
     GENERIC (
       input_clk : INTEGER := 50_000_000;
@@ -91,138 +99,117 @@ BEGIN
       sda       => sda
     );
 
+
+    AIN0 <= ADC_data(0);
+    AIN1 <= ADC_data(1);
+    AIN2 <= ADC_data(2);
+    AIN3 <= ADC_data(3);
+    AIN4 <= ADC_data(4);
+    AIN5 <= ADC_data(5);
+    AIN6 <= ADC_data(6);
+    AIN7 <= ADC_data(7);
   PROCESS (clk, reset_n)
   BEGIN
     IF reset_n = '0' THEN
       ena <= '0';
       rw <= '0';
       state <= S_IDLE;
-      next_state <=  S_IDLE;
       byte_cnt <= 0;
-      read_delay_cnt <= 0;
+      delay_cnt <= 0;
+      rd_cnt <= 0;
       reg_cnt <= 0;
-    ELSIF rising_edge(clk) THEN                            
+      wr_cnt <= 0;
+      ADC_data <= (others => (others =>'0'));
+    ELSIF rising_edge(clk) THEN   
+    busy_f  <= busy;                       
 		CASE state IS
       WHEN S_IDLE =>
-
+        
         ena <= '0';
+        wr_cnt <= 0;
         rw <= '0';
-        state <= S_SET_REQ;
-        next_state <=  S_IDLE;
+        state <= S_CONFIG_ADC;
         byte_cnt <= 0;
         reg_cnt <= 0;
-        WHEN S_SET_REQ =>
-        ena <= '1';
-        rw <= '0';
-        next_state <= S_SET_REQ;
-        case byte_cnt is
-          when 0 =>
-            next_state <= S_SET_REQ;
-          when 1 =>
-            next_state <= S_SET_REQ;
-          when 2 =>
-            ena <= '0';
-            next_state <= S_CONFIG_ADC;
-          when others =>
-            null;
-        end case;
-        if busy = '1' then
-          reg_cnt <= reg_cnt +1;
-          state <= S_BUSY;
-        end if;      
+    
       WHEN S_CONFIG_ADC =>
         ena <= '1';
-        rw <= '0';
-        case byte_cnt is
-          when 3 =>
-            next_state <= S_CONFIG_ADC;
-          when 4 =>
-            next_state <= S_CONFIG_ADC;
-          when 5 =>
-            next_state <= S_DATA_REQ;
-            ena <= '0';
-          when others =>
-            null;
-        end case;
-        if busy = '1' then
+        data_wr_dly <= data_wr;
+        if busy = '0' and busy_f = '1' then 
           reg_cnt <= reg_cnt +1;
-          state <= S_BUSY;
-        end if;
-      WHEN S_DATA_REQ =>
-        ena <= '1';
-        rw <= '0';
-        next_state <= S_DATA_REQ;
-        case byte_cnt is
-          when 6 =>
-            next_state <= S_DATA_REQ;
-          when 7 =>
-            next_state <= S_DATA_REQ;
-          when 8 =>
+          if reg_cnt = 2 or reg_cnt = 5  then
+            state <= S_DLY;
             ena <= '0';
-            next_state <= S_DATA_READ_DLY;
-          when others =>
+            next_state <= S_CONFIG_ADC;
+          elsif reg_cnt = 8 then
+            state <= S_DLY;
+            ena <= '0';
+            next_state <= S_DATA_READ;
+          else 
             null;
-        end case;
-        if busy = '1' then
-          reg_cnt <= reg_cnt +1;
-          state <= S_BUSY;
-        end if;
-      WHEN S_DATA_READ_DLY =>
-          if read_delay_cnt = 9999 then
-            read_delay_cnt <= 0;
-            state <= S_DATA_READ;
-          else
-            read_delay_cnt <= read_delay_cnt +1;
           end if;
+        end if;
       WHEN S_DATA_READ =>
         ena <= '1';
         rw <= '1';
-        if busy = '1' then
-          reg_cnt <= reg_cnt +1;
-          state <= S_BUSY;
+        if busy = '0' and busy_f = '1' then 
+          rd_cnt <= rd_cnt +1;
+          -- state <= S_DLY;
         end if;
-        if byte_cnt = 10 then
+        if rd_cnt = 1 then
           ena <= '0';
-          next_state <= S_STOP;
+          state <= S_DLY;
+          ADC_data(rd_ch) <= data_rd;
+          if rd_ch = 7 then
+            rd_ch <= 0;
+            data_wr_dly <= OP_SIN_REG_WR;
+            next_state <= S_SET_RD;
+          else
+            rd_ch <= rd_ch +1;
+            data_wr_dly <= OP_SIN_REG_WR;
+            next_state <= S_SET_RD;
+          end if; 
+          
+          rw <= '0';
+          rd_cnt <= 0;
+
         end if;
-      WHEN S_BUSY =>
-        if busy = '1' then
-          state <= S_BUSY;
-        elsif busy = '0' then
-            byte_cnt <= byte_cnt +1;
-            state <= next_state; 
+        
+      WHEN S_SET_RD =>
+      rw <= '0';
+      ena <= '1';
+      if busy = '0' and busy_f = '1' then 
+          wr_cnt <= wr_cnt +1;
+          case wr_cnt is
+            when 0 =>
+              data_wr_dly <= CHANNEL_SEL;
+            when 1 =>
+              data_wr_dly <= std_logic_vector(to_unsigned(rd_ch, data_wr_dly'length));
+            when 2 =>
+              state <= S_DLY;
+              next_state <= S_DATA_READ;
+              ena <= '0';
+              wr_cnt <= 0;
+            when others =>
+              null;
+            end case;
+      end if;
+
+
+      WHEN S_DLY =>
+        if delay_cnt = 99999 then
+          delay_cnt <= 0;
+          state <= next_state;
+        else
+          delay_cnt <= delay_cnt +1;
         end if;
-      WHEN S_STOP =>
-        state <= S_STOP;  
       WHEN others =>
         null;  
       END CASE;
     END IF;
   END PROCESS;    
 
-  PROCESS (clk, reset_n)
-  BEGIN
-  IF reset_n = '0' THEN
-    sleep_cnt <= 0;
-    cnt_busy_flg <= '0';   
-    data_wr_dly  <= x"08"; 
-  ELSIF rising_edge(clk) THEN 
-  busy_f <= busy;  
-      if (busy and not busy_f) = '1' and cnt_busy_flg = '0' then
-          cnt_busy_flg <= '1';
-          sleep_cnt <= 0;
-      end if;   
-      if cnt_busy_flg = '1' then
-        if sleep_cnt /= 399 then
-          sleep_cnt <= sleep_cnt +1;
-        else 
-          sleep_cnt <= 0;
-          data_wr_dly <= data_wr;
-        end if;
-    end if;  
-      
-    END IF;
-  END PROCESS;    
+  
 
   PROCESS (clk)
   BEGIN

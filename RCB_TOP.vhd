@@ -169,11 +169,16 @@ architecture Behavioral of RCB_TOP is
     PORT (
       clk      : IN  STD_LOGIC;
       reset_n  : IN  STD_LOGIC;
-      start    : IN  STD_LOGIC;
       scl      : INOUT  STD_LOGIC;
       sda      : INOUT  STD_LOGIC;
-      data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-      done     : OUT STD_LOGIC
+      AIN0 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+      AIN1 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+      AIN2 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+      AIN3 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+      AIN4 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+      AIN5 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+      AIN6 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+      AIN7 : out STD_LOGIC_VECTOR(15 DOWNTO 0)
     );
   END COMPONENT;
 
@@ -412,28 +417,28 @@ COMPONENT rcb_spi
 	);
 END COMPONENT;
 
-component ADC_Master
-  generic (
-    input_clk : INTEGER;
-    bus_clk : INTEGER;
-    dev_id    : STD_LOGIC_VECTOR(6 DOWNTO 0)
-  );
-  port (
-    clk : in STD_LOGIC;
-    reset_n : in STD_LOGIC;
-    AIN0 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-    AIN1 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-    AIN2 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-    AIN3 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-    AIN4 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-    AIN5 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-    AIN6 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-    AIN7 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
-    debug : OUT     STD_LOGIC_VECTOR(7 DOWNTO 0);
-    sda : inout STD_LOGIC;
-    scl : inout STD_LOGIC
-  );
-end component;
+-- component ADC_Master
+--   generic (
+--     input_clk : INTEGER;
+--     bus_clk : INTEGER;
+--     dev_id    : STD_LOGIC_VECTOR(6 DOWNTO 0)
+--   );
+--   port (
+--     clk : in STD_LOGIC;
+--     reset_n : in STD_LOGIC;
+--     AIN0 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+--     AIN1 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+--     AIN2 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+--     AIN3 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+--     AIN4 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+--     AIN5 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+--     AIN6 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+--     AIN7 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
+--     debug : OUT     STD_LOGIC_VECTOR(7 DOWNTO 0);
+--     sda : inout STD_LOGIC;
+--     scl : inout STD_LOGIC
+--   );
+-- end component;
 
 
 
@@ -447,11 +452,11 @@ component UART_PLL
 	);
 end component;
 
-component reset is
-  port (
-    source : out std_logic_vector(0 downto 0)   -- source
-  );
-end component reset;
+-- component reset is
+--   port (
+--     source : out std_logic_vector(0 downto 0)   -- source
+--   );
+-- end component reset;
 
 constant L_TOOL_EX :std_logic_vector(2 downto 0) := "000";
 constant L_LED_Strip :std_logic_vector(2 downto 0) := "001"; 
@@ -516,12 +521,12 @@ signal FAN_PWM_REG_OUT_2 :   STD_LOGIC_VECTOR(7 DOWNTO 0);
   signal MICCB_GEN_SYNC_FPGA_FF  : STD_LOGIC;
   signal MICCB_GEN_SYNC_FPGA_SYN  : STD_LOGIC;
   ---------------debug only-------------------
-  signal pc_rst       : STD_LOGIC_VECTOR(0 downto 0);
-  signal debug_rstn       : STD_LOGIC;
-  signal counter : integer range 0 to 99_999_999 := 0;
-  signal SDA_ADC_sig  : STD_LOGIC := '1';
-  signal SCL_ADC_sig  : STD_LOGIC;
-  SIGNAL internal_start : STD_LOGIC;
+  -- signal pc_rst       : STD_LOGIC_VECTOR(0 downto 0);
+  -- signal debug_rstn       : STD_LOGIC;
+  -- signal counter : integer range 0 to 99_999_999 := 0;
+  -- signal SDA_ADC_sig  : STD_LOGIC := '1';
+  -- signal SCL_ADC_sig  : STD_LOGIC;
+  -- SIGNAL internal_start : STD_LOGIC;
   ---------------debug end--------------------
 begin
 
@@ -531,66 +536,43 @@ begin
 --   source => pc_rst  -- sources.source
 -- );
 
-debug_reset_Counter:process (rst_n_syn,CLK_100M)
-begin
-  if rst_n_syn = '0' then
-    counter<= 0;
-    debug_rstn <= '0';
-  elsif rising_edge(CLK_100M) then
-    if counter /= 99_999_999 then
-      counter <= counter + 1 ;
-    else 
-      counter <= 0;
-    end if;
-    case counter is
-      when 0 to  99_998_999 =>
-        debug_rstn <= '1';
-        internal_start <= '1';
-      when others =>
-        debug_rstn <= '0';
-        internal_start <= '0';
-    end case;
-  end if;
-end process;
+-- debug_reset_Counter:process (rst_n_syn,CLK_100M)
+-- begin
+--   if rst_n_syn = '0' then
+--     counter<= 0;
+--     debug_rstn <= '0';
+--   elsif rising_edge(CLK_100M) then
+--     if counter /= 99_999_999 then
+--       counter <= counter + 1 ;
+--     else 
+--       counter <= 0;
+--     end if;
+--     case counter is
+--       when 0 to  99_998_999 =>
+--         debug_rstn <= '1';
+--       when others =>
+--         debug_rstn <= '0';
+--     end case;
+--   end if;
+-- end process;
 
 
 i2c_top_inst : i2c_top
 PORT MAP (
   clk      => CLK_100M,
-  reset_n  => debug_rstn,
-  start    => internal_start,
+  reset_n  => rst_syn, --debug_rstn,
   scl      => SCL_ADC,
   sda      => SDA_ADC,
-  data_out => open,
-  done     => open
+  AIN0 => AIN0,
+  AIN1 => AIN1,
+  AIN2 => AIN2,
+  AIN3 => AIN3,
+  AIN4 => AIN4,
+  AIN5 => AIN5,
+  AIN6 => AIN6,
+  AIN7 => AIN7
 );
 
-
--- ADC_Master_inst :  ADC_master
--- generic map (
---   input_clk => 100_000_000,
---   bus_clk => 100_000,
---   dev_id => "0010000"
--- )
--- port map (
---   clk => CLK_100M,
---   reset_n => debug_rstn,
---   AIN0 => AIN0,
---   AIN1 => AIN1,
---   AIN2 => AIN2,
---   AIN3 => AIN3,
---   AIN4 => AIN4,
---   AIN5 => AIN5,
---   AIN6 => AIN6,
---   AIN7 => AIN7,
---   debug => open,
---   sda => SDA_ADC,
---   scl => SCL_ADC
--- );
---SDA_ADC <= debug_rstn;
---SCL_ADC <= debug_rstn;
---SDA_ADC <= SDA_ADC_sig;
---SCL_ADC <= SCL_ADC_sig;
 ---------------debug end--------------------
   MicCB_SYNC_Counter:process (rst_n_syn,CLK_100M,MICCB_GEN_SYNC_FPGA_SYN)
   begin
