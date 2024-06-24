@@ -109,10 +109,10 @@ entity rcb_registers is
 		MICCB_SPARE_IO2             : in  STD_LOGIC                    ;
 		MICCB_SPARE_IO3             : in  STD_LOGIC                    ;
 		--FPGA Spare out
-		FPGA1                       : out STD_LOGIC                    ;
-		FPGA2                       : out STD_LOGIC                    ;
-		FPGA3                       : out STD_LOGIC                    ;
-		FPGA4                       : out STD_LOGIC                    ;
+		FPGA1                       : in STD_LOGIC                    ;
+		FPGA2                       : in STD_LOGIC                    ;
+		FPGA3                       : in STD_LOGIC                    ;
+		FPGA4                       : in STD_LOGIC                    ;
 		FPGA5                       : out STD_LOGIC                    ;
 		FPGA6                       : out STD_LOGIC                    ;
 		FPGA7                       : out STD_LOGIC                    ;
@@ -122,21 +122,21 @@ entity rcb_registers is
 		FPGA11                      : out STD_LOGIC                    ;
 		FPGA12                      : out STD_LOGIC                    ;
 		FPGA13                      : out STD_LOGIC                    ;
-		Teensy_FPGA_SP0             : out STD_LOGIC                    ;
-		Teensy_FPGA_SP1             : out STD_LOGIC                    ;
-		Teensy_FPGA_SP2             : out STD_LOGIC                    ;
-		--ADC Voltage 0
-		P35V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
-		Spare                       : in  STD_LOGIC_VECTOR(15 downto 0);
-		--ADC Voltage 1
-		P12V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
-		P3_3V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);	
-		--ADC Voltage 2
-		P5V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
-		P2_5V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
-		--ADC Voltage 3
-		P24V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
-		P12V_PS_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		Teensy_FPGA_SP0             : in STD_LOGIC                    ;
+		Teensy_FPGA_SP1             : in STD_LOGIC                    ;
+		Teensy_FPGA_SP2             : in STD_LOGIC                    ;
+		-- --ADC Voltage 0
+		-- P35V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		-- Spare                       : in  STD_LOGIC_VECTOR(15 downto 0);
+		-- --ADC Voltage 1
+		-- P12V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		-- P3_3V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);	
+		-- --ADC Voltage 2
+		-- P5V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		-- P2_5V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		-- --ADC Voltage 3
+		-- P24V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+		-- P12V_PS_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
 		--FPGA Spare
 		SPARE1_DIFF0                : in  STD_LOGIC                    ;
 		SPARE1_DIFF1                : in  STD_LOGIC                    ;
@@ -195,10 +195,10 @@ end rcb_registers;
 architecture Behavioral of rcb_registers is
 --FPGA Version/date
 constant FPGA_MAJOR_VER : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
-constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"05";
+constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"07";
 constant FPGA_REV_YEAR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"18";
-constant FPGA_REV_MONTH : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"05";
-constant FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"1D";
+constant FPGA_REV_MONTH : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"06";
+constant FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"18";
 constant FPGA_REV_HOUR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"12";
 --Regiasters address declaretion 
 constant ADDR_FPGA_Version: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0000";
@@ -231,7 +231,7 @@ constant ADDR_FPGA_SYNC_DELAY_TIME: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001A";
 constant ADDR_FPGA_SYNC_TIME: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001B";
 constant ADDR_Fault_Registers: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001C";
 constant ADDR_Sync_Timer: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001D";
-
+constant ADDR_Diagnostic_Header: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001E";
 -- new registers declaretion 
 signal FPGA_Version_reg : STD_LOGIC_VECTOR(31 downto 0) := FPGA_REV & FPGA_MAJOR_VER & x"0000";--x"0000"
 signal FPGA_Date_reg : STD_LOGIC_VECTOR(31 downto 0) := FPGA_REV_HOUR & FPGA_REV_DAY & FPGA_REV_MONTH & FPGA_REV_YEAR;--x"0001"
@@ -263,11 +263,12 @@ signal FPGA_SYNC_DELAY_TIME_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'
 signal FPGA_SYNC_TIME_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x"001B"
 signal Fault_Registers_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x"001C"
 signal Sync_Timer_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"001D"
+signal Diagnostic_Header_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"001E"
 	
 begin
 FPGA_LEDs_OUT <= FPGA_LEDs_reg(7 downto 0);
 
-bnnb: process (clk_100m, rst_n_syn)
+input_routing: process (clk_100m, rst_n_syn)
 begin
     if rst_n_syn = '0' then
         
@@ -308,11 +309,30 @@ begin
 		R_WHEEL_SENS_A2_OUT2 & R_WHEEL_SENS_SPARE_OUT1 & R_WHEEL_SENS_SPARE_OUT2;
 		--LED MUX CONTROL 
 		MUX_Control <= LEDs_strip_Mux_reg(2 downto 0);
-
+		--Diagnostic Header
+		FPGA5 <= Diagnostic_Header_reg(7);
+		FPGA6 <= Diagnostic_Header_reg(8);
+		FPGA7 <= Diagnostic_Header_reg(9);
+		FPGA8 <= Diagnostic_Header_reg(10);
+		FPGA9 <= Diagnostic_Header_reg(11);
+		FPGA10 <= Diagnostic_Header_reg(12);
+		FPGA11 <= Diagnostic_Header_reg(13);
+		FPGA12 <= Diagnostic_Header_reg(14);
+		FPGA13 <= Diagnostic_Header_reg(15);
+		Diagnostic_Header_reg(0) <= FPGA1;
+		Diagnostic_Header_reg(1) <= FPGA2;
+		Diagnostic_Header_reg(2) <= FPGA3;
+		Diagnostic_Header_reg(3) <= FPGA4;
+		Diagnostic_Header_reg(4) <= Teensy_FPGA_SP0;
+		Diagnostic_Header_reg(5) <= Teensy_FPGA_SP1;
+		Diagnostic_Header_reg(6) <= Teensy_FPGA_SP2;
 		end if;
 end process;
+ADC_Voltage_0_reg <=AIN0 & AIN1;
+ADC_Voltage_1_reg <=AIN2 & AIN3;
+ADC_Voltage_2_reg <=AIN4 & AIN5;
+ADC_Voltage_3_reg <=AIN6 & AIN7;	
 
-		
 p_mux : process(addr)
 begin
     case addr is
@@ -376,6 +396,8 @@ begin
             data_miso <= Fault_Registers_reg;
         when ADDR_Sync_Timer =>
             data_miso <= Sync_Timer_reg;
+		when ADDR_Diagnostic_Header =>
+            data_miso <= Diagnostic_Header_reg;
         when others =>
             data_miso <= (others => '1');
 	end case;
@@ -461,6 +483,8 @@ begin
 				when ADDR_Sync_Timer =>
 					--???<= data_mosi;
 					null;
+				when ADDR_Diagnostic_Header =>
+					Diagnostic_Header_reg(15 downto 7)<= data_mosi(15 downto 7);
 				when others =>
 					null;
 			end case;

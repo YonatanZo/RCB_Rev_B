@@ -1,5 +1,5 @@
 Timing Analyzer report for RCB_FPGA_3_1
-Sun Jun  9 17:26:31 2024
+Mon Jun 24 13:13:33 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -94,13 +94,13 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 10          ;
 ;                            ;             ;
-; Average used               ; 1.87        ;
+; Average used               ; 1.89        ;
 ; Maximum used               ; 10          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   9.8%      ;
-;     Processors 3-10        ;   9.7%      ;
+;     Processor 2            ;  10.4%      ;
+;     Processors 3-10        ;   9.8%      ;
 +----------------------------+-------------+
 
 
@@ -118,7 +118,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------+-----------------+---------------------+------+
 ; Fmax      ; Restricted Fmax ; Clock Name          ; Note ;
 +-----------+-----------------+---------------------+------+
-; 84.35 MHz ; 84.35 MHz       ; altera_reserved_tck ;      ;
+; 95.84 MHz ; 95.84 MHz       ; altera_reserved_tck ;      ;
 +-----------+-----------------+---------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -128,7 +128,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------+--------+---------------+
 ; Clock               ; Slack  ; End Point TNS ;
 +---------------------+--------+---------------+
-; altera_reserved_tck ; 44.072 ; 0.000         ;
+; altera_reserved_tck ; 44.783 ; 0.000         ;
 +---------------------+--------+---------------+
 
 
@@ -137,7 +137,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------+-------+---------------+
 ; Clock               ; Slack ; End Point TNS ;
 +---------------------+-------+---------------+
-; altera_reserved_tck ; 0.340 ; 0.000         ;
+; altera_reserved_tck ; 0.341 ; 0.000         ;
 +---------------------+-------+---------------+
 
 
@@ -146,7 +146,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------+--------+---------------+
 ; Clock               ; Slack  ; End Point TNS ;
 +---------------------+--------+---------------+
-; altera_reserved_tck ; 95.578 ; 0.000         ;
+; altera_reserved_tck ; 94.806 ; 0.000         ;
 +---------------------+--------+---------------+
 
 
@@ -155,7 +155,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------+-------+---------------+
 ; Clock               ; Slack ; End Point TNS ;
 +---------------------+-------+---------------+
-; altera_reserved_tck ; 1.120 ; 0.000         ;
+; altera_reserved_tck ; 1.059 ; 0.000         ;
 +---------------------+-------+---------------+
 
 
@@ -164,7 +164,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------+--------+---------------------+
 ; Clock               ; Slack  ; End Point TNS       ;
 +---------------------+--------+---------------------+
-; altera_reserved_tck ; 49.484 ; 0.000               ;
+; altera_reserved_tck ; 49.479 ; 0.000               ;
 +---------------------+--------+---------------------+
 
 
@@ -175,18 +175,18 @@ The design MTBF is not calculated because there are no specified synchronizers i
 Number of Synchronizer Chains Found: 2
 Shortest Synchronizer Chain: 4 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 342.257 ns
+Worst Case Available Settling Time: 343.002 ns
 
 
 
 
-+----------------------------------------------------------+
-; Slow 1200mV -40C Model Fmax Summary                      ;
-+-----------+-----------------+---------------------+------+
-; Fmax      ; Restricted Fmax ; Clock Name          ; Note ;
-+-----------+-----------------+---------------------+------+
-; 97.48 MHz ; 97.48 MHz       ; altera_reserved_tck ;      ;
-+-----------+-----------------+---------------------+------+
++-----------------------------------------------------------+
+; Slow 1200mV -40C Model Fmax Summary                       ;
++------------+-----------------+---------------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name          ; Note ;
++------------+-----------------+---------------------+------+
+; 110.45 MHz ; 110.45 MHz      ; altera_reserved_tck ;      ;
++------------+-----------------+---------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -195,7 +195,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------+--------+---------------+
 ; Clock               ; Slack  ; End Point TNS ;
 +---------------------+--------+---------------+
-; altera_reserved_tck ; 44.871 ; 0.000         ;
+; altera_reserved_tck ; 45.473 ; 0.000         ;
 +---------------------+--------+---------------+
 
 
@@ -204,7 +204,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------+-------+---------------+
 ; Clock               ; Slack ; End Point TNS ;
 +---------------------+-------+---------------+
-; altera_reserved_tck ; 0.290 ; 0.000         ;
+; altera_reserved_tck ; 0.291 ; 0.000         ;
 +---------------------+-------+---------------+
 
 
@@ -213,7 +213,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------+--------+---------------+
 ; Clock               ; Slack  ; End Point TNS ;
 +---------------------+--------+---------------+
-; altera_reserved_tck ; 96.180 ; 0.000         ;
+; altera_reserved_tck ; 95.407 ; 0.000         ;
 +---------------------+--------+---------------+
 
 
@@ -222,7 +222,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------+-------+---------------+
 ; Clock               ; Slack ; End Point TNS ;
 +---------------------+-------+---------------+
-; altera_reserved_tck ; 1.008 ; 0.000         ;
+; altera_reserved_tck ; 0.949 ; 0.000         ;
 +---------------------+-------+---------------+
 
 
@@ -231,7 +231,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------+--------+---------------------+
 ; Clock               ; Slack  ; End Point TNS       ;
 +---------------------+--------+---------------------+
-; altera_reserved_tck ; 49.497 ; 0.000               ;
+; altera_reserved_tck ; 49.489 ; 0.000               ;
 +---------------------+--------+---------------------+
 
 
@@ -242,7 +242,7 @@ The design MTBF is not calculated because there are no specified synchronizers i
 Number of Synchronizer Chains Found: 2
 Shortest Synchronizer Chain: 4 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 343.204 ns
+Worst Case Available Settling Time: 343.884 ns
 
 
 
@@ -252,7 +252,7 @@ Worst Case Available Settling Time: 343.204 ns
 +---------------------+--------+---------------+
 ; Clock               ; Slack  ; End Point TNS ;
 +---------------------+--------+---------------+
-; altera_reserved_tck ; 48.032 ; 0.000         ;
+; altera_reserved_tck ; 48.302 ; 0.000         ;
 +---------------------+--------+---------------+
 
 
@@ -261,7 +261,7 @@ Worst Case Available Settling Time: 343.204 ns
 +---------------------+-------+---------------+
 ; Clock               ; Slack ; End Point TNS ;
 +---------------------+-------+---------------+
-; altera_reserved_tck ; 0.140 ; 0.000         ;
+; altera_reserved_tck ; 0.141 ; 0.000         ;
 +---------------------+-------+---------------+
 
 
@@ -270,7 +270,7 @@ Worst Case Available Settling Time: 343.204 ns
 +---------------------+--------+---------------+
 ; Clock               ; Slack  ; End Point TNS ;
 +---------------------+--------+---------------+
-; altera_reserved_tck ; 97.902 ; 0.000         ;
+; altera_reserved_tck ; 97.534 ; 0.000         ;
 +---------------------+--------+---------------+
 
 
@@ -279,7 +279,7 @@ Worst Case Available Settling Time: 343.204 ns
 +---------------------+-------+---------------+
 ; Clock               ; Slack ; End Point TNS ;
 +---------------------+-------+---------------+
-; altera_reserved_tck ; 0.462 ; 0.000         ;
+; altera_reserved_tck ; 0.440 ; 0.000         ;
 +---------------------+-------+---------------+
 
 
@@ -288,7 +288,7 @@ Worst Case Available Settling Time: 343.204 ns
 +---------------------+--------+---------------------+
 ; Clock               ; Slack  ; End Point TNS       ;
 +---------------------+--------+---------------------+
-; altera_reserved_tck ; 49.245 ; 0.000               ;
+; altera_reserved_tck ; 49.249 ; 0.000               ;
 +---------------------+--------+---------------------+
 
 
@@ -299,7 +299,7 @@ The design MTBF is not calculated because there are no specified synchronizers i
 Number of Synchronizer Chains Found: 2
 Shortest Synchronizer Chain: 4 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 347.293 ns
+Worst Case Available Settling Time: 347.609 ns
 
 
 
@@ -309,8 +309,8 @@ Worst Case Available Settling Time: 347.293 ns
 +----------------------+--------+-------+----------+---------+---------------------+
 ; Clock                ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +----------------------+--------+-------+----------+---------+---------------------+
-; Worst-case Slack     ; 44.072 ; 0.140 ; 95.578   ; 0.462   ; 49.245              ;
-;  altera_reserved_tck ; 44.072 ; 0.140 ; 95.578   ; 0.462   ; 49.245              ;
+; Worst-case Slack     ; 44.783 ; 0.141 ; 94.806   ; 0.440   ; 49.249              ;
+;  altera_reserved_tck ; 44.783 ; 0.141 ; 94.806   ; 0.440   ; 49.249              ;
 ; Design-wide TNS      ; 0.0    ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
 ;  altera_reserved_tck ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
 +----------------------+--------+-------+----------+---------+---------------------+
@@ -343,14 +343,10 @@ Worst Case Available Settling Time: 347.293 ns
 ; FPGA_R_ROBOT_TX             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; FPGA_R_SP_TX                ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; FPGA_WHEEL_STOP_ELO         ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; FPGA1                       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; FPGA10                      ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; FPGA11                      ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; FPGA12                      ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; FPGA13                      ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; FPGA2                       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; FPGA3                       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; FPGA4                       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; FPGA5                       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; FPGA6                       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; FPGA7                       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
@@ -388,9 +384,6 @@ Worst Case Available Settling Time: 347.293 ns
 ; SPARE2_DIFF3                ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; SPARE2_IO2_FPGA             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; SPARE2_IO3_FPGA             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; Teensy_FPGA_SP0             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; Teensy_FPGA_SP1             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; Teensy_FPGA_SP2             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; SCL_ADC                     ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; SDA_ADC                     ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; altera_reserved_tdo         ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
@@ -472,21 +465,28 @@ Worst Case Available Settling Time: 347.293 ns
 ; R_POS_SENS_OUT1_BUFF         ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; L_POS_SENS_OUT2_BUFF         ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; R_POS_SENS_OUT2_BUFF         ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; Teensy_FPGA_SP2              ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; L_WHEEL_SENS_A1_OUT1_BUFF    ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; R_WHEEL_SENS_A1_OUT1_BUFF    ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; Teensy_FPGA_SP1              ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; L_WHEEL_SENS_A1_OUT2_BUFF    ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; R_WHEEL_SENS_A1_OUT2_BUFF    ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; Teensy_FPGA_SP0              ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; R_WHEEL_SENS_A2_OUT1_BUFF    ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; L_WHEEL_SENS_A2_OUT1_BUFF    ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; FPGA4                        ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; R_NC_switch_TOOL_EX_FPGA     ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; R_WHEEL_SENS_A2_OUT2_BUFF    ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; L_WHEEL_SENS_A2_OUT2_BUFF    ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; FPGA3                        ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; R_NO_switch_TOOL_EX_FPGA     ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; R_WHEEL_SENS_SPARE_OUT1_BUFF ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; L_WHEEL_SENS_SPARE_OUT1_BUFF ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; FPGA2                        ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; L_NC_switch_TOOL_EX_FPGA     ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; R_WHEEL_SENS_SPARE_OUT2_BUFF ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; L_WHEEL_SENS_SPARE_OUT2_BUFF ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; FPGA1                        ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; L_NO_switch_TOOL_EX_FPGA     ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; altera_reserved_tms          ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
 ; altera_reserved_tck          ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
@@ -524,14 +524,10 @@ Worst Case Available Settling Time: 347.293 ns
 ; FPGA_R_ROBOT_TX             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; FPGA_R_SP_TX                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; FPGA_WHEEL_STOP_ELO         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.168 V            ; 0.414 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.168 V           ; 0.414 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
-; FPGA1                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; FPGA10                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.22 V              ; -0.15 V             ; 0.246 V                              ; 0.362 V                              ; 4.49e-10 s                  ; 4.53e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.22 V             ; -0.15 V            ; 0.246 V                             ; 0.362 V                             ; 4.49e-10 s                 ; 4.53e-10 s                 ; No                        ; No                        ;
 ; FPGA11                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; FPGA12                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.168 V            ; 0.414 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.168 V           ; 0.414 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; FPGA13                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.168 V            ; 0.414 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.168 V           ; 0.414 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
-; FPGA2                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
-; FPGA3                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.168 V            ; 0.414 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.168 V           ; 0.414 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
-; FPGA4                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; FPGA5                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.168 V            ; 0.414 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.168 V           ; 0.414 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; FPGA6                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; FPGA7                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.168 V            ; 0.414 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.168 V           ; 0.414 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
@@ -569,9 +565,6 @@ Worst Case Available Settling Time: 347.293 ns
 ; SPARE2_DIFF3                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; SPARE2_IO2_FPGA             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.168 V            ; 0.414 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.168 V           ; 0.414 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; SPARE2_IO3_FPGA             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
-; Teensy_FPGA_SP0             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
-; Teensy_FPGA_SP1             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.168 V            ; 0.414 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.168 V           ; 0.414 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
-; Teensy_FPGA_SP2             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; SCL_ADC                     ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.168 V            ; 0.414 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.168 V           ; 0.414 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; SDA_ADC                     ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
 ; altera_reserved_tdo         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.63e-08 V                   ; 3.24 V              ; -0.165 V            ; 0.415 V                              ; 0.315 V                              ; 2.89e-10 s                  ; 4.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 1.63e-08 V                  ; 3.24 V             ; -0.165 V           ; 0.415 V                             ; 0.315 V                             ; 2.89e-10 s                 ; 4.38e-10 s                 ; No                        ; No                        ;
@@ -605,14 +598,10 @@ Worst Case Available Settling Time: 347.293 ns
 ; FPGA_R_ROBOT_TX             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; FPGA_R_SP_TX                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; FPGA_WHEEL_STOP_ELO         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0632 V           ; 0.27 V                               ; 0.221 V                              ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0632 V          ; 0.27 V                              ; 0.221 V                             ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
-; FPGA1                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; FPGA10                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.056 V            ; 0.353 V                              ; 0.29 V                               ; 5.23e-10 s                  ; 6.56e-10 s                  ; No                         ; Yes                        ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.056 V           ; 0.353 V                             ; 0.29 V                              ; 5.23e-10 s                 ; 6.56e-10 s                 ; No                        ; Yes                       ;
 ; FPGA11                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; FPGA12                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0632 V           ; 0.27 V                               ; 0.221 V                              ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0632 V          ; 0.27 V                              ; 0.221 V                             ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; FPGA13                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0632 V           ; 0.27 V                               ; 0.221 V                              ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0632 V          ; 0.27 V                              ; 0.221 V                             ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
-; FPGA2                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
-; FPGA3                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0632 V           ; 0.27 V                               ; 0.221 V                              ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0632 V          ; 0.27 V                              ; 0.221 V                             ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
-; FPGA4                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; FPGA5                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0632 V           ; 0.27 V                               ; 0.221 V                              ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0632 V          ; 0.27 V                              ; 0.221 V                             ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; FPGA6                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; FPGA7                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0632 V           ; 0.27 V                               ; 0.221 V                              ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0632 V          ; 0.27 V                              ; 0.221 V                             ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
@@ -650,9 +639,6 @@ Worst Case Available Settling Time: 347.293 ns
 ; SPARE2_DIFF3                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; SPARE2_IO2_FPGA             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0632 V           ; 0.27 V                               ; 0.221 V                              ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0632 V          ; 0.27 V                              ; 0.221 V                             ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; SPARE2_IO3_FPGA             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
-; Teensy_FPGA_SP0             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
-; Teensy_FPGA_SP1             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0632 V           ; 0.27 V                               ; 0.221 V                              ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0632 V          ; 0.27 V                              ; 0.221 V                             ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
-; Teensy_FPGA_SP2             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; SCL_ADC                     ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0632 V           ; 0.27 V                               ; 0.221 V                              ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0632 V          ; 0.27 V                              ; 0.221 V                             ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; SDA_ADC                     ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
 ; altera_reserved_tdo         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.72e-06 V                   ; 3.15 V              ; -0.0629 V           ; 0.27 V                               ; 0.22 V                               ; 4.76e-10 s                  ; 6.26e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 6.72e-06 V                  ; 3.15 V             ; -0.0629 V          ; 0.27 V                              ; 0.22 V                              ; 4.76e-10 s                 ; 6.26e-10 s                 ; Yes                       ; No                        ;
@@ -686,14 +672,10 @@ Worst Case Available Settling Time: 347.293 ns
 ; FPGA_R_ROBOT_TX             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; FPGA_R_SP_TX                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; FPGA_WHEEL_STOP_ELO         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.68 V              ; -0.0267 V           ; 0.364 V                              ; 0.059 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.68 V             ; -0.0267 V          ; 0.364 V                             ; 0.059 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
-; FPGA1                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; FPGA10                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.66 V              ; -0.0357 V           ; 0.422 V                              ; 0.097 V                              ; 2.82e-10 s                  ; 4.06e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.66 V             ; -0.0357 V          ; 0.422 V                             ; 0.097 V                             ; 2.82e-10 s                 ; 4.06e-10 s                 ; No                        ; Yes                       ;
 ; FPGA11                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; FPGA12                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.68 V              ; -0.0267 V           ; 0.364 V                              ; 0.059 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.68 V             ; -0.0267 V          ; 0.364 V                             ; 0.059 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; FPGA13                      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.68 V              ; -0.0267 V           ; 0.364 V                              ; 0.059 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.68 V             ; -0.0267 V          ; 0.364 V                             ; 0.059 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
-; FPGA2                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
-; FPGA3                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.68 V              ; -0.0267 V           ; 0.364 V                              ; 0.059 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.68 V             ; -0.0267 V          ; 0.364 V                             ; 0.059 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
-; FPGA4                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; FPGA5                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.68 V              ; -0.0267 V           ; 0.364 V                              ; 0.059 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.68 V             ; -0.0267 V          ; 0.364 V                             ; 0.059 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; FPGA6                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; FPGA7                       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.68 V              ; -0.0267 V           ; 0.364 V                              ; 0.059 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.68 V             ; -0.0267 V          ; 0.364 V                             ; 0.059 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
@@ -731,9 +713,6 @@ Worst Case Available Settling Time: 347.293 ns
 ; SPARE2_DIFF3                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; SPARE2_IO2_FPGA             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.68 V              ; -0.0267 V           ; 0.364 V                              ; 0.059 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.68 V             ; -0.0267 V          ; 0.364 V                             ; 0.059 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; SPARE2_IO3_FPGA             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
-; Teensy_FPGA_SP0             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
-; Teensy_FPGA_SP1             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.68 V              ; -0.0267 V           ; 0.364 V                              ; 0.059 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.68 V             ; -0.0267 V          ; 0.364 V                             ; 0.059 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
-; Teensy_FPGA_SP2             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; SCL_ADC                     ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.68 V              ; -0.0267 V           ; 0.364 V                              ; 0.059 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.68 V             ; -0.0267 V          ; 0.364 V                             ; 0.059 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; SDA_ADC                     ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
 ; altera_reserved_tdo         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.75e-08 V                   ; 3.67 V              ; -0.0271 V           ; 0.366 V                              ; 0.061 V                              ; 2.67e-10 s                  ; 3.36e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.75e-08 V                  ; 3.67 V             ; -0.0271 V          ; 0.366 V                             ; 0.061 V                             ; 2.67e-10 s                 ; 3.36e-10 s                 ; No                        ; Yes                       ;
@@ -799,10 +778,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 2     ; 2    ;
-; Unconstrained Input Ports       ; 43    ; 43   ;
-; Unconstrained Input Port Paths  ; 104   ; 104  ;
-; Unconstrained Output Ports      ; 27    ; 27   ;
-; Unconstrained Output Port Paths ; 28    ; 28   ;
+; Unconstrained Input Ports       ; 50    ; 50   ;
+; Unconstrained Input Port Paths  ; 111   ; 111  ;
+; Unconstrained Output Ports      ; 36    ; 36   ;
+; Unconstrained Output Port Paths ; 37    ; 37   ;
 +---------------------------------+-------+------+
 
 
@@ -823,6 +802,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Input Port                   ; Comment                                                                              ;
 +------------------------------+--------------------------------------------------------------------------------------+
 ; CS0                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA1                        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA2                        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA3                        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA4                        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; L_4MB_SER_IN_SE              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; L_EEF_SER_IN_SE              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; L_M5B_SER_IN_SE              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -863,6 +846,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; SCL_ADC                      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SDA_ADC                      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; TEENSY_LEDS_STRIP_DO         ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Teensy_FPGA_SP0              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Teensy_FPGA_SP1              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Teensy_FPGA_SP2              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; altera_reserved_tdi          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; altera_reserved_tms          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------------------------+--------------------------------------------------------------------------------------+
@@ -882,6 +868,15 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; B_24V_R_EN          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; B_35V_L_EN          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; B_35V_R_EN          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA5               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA6               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA7               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA8               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA9               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA10              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA11              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA12              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA13              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LED_1               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LED_2               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LED_3               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -909,6 +904,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Input Port                   ; Comment                                                                              ;
 +------------------------------+--------------------------------------------------------------------------------------+
 ; CS0                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA1                        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA2                        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA3                        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA4                        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; L_4MB_SER_IN_SE              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; L_EEF_SER_IN_SE              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; L_M5B_SER_IN_SE              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -949,6 +948,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; SCL_ADC                      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SDA_ADC                      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; TEENSY_LEDS_STRIP_DO         ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Teensy_FPGA_SP0              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Teensy_FPGA_SP1              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Teensy_FPGA_SP2              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; altera_reserved_tdi          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; altera_reserved_tms          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------------------------+--------------------------------------------------------------------------------------+
@@ -968,6 +970,15 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; B_24V_R_EN          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; B_35V_L_EN          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; B_35V_R_EN          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA5               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA6               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA7               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA8               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA9               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA10              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA11              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA12              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; FPGA13              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LED_1               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LED_2               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LED_3               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -995,7 +1006,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Sun Jun  9 17:26:26 2024
+    Info: Processing started: Mon Jun 24 13:13:28 2024
 Info: Command: quartus_sta RCB_FPGA -c RCB_FPGA_3_1
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -1022,32 +1033,32 @@ Critical Warning (332168): The following clock transfers have no clock uncertain
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 100C Model
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
-Info (332146): Worst-case setup slack is 44.072
+Info (332146): Worst-case setup slack is 44.783
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    44.072               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.340
+    Info (332119):    44.783               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.341
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.340               0.000 altera_reserved_tck 
-Info (332146): Worst-case recovery slack is 95.578
+    Info (332119):     0.341               0.000 altera_reserved_tck 
+Info (332146): Worst-case recovery slack is 94.806
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    95.578               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 1.120
+    Info (332119):    94.806               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 1.059
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.120               0.000 altera_reserved_tck 
-Info (332146): Worst-case minimum pulse width slack is 49.484
+    Info (332119):     1.059               0.000 altera_reserved_tck 
+Info (332146): Worst-case minimum pulse width slack is 49.479
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    49.484               0.000 altera_reserved_tck 
+    Info (332119):    49.479               0.000 altera_reserved_tck 
 Info (332114): Report Metastability: Found 2 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
     Info (332114): Number of Synchronizer Chains Found: 2
     Info (332114): Shortest Synchronizer Chain: 4 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 342.257 ns
+    Info (332114): Worst Case Available Settling Time: 343.002 ns
     Info (332114): 
 Info: Analyzing Slow 1200mV -40C Model
 Info (334003): Started post-fitting delay annotation
@@ -1063,32 +1074,32 @@ Warning (332056): PLL cross checking found inconsistent PLL clock settings:
 Critical Warning (332168): The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Rise) (setup and hold)
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Fall) (setup and hold)
-Info (332146): Worst-case setup slack is 44.871
+Info (332146): Worst-case setup slack is 45.473
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    44.871               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.290
+    Info (332119):    45.473               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.291
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.290               0.000 altera_reserved_tck 
-Info (332146): Worst-case recovery slack is 96.180
+    Info (332119):     0.291               0.000 altera_reserved_tck 
+Info (332146): Worst-case recovery slack is 95.407
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    96.180               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 1.008
+    Info (332119):    95.407               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.949
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.008               0.000 altera_reserved_tck 
-Info (332146): Worst-case minimum pulse width slack is 49.497
+    Info (332119):     0.949               0.000 altera_reserved_tck 
+Info (332146): Worst-case minimum pulse width slack is 49.489
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    49.497               0.000 altera_reserved_tck 
+    Info (332119):    49.489               0.000 altera_reserved_tck 
 Info (332114): Report Metastability: Found 2 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
     Info (332114): Number of Synchronizer Chains Found: 2
     Info (332114): Shortest Synchronizer Chain: 4 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 343.204 ns
+    Info (332114): Worst Case Available Settling Time: 343.884 ns
     Info (332114): 
 Info: Analyzing Fast 1200mV -40C Model
 Warning (332060): Node: CLK_100M was determined to be a clock but was found without an associated clock assignment.
@@ -1102,38 +1113,38 @@ Warning (332056): PLL cross checking found inconsistent PLL clock settings:
 Critical Warning (332168): The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Rise) (setup and hold)
     Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Fall) (setup and hold)
-Info (332146): Worst-case setup slack is 48.032
+Info (332146): Worst-case setup slack is 48.302
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    48.032               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.140
+    Info (332119):    48.302               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.141
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.140               0.000 altera_reserved_tck 
-Info (332146): Worst-case recovery slack is 97.902
+    Info (332119):     0.141               0.000 altera_reserved_tck 
+Info (332146): Worst-case recovery slack is 97.534
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    97.902               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 0.462
+    Info (332119):    97.534               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.440
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.462               0.000 altera_reserved_tck 
-Info (332146): Worst-case minimum pulse width slack is 49.245
+    Info (332119):     0.440               0.000 altera_reserved_tck 
+Info (332146): Worst-case minimum pulse width slack is 49.249
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    49.245               0.000 altera_reserved_tck 
+    Info (332119):    49.249               0.000 altera_reserved_tck 
 Info (332114): Report Metastability: Found 2 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
     Info (332114): Number of Synchronizer Chains Found: 2
     Info (332114): Shortest Synchronizer Chain: 4 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 347.293 ns
+    Info (332114): Worst Case Available Settling Time: 347.609 ns
     Info (332114): 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 24 warnings
-    Info: Peak virtual memory: 4944 megabytes
-    Info: Processing ended: Sun Jun  9 17:26:31 2024
+    Info: Peak virtual memory: 4952 megabytes
+    Info: Processing ended: Mon Jun 24 13:13:33 2024
     Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:06
 

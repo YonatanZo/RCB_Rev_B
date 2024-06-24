@@ -40,6 +40,42 @@
 					"strict" : false
 				},
 				{
+					"name" : "FPGA10",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA11",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA12",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA13",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA5",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA6",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA7",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA8",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA9",
+					"strict" : false
+				},
+				{
 					"name" : "L_TOOL_EX_LED_DIN",
 					"strict" : false
 				},
@@ -204,11 +240,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "Teensy_FPGA_SP2",
+					"strict" : false
+				},
+				{
 					"name" : "L_WHEEL_SENS_A1_OUT1_BUFF",
 					"strict" : false
 				},
 				{
 					"name" : "R_WHEEL_SENS_A1_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "Teensy_FPGA_SP1",
 					"strict" : false
 				},
 				{
@@ -220,11 +264,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "Teensy_FPGA_SP0",
+					"strict" : false
+				},
+				{
 					"name" : "R_WHEEL_SENS_A2_OUT1_BUFF",
 					"strict" : false
 				},
 				{
 					"name" : "L_WHEEL_SENS_A2_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA4",
 					"strict" : false
 				},
 				{
@@ -240,6 +292,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "FPGA3",
+					"strict" : false
+				},
+				{
 					"name" : "R_NO_switch_TOOL_EX_FPGA",
 					"strict" : false
 				},
@@ -252,6 +308,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "FPGA2",
+					"strict" : false
+				},
+				{
 					"name" : "L_NC_switch_TOOL_EX_FPGA",
 					"strict" : false
 				},
@@ -261,6 +321,10 @@
 				},
 				{
 					"name" : "L_WHEEL_SENS_SPARE_OUT2_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA1",
 					"strict" : false
 				},
 				{

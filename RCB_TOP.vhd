@@ -39,14 +39,14 @@ entity RCB_TOP is
         FPGA_R_ROBOT_TX: Out STD_LOGIC;
         FPGA_R_SP_TX: Out STD_LOGIC;
         FPGA_WHEEL_STOP_ELO: Out STD_LOGIC;
-        FPGA1: Out STD_LOGIC;
+        FPGA1: In STD_LOGIC;
         FPGA10: Out STD_LOGIC;
         FPGA11: Out STD_LOGIC;
         FPGA12: Out STD_LOGIC;
         FPGA13: Out STD_LOGIC;
-        FPGA2: Out STD_LOGIC;
-        FPGA3: Out STD_LOGIC;
-        FPGA4: Out STD_LOGIC;
+        FPGA2: In STD_LOGIC;
+        FPGA3: In STD_LOGIC;
+        FPGA4: In STD_LOGIC;
         FPGA5: Out STD_LOGIC;
         FPGA6: Out STD_LOGIC;
         FPGA7: Out STD_LOGIC;
@@ -156,9 +156,9 @@ entity RCB_TOP is
         SPARE2_IO2_FPGA: out STD_LOGIC;
         SPARE2_IO3_FPGA: out STD_LOGIC;
         SSR_ON_FPGA: In STD_LOGIC;
-        Teensy_FPGA_SP0: out STD_LOGIC;
-        Teensy_FPGA_SP1: out STD_LOGIC;
-        Teensy_FPGA_SP2: out STD_LOGIC;
+        Teensy_FPGA_SP0: In STD_LOGIC;
+        Teensy_FPGA_SP1: In STD_LOGIC;
+        Teensy_FPGA_SP2: In STD_LOGIC;
         TEENSY_LEDS_STRIP_DO: In STD_LOGIC
     );
 end entity RCB_TOP;
@@ -305,10 +305,10 @@ COMPONENT rcb_registers is
         MICCB_SPARE_IO2             : in  STD_LOGIC                    ;
         MICCB_SPARE_IO3             : in  STD_LOGIC                    ;
         --FPGA Spare out
-        FPGA1                       : out STD_LOGIC                    ;
-        FPGA2                       : out STD_LOGIC                    ;
-        FPGA3                       : out STD_LOGIC                    ;
-        FPGA4                       : out STD_LOGIC                    ;
+        FPGA1                       : in STD_LOGIC                    ;
+        FPGA2                       : in STD_LOGIC                    ;
+        FPGA3                       : in STD_LOGIC                    ;
+        FPGA4                       : in STD_LOGIC                    ;
         FPGA5                       : out STD_LOGIC                    ;
         FPGA6                       : out STD_LOGIC                    ;
         FPGA7                       : out STD_LOGIC                    ;
@@ -318,21 +318,9 @@ COMPONENT rcb_registers is
         FPGA11                      : out STD_LOGIC                    ;
         FPGA12                      : out STD_LOGIC                    ;
         FPGA13                      : out STD_LOGIC                    ;
-        Teensy_FPGA_SP0             : out STD_LOGIC                    ;
-        Teensy_FPGA_SP1             : out STD_LOGIC                    ;
-        Teensy_FPGA_SP2             : out STD_LOGIC                    ;
-        --ADC Voltage 0
-        P35V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
-        Spare                       : in  STD_LOGIC_VECTOR(15 downto 0);
-        --ADC Voltage 1
-        P12V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
-        P3_3V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);   
-        --ADC Voltage 2
-        P5V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
-        P2_5V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
-        --ADC Voltage 3
-        P24V_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
-        P12V_PS_Monitor : in STD_LOGIC_VECTOR(15 downto 0);
+        Teensy_FPGA_SP0             : in STD_LOGIC                    ;
+        Teensy_FPGA_SP1             : in STD_LOGIC                    ;
+        Teensy_FPGA_SP2             : in STD_LOGIC                    ;
         --FPGA Spare
         SPARE1_DIFF0                : in  STD_LOGIC                    ;
         SPARE1_DIFF1                : in  STD_LOGIC                    ;
@@ -496,14 +484,7 @@ signal FAN_PWM_REG_OUT_2 :   STD_LOGIC_VECTOR(7 DOWNTO 0);
   signal L_DIAG_PACK_CNT      : STD_LOGIC_VECTOR(15 downto 0);
   signal L_DIAG_ERR_CNT       : STD_LOGIC_VECTOR(15 downto 0);
   signal MUX_Control          : STD_LOGIC_VECTOR(2 downto 0);
-  signal P35V_Monitor         : STD_LOGIC_VECTOR(15 downto 0);
-  signal Spare                : STD_LOGIC_VECTOR(15 downto 0);
-  signal P12V_Monitor         : STD_LOGIC_VECTOR(15 downto 0);
-  signal P3_3V_Monitor        : STD_LOGIC_VECTOR(15 downto 0);
-  signal P5V_Monitor          : STD_LOGIC_VECTOR(15 downto 0);
-  signal P2_5V_Monitor        : STD_LOGIC_VECTOR(15 downto 0);
-  signal P24V_Monitor         : STD_LOGIC_VECTOR(15 downto 0);
-  signal P12V_PS_Monitor      : STD_LOGIC_VECTOR(15 downto 0);
+
   signal FPGA24V_DIS          : STD_LOGIC;
   signal FAN_1_READ_NUMBER    : STD_LOGIC_VECTOR(15 downto 0);
   signal FAN_1_PWM            : STD_LOGIC_VECTOR(7 downto 0);
@@ -720,14 +701,6 @@ LED_8 <= FPGA_LEDs_OUT(7);
             Teensy_FPGA_SP0             => Teensy_FPGA_SP0            ,
             Teensy_FPGA_SP1             => Teensy_FPGA_SP1            ,
             Teensy_FPGA_SP2             => Teensy_FPGA_SP2            ,
-            P35V_Monitor                => P35V_Monitor               ,
-            Spare                       => Spare                      ,
-            P12V_Monitor                => P12V_Monitor               ,
-            P3_3V_Monitor               => P3_3V_Monitor              ,
-            P5V_Monitor                 => P5V_Monitor                ,
-            P2_5V_Monitor               => P2_5V_Monitor              ,
-            P24V_Monitor                => P24V_Monitor               ,
-            P12V_PS_Monitor             => P12V_PS_Monitor            ,
             SPARE1_DIFF0                => SPARE1_DIFF0               ,
             SPARE1_DIFF1                => SPARE1_DIFF1               ,
             SPARE1_DIFF2                => SPARE1_DIFF2               ,

@@ -56,6 +56,7 @@
 
 # ignore Quartus II generated folders
 /db/
+db/
 */incremental_db/
 */simulation/
 */timing/
@@ -65,14 +66,17 @@
 db/
 _output_files/
 PLLJ_PLLSPE_INFO.txt
-/db/
-/db/
+
+/db
+/db/prev_cmp_RCB_FPGA.qmsg
 /db/RCB_FPGA_3_1_7_slow_1200mv_-40c.data
 /db/RCB_FPGA_3_1_7_slow_1200mv_-40c.mod
 /db/RCB_FPGA_3_1_7_slow_1200mv_100c.data
 /db/RCB_FPGA_3_1_7_slow_1200mv_100c.mod
 /db/RCB_FPGA_3_1_MIN_fast_1200mv_-40c.data
 /db/RCB_FPGA_3_1_MIN_fast_1200mv_-40c.mod
+/db/RCB_FPGA_3_1_partition_pins.json
+/db/RCB_FPGA_3_1.(0).cnf.cdb
 /db/RCB_FPGA_3_1.(0).cnf.hdb
 /db/RCB_FPGA_3_1.(1).cnf.cdb
 /db/RCB_FPGA_3_1.(1).cnf.hdb
@@ -162,6 +166,9 @@ PLLJ_PLLSPE_INFO.txt
 /db/RCB_FPGA_3_1.fit.qmsg
 /db/RCB_FPGA_3_1.hier_info
 /db/RCB_FPGA_3_1.hif
+/db/RCB_FPGA_3_1.lpc.html
+/db/RCB_FPGA_3_1.lpc.rdb
+/db/RCB_FPGA_3_1.lpc.txt
 /db/RCB_FPGA_3_1.map_bb.cdb
 /db/RCB_FPGA_3_1.map_bb.hdb
 /db/RCB_FPGA_3_1.map.bpm
@@ -170,13 +177,15 @@ PLLJ_PLLSPE_INFO.txt
 /db/RCB_FPGA_3_1.map.kpt
 /db/RCB_FPGA_3_1.map.qmsg
 /db/RCB_FPGA_3_1.map.rdb
+/db/RCB_FPGA_3_1.npp.qmsg
 /db/RCB_FPGA_3_1.pre_map.hdb
 /db/RCB_FPGA_3_1.root_partition.map.reg_db.cdb
 /db/RCB_FPGA_3_1.routing.rdb
 /db/RCB_FPGA_3_1.rtlv_sg_swap.cdb
 /db/RCB_FPGA_3_1.rtlv_sg.cdb
 /db/RCB_FPGA_3_1.rtlv.hdb
-/db/RCB_FPGA_3_1.sld_design_entry.sci
+/db/RCB_FPGA_3_1.sgate_sm.nvd
+/db/RCB_FPGA_3_1.sgate.nvd
 /db/RCB_FPGA_3_1.sta_cmp.7_slow_1200mv_100c.tdb
 /db/RCB_FPGA_3_1.sta.qmsg
 /db/RCB_FPGA_3_1.sta.rdb
@@ -187,4 +196,3 @@ PLLJ_PLLSPE_INFO.txt
 /db/RCB_FPGA_3_1.tiscmp.slow_1200mv_n40c.ddb
 /db/RCB_FPGA_3_1.tmw_info
 /db/RCB_FPGA_3_1.vpr.ammdb
-/db

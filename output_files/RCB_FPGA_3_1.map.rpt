@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RCB_FPGA_3_1
-Sun Jun  9 17:26:04 2024
+Mon Jun 24 13:13:05 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -178,15 +178,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Jun  9 17:26:04 2024          ;
+; Analysis & Synthesis Status        ; Successful - Mon Jun 24 13:13:05 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; RCB_FPGA_3_1                                   ;
 ; Top-level Entity Name              ; RCB_TOP                                        ;
 ; Family                             ; MAX 10                                         ;
-; Total logic elements               ; 3,006                                          ;
-;     Total combinational functions  ; 2,049                                          ;
-;     Dedicated logic registers      ; 2,124                                          ;
-; Total registers                    ; 2124                                           ;
+; Total logic elements               ; 3,055                                          ;
+;     Total combinational functions  ; 2,073                                          ;
+;     Dedicated logic registers      ; 2,149                                          ;
+; Total registers                    ; 2149                                           ;
 ; Total pins                         ; 156                                            ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 778,240                                        ;
@@ -416,20 +416,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                          ;
 +---------------------------------------------+------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 3,006                                                                                          ;
+; Estimated Total logic elements              ; 3,055                                                                                          ;
 ;                                             ;                                                                                                ;
-; Total combinational functions               ; 2049                                                                                           ;
+; Total combinational functions               ; 2073                                                                                           ;
 ; Logic element usage by number of LUT inputs ;                                                                                                ;
-;     -- 4 input functions                    ; 906                                                                                            ;
-;     -- 3 input functions                    ; 547                                                                                            ;
-;     -- <=2 input functions                  ; 596                                                                                            ;
+;     -- 4 input functions                    ; 937                                                                                            ;
+;     -- 3 input functions                    ; 521                                                                                            ;
+;     -- <=2 input functions                  ; 615                                                                                            ;
 ;                                             ;                                                                                                ;
 ; Logic elements by mode                      ;                                                                                                ;
-;     -- normal mode                          ; 1662                                                                                           ;
+;     -- normal mode                          ; 1686                                                                                           ;
 ;     -- arithmetic mode                      ; 387                                                                                            ;
 ;                                             ;                                                                                                ;
-; Total registers                             ; 2124                                                                                           ;
-;     -- Dedicated logic registers            ; 2124                                                                                           ;
+; Total registers                             ; 2149                                                                                           ;
+;     -- Dedicated logic registers            ; 2149                                                                                           ;
 ;     -- I/O registers                        ; 0                                                                                              ;
 ;                                             ;                                                                                                ;
 ; I/O pins                                    ; 156                                                                                            ;
@@ -442,8 +442,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                                                                                                ;
 ; Maximum fan-out node                        ; UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0] ;
 ; Maximum fan-out                             ; 757                                                                                            ;
-; Total fan-out                               ; 17131                                                                                          ;
-; Average fan-out                             ; 3.69                                                                                           ;
+; Total fan-out                               ; 17253                                                                                          ;
+; Average fan-out                             ; 3.68                                                                                           ;
 +---------------------------------------------+------------------------------------------------------------------------------------------------+
 
 
@@ -452,7 +452,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                 ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |RCB_TOP                                                                                                                                ; 2049 (59)           ; 2124 (34)                 ; 778240      ; 0          ; 0            ; 0       ; 0         ; 156  ; 0            ; 0          ; |RCB_TOP                                                                                                                                                                                                                                                                                                                                            ; RCB_TOP                           ; work         ;
+; |RCB_TOP                                                                                                                                ; 2073 (59)           ; 2149 (34)                 ; 778240      ; 0          ; 0            ; 0       ; 0         ; 156  ; 0            ; 0          ; |RCB_TOP                                                                                                                                                                                                                                                                                                                                            ; RCB_TOP                           ; work         ;
 ;    |UART_PLL:UART_PLL_inst|                                                                                                             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_PLL:UART_PLL_inst                                                                                                                                                                                                                                                                                                                     ; UART_PLL                          ; work         ;
 ;       |altpll:altpll_component|                                                                                                         ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_PLL:UART_PLL_inst|altpll:altpll_component                                                                                                                                                                                                                                                                                             ; altpll                            ; work         ;
 ;          |UART_PLL_altpll:auto_generated|                                                                                               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated                                                                                                                                                                                                                                                              ; UART_PLL_altpll                   ; work         ;
@@ -544,8 +544,8 @@ https://fpgasoftware.intel.com/eula.
 ;       |UART:TEENSY_TX_UART|                                                                                                             ; 28 (0)              ; 22 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART                                                                                                                                                                                                                                                                                               ; UART                              ; work         ;
 ;          |UART_TX:uart_tx_i|                                                                                                            ; 28 (20)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i                                                                                                                                                                                                                                                                             ; UART_TX                           ; work         ;
 ;             |UART_CLK_DIV:tx_clk_divider_i|                                                                                             ; 8 (8)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i                                                                                                                                                                                                                                               ; UART_CLK_DIV                      ; work         ;
-;    |rcb_registers:i_rcb_registers|                                                                                                      ; 44 (44)             ; 144 (144)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_registers:i_rcb_registers                                                                                                                                                                                                                                                                                                              ; rcb_registers                     ; work         ;
-;    |rcb_spi:rcb_spi_inst|                                                                                                               ; 189 (189)           ; 106 (106)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_spi:rcb_spi_inst                                                                                                                                                                                                                                                                                                                       ; rcb_spi                           ; work         ;
+;    |rcb_registers:i_rcb_registers|                                                                                                      ; 44 (44)             ; 169 (169)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_registers:i_rcb_registers                                                                                                                                                                                                                                                                                                              ; rcb_registers                     ; work         ;
+;    |rcb_spi:rcb_spi_inst|                                                                                                               ; 213 (213)           ; 106 (106)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_spi:rcb_spi_inst                                                                                                                                                                                                                                                                                                                       ; rcb_spi                           ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 125 (1)             ; 90 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
 ;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 124 (0)             ; 90 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input       ; altera_sld   ;
 ;          |alt_sld_fab:instrumentation_fabric|                                                                                           ; 124 (0)             ; 90 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric                                                                                                                                                        ; alt_sld_fab                       ; alt_sld_fab  ;
@@ -1166,9 +1166,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_CLK_DIV:os_clk_divider_i|DIV_MARK                                  ; Stuck at VCC due to stuck port data_in                                        ;
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_CLK_DIV:os_clk_divider_i|DIV_MARK                                  ; Stuck at VCC due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Version_reg[27..31]                                                         ; Stuck at GND due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Version_reg[26]                                                             ; Stuck at VCC due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Version_reg[25]                                                             ; Stuck at GND due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Version_reg[24]                                                             ; Stuck at VCC due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Version_reg[24..26]                                                         ; Stuck at VCC due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Version_reg[18..23]                                                         ; Stuck at GND due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Version_reg[16,17]                                                          ; Stuck at VCC due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Version_reg[0..15]                                                          ; Stuck at GND due to stuck port data_in                                        ;
@@ -1177,14 +1175,10 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; rcb_registers:i_rcb_registers|FPGA_Date_reg[26,27]                                                             ; Stuck at GND due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Date_reg[25]                                                                ; Stuck at VCC due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Date_reg[21..24]                                                            ; Stuck at GND due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Date_reg[18..20]                                                            ; Stuck at VCC due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Date_reg[17]                                                                ; Stuck at GND due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Date_reg[16]                                                                ; Stuck at VCC due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Date_reg[11..15]                                                            ; Stuck at GND due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Date_reg[10]                                                                ; Stuck at VCC due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Date_reg[9]                                                                 ; Stuck at GND due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Date_reg[8]                                                                 ; Stuck at VCC due to stuck port data_in                                        ;
-; rcb_registers:i_rcb_registers|FPGA_Date_reg[5..7]                                                              ; Stuck at GND due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Date_reg[19,20]                                                             ; Stuck at VCC due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Date_reg[11..18]                                                            ; Stuck at GND due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Date_reg[9,10]                                                              ; Stuck at VCC due to stuck port data_in                                        ;
+; rcb_registers:i_rcb_registers|FPGA_Date_reg[5..8]                                                              ; Stuck at GND due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Date_reg[3,4]                                                               ; Stuck at VCC due to stuck port data_in                                        ;
 ; rcb_registers:i_rcb_registers|FPGA_Date_reg[0..2]                                                              ; Stuck at GND due to stuck port data_in                                        ;
 ; UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|pll_lock_sync                    ; Stuck at VCC due to stuck port data_in                                        ;
@@ -1194,6 +1188,134 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; i2c_top:i2c_top_inst|rd_cnt[0..3]                                                                              ; Stuck at GND due to stuck port clear                                          ;
 ; i2c_top:i2c_top_inst|reg_cnt[0..3]                                                                             ; Stuck at GND due to stuck port clear                                          ;
 ; i2c_top:i2c_top_inst|wr_cnt[0..3]                                                                              ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][15]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][14]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][13]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][12]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][11]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][10]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][9]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][8]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][7]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][6]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][5]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][4]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][3]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][2]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][1]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[0][0]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][15]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][14]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][13]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][12]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][11]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][10]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][9]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][8]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][7]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][6]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][5]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][4]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][3]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][2]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][1]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[1][0]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][15]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][14]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][13]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][12]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][11]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][10]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][9]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][8]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][7]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][6]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][5]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][4]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][3]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][2]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][1]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[2][0]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][15]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][14]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][13]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][12]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][11]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][10]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][9]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][8]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][7]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][6]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][5]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][4]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][3]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][2]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][1]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[3][0]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][15]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][14]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][13]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][12]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][11]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][10]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][9]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][8]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][7]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][6]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][5]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][4]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][3]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][2]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][1]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[4][0]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][15]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][14]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][13]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][12]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][11]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][10]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][9]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][8]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][7]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][6]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][5]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][4]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][3]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][2]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][1]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[5][0]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][15]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][14]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][13]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][12]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][11]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][10]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][9]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][8]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][7]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][6]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][5]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][4]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][3]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][2]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][1]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[6][0]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][15]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][14]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][13]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][12]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][11]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][10]                                                                           ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][9]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][8]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][7]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][6]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][5]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][4]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][3]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][2]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][1]                                                                            ; Stuck at GND due to stuck port clear                                          ;
+; i2c_top:i2c_top_inst|ADC_data[7][0]                                                                            ; Stuck at GND due to stuck port clear                                          ;
 ; i2c_top:i2c_top_inst|busy_f                                                                                    ; Stuck at GND due to stuck port clock_enable                                   ;
 ; i2c_top:i2c_top_inst|data_wr_dly[4..7]                                                                         ; Stuck at GND due to stuck port clock_enable                                   ;
 ; i2c_top:i2c_top_inst|data_wr_dly[3]                                                                            ; Stuck at VCC due to stuck port clock_enable                                   ;
@@ -1330,7 +1452,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|fsm_pstate.paritybit                                  ; Stuck at GND due to stuck port data_in                                        ;
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|fsm_pstate.paritybit                                  ; Stuck at GND due to stuck port data_in                                        ;
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|fsm_pstate.paritybit                                  ; Stuck at GND due to stuck port data_in                                        ;
-; Total Number of Removed Registers = 345                                                                        ;                                                                               ;
+; Total Number of Removed Registers = 473                                                                        ;                                                                               ;
 +----------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
 
@@ -1482,12 +1604,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 2124  ;
+; Total registers                              ; 2149  ;
 ; Number of registers using Synchronous Clear  ; 251   ;
-; Number of registers using Synchronous Load   ; 329   ;
+; Number of registers using Synchronous Load   ; 314   ;
 ; Number of registers using Asynchronous Clear ; 602   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 1152  ;
+; Number of registers using Clock Enable       ; 1161  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -1572,10 +1694,11 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|TX_Master:TX_Master_inst|tx_cnt[1]                                                 ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|TX_Master:TX_Master_inst|tx_cnt[7]                                                 ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|TX_Master:TX_Master_inst|tx_cnt[0]                                                 ;
-; 13:1               ; 19 bits   ; 152 LEs       ; 152 LEs              ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[13]                                                                         ;
-; 13:1               ; 4 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[12]                                                                         ;
-; 13:1               ; 4 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[8]                                                                          ;
-; 13:1               ; 3 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[4]                                                                          ;
+; 18:1               ; 15 bits   ; 180 LEs       ; 135 LEs              ; 45 LEs                 ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[17]                                                                         ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[16]                                                                         ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[12]                                                                         ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[8]                                                                          ;
+; 18:1               ; 3 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[4]                                                                          ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |RCB_TOP|rcb_spi:rcb_spi_inst|next_state                                                                             ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|TX_Master:TX_Master_inst|state                                                     ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|TX_Master:TX_Master_inst|state                                                     ;
@@ -3262,32 +3385,32 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 199                         ;
-; cycloneiii_ff         ; 944                         ;
+; cycloneiii_ff         ; 969                         ;
 ;     CLR               ; 72                          ;
-;     ENA               ; 252                         ;
+;     ENA               ; 276                         ;
 ;     ENA CLR           ; 20                          ;
 ;     ENA CLR SCLR      ; 84                          ;
 ;     ENA CLR SLD       ; 8                           ;
 ;     ENA SCLR          ; 47                          ;
-;     ENA SLD           ; 202                         ;
+;     ENA SLD           ; 187                         ;
 ;     SCLR              ; 72                          ;
 ;     SLD               ; 2                           ;
-;     plain             ; 185                         ;
+;     plain             ; 201                         ;
 ; cycloneiii_io_obuf    ; 4                           ;
-; cycloneiii_lcell_comb ; 1273                        ;
+; cycloneiii_lcell_comb ; 1297                        ;
 ;     arith             ; 296                         ;
 ;         2 data inputs ; 248                         ;
 ;         3 data inputs ; 48                          ;
-;     normal            ; 977                         ;
+;     normal            ; 1001                        ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 47                          ;
-;         2 data inputs ; 130                         ;
-;         3 data inputs ; 202                         ;
-;         4 data inputs ; 596                         ;
+;         2 data inputs ; 149                         ;
+;         3 data inputs ; 176                         ;
+;         4 data inputs ; 627                         ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 48                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 11.00                       ;
+; Max LUT depth         ; 10.00                       ;
 ; Average LUT depth     ; 2.65                        ;
 +-----------------------+-----------------------------+
 
@@ -3483,19 +3606,19 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Sun Jun  9 17:25:20 2024
+    Info: Processing started: Mon Jun 24 13:12:19 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RCB_FPGA -c RCB_FPGA_3_1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
 Info (12248): Elaborating Platform Designer system entity "reset.qsys"
-Info (12250): 2024.06.09.17:25:31 Progress: Loading RCB_Rev_B/reset.qsys
-Info (12250): 2024.06.09.17:25:32 Progress: Reading input file
-Info (12250): 2024.06.09.17:25:32 Progress: Adding in_system_sources_probes_0 [altera_in_system_sources_probes 22.1]
-Info (12250): 2024.06.09.17:25:32 Progress: Parameterizing module in_system_sources_probes_0
-Info (12250): 2024.06.09.17:25:32 Progress: Building connections
-Info (12250): 2024.06.09.17:25:32 Progress: Parameterizing connections
-Info (12250): 2024.06.09.17:25:32 Progress: Validating
-Info (12250): 2024.06.09.17:25:32 Progress: Done reading input file
+Info (12250): 2024.06.24.13:12:30 Progress: Loading RCB_Rev_B/reset.qsys
+Info (12250): 2024.06.24.13:12:31 Progress: Reading input file
+Info (12250): 2024.06.24.13:12:31 Progress: Adding in_system_sources_probes_0 [altera_in_system_sources_probes 22.1]
+Info (12250): 2024.06.24.13:12:31 Progress: Parameterizing module in_system_sources_probes_0
+Info (12250): 2024.06.24.13:12:31 Progress: Building connections
+Info (12250): 2024.06.24.13:12:31 Progress: Parameterizing connections
+Info (12250): 2024.06.24.13:12:31 Progress: Validating
+Info (12250): 2024.06.24.13:12:32 Progress: Done reading input file
 Info (12250): Reset: Generating reset "reset" for QUARTUS_SYNTH
 Info (12250): In_system_sources_probes_0: "reset" instantiated altera_in_system_sources_probes "in_system_sources_probes_0"
 Info (12250): Reset: Done "reset" with 2 modules, 2 files
@@ -3567,44 +3690,36 @@ Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(36): used implic
 Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(37): used implicit default value for signal "FPGA_L_SP_TX" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 37
 Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(39): used implicit default value for signal "FPGA_R_ROBOT_TX" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 39
 Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(40): used implicit default value for signal "FPGA_R_SP_TX" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 40
-Warning (10540): VHDL Signal Declaration warning at RCB_TOP.vhd(471): used explicit default value for signal "clk_1m_internal" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 471
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(494): used implicit default value for signal "R_DIAG_PACK_CNT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 494
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(495): used implicit default value for signal "R_DIAG_ERR_CNT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 495
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(496): used implicit default value for signal "L_DIAG_PACK_CNT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 496
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(497): used implicit default value for signal "L_DIAG_ERR_CNT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 497
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(499): used implicit default value for signal "P35V_Monitor" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 499
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(500): used implicit default value for signal "Spare" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 500
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(501): used implicit default value for signal "P12V_Monitor" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 501
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(502): used implicit default value for signal "P3_3V_Monitor" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 502
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(503): used implicit default value for signal "P5V_Monitor" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 503
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(504): used implicit default value for signal "P2_5V_Monitor" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 504
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(505): used implicit default value for signal "P24V_Monitor" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 505
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(506): used implicit default value for signal "P12V_PS_Monitor" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 506
-Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(507): object "FPGA24V_DIS" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 507
-Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(508): object "FAN_1_READ_NUMBER" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 508
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(509): used implicit default value for signal "FAN_1_PWM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 509
-Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(511): object "FAN_2_READ_NUMBER" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 511
-Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(512): used implicit default value for signal "FAN_2_PWM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 512
-Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(513): object "FPGA_SYNC_DELAY_TIME" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 513
-Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(514): object "FPGA_SYNC_TIME" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 514
-Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(515): object "CS_ERROR" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 515
-Warning (10492): VHDL Process Statement warning at RCB_TOP.vhd(595): signal "rst_n_syn" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 595
-Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(821): inferring latch(es) for signal or variable "L_TOOL_EX_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(821): inferring latch(es) for signal or variable "L_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(821): inferring latch(es) for signal or variable "R_TOOL_EX_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(821): inferring latch(es) for signal or variable "R_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(821): inferring latch(es) for signal or variable "S_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(821): inferring latch(es) for signal or variable "ROBOT_ESTOP_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Info (10041): Inferred latch for "ROBOT_ESTOP_LED_DIN" at RCB_TOP.vhd(821) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Info (10041): Inferred latch for "S_LED_DIN" at RCB_TOP.vhd(821) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Info (10041): Inferred latch for "R_LED_DIN" at RCB_TOP.vhd(821) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Info (10041): Inferred latch for "R_TOOL_EX_LED_DIN" at RCB_TOP.vhd(821) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Info (10041): Inferred latch for "L_LED_DIN" at RCB_TOP.vhd(821) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Info (10041): Inferred latch for "L_TOOL_EX_LED_DIN" at RCB_TOP.vhd(821) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 821
-Info (12128): Elaborating entity "i2c_top" for hierarchy "i2c_top:i2c_top_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 560
+Warning (10540): VHDL Signal Declaration warning at RCB_TOP.vhd(459): used explicit default value for signal "clk_1m_internal" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 459
+Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(482): used implicit default value for signal "R_DIAG_PACK_CNT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 482
+Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(483): used implicit default value for signal "R_DIAG_ERR_CNT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 483
+Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(484): used implicit default value for signal "L_DIAG_PACK_CNT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 484
+Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(485): used implicit default value for signal "L_DIAG_ERR_CNT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 485
+Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(488): object "FPGA24V_DIS" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 488
+Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(489): object "FAN_1_READ_NUMBER" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 489
+Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(490): used implicit default value for signal "FAN_1_PWM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 490
+Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(492): object "FAN_2_READ_NUMBER" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 492
+Warning (10541): VHDL Signal Declaration warning at RCB_TOP.vhd(493): used implicit default value for signal "FAN_2_PWM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 493
+Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(494): object "FPGA_SYNC_DELAY_TIME" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 494
+Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(495): object "FPGA_SYNC_TIME" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 495
+Warning (10036): Verilog HDL or VHDL warning at RCB_TOP.vhd(496): object "CS_ERROR" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 496
+Warning (10492): VHDL Process Statement warning at RCB_TOP.vhd(576): signal "rst_n_syn" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 576
+Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(794): inferring latch(es) for signal or variable "L_TOOL_EX_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(794): inferring latch(es) for signal or variable "L_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(794): inferring latch(es) for signal or variable "R_TOOL_EX_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(794): inferring latch(es) for signal or variable "R_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(794): inferring latch(es) for signal or variable "S_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Warning (10631): VHDL Process Statement warning at RCB_TOP.vhd(794): inferring latch(es) for signal or variable "ROBOT_ESTOP_LED_DIN", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Info (10041): Inferred latch for "ROBOT_ESTOP_LED_DIN" at RCB_TOP.vhd(794) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Info (10041): Inferred latch for "S_LED_DIN" at RCB_TOP.vhd(794) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Info (10041): Inferred latch for "R_LED_DIN" at RCB_TOP.vhd(794) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Info (10041): Inferred latch for "R_TOOL_EX_LED_DIN" at RCB_TOP.vhd(794) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Info (10041): Inferred latch for "L_LED_DIN" at RCB_TOP.vhd(794) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Info (10041): Inferred latch for "L_TOOL_EX_LED_DIN" at RCB_TOP.vhd(794) File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 794
+Info (12128): Elaborating entity "i2c_top" for hierarchy "i2c_top:i2c_top_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 541
 Warning (10036): Verilog HDL or VHDL warning at i2c_top.vhd(54): object "byte_cnt" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/i2c_top.vhd Line: 54
 Info (12128): Elaborating entity "i2c_master" for hierarchy "i2c_top:i2c_top_inst|i2c_master:i2c_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/i2c_top.vhd Line: 83
-Info (12128): Elaborating entity "UART_PLL" for hierarchy "UART_PLL:UART_PLL_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 606
+Info (12128): Elaborating entity "UART_PLL" for hierarchy "UART_PLL:UART_PLL_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 587
 Info (12128): Elaborating entity "altpll" for hierarchy "UART_PLL:UART_PLL_inst|altpll:altpll_component" File: G:/My Drive/FPGA/git/RCB_Rev_B/UART_PLL.v Line: 104
 Info (12130): Elaborated megafunction instantiation "UART_PLL:UART_PLL_inst|altpll:altpll_component" File: G:/My Drive/FPGA/git/RCB_Rev_B/UART_PLL.v Line: 104
 Info (12133): Instantiated megafunction "UART_PLL:UART_PLL_inst|altpll:altpll_component" with the following parameter: File: G:/My Drive/FPGA/git/RCB_Rev_B/UART_PLL.v Line: 104
@@ -3666,23 +3781,7 @@ Info (12133): Instantiated megafunction "UART_PLL:UART_PLL_inst|altpll:altpll_co
 Info (12021): Found 1 design units, including 1 entities, in source file db/uart_pll_altpll.v
     Info (12023): Found entity 1: UART_PLL_altpll File: G:/My Drive/FPGA/git/RCB_Rev_B/db/uart_pll_altpll.v Line: 31
 Info (12128): Elaborating entity "UART_PLL_altpll" for hierarchy "UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated" File: c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "rcb_registers" for hierarchy "rcb_registers:i_rcb_registers" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 624
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(112): used implicit default value for signal "FPGA1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 112
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(113): used implicit default value for signal "FPGA2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 113
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(114): used implicit default value for signal "FPGA3" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 114
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(115): used implicit default value for signal "FPGA4" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 115
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(116): used implicit default value for signal "FPGA5" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 116
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(117): used implicit default value for signal "FPGA6" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 117
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(118): used implicit default value for signal "FPGA7" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 118
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(119): used implicit default value for signal "FPGA8" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 119
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(120): used implicit default value for signal "FPGA9" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 120
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(121): used implicit default value for signal "FPGA10" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 121
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(122): used implicit default value for signal "FPGA11" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 122
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(123): used implicit default value for signal "FPGA12" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 123
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(124): used implicit default value for signal "FPGA13" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 124
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(125): used implicit default value for signal "Teensy_FPGA_SP0" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 125
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(126): used implicit default value for signal "Teensy_FPGA_SP1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 126
-Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(127): used implicit default value for signal "Teensy_FPGA_SP2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 127
+Info (12128): Elaborating entity "rcb_registers" for hierarchy "rcb_registers:i_rcb_registers" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 605
 Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(143): used implicit default value for signal "SPARE1_DIFF2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 143
 Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(144): used implicit default value for signal "SPARE1_DIFF3" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 144
 Warning (10541): VHDL Signal Declaration warning at rcb_registers.vhd(145): used implicit default value for signal "SPARE1_ANALOG_SW_0_SEL_FPGA" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 145
@@ -3716,10 +3815,6 @@ Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(244): used
 Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(245): used explicit default value for signal "Left_Recivers_Error_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 245
 Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(250): used explicit default value for signal "Mic_C_B_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 250
 Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(251): used explicit default value for signal "FPGA_Spare_out_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 251
-Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(252): used explicit default value for signal "ADC_Voltage_0_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 252
-Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(253): used explicit default value for signal "ADC_Voltage_1_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 253
-Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(254): used explicit default value for signal "ADC_Voltage_2_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 254
-Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(255): used explicit default value for signal "ADC_Voltage_3_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 255
 Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(256): used explicit default value for signal "FPGA_Spare_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 256
 Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(257): used explicit default value for signal "FLA_PS_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 257
 Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(258): used explicit default value for signal "FPGA_FAN_1_Tacho_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 258
@@ -3729,62 +3824,63 @@ Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(261): used
 Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(262): used explicit default value for signal "FPGA_SYNC_DELAY_TIME_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 262
 Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(263): used explicit default value for signal "FPGA_SYNC_TIME_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 263
 Warning (10540): VHDL Signal Declaration warning at rcb_registers.vhd(264): used explicit default value for signal "Fault_Registers_reg" because signal was never assigned a value File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 264
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(320): signal "FPGA_Version_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 320
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(322): signal "FPGA_Date_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 322
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(324): signal "Power_Diagnostic_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 324
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(326): signal "FPGA_buttons_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 326
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(328): signal "L_Wheels_sensors_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 328
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(330): signal "R_Wheels_sensors_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 330
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(332): signal "Diagnostic_packed_counter_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 332
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(334): signal "Diagnostic_error_counter_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 334
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(336): signal "Right_Recivers_Error_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 336
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(338): signal "Left_Recivers_Error_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 338
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(340): signal "SSRs_Left_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 340
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(342): signal "SSRs_Right_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 342
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(344): signal "FPGA_LEDs_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 344
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(346): signal "LEDs_strip_Mux_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 346
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(348): signal "Mic_C_B_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 348
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(350): signal "FPGA_Spare_out_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 350
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(352): signal "ADC_Voltage_0_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 352
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(354): signal "ADC_Voltage_1_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 354
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(356): signal "ADC_Voltage_2_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 356
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(358): signal "ADC_Voltage_3_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 358
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(360): signal "FPGA_Spare_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 360
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(362): signal "FLA_PS_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 362
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(364): signal "FPGA_FAN_1_Tacho_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 364
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(366): signal "FPGA_FAN_1_PWM_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 366
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(368): signal "FPGA_FAN_2_Tacho_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 368
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(370): signal "FPGA_FAN_2_PWM_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 370
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(372): signal "FPGA_SYNC_DELAY_TIME_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 372
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(374): signal "FPGA_SYNC_TIME_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 374
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(376): signal "Fault_Registers_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 376
-Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(378): signal "Sync_Timer_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 378
-Warning (10631): VHDL Process Statement warning at rcb_registers.vhd(385): inferring latch(es) for signal or variable "FPGA_LEDs_reg", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[8]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[9]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[10]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[11]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[12]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[13]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[14]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[15]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[16]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[17]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[18]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[19]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[20]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[21]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[22]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[23]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[24]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[25]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[26]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[27]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[28]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[29]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[30]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (10041): Inferred latch for "FPGA_LEDs_reg[31]" at rcb_registers.vhd(385) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 385
-Info (12128): Elaborating entity "UART_TOP" for hierarchy "UART_TOP:L_UART_TOP_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 779
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(340): signal "FPGA_Version_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 340
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(342): signal "FPGA_Date_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 342
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(344): signal "Power_Diagnostic_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 344
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(346): signal "FPGA_buttons_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 346
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(348): signal "L_Wheels_sensors_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 348
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(350): signal "R_Wheels_sensors_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 350
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(352): signal "Diagnostic_packed_counter_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 352
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(354): signal "Diagnostic_error_counter_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 354
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(356): signal "Right_Recivers_Error_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 356
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(358): signal "Left_Recivers_Error_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 358
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(360): signal "SSRs_Left_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 360
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(362): signal "SSRs_Right_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 362
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(364): signal "FPGA_LEDs_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 364
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(366): signal "LEDs_strip_Mux_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 366
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(368): signal "Mic_C_B_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 368
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(370): signal "FPGA_Spare_out_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 370
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(372): signal "ADC_Voltage_0_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 372
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(374): signal "ADC_Voltage_1_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 374
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(376): signal "ADC_Voltage_2_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 376
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(378): signal "ADC_Voltage_3_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 378
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(380): signal "FPGA_Spare_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 380
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(382): signal "FLA_PS_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 382
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(384): signal "FPGA_FAN_1_Tacho_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 384
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(386): signal "FPGA_FAN_1_PWM_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 386
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(388): signal "FPGA_FAN_2_Tacho_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 388
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(390): signal "FPGA_FAN_2_PWM_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 390
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(392): signal "FPGA_SYNC_DELAY_TIME_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 392
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(394): signal "FPGA_SYNC_TIME_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 394
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(396): signal "Fault_Registers_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 396
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(398): signal "Sync_Timer_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 398
+Warning (10492): VHDL Process Statement warning at rcb_registers.vhd(400): signal "Diagnostic_Header_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 400
+Warning (10631): VHDL Process Statement warning at rcb_registers.vhd(407): inferring latch(es) for signal or variable "FPGA_LEDs_reg", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[8]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[9]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[10]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[11]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[12]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[13]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[14]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[15]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[16]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[17]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[18]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[19]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[20]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[21]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[22]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[23]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[24]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[25]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[26]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[27]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[28]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[29]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[30]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (10041): Inferred latch for "FPGA_LEDs_reg[31]" at rcb_registers.vhd(407) File: G:/My Drive/FPGA/git/RCB_Rev_B/rcb_registers.vhd Line: 407
+Info (12128): Elaborating entity "UART_TOP" for hierarchy "UART_TOP:L_UART_TOP_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 752
 Warning (10036): Verilog HDL or VHDL warning at UART_TOP.vhd(116): object "avalon_ready0" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/UART_TOP.vhd Line: 116
 Warning (10036): Verilog HDL or VHDL warning at UART_TOP.vhd(116): object "avalon_ready1" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/UART_TOP.vhd Line: 116
 Warning (10036): Verilog HDL or VHDL warning at UART_TOP.vhd(116): object "avalon_ready2" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/UART_TOP.vhd Line: 116
@@ -3855,7 +3951,7 @@ Info (12128): Elaborating entity "UART_RX" for hierarchy "UART_TOP:L_UART_TOP_in
 Info (12128): Elaborating entity "UART_CLK_DIV" for hierarchy "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i" File: G:/My Drive/FPGA/git/RCB_Rev_B/uart/comp/uart_rx.vhd Line: 55
 Info (12128): Elaborating entity "UART_TX" for hierarchy "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i" File: G:/My Drive/FPGA/git/RCB_Rev_B/uart/uart.vhd Line: 135
 Info (12128): Elaborating entity "UART_CLK_DIV" for hierarchy "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i" File: G:/My Drive/FPGA/git/RCB_Rev_B/uart/comp/uart_tx.vhd Line: 54
-Info (12128): Elaborating entity "FAN" for hierarchy "FAN:FAN1_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 800
+Info (12128): Elaborating entity "FAN" for hierarchy "FAN:FAN1_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 773
 Warning (10036): Verilog HDL or VHDL warning at Fan.vhd(48): object "fan_pwm_f" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/Fan.vhd Line: 48
 Warning (10631): VHDL Process Statement warning at Fan.vhd(57): inferring latch(es) for signal or variable "clk_1khz", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/Fan.vhd Line: 57
 Warning (10631): VHDL Process Statement warning at Fan.vhd(72): inferring latch(es) for signal or variable "clk_1khz", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/Fan.vhd Line: 72
@@ -3884,7 +3980,7 @@ Info (10041): Inferred latch for "fpga_fan_tacho[5]" at Fan.vhd(166) File: G:/My
 Info (10041): Inferred latch for "fpga_fan_tacho[6]" at Fan.vhd(166) File: G:/My Drive/FPGA/git/RCB_Rev_B/Fan.vhd Line: 166
 Info (10041): Inferred latch for "fpga_fan_tacho[7]" at Fan.vhd(166) File: G:/My Drive/FPGA/git/RCB_Rev_B/Fan.vhd Line: 166
 Info (10041): Inferred latch for "fan_pwm" at Fan.vhd(88) File: G:/My Drive/FPGA/git/RCB_Rev_B/Fan.vhd Line: 88
-Info (12128): Elaborating entity "rcb_spi" for hierarchy "rcb_spi:rcb_spi_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 841
+Info (12128): Elaborating entity "rcb_spi" for hierarchy "rcb_spi:rcb_spi_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 814
 Info (10264): Verilog HDL Case Statement information at rcb_spi.v(145): all case item expressions in this case statement are onehot File: G:/My Drive/FPGA/git/RCB_Rev_B/source/rcb_spi.v Line: 145
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_pp14.tdf
     Info (12023): Found entity 1: altsyncram_pp14 File: G:/My Drive/FPGA/git/RCB_Rev_B/db/altsyncram_pp14.tdf Line: 32
@@ -3912,7 +4008,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr
     Info (12023): Found entity 1: cmpr_drb File: G:/My Drive/FPGA/git/RCB_Rev_B/db/cmpr_drb.tdf Line: 23
 Info (12033): Analysis and Synthesis generated Signal Tap or debug node instance "auto_signaltap_0"
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2024.06.09.17:25:53 Progress: Loading sld09ff0ca0/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2024.06.24.13:12:51 Progress: Loading sld09ff0ca0/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -3949,19 +4045,6 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "FPGA_R_ROBOT_TX" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 39
     Warning (13410): Pin "FPGA_R_SP_TX" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 40
     Warning (13410): Pin "FPGA_WHEEL_STOP_ELO" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 41
-    Warning (13410): Pin "FPGA1" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 42
-    Warning (13410): Pin "FPGA10" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 43
-    Warning (13410): Pin "FPGA11" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 44
-    Warning (13410): Pin "FPGA12" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 45
-    Warning (13410): Pin "FPGA13" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 46
-    Warning (13410): Pin "FPGA2" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 47
-    Warning (13410): Pin "FPGA3" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 48
-    Warning (13410): Pin "FPGA4" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 49
-    Warning (13410): Pin "FPGA5" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 50
-    Warning (13410): Pin "FPGA6" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 51
-    Warning (13410): Pin "FPGA7" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 52
-    Warning (13410): Pin "FPGA8" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 53
-    Warning (13410): Pin "FPGA9" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 54
     Warning (13410): Pin "OPEN_ELO_REQUEST" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 105
     Warning (13410): Pin "SPARE1_ANALOG_SW_0_SEL_FPGA" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 136
     Warning (13410): Pin "SPARE1_ANALOG_SW_1_SEL_FPGA" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 137
@@ -3977,9 +4060,6 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "SPARE2_DIFF3" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 153
     Warning (13410): Pin "SPARE2_IO2_FPGA" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 156
     Warning (13410): Pin "SPARE2_IO3_FPGA" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 157
-    Warning (13410): Pin "Teensy_FPGA_SP0" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 159
-    Warning (13410): Pin "Teensy_FPGA_SP1" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 160
-    Warning (13410): Pin "Teensy_FPGA_SP2" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 161
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
 Info (17049): 133 registers lost all their fanouts during netlist optimizations.
 Warning (20013): Ignored 19 assignments for entity "altsource_probe_top" -- entity does not exist in design
@@ -4033,18 +4113,18 @@ Warning (21074): Design contains 44 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SPARE2_IO0_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 154
     Warning (15610): No output dependent on input pin "SPARE2_IO1_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 155
     Warning (15610): No output dependent on input pin "SSR_ON_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 158
-Info (21057): Implemented 3345 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 87 input pins
-    Info (21059): Implemented 71 output pins
+Info (21057): Implemented 3394 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 94 input pins
+    Info (21059): Implemented 64 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 3043 logic cells
+    Info (21061): Implemented 3092 logic cells
     Info (21064): Implemented 140 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 250 warnings
-    Info: Peak virtual memory: 4948 megabytes
-    Info: Processing ended: Sun Jun  9 17:26:05 2024
-    Info: Elapsed time: 00:00:45
-    Info: Total CPU time (on all processors): 00:00:48
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 207 warnings
+    Info: Peak virtual memory: 4944 megabytes
+    Info: Processing ended: Mon Jun 24 13:13:05 2024
+    Info: Elapsed time: 00:00:46
+    Info: Total CPU time (on all processors): 00:00:53
 
 
 +------------------------------------------+

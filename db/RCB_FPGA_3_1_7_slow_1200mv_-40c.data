@@ -6,11 +6,11 @@ TIMINGDATA
 ARCDATA
 pos_altera_reserved_tdi__altera_reserved_tck__setup:
 RISE_CONSTRAINT( scalar ) {
-VALUES ("1.746");
+VALUES ("1.787");
 }
 
 FALL_CONSTRAINT( scalar ) {
-VALUES ("1.746");
+VALUES ("1.787");
 }
 
 ENDARCDATA
@@ -18,11 +18,11 @@ ENDARCDATA
 ARCDATA
 pos_altera_reserved_tms__altera_reserved_tck__setup:
 RISE_CONSTRAINT( scalar ) {
-VALUES ("2.691");
+VALUES ("4.030");
 }
 
 FALL_CONSTRAINT( scalar ) {
-VALUES ("2.691");
+VALUES ("4.030");
 }
 
 ENDARCDATA
@@ -30,11 +30,11 @@ ENDARCDATA
 ARCDATA
 pos_altera_reserved_tdi__altera_reserved_tck__hold:
 RISE_CONSTRAINT( scalar ) {
-VALUES ("0.998");
+VALUES ("0.827");
 }
 
 FALL_CONSTRAINT( scalar ) {
-VALUES ("0.998");
+VALUES ("0.827");
 }
 
 ENDARCDATA
@@ -42,11 +42,11 @@ ENDARCDATA
 ARCDATA
 pos_altera_reserved_tms__altera_reserved_tck__hold:
 RISE_CONSTRAINT( scalar ) {
-VALUES ("1.165");
+VALUES ("0.861");
 }
 
 FALL_CONSTRAINT( scalar ) {
-VALUES ("1.165");
+VALUES ("0.861");
 }
 
 ENDARCDATA
@@ -54,11 +54,11 @@ ENDARCDATA
 ARCDATA
 pos_altera_reserved_tck__altera_reserved_tdo__delay:
 CELL_RISE( scalar ) {
-VALUES ("10.743");
+VALUES ("10.948");
 }
 
 CELL_FALL( scalar ) {
-VALUES ("10.743");
+VALUES ("10.948");
 }
 
 ENDARCDATA
