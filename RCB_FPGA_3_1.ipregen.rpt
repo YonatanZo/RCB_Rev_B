@@ -1,5 +1,5 @@
 IP Upgrade report for RCB_FPGA_3_1
-Sun Feb 11 10:55:42 2024
+Thu Jun 27 10:46:10 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -8,8 +8,7 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 ---------------------
   1. Legal Notice
   2. IP Upgrade Summary
-  3. Successfully Upgraded IP Components
-  4. IP Upgrade Messages
+  3. IP Upgrade Messages
 
 
 
@@ -36,38 +35,22 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; IP Upgrade Summary                                                            ;
 +------------------------------+------------------------------------------------+
-; IP Components Upgrade Status ; Passed - Sun Feb 11 10:55:42 2024              ;
+; IP Components Upgrade Status ; Failed - Thu Jun 27 10:46:10 2024              ;
 ; Quartus Prime Version        ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                ; RCB_FPGA_3_1                                   ;
-; Top-level Entity Name        ; RCB_FPGA                                       ;
+; Top-level Entity Name        ; RCB_TOP                                        ;
 ; Family                       ; MAX 10                                         ;
 +------------------------------+------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------+
-; Successfully Upgraded IP Components                                                                              ;
-+-------------+----------------+---------+----------------------+----------------------+-----------------+---------+
-; Entity Name ; Component Name ; Version ; Original Source File ; Generation File Path ; New Source File ; Message ;
-+-------------+----------------+---------+----------------------+----------------------+-----------------+---------+
-; PLL1        ; ALTPLL         ; 21.1    ; PLL1.qip             ; PLL1.v               ; PLL1.qip        ;         ;
-; pll2        ; ALTPLL         ; 21.1    ; pll2.qip             ; pll2.v               ; pll2.qip        ;         ;
-+-------------+----------------+---------+----------------------+----------------------+-----------------+---------+
 
 
 +---------------------+
 ; IP Upgrade Messages ;
 +---------------------+
-Info (11902): Backing up file "PLL1.v" to "PLL1.BAK.v"
-Info (11837): Started upgrading IP component ALTPLL with file "PLL1.v"
-Info (11902): Backing up file "pll2.v" to "pll2.BAK.v"
-Info (11837): Started upgrading IP component ALTPLL with file "pll2.v"
-Info (11131): Completed upgrading IP component ALTPLL with file "PLL1.v"
-Info (11131): Completed upgrading IP component ALTPLL with file "pll2.v"
 Info (23030): Evaluation of Tcl script c:/intelfpga_lite/22.1std/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
 Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4798 megabytes
-    Info: Processing ended: Sun Feb 11 10:55:42 2024
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:16
+    Info: Peak virtual memory: 4800 megabytes
+    Info: Processing ended: Thu Jun 27 10:46:10 2024
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:14
 
 

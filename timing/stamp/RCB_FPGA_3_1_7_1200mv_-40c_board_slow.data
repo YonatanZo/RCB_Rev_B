@@ -31,61 +31,1429 @@ TIMESCALE "1ns";
 TIMINGDATA
 
 ARCDATA
-pos_altera_reserved_tdi__altera_reserved_tck__setup:
+pos_CS0__CLK_100M__setup:
 RISE_CONSTRAINT( scalar ) {
-VALUES ("1.787");
+VALUES ("2.324");
 }
 
 FALL_CONSTRAINT( scalar ) {
-VALUES ("1.787");
+VALUES ("2.324");
 }
 
 ENDARCDATA
 
 ARCDATA
-pos_altera_reserved_tms__altera_reserved_tck__setup:
+pos_FPGA1__CLK_100M__setup:
 RISE_CONSTRAINT( scalar ) {
-VALUES ("4.030");
+VALUES ("1.240");
 }
 
 FALL_CONSTRAINT( scalar ) {
-VALUES ("4.030");
+VALUES ("1.240");
 }
 
 ENDARCDATA
 
 ARCDATA
-pos_altera_reserved_tdi__altera_reserved_tck__hold:
+pos_FPGA2__CLK_100M__setup:
 RISE_CONSTRAINT( scalar ) {
-VALUES ("0.827");
+VALUES ("1.828");
 }
 
 FALL_CONSTRAINT( scalar ) {
-VALUES ("0.827");
+VALUES ("1.828");
 }
 
 ENDARCDATA
 
 ARCDATA
-pos_altera_reserved_tms__altera_reserved_tck__hold:
+pos_FPGA3__CLK_100M__setup:
 RISE_CONSTRAINT( scalar ) {
-VALUES ("0.861");
+VALUES ("1.710");
 }
 
 FALL_CONSTRAINT( scalar ) {
-VALUES ("0.861");
+VALUES ("1.710");
 }
 
 ENDARCDATA
 
 ARCDATA
-pos_altera_reserved_tck__altera_reserved_tdo__delay:
+pos_FPGA4__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.925");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.925");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_4MB_SER_IN_SE__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("5.107");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("5.107");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_EEF_SER_IN_SE__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("4.683");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("4.683");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_M5B_SER_IN_SE__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("4.876");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("4.876");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_NC_switch_TOOL_EX_FPGA__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.161");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.161");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_NO_switch_TOOL_EX_FPGA__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.567");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.567");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_0_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.862");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.862");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_0_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.834");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.834");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_1_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.704");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.704");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_1_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.994");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.994");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.033");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.033");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.341");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.341");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_A1_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.990");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.990");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_A1_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.234");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.234");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_A2_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.296");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.296");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_A2_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.875");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.875");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_SPARE_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("0.154");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("0.154");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_SPARE_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.632");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.632");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_MICCB_GEN_SYNC_FPGA__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.727");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.727");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_MOSI0__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.292");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.292");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_4MB_SER_IN_SE__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("5.179");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("5.179");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_EEF_SER_IN_SE__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("5.014");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("5.014");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_M5B_SER_IN_SE__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("5.037");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("5.037");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_NC_switch_TOOL_EX_FPGA__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.116");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.116");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_NO_switch_TOOL_EX_FPGA__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.151");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.151");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_0_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.651");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.651");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_0_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.607");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.607");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_1_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.610");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.610");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_1_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.805");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.805");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.219");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.219");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.782");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.782");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_A1_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("0.990");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("0.990");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_A1_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.391");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.391");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_A2_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.396");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.396");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_A2_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.261");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.261");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_SPARE_OUT1_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.283");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.283");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_SPARE_OUT2_BUFF__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("0.222");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("0.222");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_SCK0__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.550");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.550");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_Teensy_FPGA_SP0__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.188");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.188");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_Teensy_FPGA_SP1__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.863");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.863");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_Teensy_FPGA_SP2__CLK_100M__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.808");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.808");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CS0__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.946");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.946");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA1__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.824");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.824");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA2__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.390");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.390");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA3__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.246");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.246");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA4__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.482");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.482");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_4MB_SER_IN_SE__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-4.711");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-4.711");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_EEF_SER_IN_SE__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-4.302");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-4.302");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_M5B_SER_IN_SE__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-4.488");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-4.488");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_NC_switch_TOOL_EX_FPGA__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.704");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.704");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_NO_switch_TOOL_EX_FPGA__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.120");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.120");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_0_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.420");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.420");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_0_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.394");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.394");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_1_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.267");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.267");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_1_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.544");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.544");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.585");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.585");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_POS_SENS_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.892");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.892");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_A1_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.527");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.527");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_A1_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.764");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.764");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_A2_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.838");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.838");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_A2_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.389");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.389");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_SPARE_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("0.232");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("0.232");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_L_WHEEL_SENS_SPARE_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.183");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.183");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_MICCB_GEN_SYNC_FPGA__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.276");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.276");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_MOSI0__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.616");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.616");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_4MB_SER_IN_SE__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-4.780");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-4.780");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_EEF_SER_IN_SE__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-4.616");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-4.616");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_M5B_SER_IN_SE__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-4.640");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-4.640");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_NC_switch_TOOL_EX_FPGA__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.662");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.662");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_NO_switch_TOOL_EX_FPGA__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.695");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.695");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_0_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.201");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.201");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_0_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.159");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.159");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_1_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.163");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.163");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_1_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.363");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.363");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.762");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.762");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_POS_SENS_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.343");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.343");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_A1_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.566");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.566");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_A1_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.955");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.955");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_A2_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.972");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.972");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_A2_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.844");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.844");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_SPARE_OUT1_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.826");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.826");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_R_WHEEL_SENS_SPARE_OUT2_BUFF__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("0.152");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("0.152");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_SCK0__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.858");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.858");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_Teensy_FPGA_SP0__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.733");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.733");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_Teensy_FPGA_SP1__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.391");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.391");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_Teensy_FPGA_SP2__CLK_100M__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.338");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.338");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__A_24V_L_EN__delay:
 CELL_RISE( scalar ) {
-VALUES ("10.948");
+VALUES ("8.212");
 }
 
 CELL_FALL( scalar ) {
-VALUES ("10.948");
+VALUES ("8.212");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__A_24V_R_EN__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.783");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.783");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__A_35V_L_EN__delay:
+CELL_RISE( scalar ) {
+VALUES ("7.494");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("7.494");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__A_35V_R_EN__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.206");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.206");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__BIT_SSR_SW__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.699");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.699");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__B_24V_L_EN__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.219");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.219");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__B_24V_R_EN__delay:
+CELL_RISE( scalar ) {
+VALUES ("7.623");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("7.623");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__B_35V_L_EN__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.425");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.425");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__B_35V_R_EN__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.341");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.341");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__FPGA5__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.053");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.053");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__FPGA6__delay:
+CELL_RISE( scalar ) {
+VALUES ("7.485");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("7.485");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__FPGA7__delay:
+CELL_RISE( scalar ) {
+VALUES ("10.303");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("10.303");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__FPGA8__delay:
+CELL_RISE( scalar ) {
+VALUES ("7.936");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("7.936");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__FPGA9__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.996");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.996");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__FPGA10__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.250");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.250");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__FPGA11__delay:
+CELL_RISE( scalar ) {
+VALUES ("7.792");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("7.792");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__FPGA12__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.413");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.413");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__FPGA13__delay:
+CELL_RISE( scalar ) {
+VALUES ("7.761");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("7.761");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__LED_1__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.578");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.578");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__LED_2__delay:
+CELL_RISE( scalar ) {
+VALUES ("7.712");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("7.712");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__LED_3__delay:
+CELL_RISE( scalar ) {
+VALUES ("10.109");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("10.109");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__LED_4__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.404");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.404");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__LED_5__delay:
+CELL_RISE( scalar ) {
+VALUES ("9.724");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("9.724");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__LED_6__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.330");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.330");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__LED_7__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.340");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.340");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__LED_8__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.385");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.385");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__MISO0__delay:
+CELL_RISE( scalar ) {
+VALUES ("7.252");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("7.252");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__TEENSY_FPGA_L_RX__delay:
+CELL_RISE( scalar ) {
+VALUES ("5.347");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("5.347");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLK_100M__TEENSY_FPGA_R_RX__delay:
+CELL_RISE( scalar ) {
+VALUES ("5.690");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("5.690");
 }
 
 ENDARCDATA

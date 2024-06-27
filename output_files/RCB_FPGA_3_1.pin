@@ -166,7 +166,7 @@ VCCIO6                       : F13       : power  :                   : 3.3V    
 FPGA_R_ROBOT_TX              : F14       : output : 3.3-V LVTTL       :         : 6         : Y              
 GND                          : F15       : gnd    :                   :         :           :                
 SCL_ADC                      : F16       : bidir  : 3.3-V LVTTL       :         : 6         : Y              
-altera_reserved_tdi          : G1        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
+~ALTERA_TDI~ / RESERVED_INPUT_WITH_WEAK_PULLUP : G1        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : G2        :        :                   :         : 1A        :                
 GND                          : G3        : gnd    :                   :         :           :                
 VCCIO1A                      : G4        : power  :                   : 3.3V    : 1A        :                
@@ -182,9 +182,9 @@ VCCIO6                       : G13       : power  :                   : 3.3V    
 FAN2_TACHO_BUFF              : G14       : input  : 3.3-V LVTTL       :         : 6         : Y              
 ROBOT_ESTOP_LED_DIN          : G15       : output : 3.3-V LVTTL       :         : 6         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : G16       :        :                   :         : 6         :                
-altera_reserved_tdo          : H1        : output : 3.3-V LVTTL       :         : 1B        : N              
-altera_reserved_tms          : H2        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
-altera_reserved_tck          : H3        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
+~ALTERA_TDO~                 : H1        : output : 3.3-V LVTTL       :         : 1B        : N              
+~ALTERA_TMS~ / RESERVED_INPUT_WITH_WEAK_PULLUP : H2        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
+~ALTERA_TCK~ / RESERVED_INPUT : H3        : input  : 3.3 V Schmitt Trigger :         : 1B        : N              
 VCCIO1A                      : H4        : power  :                   : 3.3V    : 1A        :                
 A_35V_L_EN                   : H5        : output : 3.3-V LVTTL       :         : 1A        : Y              
 L_TOOL_EX_LED_DIN            : H6        : output : 3.3-V LVTTL       :         : 1B        : Y              

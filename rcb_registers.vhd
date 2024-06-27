@@ -194,7 +194,7 @@ entity rcb_registers is
 end rcb_registers;
 architecture Behavioral of rcb_registers is
 --FPGA Version/date
-constant FPGA_MAJOR_VER : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"03";
+constant FPGA_MAJOR_VER : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"04";
 constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"07";
 constant FPGA_REV_YEAR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"18";
 constant FPGA_REV_MONTH : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"06";
