@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RCB_FPGA_3_1
-Thu Jun 27 12:42:33 2024
+Sun Jun 30 13:18:55 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -127,26 +127,27 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 119. Port Connectivity Checks: "rcb_spi:rcb_spi_inst"
 120. Port Connectivity Checks: "FAN:FAN2_inst"
 121. Port Connectivity Checks: "FAN:FAN1_inst"
-122. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART"
-123. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst2"
-124. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1"
-125. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0"
-126. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|TX_Master:TX_Master_inst"
-127. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave2"
-128. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave1"
-129. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave0"
-130. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:RX_UART2"
-131. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:RX_UART1"
-132. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_CLK_DIV:os_clk_divider_i"
-133. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:RX_UART0"
-134. Port Connectivity Checks: "rcb_registers:i_rcb_registers"
-135. Port Connectivity Checks: "UART_PLL:UART_PLL_inst"
-136. Port Connectivity Checks: "i2c_top:i2c_top_inst|i2c_master:i2c_inst"
-137. Port Connectivity Checks: "i2c_top:i2c_top_inst"
-138. Post-Synthesis Netlist Statistics for Top Partition
-139. Elapsed Time Per Partition
-140. Analysis & Synthesis Messages
-141. Analysis & Synthesis Suppressed Messages
+122. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_CLK_DIV:os_clk_divider_i"
+123. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART"
+124. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst2"
+125. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1"
+126. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0"
+127. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|TX_Master:TX_Master_inst"
+128. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave2"
+129. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave1"
+130. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave0"
+131. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:RX_UART2"
+132. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:RX_UART1"
+133. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_CLK_DIV:os_clk_divider_i"
+134. Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:RX_UART0"
+135. Port Connectivity Checks: "rcb_registers:i_rcb_registers"
+136. Port Connectivity Checks: "UART_PLL:UART_PLL_inst"
+137. Port Connectivity Checks: "i2c_top:i2c_top_inst|i2c_master:i2c_inst"
+138. Port Connectivity Checks: "i2c_top:i2c_top_inst"
+139. Post-Synthesis Netlist Statistics for Top Partition
+140. Elapsed Time Per Partition
+141. Analysis & Synthesis Messages
+142. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -173,15 +174,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 27 12:42:33 2024          ;
+; Analysis & Synthesis Status        ; Successful - Sun Jun 30 13:18:54 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; RCB_FPGA_3_1                                   ;
 ; Top-level Entity Name              ; RCB_TOP                                        ;
 ; Family                             ; MAX 10                                         ;
-; Total logic elements               ; 1,602                                          ;
-;     Total combinational functions  ; 1,304                                          ;
-;     Dedicated logic registers      ; 973                                            ;
-; Total registers                    ; 973                                            ;
+; Total logic elements               ; 1,647                                          ;
+;     Total combinational functions  ; 1,339                                          ;
+;     Dedicated logic registers      ; 969                                            ;
+; Total registers                    ; 969                                            ;
 ; Total pins                         ; 156                                            ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 24,576                                         ;
@@ -352,20 +353,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                          ;
 +---------------------------------------------+------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 1,602                                                                                          ;
+; Estimated Total logic elements              ; 1,647                                                                                          ;
 ;                                             ;                                                                                                ;
-; Total combinational functions               ; 1304                                                                                           ;
+; Total combinational functions               ; 1339                                                                                           ;
 ; Logic element usage by number of LUT inputs ;                                                                                                ;
-;     -- 4 input functions                    ; 631                                                                                            ;
-;     -- 3 input functions                    ; 312                                                                                            ;
-;     -- <=2 input functions                  ; 361                                                                                            ;
+;     -- 4 input functions                    ; 632                                                                                            ;
+;     -- 3 input functions                    ; 304                                                                                            ;
+;     -- <=2 input functions                  ; 403                                                                                            ;
 ;                                             ;                                                                                                ;
 ; Logic elements by mode                      ;                                                                                                ;
-;     -- normal mode                          ; 1032                                                                                           ;
-;     -- arithmetic mode                      ; 272                                                                                            ;
+;     -- normal mode                          ; 1043                                                                                           ;
+;     -- arithmetic mode                      ; 296                                                                                            ;
 ;                                             ;                                                                                                ;
-; Total registers                             ; 973                                                                                            ;
-;     -- Dedicated logic registers            ; 973                                                                                            ;
+; Total registers                             ; 969                                                                                            ;
+;     -- Dedicated logic registers            ; 969                                                                                            ;
 ;     -- I/O registers                        ; 0                                                                                              ;
 ;                                             ;                                                                                                ;
 ; I/O pins                                    ; 156                                                                                            ;
@@ -377,9 +378,9 @@ https://fpgasoftware.intel.com/eula.
 ;     -- PLLs                                 ; 1                                                                                              ;
 ;                                             ;                                                                                                ;
 ; Maximum fan-out node                        ; UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0] ;
-; Maximum fan-out                             ; 727                                                                                            ;
-; Total fan-out                               ; 8384                                                                                           ;
-; Average fan-out                             ; 3.18                                                                                           ;
+; Maximum fan-out                             ; 733                                                                                            ;
+; Total fan-out                               ; 8422                                                                                           ;
+; Average fan-out                             ; 3.15                                                                                           ;
 +---------------------------------------------+------------------------------------------------------------------------------------------------+
 
 
@@ -388,11 +389,11 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                             ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                                                     ; Entity Name     ; Library Name ;
 +--------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |RCB_TOP                                               ; 1304 (57)           ; 973 (34)                  ; 24576       ; 0          ; 0            ; 0       ; 0         ; 156  ; 0            ; 0          ; |RCB_TOP                                                                                                                                                ; RCB_TOP         ; work         ;
+; |RCB_TOP                                               ; 1339 (57)           ; 969 (34)                  ; 24576       ; 0          ; 0            ; 0       ; 0         ; 156  ; 0            ; 0          ; |RCB_TOP                                                                                                                                                ; RCB_TOP         ; work         ;
 ;    |UART_PLL:UART_PLL_inst|                            ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_PLL:UART_PLL_inst                                                                                                                         ; UART_PLL        ; work         ;
 ;       |altpll:altpll_component|                        ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_PLL:UART_PLL_inst|altpll:altpll_component                                                                                                 ; altpll          ; work         ;
 ;          |UART_PLL_altpll:auto_generated|              ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated                                                                  ; UART_PLL_altpll ; work         ;
-;    |UART_TOP:L_UART_TOP_inst|                          ; 516 (0)             ; 327 (0)                   ; 12288       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst                                                                                                                       ; UART_TOP        ; work         ;
+;    |UART_TOP:L_UART_TOP_inst|                          ; 535 (0)             ; 330 (0)                   ; 12288       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst                                                                                                                       ; UART_TOP        ; work         ;
 ;       |RX_FIFO:RX_FIFO_inst0|                          ; 64 (0)              ; 40 (0)                    ; 4096        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0                                                                                                 ; RX_FIFO         ; work         ;
 ;          |scfifo:scfifo_component|                     ; 64 (0)              ; 40 (0)                    ; 4096        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component                                                                         ; scfifo          ; work         ;
 ;             |scfifo_bn21:auto_generated|               ; 64 (0)              ; 40 (0)                    ; 4096        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated                                              ; scfifo_bn21     ; work         ;
@@ -421,22 +422,22 @@ https://fpgasoftware.intel.com/eula.
 ;       |RX_Slave:RX_Slave1|                             ; 47 (47)             ; 21 (21)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave1                                                                                                    ; RX_Slave        ; work         ;
 ;       |RX_Slave:RX_Slave2|                             ; 47 (47)             ; 21 (21)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave2                                                                                                    ; RX_Slave        ; work         ;
 ;       |TX_Master:TX_Master_inst|                       ; 91 (91)             ; 38 (38)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|TX_Master:TX_Master_inst                                                                                              ; TX_Master       ; work         ;
-;       |UART:RX_UART0|                                  ; 22 (1)              ; 28 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0                                                                                                         ; UART            ; work         ;
+;       |UART:RX_UART0|                                  ; 28 (1)              ; 29 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0                                                                                                         ; UART            ; work         ;
 ;          |UART_DEBOUNCER:\use_debouncer_g:debouncer_i| ; 2 (2)               ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_DEBOUNCER:\use_debouncer_g:debouncer_i                                                             ; UART_DEBOUNCER  ; work         ;
-;          |UART_RX:uart_rx_i|                           ; 19 (13)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
-;             |UART_CLK_DIV:rx_clk_divider_i|            ; 6 (6)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
-;       |UART:RX_UART1|                                  ; 22 (1)              ; 28 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1                                                                                                         ; UART            ; work         ;
+;          |UART_RX:uart_rx_i|                           ; 25 (13)             ; 23 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
+;             |UART_CLK_DIV:rx_clk_divider_i|            ; 12 (12)             ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
+;       |UART:RX_UART1|                                  ; 28 (1)              ; 29 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1                                                                                                         ; UART            ; work         ;
 ;          |UART_DEBOUNCER:\use_debouncer_g:debouncer_i| ; 2 (2)               ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_DEBOUNCER:\use_debouncer_g:debouncer_i                                                             ; UART_DEBOUNCER  ; work         ;
-;          |UART_RX:uart_rx_i|                           ; 19 (13)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
-;             |UART_CLK_DIV:rx_clk_divider_i|            ; 6 (6)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
-;       |UART:RX_UART2|                                  ; 22 (1)              ; 28 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2                                                                                                         ; UART            ; work         ;
+;          |UART_RX:uart_rx_i|                           ; 25 (13)             ; 23 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
+;             |UART_CLK_DIV:rx_clk_divider_i|            ; 12 (12)             ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
+;       |UART:RX_UART2|                                  ; 28 (1)              ; 29 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2                                                                                                         ; UART            ; work         ;
 ;          |UART_DEBOUNCER:\use_debouncer_g:debouncer_i| ; 2 (2)               ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_DEBOUNCER:\use_debouncer_g:debouncer_i                                                             ; UART_DEBOUNCER  ; work         ;
-;          |UART_RX:uart_rx_i|                           ; 19 (13)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
-;             |UART_CLK_DIV:rx_clk_divider_i|            ; 6 (6)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
-;       |UART:TEENSY_TX_UART|                            ; 26 (0)              ; 22 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART                                                                                                   ; UART            ; work         ;
-;          |UART_TX:uart_tx_i|                           ; 26 (20)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i                                                                                 ; UART_TX         ; work         ;
-;             |UART_CLK_DIV:tx_clk_divider_i|            ; 6 (6)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i                                                   ; UART_CLK_DIV    ; work         ;
-;    |UART_TOP:R_UART_TOP_inst|                          ; 516 (0)             ; 327 (0)                   ; 12288       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst                                                                                                                       ; UART_TOP        ; work         ;
+;          |UART_RX:uart_rx_i|                           ; 25 (13)             ; 23 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
+;             |UART_CLK_DIV:rx_clk_divider_i|            ; 12 (12)             ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
+;       |UART:TEENSY_TX_UART|                            ; 27 (0)              ; 22 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART                                                                                                   ; UART            ; work         ;
+;          |UART_TX:uart_tx_i|                           ; 27 (20)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i                                                                                 ; UART_TX         ; work         ;
+;             |UART_CLK_DIV:tx_clk_divider_i|            ; 7 (7)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i                                                   ; UART_CLK_DIV    ; work         ;
+;    |UART_TOP:R_UART_TOP_inst|                          ; 535 (0)             ; 330 (0)                   ; 12288       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst                                                                                                                       ; UART_TOP        ; work         ;
 ;       |RX_FIFO:RX_FIFO_inst0|                          ; 64 (0)              ; 40 (0)                    ; 4096        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0                                                                                                 ; RX_FIFO         ; work         ;
 ;          |scfifo:scfifo_component|                     ; 64 (0)              ; 40 (0)                    ; 4096        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component                                                                         ; scfifo          ; work         ;
 ;             |scfifo_bn21:auto_generated|               ; 64 (0)              ; 40 (0)                    ; 4096        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated                                              ; scfifo_bn21     ; work         ;
@@ -465,23 +466,23 @@ https://fpgasoftware.intel.com/eula.
 ;       |RX_Slave:RX_Slave1|                             ; 47 (47)             ; 21 (21)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave1                                                                                                    ; RX_Slave        ; work         ;
 ;       |RX_Slave:RX_Slave2|                             ; 47 (47)             ; 21 (21)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave2                                                                                                    ; RX_Slave        ; work         ;
 ;       |TX_Master:TX_Master_inst|                       ; 91 (91)             ; 38 (38)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|TX_Master:TX_Master_inst                                                                                              ; TX_Master       ; work         ;
-;       |UART:RX_UART0|                                  ; 22 (1)              ; 28 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0                                                                                                         ; UART            ; work         ;
+;       |UART:RX_UART0|                                  ; 28 (1)              ; 29 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0                                                                                                         ; UART            ; work         ;
 ;          |UART_DEBOUNCER:\use_debouncer_g:debouncer_i| ; 2 (2)               ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_DEBOUNCER:\use_debouncer_g:debouncer_i                                                             ; UART_DEBOUNCER  ; work         ;
-;          |UART_RX:uart_rx_i|                           ; 19 (13)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
-;             |UART_CLK_DIV:rx_clk_divider_i|            ; 6 (6)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
-;       |UART:RX_UART1|                                  ; 22 (1)              ; 28 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1                                                                                                         ; UART            ; work         ;
+;          |UART_RX:uart_rx_i|                           ; 25 (13)             ; 23 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
+;             |UART_CLK_DIV:rx_clk_divider_i|            ; 12 (12)             ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
+;       |UART:RX_UART1|                                  ; 28 (1)              ; 29 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1                                                                                                         ; UART            ; work         ;
 ;          |UART_DEBOUNCER:\use_debouncer_g:debouncer_i| ; 2 (2)               ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_DEBOUNCER:\use_debouncer_g:debouncer_i                                                             ; UART_DEBOUNCER  ; work         ;
-;          |UART_RX:uart_rx_i|                           ; 19 (13)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
-;             |UART_CLK_DIV:rx_clk_divider_i|            ; 6 (6)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
-;       |UART:RX_UART2|                                  ; 22 (1)              ; 28 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2                                                                                                         ; UART            ; work         ;
+;          |UART_RX:uart_rx_i|                           ; 25 (13)             ; 23 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
+;             |UART_CLK_DIV:rx_clk_divider_i|            ; 12 (12)             ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
+;       |UART:RX_UART2|                                  ; 28 (1)              ; 29 (2)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2                                                                                                         ; UART            ; work         ;
 ;          |UART_DEBOUNCER:\use_debouncer_g:debouncer_i| ; 2 (2)               ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_DEBOUNCER:\use_debouncer_g:debouncer_i                                                             ; UART_DEBOUNCER  ; work         ;
-;          |UART_RX:uart_rx_i|                           ; 19 (13)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
-;             |UART_CLK_DIV:rx_clk_divider_i|            ; 6 (6)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
-;       |UART:TEENSY_TX_UART|                            ; 26 (0)              ; 22 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART                                                                                                   ; UART            ; work         ;
-;          |UART_TX:uart_tx_i|                           ; 26 (20)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i                                                                                 ; UART_TX         ; work         ;
-;             |UART_CLK_DIV:tx_clk_divider_i|            ; 6 (6)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i                                                   ; UART_CLK_DIV    ; work         ;
-;    |rcb_registers:i_rcb_registers|                     ; 166 (166)           ; 185 (185)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_registers:i_rcb_registers                                                                                                                  ; rcb_registers   ; work         ;
-;    |rcb_spi:rcb_spi_inst|                              ; 49 (49)             ; 100 (100)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_spi:rcb_spi_inst                                                                                                                           ; rcb_spi         ; work         ;
+;          |UART_RX:uart_rx_i|                           ; 25 (13)             ; 23 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i                                                                                       ; UART_RX         ; work         ;
+;             |UART_CLK_DIV:rx_clk_divider_i|            ; 12 (12)             ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i                                                         ; UART_CLK_DIV    ; work         ;
+;       |UART:TEENSY_TX_UART|                            ; 27 (0)              ; 22 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART                                                                                                   ; UART            ; work         ;
+;          |UART_TX:uart_tx_i|                           ; 27 (20)             ; 22 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i                                                                                 ; UART_TX         ; work         ;
+;             |UART_CLK_DIV:tx_clk_divider_i|            ; 7 (7)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i                                                   ; UART_CLK_DIV    ; work         ;
+;    |rcb_registers:i_rcb_registers|                     ; 163 (163)           ; 169 (169)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_registers:i_rcb_registers                                                                                                                  ; rcb_registers   ; work         ;
+;    |rcb_spi:rcb_spi_inst|                              ; 49 (49)             ; 106 (106)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RCB_TOP|rcb_spi:rcb_spi_inst                                                                                                                           ; rcb_spi         ; work         ;
 +--------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -1176,13 +1177,13 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|DIV_MARK                ; Lost fanout                                                                   ;
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|tx_bit_count[0..2]                                    ; Lost fanout                                                                   ;
 ; UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[0..3] ; Lost fanout                                                                   ;
-; UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..3]       ; Lost fanout                                                                   ;
-; UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..3]       ; Lost fanout                                                                   ;
-; UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..3]       ; Lost fanout                                                                   ;
+; UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..4]       ; Lost fanout                                                                   ;
+; UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..4]       ; Lost fanout                                                                   ;
+; UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..4]       ; Lost fanout                                                                   ;
 ; UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[0..3] ; Lost fanout                                                                   ;
-; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..3]       ; Lost fanout                                                                   ;
-; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..3]       ; Lost fanout                                                                   ;
-; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..3]       ; Lost fanout                                                                   ;
+; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..4]       ; Lost fanout                                                                   ;
+; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..4]       ; Lost fanout                                                                   ;
+; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0..4]       ; Lost fanout                                                                   ;
 ; UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|fsm_pstate.idle                                 ; Lost fanout                                                                   ;
 ; UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|fsm_pstate.startbit                             ; Lost fanout                                                                   ;
 ; UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|fsm_pstate.databits                             ; Lost fanout                                                                   ;
@@ -1244,7 +1245,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|fsm_pstate.paritybit                                  ; Stuck at GND due to stuck port data_in                                        ;
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|fsm_pstate.paritybit                                  ; Stuck at GND due to stuck port data_in                                        ;
 ; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|fsm_pstate.paritybit                                  ; Stuck at GND due to stuck port data_in                                        ;
-; Total Number of Removed Registers = 466                                                                        ;                                                                               ;
+; Total Number of Removed Registers = 472                                                                        ;                                                                               ;
 +----------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
 
@@ -1261,38 +1262,44 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|DIV_MARK,             ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|DIV_MARK,             ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|DIV_MARK,             ;
-;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[1], ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[0], ;
+;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[1], ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[2], ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[3], ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[1],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[2],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[3],       ;
+;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[4],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[1],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[2],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[3],       ;
+;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[4],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[1],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[2],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[3],       ;
-;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[1], ;
+;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[4],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[0], ;
+;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[1], ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[2], ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[3], ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[1],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[2],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[3],       ;
+;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[4],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[1],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[2],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[3],       ;
+;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[4],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[1],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[2],       ;
 ;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[3],       ;
+;                                                                                                         ;                                ; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[4],       ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|fsm_pstate.idle,                              ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|tx_pstate.idle,                                     ;
 ;                                                                                                         ;                                ; UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|tx_pstate.idle,                                     ;
@@ -1387,128 +1394,83 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 973   ;
-; Number of registers using Synchronous Clear  ; 102   ;
+; Total registers                              ; 969   ;
+; Number of registers using Synchronous Clear  ; 99    ;
 ; Number of registers using Synchronous Load   ; 236   ;
 ; Number of registers using Asynchronous Clear ; 184   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 558   ;
+; Number of registers using Clock Enable       ; 548   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------------------------------------------------------+
-; Physical Synthesis Netlist Optimizations                                                          ;
-+----------------------------------------------------------+------------------+---------------------+
-; Node                                                     ; Action           ; Reason              ;
-+----------------------------------------------------------+------------------+---------------------+
-; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave0|Add0~1       ; Modified         ; Timing optimization ;
-; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave0|Selector15~0 ; Modified         ; Timing optimization ;
-; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave1|Add0~1       ; Modified         ; Timing optimization ;
-; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave1|Selector15~0 ; Modified         ; Timing optimization ;
-; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave2|Add0~1       ; Modified         ; Timing optimization ;
-; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave2|Selector15~0 ; Modified         ; Timing optimization ;
-; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave0|Add0~1       ; Modified         ; Timing optimization ;
-; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave0|Selector15~0 ; Modified         ; Timing optimization ;
-; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave1|Add0~1       ; Modified         ; Timing optimization ;
-; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave1|Selector15~0 ; Modified         ; Timing optimization ;
-; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave2|Add0~1       ; Modified         ; Timing optimization ;
-; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave2|Selector15~0 ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~0                   ; Deleted          ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~0_RTM03             ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~0_RTM03             ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~1                   ; Deleted          ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~1_RTM07             ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~1_RTM07             ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~2                   ; Deleted          ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~2_RTM011            ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~2_RTM011            ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~3                   ; Deleted          ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~3_OTERM13           ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~3_RTM02             ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~3_RTM06             ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~3_RTM010            ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~3_RTM015            ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~3_RTM015            ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~4                   ; Deleted          ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~4_OTERM27           ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~4_RTM014            ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~4_RTM029            ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~4_RTM029            ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~5                   ; Deleted          ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~5_OTERM23           ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~5_RTM025            ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~5_RTM025            ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal0~6                   ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal1~0                   ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal3~0_OTERM61           ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal3~1                   ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal3~2                   ; Deleted          ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal3~2_OTERM31           ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal3~2_RTM033            ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal3~2_RTM033            ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal4~0                   ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal5~0                   ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal13~0                  ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal13~0_OTERM51          ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal29~1                  ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal29~1_OTERM49          ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal29~2_OTERM63          ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal31~0_OTERM17          ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal31~1                  ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal31~1_OTERM35          ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal32~0                  ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal32~0_OTERM59          ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal32~0_RTM032           ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal33~0                  ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal33~0_OTERM53          ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal33~0_RTM028           ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Equal35~0_OTERM67          ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Selector3~2                ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Selector5~2                ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Selector16~1               ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Selector17~1               ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Selector18~5               ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Selector19~5               ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Selector24~0               ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Selector28~2               ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Selector31~5               ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|Selector31~5_RTM047        ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~0                 ; Deleted          ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~0_OTERM55         ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~0_RTM024          ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~0_RTM057          ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~0_RTM057          ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~1                 ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~2_OTERM65         ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~3                 ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~3_RTM046          ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~3_RTM046          ; Retimed Register ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~3_RTM056          ; Modified         ; Timing optimization ;
-; rcb_registers:i_rcb_registers|WideNor0~5_OTERM21         ; Retimed Register ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|Add0~1                              ; Modified         ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|Selector10~0                        ; Modified         ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|addr[5]                             ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|addr[6]                             ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|addr[7]                             ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|addr[8]                             ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|addr[9]                             ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|addr[10]                            ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|addr[11]                            ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|addr[12]                            ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|addr[13]                            ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|addr[14]                            ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|addr[15]                            ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|miso_shift[1]                       ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|miso_shift[1]_OTERM39               ; Retimed Register ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|miso_shift[1]_OTERM41               ; Retimed Register ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|miso_shift[1]_OTERM43               ; Retimed Register ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|miso_shift[1]_OTERM45               ; Retimed Register ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|send_miso                           ; Deleted          ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|send_miso_OTERM69                   ; Retimed Register ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|send_miso_OTERM71                   ; Retimed Register ; Timing optimization ;
-; rcb_spi:rcb_spi_inst|send_miso_OTERM73                   ; Retimed Register ; Timing optimization ;
-+----------------------------------------------------------+------------------+---------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Physical Synthesis Netlist Optimizations                                                                                                                                                  ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------+----------+---------------------+
+; Node                                                                                                                                                     ; Action   ; Reason              ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------+----------+---------------------+
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~4                 ; Deleted  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~5                 ; Deleted  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~6                 ; Deleted  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7                 ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN134_BDD135 ; Created  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN136_BDD137 ; Created  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN138_BDD139 ; Created  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~4                 ; Deleted  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~5                 ; Deleted  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~6                 ; Deleted  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7                 ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN146_BDD147 ; Created  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN148_BDD149 ; Created  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN150_BDD151 ; Created  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst2|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~4                 ; Deleted  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst2|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~5                 ; Deleted  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst2|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~6                 ; Deleted  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst2|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7                 ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst2|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN140_BDD141 ; Created  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst2|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN142_BDD143 ; Created  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst2|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN144_BDD145 ; Created  ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave0|Add0~1                                                                                                       ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave0|Selector15~0                                                                                                 ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave1|Add0~1                                                                                                       ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave1|Selector15~0                                                                                                 ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave2|Add0~1                                                                                                       ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave2|Selector15~0                                                                                                 ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|Add0~1                                                            ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt~0                                                     ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|Add0~1                                                            ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt~0                                                     ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|Add0~1                                                            ; Modified ; Timing optimization ;
+; UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt~0                                                     ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~4                 ; Deleted  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~5                 ; Deleted  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~6                 ; Deleted  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7                 ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN122_BDD123 ; Created  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN124_BDD125 ; Created  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN126_BDD127 ; Created  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~4                 ; Deleted  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~5                 ; Deleted  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~6                 ; Deleted  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7                 ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN128_BDD129 ; Created  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN130_BDD131 ; Created  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_FIFO:RX_FIFO_inst1|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|usedw_will_be_1~7_RESYN132_BDD133 ; Created  ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave0|Add0~1                                                                                                       ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave0|Selector15~0                                                                                                 ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave1|Add0~1                                                                                                       ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave1|Selector15~0                                                                                                 ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave2|Add0~1                                                                                                       ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave2|Selector15~0                                                                                                 ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|Add0~1                                                            ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt~0                                                     ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|Add0~1                                                            ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt~0                                                     ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|Add0~1                                                            ; Modified ; Timing optimization ;
+; UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt~0                                                     ; Modified ; Timing optimization ;
+; rcb_spi:rcb_spi_inst|Add0~1                                                                                                                              ; Modified ; Timing optimization ;
+; rcb_spi:rcb_spi_inst|Selector10~0                                                                                                                        ; Modified ; Timing optimization ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------+----------+---------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1516,56 +1478,56 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|TX_Master:TX_Master_inst|rs232_0_to_uart_data[6]                                   ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|TX_Master:TX_Master_inst|rs232_0_to_uart_data[0]                                   ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|TX_Master:TX_Master_inst|rs232_0_to_uart_data[7]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|TX_Master:TX_Master_inst|rs232_0_to_uart_data[7]                                   ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[3] ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[3] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[3]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[1]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[2]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[1]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[2]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[3]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[1] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[0] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[3]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[3]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[2]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[1]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[3]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[3]       ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |RCB_TOP|MicCB_SYNC_CNT[26]                                                                                          ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|tx_bit_count[1]                              ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[1]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[1]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[2]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[0]       ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[0] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[1] ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[2]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[3]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[4]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[4]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i|clk_div_cnt[3]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i|clk_div_cnt[1]       ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |RCB_TOP|MicCB_SYNC_CNT[18]                                                                                          ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|tx_bit_count[0]                              ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|rx_bit_count[2]                              ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|TX_Master:TX_Master_inst|data_pointer[0]                                           ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|tx_bit_count[2]                                    ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|rx_bit_count[2]                                    ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|tx_bit_count[2]                                    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|tx_bit_count[0]                                    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|rx_bit_count[1]                                    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|tx_bit_count[0]                                    ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|rx_bit_count[2]                                    ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|tx_bit_count[2]                                    ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|rx_bit_count[2]                                    ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|tx_bit_count[0]                              ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|rx_bit_count[2]                              ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|tx_bit_count[0]                                    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|rx_bit_count[1]                                    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|tx_bit_count[2]                              ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|rx_bit_count[0]                              ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|TX_Master:TX_Master_inst|data_pointer[1]                                           ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_TX:uart_tx_i|tx_bit_count[1]                                    ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART2|UART_RX:uart_rx_i|rx_bit_count[0]                                    ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|tx_bit_count[2]                                    ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|rx_bit_count[1]                                    ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|tx_bit_count[2]                                    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_TX:uart_tx_i|tx_bit_count[1]                                    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART1|UART_RX:uart_rx_i|rx_bit_count[2]                                    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_TX:uart_tx_i|tx_bit_count[1]                                    ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|UART:RX_UART0|UART_RX:uart_rx_i|rx_bit_count[0]                                    ;
-; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|data_cnt[1]                                                                            ;
-; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave2|counter[1]                                                      ;
-; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave1|counter[12]                                                     ;
-; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave0|counter[6]                                                      ;
-; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave2|counter[7]                                                      ;
-; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave1|counter[5]                                                      ;
-; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave0|counter[11]                                                     ;
-; 10:1               ; 9 bits    ; 54 LEs        ; 45 LEs               ; 9 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|TX_Master:TX_Master_inst|tx_cnt[2]                                                 ;
-; 10:1               ; 9 bits    ; 54 LEs        ; 45 LEs               ; 9 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|TX_Master:TX_Master_inst|tx_cnt[7]                                                 ;
-; 18:1               ; 15 bits   ; 180 LEs       ; 135 LEs              ; 45 LEs                 ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[21]                                                                         ;
-; 18:1               ; 4 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[16]                                                                         ;
-; 18:1               ; 4 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[12]                                                                         ;
-; 18:1               ; 4 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[8]                                                                          ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|data_cnt[4]                                                                            ;
+; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave2|counter[13]                                                     ;
+; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave1|counter[0]                                                      ;
+; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|RX_Slave:RX_Slave0|counter[9]                                                      ;
+; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave2|counter[11]                                                     ;
+; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave1|counter[6]                                                      ;
+; 6:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|RX_Slave:RX_Slave0|counter[8]                                                      ;
+; 10:1               ; 9 bits    ; 54 LEs        ; 45 LEs               ; 9 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|TX_Master:TX_Master_inst|tx_cnt[8]                                                 ;
+; 10:1               ; 9 bits    ; 54 LEs        ; 45 LEs               ; 9 LEs                  ; Yes        ; |RCB_TOP|UART_TOP:L_UART_TOP_inst|TX_Master:TX_Master_inst|tx_cnt[8]                                                 ;
+; 18:1               ; 15 bits   ; 180 LEs       ; 135 LEs              ; 45 LEs                 ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[23]                                                                         ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[13]                                                                         ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[9]                                                                          ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[7]                                                                          ;
 ; 18:1               ; 3 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; Yes        ; |RCB_TOP|rcb_spi:rcb_spi_inst|miso_shift[4]                                                                          ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |RCB_TOP|rcb_spi:rcb_spi_inst|next_state                                                                             ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |RCB_TOP|UART_TOP:R_UART_TOP_inst|TX_Master:TX_Master_inst|state                                                     ;
@@ -1696,7 +1658,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; CLK3_MULTIPLY_BY              ; 1                          ; Untyped                        ;
 ; CLK2_MULTIPLY_BY              ; 1                          ; Untyped                        ;
 ; CLK1_MULTIPLY_BY              ; 1                          ; Untyped                        ;
-; CLK0_MULTIPLY_BY              ; 16                         ; Signed Integer                 ;
+; CLK0_MULTIPLY_BY              ; 2                          ; Signed Integer                 ;
 ; CLK9_DIVIDE_BY                ; 0                          ; Untyped                        ;
 ; CLK8_DIVIDE_BY                ; 0                          ; Untyped                        ;
 ; CLK7_DIVIDE_BY                ; 0                          ; Untyped                        ;
@@ -1706,7 +1668,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; CLK3_DIVIDE_BY                ; 1                          ; Untyped                        ;
 ; CLK2_DIVIDE_BY                ; 1                          ; Untyped                        ;
 ; CLK1_DIVIDE_BY                ; 1                          ; Untyped                        ;
-; CLK0_DIVIDE_BY                ; 5                          ; Signed Integer                 ;
+; CLK0_DIVIDE_BY                ; 1                          ; Signed Integer                 ;
 ; CLK9_PHASE_SHIFT              ; 0                          ; Untyped                        ;
 ; CLK8_PHASE_SHIFT              ; 0                          ; Untyped                        ;
 ; CLK7_PHASE_SHIFT              ; 0                          ; Untyped                        ;
@@ -2033,8 +1995,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-----------+--------------------------------------------------------+
 ; Parameter Name ; Value     ; Type                                                   ;
 +----------------+-----------+--------------------------------------------------------+
-; clk_freq       ; 320000000 ; Signed Integer                                         ;
-; baud_rate      ; 20000000  ; Signed Integer                                         ;
+; clk_freq       ; 200000000 ; Signed Integer                                         ;
+; baud_rate      ; 10000000  ; Signed Integer                                         ;
 ; parity_bit     ; none      ; String                                                 ;
 ; use_debouncer  ; true      ; Enumerated                                             ;
 +----------------+-----------+--------------------------------------------------------+
@@ -2067,7 +2029,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2078,7 +2040,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 3     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2089,7 +2051,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2100,7 +2062,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 1     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2111,8 +2073,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-----------+--------------------------------------------------------+
 ; Parameter Name ; Value     ; Type                                                   ;
 +----------------+-----------+--------------------------------------------------------+
-; clk_freq       ; 320000000 ; Signed Integer                                         ;
-; baud_rate      ; 20000000  ; Signed Integer                                         ;
+; clk_freq       ; 200000000 ; Signed Integer                                         ;
+; baud_rate      ; 10000000  ; Signed Integer                                         ;
 ; parity_bit     ; none      ; String                                                 ;
 ; use_debouncer  ; true      ; Enumerated                                             ;
 +----------------+-----------+--------------------------------------------------------+
@@ -2145,7 +2107,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2156,7 +2118,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 3     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2167,7 +2129,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2178,7 +2140,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 1     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2189,8 +2151,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-----------+--------------------------------------------------------+
 ; Parameter Name ; Value     ; Type                                                   ;
 +----------------+-----------+--------------------------------------------------------+
-; clk_freq       ; 320000000 ; Signed Integer                                         ;
-; baud_rate      ; 20000000  ; Signed Integer                                         ;
+; clk_freq       ; 200000000 ; Signed Integer                                         ;
+; baud_rate      ; 10000000  ; Signed Integer                                         ;
 ; parity_bit     ; none      ; String                                                 ;
 ; use_debouncer  ; true      ; Enumerated                                             ;
 +----------------+-----------+--------------------------------------------------------+
@@ -2223,7 +2185,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2234,7 +2196,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 3     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2245,7 +2207,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2256,7 +2218,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 1     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2354,7 +2316,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-----------+--------------------------------------------------------------+
 ; Parameter Name ; Value     ; Type                                                         ;
 +----------------+-----------+--------------------------------------------------------------+
-; clk_freq       ; 320000000 ; Signed Integer                                               ;
+; clk_freq       ; 200000000 ; Signed Integer                                               ;
 ; baud_rate      ; 20000000  ; Signed Integer                                               ;
 ; parity_bit     ; none      ; String                                                       ;
 ; use_debouncer  ; true      ; Enumerated                                                   ;
@@ -2388,7 +2350,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                               ;
 +----------------+-------+------------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                                     ;
+; clk_div_val    ; 10    ; Signed Integer                                                                     ;
 ; parity_bit     ; none  ; String                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2399,7 +2361,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                                   ;
+; div_max_val    ; 10    ; Signed Integer                                                                                                   ;
 ; div_mark_pos   ; 3     ; Signed Integer                                                                                                   ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2410,7 +2372,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                               ;
 +----------------+-------+------------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                                     ;
+; clk_div_val    ; 10    ; Signed Integer                                                                     ;
 ; parity_bit     ; none  ; String                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2421,7 +2383,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                                   ;
+; div_max_val    ; 10    ; Signed Integer                                                                                                   ;
 ; div_mark_pos   ; 1     ; Signed Integer                                                                                                   ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2432,8 +2394,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-----------+--------------------------------------------------------+
 ; Parameter Name ; Value     ; Type                                                   ;
 +----------------+-----------+--------------------------------------------------------+
-; clk_freq       ; 320000000 ; Signed Integer                                         ;
-; baud_rate      ; 20000000  ; Signed Integer                                         ;
+; clk_freq       ; 200000000 ; Signed Integer                                         ;
+; baud_rate      ; 10000000  ; Signed Integer                                         ;
 ; parity_bit     ; none      ; String                                                 ;
 ; use_debouncer  ; true      ; Enumerated                                             ;
 +----------------+-----------+--------------------------------------------------------+
@@ -2466,7 +2428,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2477,7 +2439,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 3     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2488,7 +2450,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2499,7 +2461,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 1     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2510,8 +2472,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-----------+--------------------------------------------------------+
 ; Parameter Name ; Value     ; Type                                                   ;
 +----------------+-----------+--------------------------------------------------------+
-; clk_freq       ; 320000000 ; Signed Integer                                         ;
-; baud_rate      ; 20000000  ; Signed Integer                                         ;
+; clk_freq       ; 200000000 ; Signed Integer                                         ;
+; baud_rate      ; 10000000  ; Signed Integer                                         ;
 ; parity_bit     ; none      ; String                                                 ;
 ; use_debouncer  ; true      ; Enumerated                                             ;
 +----------------+-----------+--------------------------------------------------------+
@@ -2544,7 +2506,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2555,7 +2517,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 3     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2566,7 +2528,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2577,7 +2539,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 1     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2588,8 +2550,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-----------+--------------------------------------------------------+
 ; Parameter Name ; Value     ; Type                                                   ;
 +----------------+-----------+--------------------------------------------------------+
-; clk_freq       ; 320000000 ; Signed Integer                                         ;
-; baud_rate      ; 20000000  ; Signed Integer                                         ;
+; clk_freq       ; 200000000 ; Signed Integer                                         ;
+; baud_rate      ; 10000000  ; Signed Integer                                         ;
 ; parity_bit     ; none      ; String                                                 ;
 ; use_debouncer  ; true      ; Enumerated                                             ;
 +----------------+-----------+--------------------------------------------------------+
@@ -2622,7 +2584,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2633,7 +2595,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 3     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2644,7 +2606,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                               ;
+; clk_div_val    ; 20    ; Signed Integer                                                               ;
 ; parity_bit     ; none  ; String                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2655,7 +2617,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                             ;
+; div_max_val    ; 20    ; Signed Integer                                                                                             ;
 ; div_mark_pos   ; 1     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2753,7 +2715,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-----------+--------------------------------------------------------------+
 ; Parameter Name ; Value     ; Type                                                         ;
 +----------------+-----------+--------------------------------------------------------------+
-; clk_freq       ; 320000000 ; Signed Integer                                               ;
+; clk_freq       ; 200000000 ; Signed Integer                                               ;
 ; baud_rate      ; 20000000  ; Signed Integer                                               ;
 ; parity_bit     ; none      ; String                                                       ;
 ; use_debouncer  ; true      ; Enumerated                                                   ;
@@ -2787,7 +2749,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                               ;
 +----------------+-------+------------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                                     ;
+; clk_div_val    ; 10    ; Signed Integer                                                                     ;
 ; parity_bit     ; none  ; String                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2798,7 +2760,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                                   ;
+; div_max_val    ; 10    ; Signed Integer                                                                                                   ;
 ; div_mark_pos   ; 3     ; Signed Integer                                                                                                   ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2809,7 +2771,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                               ;
 +----------------+-------+------------------------------------------------------------------------------------+
-; clk_div_val    ; 16    ; Signed Integer                                                                     ;
+; clk_div_val    ; 10    ; Signed Integer                                                                     ;
 ; parity_bit     ; none  ; String                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2820,7 +2782,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
-; div_max_val    ; 16    ; Signed Integer                                                                                                   ;
+; div_max_val    ; 10    ; Signed Integer                                                                                                   ;
 ; div_mark_pos   ; 1     ; Signed Integer                                                                                                   ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -2972,6 +2934,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------+-------+----------+----------------+
 ; rst_n ; Input ; Info     ; Stuck at VCC   ;
 +-------+-------+----------+----------------+
+
+
++--------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_CLK_DIV:os_clk_divider_i" ;
++--------+-------+----------+----------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                    ;
++--------+-------+----------+----------------------------------------------------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                                                               ;
++--------+-------+----------+----------------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------+
@@ -3160,32 +3131,32 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 156                         ;
-; cycloneiii_ff         ; 973                         ;
+; cycloneiii_ff         ; 969                         ;
 ;     CLR               ; 90                          ;
-;     ENA               ; 258                         ;
+;     ENA               ; 251                         ;
 ;     ENA CLR           ; 94                          ;
-;     ENA SCLR          ; 4                           ;
+;     ENA SCLR          ; 1                           ;
 ;     ENA SLD           ; 202                         ;
 ;     SCLR              ; 66                          ;
 ;     SCLR SLD          ; 32                          ;
 ;     SLD               ; 2                           ;
-;     plain             ; 225                         ;
+;     plain             ; 231                         ;
 ; cycloneiii_io_obuf    ; 4                           ;
-; cycloneiii_lcell_comb ; 1304                        ;
-;     arith             ; 272                         ;
-;         2 data inputs ; 204                         ;
+; cycloneiii_lcell_comb ; 1339                        ;
+;     arith             ; 296                         ;
+;         2 data inputs ; 228                         ;
 ;         3 data inputs ; 68                          ;
-;     normal            ; 1032                        ;
+;     normal            ; 1043                        ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 40                          ;
-;         2 data inputs ; 116                         ;
-;         3 data inputs ; 244                         ;
-;         4 data inputs ; 631                         ;
+;         1 data inputs ; 45                          ;
+;         2 data inputs ; 129                         ;
+;         3 data inputs ; 236                         ;
+;         4 data inputs ; 632                         ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 48                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 2.36                        ;
+; Max LUT depth         ; 9.00                        ;
+; Average LUT depth     ; 2.60                        ;
 +-----------------------+-----------------------------+
 
 
@@ -3194,7 +3165,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:03     ;
 +----------------+--------------+
 
 
@@ -3204,20 +3175,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Thu Jun 27 12:42:11 2024
+    Info: Processing started: Sun Jun 30 13:18:31 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RCB_FPGA -c RCB_FPGA_3_1
 Info (16303): Aggressive Performance optimization mode selected -- timing performance will be prioritized at the potential cost of increased logic area and compilation time
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
 Info (12248): Elaborating Platform Designer system entity "reset.qsys"
-Info (12250): 2024.06.27.12:42:22 Progress: Loading RCB_Rev_B/reset.qsys
-Info (12250): 2024.06.27.12:42:23 Progress: Reading input file
-Info (12250): 2024.06.27.12:42:23 Progress: Adding in_system_sources_probes_0 [altera_in_system_sources_probes 22.1]
-Info (12250): 2024.06.27.12:42:23 Progress: Parameterizing module in_system_sources_probes_0
-Info (12250): 2024.06.27.12:42:23 Progress: Building connections
-Info (12250): 2024.06.27.12:42:23 Progress: Parameterizing connections
-Info (12250): 2024.06.27.12:42:23 Progress: Validating
-Info (12250): 2024.06.27.12:42:24 Progress: Done reading input file
+Info (12250): 2024.06.30.13:18:42 Progress: Loading RCB_Rev_B/reset.qsys
+Info (12250): 2024.06.30.13:18:43 Progress: Reading input file
+Info (12250): 2024.06.30.13:18:43 Progress: Adding in_system_sources_probes_0 [altera_in_system_sources_probes 22.1]
+Info (12250): 2024.06.30.13:18:43 Progress: Parameterizing module in_system_sources_probes_0
+Info (12250): 2024.06.30.13:18:43 Progress: Building connections
+Info (12250): 2024.06.30.13:18:43 Progress: Parameterizing connections
+Info (12250): 2024.06.30.13:18:43 Progress: Validating
+Info (12250): 2024.06.30.13:18:44 Progress: Done reading input file
 Info (12250): Reset: Generating reset "reset" for QUARTUS_SYNTH
 Info (12250): In_system_sources_probes_0: "reset" instantiated altera_in_system_sources_probes "in_system_sources_probes_0"
 Info (12250): Reset: Done "reset" with 2 modules, 2 files
@@ -3323,9 +3294,9 @@ Info (12128): Elaborating entity "altpll" for hierarchy "UART_PLL:UART_PLL_inst|
 Info (12130): Elaborated megafunction instantiation "UART_PLL:UART_PLL_inst|altpll:altpll_component" File: G:/My Drive/FPGA/git/RCB_Rev_B/UART_PLL.v Line: 104
 Info (12133): Instantiated megafunction "UART_PLL:UART_PLL_inst|altpll:altpll_component" with the following parameter: File: G:/My Drive/FPGA/git/RCB_Rev_B/UART_PLL.v Line: 104
     Info (12134): Parameter "bandwidth_type" = "AUTO"
-    Info (12134): Parameter "clk0_divide_by" = "5"
+    Info (12134): Parameter "clk0_divide_by" = "1"
     Info (12134): Parameter "clk0_duty_cycle" = "50"
-    Info (12134): Parameter "clk0_multiply_by" = "16"
+    Info (12134): Parameter "clk0_multiply_by" = "2"
     Info (12134): Parameter "clk0_phase_shift" = "0"
     Info (12134): Parameter "compensate_clock" = "CLK0"
     Info (12134): Parameter "inclk0_input_frequency" = "10000"
@@ -3545,6 +3516,11 @@ Info (12128): Elaborating entity "cntr_4l6" for hierarchy "UART_TOP:L_UART_TOP_i
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_oka.tdf
     Info (12023): Found entity 1: cntr_oka File: G:/My Drive/FPGA/git/RCB_Rev_B/db/cntr_oka.tdf Line: 26
 Info (12128): Elaborating entity "cntr_oka" for hierarchy "UART_TOP:L_UART_TOP_inst|RX_FIFO:RX_FIFO_inst0|scfifo:scfifo_component|scfifo_bn21:auto_generated|a_dpfifo_ue21:dpfifo|cntr_oka:wr_ptr" File: G:/My Drive/FPGA/git/RCB_Rev_B/db/a_dpfifo_ue21.tdf Line: 58
+Info (12128): Elaborating entity "UART" for hierarchy "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART" File: G:/My Drive/FPGA/git/RCB_Rev_B/UART_TOP.vhd Line: 358
+Info (12128): Elaborating entity "UART_RX" for hierarchy "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i" File: G:/My Drive/FPGA/git/RCB_Rev_B/uart/uart.vhd Line: 113
+Info (12128): Elaborating entity "UART_CLK_DIV" for hierarchy "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_RX:uart_rx_i|UART_CLK_DIV:rx_clk_divider_i" File: G:/My Drive/FPGA/git/RCB_Rev_B/uart/comp/uart_rx.vhd Line: 55
+Info (12128): Elaborating entity "UART_TX" for hierarchy "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i" File: G:/My Drive/FPGA/git/RCB_Rev_B/uart/uart.vhd Line: 135
+Info (12128): Elaborating entity "UART_CLK_DIV" for hierarchy "UART_TOP:L_UART_TOP_inst|UART:TEENSY_TX_UART|UART_TX:uart_tx_i|UART_CLK_DIV:tx_clk_divider_i" File: G:/My Drive/FPGA/git/RCB_Rev_B/uart/comp/uart_tx.vhd Line: 54
 Info (12128): Elaborating entity "FAN" for hierarchy "FAN:FAN1_inst" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 773
 Warning (10036): Verilog HDL or VHDL warning at Fan.vhd(48): object "fan_pwm_f" assigned a value but never read File: G:/My Drive/FPGA/git/RCB_Rev_B/Fan.vhd Line: 48
 Warning (10631): VHDL Process Statement warning at Fan.vhd(57): inferring latch(es) for signal or variable "clk_1khz", which holds its previous value in one or more paths through the process File: G:/My Drive/FPGA/git/RCB_Rev_B/Fan.vhd Line: 57
@@ -3606,7 +3582,7 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "SPARE2_IO2_FPGA" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 156
     Warning (13410): Pin "SPARE2_IO3_FPGA" is stuck at GND File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 157
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 127 registers lost all their fanouts during netlist optimizations.
+Info (17049): 133 registers lost all their fanouts during netlist optimizations.
 Info (128000): Starting physical synthesis optimizations for speed
 Warning (335093): The Timing Analyzer is analyzing 6 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
 Info (332104): Reading SDC File: 'RCB_FPGA_3_1.out.sdc'
@@ -3618,17 +3594,17 @@ Warning (332049): Ignored set_clock_groups at RCB_FPGA_3_1.out.sdc(81): Argument
     Info (332050): set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}]  File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_FPGA_3_1.out.sdc Line: 81
 Warning (332060): Node: rcb_registers:i_rcb_registers|MUX_Control[0] was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Latch L_LED_DIN$latch is being clocked by rcb_registers:i_rcb_registers|MUX_Control[0]
-Warning (332056): PLL cross checking found inconsistent PLL clock settings:
-    Warning (332056): Node: UART_PLL_inst|altpll_component|auto_generated|pll1|clk[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 10.000
 Critical Warning (332168): The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
     Critical Warning (332169): From CLK_100M (Rise) to CLK_100M (Rise) (setup and hold)
+    Critical Warning (332169): From UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0] (Rise) to UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0] (Rise) (setup and hold)
 Info (332129): Detected timing requirements -- optimizing circuit to achieve only the specified requirements
-Info (332111): Found 1 clocks
+Info (332111): Found 2 clocks
     Info (332111):   Period   Clock Name
     Info (332111): ======== ============
     Info (332111):   10.000     CLK_100M
+    Info (332111):    5.000 UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]
 Info (128002): Starting physical synthesis algorithm register retiming
-Info (128003): Physical synthesis algorithm register retiming complete: estimated slack improvement of 2118 ps
+Info (128003): Physical synthesis algorithm register retiming complete: estimated slack improvement of 0 ps
 Info (128002): Starting physical synthesis algorithm combinational resynthesis using boolean division
 Info (128003): Physical synthesis algorithm combinational resynthesis using boolean division complete: estimated slack improvement of 0 ps
 Info (128001): Physical synthesis optimizations for speed complete: elapsed time is 00:00:01
@@ -3682,18 +3658,18 @@ Warning (21074): Design contains 44 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SPARE2_IO0_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 154
     Warning (15610): No output dependent on input pin "SPARE2_IO1_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 155
     Warning (15610): No output dependent on input pin "SSR_ON_FPGA" File: G:/My Drive/FPGA/git/RCB_Rev_B/RCB_TOP.vhd Line: 158
-Info (21057): Implemented 1831 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1868 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 91 input pins
     Info (21059): Implemented 63 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 1626 logic cells
+    Info (21061): Implemented 1663 logic cells
     Info (21064): Implemented 48 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 216 warnings
-    Info: Peak virtual memory: 4960 megabytes
-    Info: Processing ended: Thu Jun 27 12:42:33 2024
-    Info: Elapsed time: 00:00:22
-    Info: Total CPU time (on all processors): 00:00:30
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 215 warnings
+    Info: Peak virtual memory: 4972 megabytes
+    Info: Processing ended: Sun Jun 30 13:18:55 2024
+    Info: Elapsed time: 00:00:24
+    Info: Total CPU time (on all processors): 00:00:31
 
 
 +------------------------------------------+

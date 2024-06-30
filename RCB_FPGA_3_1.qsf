@@ -382,6 +382,7 @@ set_location_assignment PIN_P15 -to L_EEF_SER_IN_ER
 set_location_assignment PIN_C5 -to L_ROBOT_DIFF_SP2
 set_location_assignment PIN_T5 -to L_POS_SENS_OUT2_BUFF
 set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to SDA_ADC
+set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE PERFORMANCE"
 set_global_assignment -name SDC_FILE RCB_FPGA_3_1.out.sdc
 set_global_assignment -name VHDL_FILE i2c_master.vhd
 set_global_assignment -name VHDL_FILE i2c_top.vhd
@@ -406,5 +407,4 @@ set_global_assignment -name QIP_FILE RX_FIFO.qip
 set_global_assignment -name SIGNALTAP_FILE output_files/stp1.stp
 set_global_assignment -name QIP_FILE UART_PLL.qip
 set_global_assignment -name SOURCE_FILE output_files/Spf1.spf
-set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE PERFORMANCE"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

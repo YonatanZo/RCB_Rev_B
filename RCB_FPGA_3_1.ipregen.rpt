@@ -1,5 +1,5 @@
 IP Upgrade report for RCB_FPGA_3_1
-Thu Jun 27 10:46:10 2024
+Sun Jun 30 11:09:49 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -35,7 +35,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; IP Upgrade Summary                                                            ;
 +------------------------------+------------------------------------------------+
-; IP Components Upgrade Status ; Failed - Thu Jun 27 10:46:10 2024              ;
+; IP Components Upgrade Status ; Failed - Sun Jun 30 11:09:49 2024              ;
 ; Quartus Prime Version        ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                ; RCB_FPGA_3_1                                   ;
 ; Top-level Entity Name        ; RCB_TOP                                        ;
@@ -48,9 +48,9 @@ https://fpgasoftware.intel.com/eula.
 +---------------------+
 Info (23030): Evaluation of Tcl script c:/intelfpga_lite/22.1std/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
 Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4800 megabytes
-    Info: Processing ended: Thu Jun 27 10:46:10 2024
-    Info: Elapsed time: 00:00:08
+    Info: Peak virtual memory: 4880 megabytes
+    Info: Processing ended: Sun Jun 30 11:09:49 2024
+    Info: Elapsed time: 00:00:18
     Info: Total CPU time (on all processors): 00:00:14
 
 

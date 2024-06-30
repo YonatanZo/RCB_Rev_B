@@ -236,11 +236,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "Teensy_FPGA_SP2",
+					"name" : "L_POS_SENS_OUT2_BUFF",
 					"strict" : false
 				},
 				{
-					"name" : "L_POS_SENS_OUT2_BUFF",
+					"name" : "Teensy_FPGA_SP2",
 					"strict" : false
 				},
 				{
@@ -248,11 +248,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "Teensy_FPGA_SP1",
+					"name" : "L_WHEEL_SENS_A1_OUT1_BUFF",
 					"strict" : false
 				},
 				{
-					"name" : "L_WHEEL_SENS_A1_OUT1_BUFF",
+					"name" : "Teensy_FPGA_SP1",
 					"strict" : false
 				},
 				{
@@ -268,7 +268,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "R_WHEEL_SENS_A2_OUT1_BUFF",
+					"name" : "L_WHEEL_SENS_A2_OUT1_BUFF",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA4",
 					"strict" : false
 				},
 				{
@@ -276,11 +280,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "L_WHEEL_SENS_A2_OUT1_BUFF",
-					"strict" : false
-				},
-				{
-					"name" : "FPGA4",
+					"name" : "R_WHEEL_SENS_A2_OUT1_BUFF",
 					"strict" : false
 				},
 				{

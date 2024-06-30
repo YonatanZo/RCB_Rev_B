@@ -15,9 +15,9 @@ entity UART_TOP is
 end entity UART_TOP;
 
 architecture rtl of UART_TOP is
-constant RX_RATE : Integer:= 20000000 ;	
-constant UART_CLK : Integer:= 320000000 ;
-constant TX_RATE : Integer:= 20000000 ;		
+constant RX_RATE : Integer:= 10_000_000 ;	
+constant UART_CLK : Integer:= 200_000_000 ;
+constant TX_RATE : Integer:= 20_000_000 ;		
 	COMPONENT UART
 	GENERIC ( CLK_FREQ : INTEGER := 100000000; BAUD_RATE : INTEGER := 10000000; PARITY_BIT : STRING := "none"; USE_DEBOUNCER : boolean := true );
 	PORT

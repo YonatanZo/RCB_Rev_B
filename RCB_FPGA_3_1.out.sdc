@@ -41,9 +41,9 @@ set_time_format -unit ns -decimal_places 3
 
 create_clock -name {altera_reserved_tck} -period 100.000 -waveform { 0.000 50.000 } [get_ports {altera_reserved_tck}]
 create_clock -period 10.000 [get_ports {CLK_100M}]
-#\
-	#derive_pll_clocks
-
+    create_generated_clock -source {UART_PLL_inst|altpll_component|auto_generated|pll1|inclk[0]} -multiply_by 2 -duty_cycle 50.00 -name {UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]} {UART_PLL_inst|altpll_component|auto_generated|pll1|clk[0]}
+# create_clock -period 10.000 [get_pins {UART_PLL_inst|altpll_component|auto_generated|pll1|inclk[0]}]
+# create_generated_clock -source {UART_PLL_inst|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 5 -multiply_by 16 -duty_cycle 50.00 -name {UART_PLL_inst|altpll_component|auto_generated|pll1|clk[0]} {UART_PLL_inst|altpll_component|auto_generated|pll1|clk[0]}
 #**************************************************************
 # Create Generated Clock
 #**************************************************************
