@@ -10,12 +10,14 @@ entity UART_TOP is
 		RXD_4MB		: in  std_logic := '0';
 		RXD_M5B		: in  std_logic := '0';
 		RXD_EFF		: in  std_logic := '0';
+        DIAG_PACK_CNT : out STD_LOGIC_VECTOR(15 downto 0); 
+        DIAG_ERR_CNT : out STD_LOGIC_VECTOR(15 downto 0);   	
 		TXD_TEENSY	: out std_logic
 	);
 end entity UART_TOP;
 
 architecture rtl of UART_TOP is
-constant RX_RATE : Integer:= 10_000_000 ;	
+constant RX_RATE : Integer:= 12_000_000 ;	
 constant UART_CLK : Integer:= 200_000_000 ;
 constant TX_RATE : Integer:= 20_000_000 ;		
 	COMPONENT UART
@@ -138,7 +140,8 @@ end component TX_Master;
     signal TEENSY_UART_VALID : std_logic;
     signal TEENSY_UART_RDY : std_logic;
     signal RST : std_logic;
-
+	signal DIAG_PACK,DIAG_ERR: integer range 0 to 65535:= 0;
+	signal TEENSY_UART_ERROR_F, TEENSY_UART_RDY_F : std_logic;
 
 begin
 
@@ -377,4 +380,24 @@ begin
 		);	
 		
 
+
+
+	counter_status:process (CLK,RST_N)
+	begin
+		if RST_N = '0' then
+			DIAG_ERR <= 0;
+			DIAG_PACK <= 0;
+		elsif rising_edge(clk) then
+			TEENSY_UART_ERROR_F <= TEENSY_UART_ERROR;
+			TEENSY_UART_RDY_F <= TEENSY_UART_RDY;
+			if TEENSY_UART_RDY_F ='0' and TEENSY_UART_RDY = '1' then
+				DIAG_PACK <= DIAG_PACK +1;
+			end if;
+			if TEENSY_UART_ERROR_F ='0' and TEENSY_UART_ERROR = '1' then
+				DIAG_ERR <= DIAG_ERR +1;
+			end if;
+		end if;
+	end process;
+	DIAG_PACK_CNT <= std_logic_vector(to_unsigned(DIAG_PACK, DIAG_PACK_CNT'length));
+	DIAG_ERR_CNT <= std_logic_vector(to_unsigned(DIAG_ERR, DIAG_ERR_CNT'length));
 end architecture rtl; -- of UART_TOP

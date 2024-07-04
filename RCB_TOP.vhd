@@ -171,6 +171,8 @@ architecture Behavioral of RCB_TOP is
       reset_n  : IN  STD_LOGIC;
       scl      : INOUT  STD_LOGIC;
       sda      : INOUT  STD_LOGIC;
+      DEV_ID   : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
+      START    : IN  STD_LOGIC;
       AIN0 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
       AIN1 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
       AIN2 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -199,6 +201,8 @@ component UART_TOP
     RXD_4MB : in std_logic;
     RXD_M5B : in std_logic;
     RXD_EFF : in std_logic;
+    DIAG_PACK_CNT : out STD_LOGIC_VECTOR(15 downto 0); 
+    DIAG_ERR_CNT : out STD_LOGIC_VECTOR(15 downto 0);
     TXD_TEENSY : out std_logic
   );
 end component;
@@ -234,11 +238,11 @@ COMPONENT rcb_registers is
         --Debug LEDs 
         FPGA_LEDs_OUT  : out STD_LOGIC_VECTOR(7 downto 0 );
         ----Diagnostic R I/F
-        R_DIAG_PACK_CNT : in STD_LOGIC_VECTOR(15 downto 0); --TODO
-        R_DIAG_ERR_CNT : in STD_LOGIC_VECTOR(15 downto 0);--TODO
+        R_DIAG_PACK_CNT : in STD_LOGIC_VECTOR(15 downto 0); 
+        R_DIAG_ERR_CNT : in STD_LOGIC_VECTOR(15 downto 0);
         ----Diagnostic L I/F     
-        L_DIAG_PACK_CNT : in STD_LOGIC_VECTOR(15 downto 0);--TODO
-        L_DIAG_ERR_CNT : in STD_LOGIC_VECTOR(15 downto 0); --TODO
+        L_DIAG_PACK_CNT : in STD_LOGIC_VECTOR(15 downto 0);
+        L_DIAG_ERR_CNT : in STD_LOGIC_VECTOR(15 downto 0); 
         --regs IN/OUTs
         --FPGA__buttons_
         L_NO_switch_TOOL_EX_FPGA    : in  STD_LOGIC                    ;
@@ -405,28 +409,6 @@ COMPONENT rcb_spi
 	);
 END COMPONENT;
 
--- component ADC_Master
---   generic (
---     input_clk : INTEGER;
---     bus_clk : INTEGER;
---     dev_id    : STD_LOGIC_VECTOR(6 DOWNTO 0)
---   );
---   port (
---     clk : in STD_LOGIC;
---     reset_n : in STD_LOGIC;
---     AIN0 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
---     AIN1 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
---     AIN2 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
---     AIN3 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
---     AIN4 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
---     AIN5 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
---     AIN6 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
---     AIN7 : out STD_LOGIC_VECTOR(15 DOWNTO 0);
---     debug : OUT     STD_LOGIC_VECTOR(7 DOWNTO 0);
---     sda : inout STD_LOGIC;
---     scl : inout STD_LOGIC
---   );
--- end component;
 
 
 
@@ -440,11 +422,7 @@ component UART_PLL
 	);
 end component;
 
--- component reset is
---   port (
---     source : out std_logic_vector(0 downto 0)   -- source
---   );
--- end component reset;
+
 
 constant L_TOOL_EX :std_logic_vector(2 downto 0) := "000";
 constant L_LED_Strip :std_logic_vector(2 downto 0) := "001"; 
@@ -544,6 +522,8 @@ PORT MAP (
   reset_n  => rst_syn, --debug_rstn,
   scl      => SCL_ADC,
   sda      => SDA_ADC,
+  DEV_ID =>"0010000",
+  START    => '1',
   AIN0 => AIN0,
   AIN1 => AIN1,
   AIN2 => AIN2,
@@ -756,6 +736,8 @@ LED_8 <= FPGA_LEDs_OUT(7);
           RXD_4MB => L_4MB_SER_IN_SE,
           RXD_M5B => L_M5B_SER_IN_SE,
           RXD_EFF => L_EEF_SER_IN_SE,
+          DIAG_PACK_CNT => L_DIAG_PACK_CNT ,
+          DIAG_ERR_CNT => L_DIAG_ERR_CNT ,
           TXD_TEENSY => TEENSY_FPGA_L_RX
         );
       
@@ -766,6 +748,8 @@ LED_8 <= FPGA_LEDs_OUT(7);
           RXD_4MB => R_4MB_SER_IN_SE,
           RXD_M5B => R_M5B_SER_IN_SE,
           RXD_EFF => R_EEF_SER_IN_SE,
+          DIAG_PACK_CNT =>R_DIAG_PACK_CNT ,
+          DIAG_ERR_CNT => R_DIAG_ERR_CNT ,
           TXD_TEENSY => TEENSY_FPGA_R_RX
         );
 
