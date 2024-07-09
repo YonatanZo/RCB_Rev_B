@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(10M40DCF256) Path("G:/My Drive/FPGA/old pof sof/") File("RCB_FPGA_3_1.sof") MfrSpec(OpMask(1));
+		Device PartName(10M40DCF256) Path("G:/My Drive/FPGA/git/RCB_Rev_B/output_files/") File("RCB_FPGA_3_1.pof") MfrSpec(OpMask(3) Child_OpMask(2 3 3));
 
 ChainEnd;
 

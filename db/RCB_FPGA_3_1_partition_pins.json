@@ -248,11 +248,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "Teensy_FPGA_SP1",
+					"name" : "L_WHEEL_SENS_A1_OUT1_BUFF",
 					"strict" : false
 				},
 				{
-					"name" : "L_WHEEL_SENS_A1_OUT1_BUFF",
+					"name" : "Teensy_FPGA_SP1",
 					"strict" : false
 				},
 				{

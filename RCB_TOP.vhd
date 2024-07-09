@@ -376,6 +376,7 @@ COMPONENT rcb_registers is
         FPGA_DIAG_ACT               : out STD_LOGIC                    ;
         FPGA_FAULT                  : out STD_LOGIC                    ;
         RST_WD                      : in  STD_LOGIC                    ;
+        RST_UART                    : out STD_LOGIC                    ;
         --Sync Timer
         MicCB_SYNC_CNT              : in STD_LOGIC_VECTOR(31 downto 0)
     );
@@ -479,6 +480,7 @@ signal FAN_PWM_REG_OUT_2 :   STD_LOGIC_VECTOR(7 DOWNTO 0);
   signal MICCB_GEN_SYNC_FPGA_F  : STD_LOGIC;
   signal MICCB_GEN_SYNC_FPGA_FF  : STD_LOGIC;
   signal MICCB_GEN_SYNC_FPGA_SYN  : STD_LOGIC;
+  signal PLL_RST  : STD_LOGIC;
   ---------------debug only-------------------
   -- signal pc_rst       : STD_LOGIC_VECTOR(0 downto 0);
   -- signal debug_rstn       : STD_LOGIC;
@@ -723,6 +725,7 @@ LED_8 <= FPGA_LEDs_OUT(7);
             FPGA_DIAG_ACT               => FPGA_DIAG_ACT              ,
             FPGA_FAULT                  => FPGA_FAULT                 ,
             RST_WD                      => RST_WD                     ,
+            RST_UART                    => PLL_RST                    ,
             MicCB_SYNC_CNT              => MicCB_SYNC_CNT             
         );
 

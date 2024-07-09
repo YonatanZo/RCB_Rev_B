@@ -188,6 +188,7 @@ entity rcb_registers is
 		FPGA_DIAG_ACT               : out STD_LOGIC                    ;
 		FPGA_FAULT                  : out STD_LOGIC                    ;
 		RST_WD                      : in  STD_LOGIC                    ;
+		RST_UART					: out STD_LOGIC                    ;
 		--Sync Timer
 		MicCB_SYNC_CNT              : in STD_LOGIC_VECTOR(31 downto 0)
 	);
@@ -195,10 +196,10 @@ end rcb_registers;
 architecture Behavioral of rcb_registers is
 --FPGA Version/date
 constant FPGA_MAJOR_VER : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"04";
-constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"08";
+constant FPGA_REV : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"09";
 constant FPGA_REV_YEAR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"18";
 constant FPGA_REV_MONTH : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"07";
-constant FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"01";
+constant FPGA_REV_DAY : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"08";
 constant FPGA_REV_HOUR : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"12";
 --Regiasters address declaretion 
 constant ADDR_FPGA_Version: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0000";
@@ -232,6 +233,7 @@ constant ADDR_FPGA_SYNC_TIME: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001B";
 constant ADDR_Fault_Registers: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001C";
 constant ADDR_Sync_Timer: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001D";
 constant ADDR_Diagnostic_Header: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001E";
+constant ADDR_FPGA_Control_register: STD_LOGIC_VECTOR(15 DOWNTO 0) := x"001F";
 -- new registers declaretion 
 signal FPGA_Version_reg : STD_LOGIC_VECTOR(31 downto 0) := FPGA_REV & FPGA_MAJOR_VER & x"0000";--x"0000"
 signal FPGA_Date_reg : STD_LOGIC_VECTOR(31 downto 0) := FPGA_REV_HOUR & FPGA_REV_DAY & FPGA_REV_MONTH & FPGA_REV_YEAR;--x"0001"
@@ -264,7 +266,7 @@ signal FPGA_SYNC_TIME_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x
 signal Fault_Registers_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0'); --x"001C"
 signal Sync_Timer_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"001D"
 signal Diagnostic_Header_reg : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"001E"
-	
+signal FPGA_Control_register : STD_LOGIC_VECTOR(31 downto 0):= (others => '0');--x"001F"
 begin
 FPGA_LEDs_OUT <= FPGA_LEDs_reg(7 downto 0);
 
@@ -326,6 +328,7 @@ begin
 		Diagnostic_Header_reg(4) <= Teensy_FPGA_SP0;
 		Diagnostic_Header_reg(5) <= Teensy_FPGA_SP1;
 		Diagnostic_Header_reg(6) <= Teensy_FPGA_SP2;
+		RST_UART <= FPGA_Control_register(0);
 		end if;
 end process;
 ADC_Voltage_0_reg <=AIN0 & AIN1;
@@ -398,6 +401,8 @@ begin
             data_miso <= Sync_Timer_reg;
 		when ADDR_Diagnostic_Header =>
             data_miso <= Diagnostic_Header_reg;
+		when ADDR_FPGA_Control_register =>
+            data_miso <= FPGA_Control_register;
         when others =>
             data_miso <= (others => '1');
 	end case;
@@ -485,6 +490,8 @@ begin
 					null;
 				when ADDR_Diagnostic_Header =>
 					Diagnostic_Header_reg(15 downto 7)<= data_mosi(15 downto 7);
+				when ADDR_FPGA_Control_register =>
+					FPGA_Control_register<= data_mosi;
 				when others =>
 					null;
 			end case;

@@ -1,5 +1,5 @@
 Flow report for RCB_FPGA_3_1
-Thu Jul  4 08:50:18 2024
+Mon Jul  8 14:45:24 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -41,17 +41,17 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Flow Summary                                                                        ;
 +------------------------------------+------------------------------------------------+
-; Flow Status                        ; Successful - Thu Jul  4 08:50:17 2024          ;
+; Flow Status                        ; Successful - Mon Jul  8 14:45:24 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; RCB_FPGA_3_1                                   ;
 ; Top-level Entity Name              ; RCB_TOP                                        ;
 ; Family                             ; MAX 10                                         ;
 ; Device                             ; 10M40DCF256I7G                                 ;
 ; Timing Models                      ; Final                                          ;
-; Total logic elements               ; 2,383 / 40,368 ( 6 % )                         ;
-;     Total combinational functions  ; 1,941 / 40,368 ( 5 % )                         ;
-;     Dedicated logic registers      ; 1,593 / 40,368 ( 4 % )                         ;
-; Total registers                    ; 1593                                           ;
+; Total logic elements               ; 2,433 / 40,368 ( 6 % )                         ;
+;     Total combinational functions  ; 1,967 / 40,368 ( 5 % )                         ;
+;     Dedicated logic registers      ; 1,625 / 40,368 ( 4 % )                         ;
+; Total registers                    ; 1625                                           ;
 ; Total pins                         ; 156 / 178 ( 88 % )                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 319,488 / 1,290,240 ( 25 % )                   ;
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/04/2024 08:48:25 ;
+; Start date & time ; 07/08/2024 14:43:39 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RCB_FPGA_3_1        ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------+-----------------------------------------------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                                ; Value                                                                       ; Default Value ; Entity Name ; Section Id                        ;
 +------------------------------------------------+-----------------------------------------------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID                          ; 22494286322939.172007210537408                                              ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID                          ; 189741479133756.172043901925372                                             ; --            ; --          ; --                                ;
 ; EDA_BOARD_DESIGN_TIMING_TOOL                   ; Stamp (Timing)                                                              ; <None>        ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST                ; Off                                                                         ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST                ; Off                                                                         ; --            ; --          ; eda_board_design_boundary_scan    ;
@@ -154,12 +154,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:59     ; 1.0                     ; 5008 MB             ; 00:01:03                           ;
-; Fitter               ; 00:00:22     ; 1.3                     ; 6109 MB             ; 00:00:50                           ;
-; Assembler            ; 00:00:06     ; 1.0                     ; 4729 MB             ; 00:00:04                           ;
-; Timing Analyzer      ; 00:00:08     ; 1.5                     ; 4937 MB             ; 00:00:06                           ;
-; EDA Netlist Writer   ; 00:00:05     ; 1.0                     ; 4703 MB             ; 00:00:03                           ;
-; Total                ; 00:01:40     ; --                      ; --                  ; 00:02:06                           ;
+; Analysis & Synthesis ; 00:00:53     ; 1.0                     ; 4988 MB             ; 00:01:03                           ;
+; Fitter               ; 00:00:27     ; 1.4                     ; 6145 MB             ; 00:01:09                           ;
+; Assembler            ; 00:00:04     ; 1.0                     ; 4726 MB             ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:06     ; 1.7                     ; 4945 MB             ; 00:00:07                           ;
+; EDA Netlist Writer   ; 00:00:04     ; 1.0                     ; 4703 MB             ; 00:00:02                           ;
+; Total                ; 00:01:34     ; --                      ; --                  ; 00:02:25                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
