@@ -483,8 +483,8 @@ signal FAN_PWM_REG_OUT_2 :   STD_LOGIC_VECTOR(7 DOWNTO 0);
   signal PLL_RST  : STD_LOGIC;
   ---------------debug only-------------------
   -- signal pc_rst       : STD_LOGIC_VECTOR(0 downto 0);
-  -- signal debug_rstn       : STD_LOGIC;
-  -- signal counter : integer range 0 to 99_999_999 := 0;
+  signal LED_debug       : STD_LOGIC;
+  signal counter : integer range 0 to 99_999_999 := 0;
   -- signal SDA_ADC_sig  : STD_LOGIC := '1';
   -- signal SCL_ADC_sig  : STD_LOGIC;
   -- SIGNAL internal_start : STD_LOGIC;
@@ -497,27 +497,23 @@ begin
 --   source => pc_rst  -- sources.source
 -- );
 
--- debug_reset_Counter:process (rst_n_syn,CLK_100M)
--- begin
---   if rst_n_syn = '0' then
---     counter<= 0;
---     debug_rstn <= '0';
---   elsif rising_edge(CLK_100M) then
---     if counter /= 99_999_999 then
---       counter <= counter + 1 ;
---     else 
---       counter <= 0;
---     end if;
---     case counter is
---       when 0 to  99_998_999 =>
---         debug_rstn <= '1';
---       when others =>
---         debug_rstn <= '0';
---     end case;
---   end if;
--- end process;
+debug_reset_Counter:process (rst_n_syn,CLK_100M)
+begin
+  if rst_n_syn = '0' then
+    counter<= 0;
+    LED_debug <= '0';
+  elsif rising_edge(CLK_100M) then
+    if counter /= 99_999_999 then
+      counter <= counter + 1 ;
+    else 
+      LED_debug <=not  LED_debug;
+      counter <= 0;
+    end if;
 
+  end if;
+end process;
 
+LED_1 <= LED_debug;
 i2c_top_inst : i2c_top
 PORT MAP (
   clk      => CLK_100M,
@@ -575,7 +571,7 @@ PORT MAP (
   );
 
 
-LED_1 <= FPGA_LEDs_OUT(0);
+--LED_1 <= FPGA_LEDs_OUT(0);
 LED_2 <= FPGA_LEDs_OUT(1);
 LED_3 <= FPGA_LEDs_OUT(2);
 LED_4 <= FPGA_LEDs_OUT(3);

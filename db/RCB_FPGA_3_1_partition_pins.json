@@ -152,15 +152,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "MOSI0",
-					"strict" : false
-				},
-				{
 					"name" : "SCK0",
 					"strict" : false
 				},
 				{
 					"name" : "CS0",
+					"strict" : false
+				},
+				{
+					"name" : "MOSI0",
 					"strict" : false
 				},
 				{
@@ -292,11 +292,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "L_WHEEL_SENS_A2_OUT2_BUFF",
+					"name" : "FPGA3",
 					"strict" : false
 				},
 				{
-					"name" : "FPGA3",
+					"name" : "L_WHEEL_SENS_A2_OUT2_BUFF",
 					"strict" : false
 				},
 				{

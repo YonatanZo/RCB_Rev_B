@@ -74,7 +74,7 @@ begin
                         --rx_data <= avalon_data;
 								data_in <= avalon_data;
 							
-                    elsif counter = 8000 then
+                    elsif counter = 800 then --was 8000
 								
 								if error_flg = '1' then 
 									err_reg <= '1';

@@ -48,11 +48,11 @@ end entity TX_Master;
 
 architecture Behavioral of TX_Master is
 
-    type state_type is (S_IDLE, S_TX_DATA, S_ERROR_STATE , S_WRITE_UART,S_CLR_RDY,S_VAL_TX_UART,S_WRITE_UART_D);
+    type state_type is (S_IDLE, S_TX_DATA, S_ERROR_STATE , S_WRITE_UART,S_CLR_RDY,S_VAL_TX_UART,S_WRITE_UART_D,S_SLEEP);
     signal state : state_type := S_IDLE;
     signal tx_data : std_logic_vector(7 downto 0) := (others => '0');
     signal current_fifo : unsigned(1 downto 0) := (others => '0');
-
+	signal sleep_counter : integer range 0 to 751  := 0;
 	 signal data_out : std_logic_vector(23 downto 0);
 	 signal FIFO_usedw_reg : std_logic_vector(26 downto 0);
 	 signal clr_FIFO_reg : std_logic_vector(2 downto 0):= "000";
@@ -106,11 +106,13 @@ tx_rdy_reg <= tx_rdy2 & tx_rdy1 & tx_rdy0;
 			pack_cnt <= 0;
 			data_pointer <= 0;
 			err_cnt <= 0;
+			sleep_counter <= 0;
 			
         elsif rising_edge(clk) then
             case state is
                 when S_IDLE =>
 						  tx_cnt <= 0;
+						  sleep_counter <= 0;
 						  clr_rdy_reg <= (others => '0');
 						  rd_FIFO_reg <= (others => '0');
 						  clr_FIFO_reg  <= (others => '0');
@@ -123,8 +125,7 @@ tx_rdy_reg <= tx_rdy2 & tx_rdy1 & tx_rdy0;
 							  for i in 0 to 2 loop
 								  if tx_rdy_reg(i) = '1' then
 										
-										--clr_rdy_reg(i) <= '1';
-										--rd_FIFO_reg(i) <= '1';
+								
 										data_pointer <= i;
 										state <= S_CLR_RDY;
 									else 
@@ -146,7 +147,7 @@ tx_rdy_reg <= tx_rdy2 & tx_rdy1 & tx_rdy0;
 								pack_cnt <= pack_cnt+1;
 								rd_FIFO_reg(data_pointer)  <= '0';
 								rs232_0_to_uart_valid <= '0';
-								state <= S_IDLE;
+								state <= S_SLEEP;
 						  else
 							  if rs232_0_to_uart_ready = '1' then
 								  rd_FIFO_reg(data_pointer) <= '1';
@@ -157,6 +158,13 @@ tx_rdy_reg <= tx_rdy2 & tx_rdy1 & tx_rdy0;
 								  state <= S_TX_DATA;
 							  end if;
                     end if;
+				when S_SLEEP =>
+					if sleep_counter /= 750 then
+						sleep_counter <= sleep_counter + 1 ;
+				  	else 
+					  	state <= S_IDLE;
+						sleep_counter <= 0;
+					end if;
                 when S_ERROR_STATE =>
 						clr_FIFO_reg <= "000";
 					    clr_err_reg <= "000";
