@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Wed Jul 31 16:58:20 2024
+Analysis & Synthesis Status : Successful - Thu Aug  1 12:18:31 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : RCB_FPGA_3_1
 Top-level Entity Name : RCB_TOP
 Family : MAX 10
-Total logic elements : 3,024
-    Total combinational functions : 2,240
-    Dedicated logic registers : 1,883
-Total registers : 1883
+Total logic elements : 2,981
+    Total combinational functions : 2,197
+    Dedicated logic registers : 1,877
+Total registers : 1877
 Total pins : 156
 Total virtual pins : 0
 Total memory bits : 876,544

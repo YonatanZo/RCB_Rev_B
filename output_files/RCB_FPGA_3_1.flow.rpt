@@ -1,5 +1,5 @@
 Flow report for RCB_FPGA_3_1
-Wed Jul 31 16:59:06 2024
+Thu Aug  1 12:19:16 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -41,17 +41,17 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Flow Summary                                                                        ;
 +------------------------------------+------------------------------------------------+
-; Flow Status                        ; Successful - Wed Jul 31 16:59:06 2024          ;
+; Flow Status                        ; Successful - Thu Aug  1 12:19:16 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; RCB_FPGA_3_1                                   ;
 ; Top-level Entity Name              ; RCB_TOP                                        ;
 ; Family                             ; MAX 10                                         ;
 ; Device                             ; 10M40DCF256I7G                                 ;
 ; Timing Models                      ; Final                                          ;
-; Total logic elements               ; 2,865 / 40,368 ( 7 % )                         ;
-;     Total combinational functions  ; 2,242 / 40,368 ( 6 % )                         ;
-;     Dedicated logic registers      ; 1,883 / 40,368 ( 5 % )                         ;
-; Total registers                    ; 1883                                           ;
+; Total logic elements               ; 2,816 / 40,368 ( 7 % )                         ;
+;     Total combinational functions  ; 2,199 / 40,368 ( 5 % )                         ;
+;     Dedicated logic registers      ; 1,877 / 40,368 ( 5 % )                         ;
+; Total registers                    ; 1877                                           ;
 ; Total pins                         ; 156 / 178 ( 88 % )                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 876,544 / 1,290,240 ( 68 % )                   ;
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/31/2024 16:57:32 ;
+; Start date & time ; 08/01/2024 12:17:46 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RCB_FPGA_3_1        ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                                ; Value                                                                                                                          ; Default Value ; Entity Name ; Section Id                        ;
 +------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID                          ; 189741479133756.172243425256788                                                                                                ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID                          ; 189741479133756.172250386603432                                                                                                ; --            ; --          ; --                                ;
 ; EDA_BOARD_DESIGN_TIMING_TOOL                   ; Stamp (Timing)                                                                                                                 ; <None>        ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST                ; Off                                                                                                                            ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST                ; Off                                                                                                                            ; --            ; --          ; eda_board_design_boundary_scan    ;
@@ -154,12 +154,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:47     ; 1.0                     ; 4993 MB             ; 00:00:52                           ;
-; Fitter               ; 00:00:25     ; 1.4                     ; 6171 MB             ; 00:01:03                           ;
-; Assembler            ; 00:00:04     ; 1.0                     ; 4737 MB             ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:05     ; 1.8                     ; 4955 MB             ; 00:00:07                           ;
+; Analysis & Synthesis ; 00:00:44     ; 1.0                     ; 4985 MB             ; 00:00:49                           ;
+; Fitter               ; 00:00:22     ; 1.4                     ; 6085 MB             ; 00:00:53                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 4732 MB             ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:06     ; 1.8                     ; 4942 MB             ; 00:00:06                           ;
 ; EDA Netlist Writer   ; 00:00:03     ; 1.0                     ; 4711 MB             ; 00:00:02                           ;
-; Total                ; 00:01:24     ; --                      ; --                  ; 00:02:07                           ;
+; Total                ; 00:01:20     ; --                      ; --                  ; 00:01:53                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

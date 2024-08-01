@@ -292,11 +292,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "FPGA3",
+					"name" : "L_WHEEL_SENS_A2_OUT2_BUFF",
 					"strict" : false
 				},
 				{
-					"name" : "L_WHEEL_SENS_A2_OUT2_BUFF",
+					"name" : "FPGA3",
 					"strict" : false
 				},
 				{
