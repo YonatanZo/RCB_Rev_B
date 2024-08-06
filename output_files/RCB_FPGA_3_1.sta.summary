@@ -3,43 +3,43 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 100C Model Setup 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 0.473
+Slack : 0.256
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Setup 'CLK_100M'
-Slack : 2.730
+Slack : 2.891
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Setup 'altera_reserved_tck'
-Slack : 42.863
+Slack : 42.663
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Hold 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 0.311
-TNS   : 0.000
-
-Type  : Slow 1200mV 100C Model Hold 'altera_reserved_tck'
-Slack : 0.339
+Slack : 0.309
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Hold 'CLK_100M'
+Slack : 0.339
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Hold 'altera_reserved_tck'
 Slack : 0.340
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Recovery 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 1.968
+Slack : 2.422
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Recovery 'altera_reserved_tck'
-Slack : 94.849
+Slack : 95.017
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Removal 'altera_reserved_tck'
-Slack : 1.063
+Slack : 0.908
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Removal 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 1.616
+Slack : 1.294
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Minimum Pulse Width 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
@@ -47,27 +47,27 @@ Slack : 1.597
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Minimum Pulse Width 'CLK_100M'
-Slack : 4.650
+Slack : 4.641
 TNS   : 0.000
 
 Type  : Slow 1200mV 100C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.480
+Slack : 49.483
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Setup 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 1.035
+Slack : 0.794
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Setup 'CLK_100M'
-Slack : 3.507
+Slack : 3.600
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Setup 'altera_reserved_tck'
-Slack : 43.599
+Slack : 43.597
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Hold 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 0.249
+Slack : 0.240
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Hold 'CLK_100M'
@@ -75,23 +75,23 @@ Slack : 0.290
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Hold 'altera_reserved_tck'
-Slack : 0.290
+Slack : 0.291
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Recovery 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 2.315
+Slack : 2.638
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Recovery 'altera_reserved_tck'
-Slack : 95.474
+Slack : 95.706
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Removal 'altera_reserved_tck'
-Slack : 0.958
+Slack : 0.807
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Removal 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 1.404
+Slack : 1.104
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Minimum Pulse Width 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
@@ -99,7 +99,7 @@ Slack : 1.667
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Minimum Pulse Width 'CLK_100M'
-Slack : 4.667
+Slack : 4.665
 TNS   : 0.000
 
 Type  : Slow 1200mV -40C Model Minimum Pulse Width 'altera_reserved_tck'
@@ -107,47 +107,47 @@ Slack : 49.491
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Setup 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 3.340
+Slack : 3.173
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Setup 'CLK_100M'
-Slack : 7.150
+Slack : 7.040
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Setup 'altera_reserved_tck'
-Slack : 47.424
+Slack : 47.418
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Hold 'CLK_100M'
-Slack : -0.001
-TNS   : -0.001
+Slack : 0.072
+TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Hold 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 0.133
+Slack : 0.132
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Hold 'altera_reserved_tck'
-Slack : 0.139
+Slack : 0.140
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Recovery 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 3.725
+Slack : 3.889
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Recovery 'altera_reserved_tck'
-Slack : 97.534
+Slack : 97.666
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Removal 'altera_reserved_tck'
-Slack : 0.442
+Slack : 0.387
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Removal 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 0.652
+Slack : 0.545
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Minimum Pulse Width 'UART_PLL:UART_PLL_inst|altpll:altpll_component|UART_PLL_altpll:auto_generated|wire_pll1_clk[0]'
-Slack : 2.224
+Slack : 2.222
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Minimum Pulse Width 'CLK_100M'
@@ -155,7 +155,7 @@ Slack : 3.531
 TNS   : 0.000
 
 Type  : Fast 1200mV -40C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.250
+Slack : 49.252
 TNS   : 0.000
 
 ------------------------------------------------------------

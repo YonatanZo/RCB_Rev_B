@@ -168,18 +168,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "L_4MB_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "L_M5B_SER_IN_SE",
-					"strict" : false
-				},
-				{
-					"name" : "L_EEF_SER_IN_SE",
-					"strict" : false
-				},
-				{
 					"name" : "R_4MB_SER_IN_SE",
 					"strict" : false
 				},
@@ -189,6 +177,18 @@
 				},
 				{
 					"name" : "R_M5B_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_4MB_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_EEF_SER_IN_SE",
+					"strict" : false
+				},
+				{
+					"name" : "L_M5B_SER_IN_SE",
 					"strict" : false
 				},
 				{

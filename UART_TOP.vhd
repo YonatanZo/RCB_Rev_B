@@ -17,7 +17,7 @@ entity UART_TOP is
 end entity UART_TOP;
 
 architecture rtl of UART_TOP is
-constant RX_RATE : Integer:= 15_625_000 ;	
+constant RX_RATE : Integer:= 12_000_000 ;--	15_625_000
 constant UART_CLK : Integer:= 250_000_000 ;
 constant TX_RATE : Integer:= 20_000_000 ;		
 	COMPONENT UART
